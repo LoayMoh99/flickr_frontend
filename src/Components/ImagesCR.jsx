@@ -6,7 +6,8 @@ import React from 'react';
 import './ImagesCR.css';
 
 function ImagesCR(props) {
-  const { Url, dateupdated } = props;
+//   const { Url, dateupdated } = props;
+  const { Url } = props;
   return (
     <>
       {/* <h5 className="text-secondary">April 20, 2021</h5> */}

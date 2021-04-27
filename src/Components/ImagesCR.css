@@ -29,3 +29,10 @@
   clear: both;
   display: table;
 }
+body {
+  background: #f3f5f6;
+}
+
+.pad_row {
+  padding: 10px 150px 10px 150px;
+}
