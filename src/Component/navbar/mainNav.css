@@ -292,6 +292,11 @@ a{
         width: 15px;
         margin: 2px 0;
     }
+    .logoPlusNav .menuIcon.shownSideNav .line3 {
+        transform: rotate(-45deg) translate(5px,-3px);
+    }
+    .logoPlusNav .menuIcon.shownSideNav .line1 {transform: rotate(45deg) translate(3px,0px);
+    }
     .searchNotifivationUpload i{
         font-size: 22px;
     }

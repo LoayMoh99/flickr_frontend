@@ -1,12 +1,12 @@
 import React from 'react'
-import '../Component/Header.css'
-import '../fonts/font/flaticon.css'
-import '../bootstrab/bootstrap.css'
-import flickrLogo from '../img/flickr.png'
-import {toggleNav} from '../Component/navBar.js'
-import {toogleMobileSearchBox} from '../Component/navBar.js'
-import {readjustHeader} from '../Component/navBar.js'
-import defaultProfile from '../img/deefault.jpg';
+import './mainNav.css'
+import '../../fonts/font/flaticon.css'
+import '../../bootstrab/bootstrap.css'
+import flickrLogo from '../../img/flickr.png'
+import {toggleNav} from './navBar.js'
+import {toogleMobileSearchBox} from './navBar.js'
+import {readjustHeader} from './navBar.js'
+import defaultProfile from '../../img/deefault.jpg';
 export default function Header(){
     function checkSize(){
         if(window.innerWidth>1080){

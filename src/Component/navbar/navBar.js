@@ -1,5 +1,4 @@
 export function toggleNav(){
-    console.log("shiiit");
     let menuIcon=document.getElementsByClassName('menuIcon');
     let navShow=document.getElementsByClassName('hiddenHeaderList');
     navShow[0].classList.toggle('showNav');
@@ -7,7 +6,6 @@ export function toggleNav(){
 }
 
 export function toogleMobileSearchBox(){
-    console.log('farah');
     let logo=document.getElementsByClassName('flickLogoName');
     let notification=document.getElementsByClassName('flaticon-bell');
     let searchIcon=document.getElementsByClassName('coreSearch');

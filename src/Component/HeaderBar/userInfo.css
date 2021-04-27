@@ -1,0 +1,69 @@
+
+
+.uName{
+    height: 250px;
+    width: 100%;
+    position: absolute;
+    background-image: url(../../img/ddBackground.jpg);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.uName .overlay{
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg,rgba(255,255,255,0.25), rgba(0,0,0,0.75));
+}
+
+.uName .overlay .userInfo{
+    color: white !important;
+    display: flex;
+    justify-content: space-evenly;
+    width: 85%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,0%);
+    position: absolute;
+}
+
+.uName .overlay .userInfo img{
+    width: 8%;
+    border-radius: 50%;
+    height: fit-content;
+
+}
+
+.uName .overlay .userInfo .nameAndInfo{
+    display: flex;
+    flex-direction: column;
+    align-items: start;
+    width: 87%;
+    justify-content: flex-end;
+}
+
+.uName .overlay .userInfo .nameAndInfo .numbers {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+}
+
+.uName .overlay .userInfo .nameAndInfo .numbers ul{
+    display: flex;
+    width: fit-content;
+
+}
+
+.uName .overlay .userInfo .nameAndInfo .numbers ul li:last-child{
+    margin-left: 30px;
+}
+
+.uName .overlay .userInfo .nameAndInfo .numbers .follwingFollowers{
+    width: 50%;
+    display: flex;
+}
+
+.uName .overlay .userInfo .nameAndInfo .numbers .joined{
+    width: 29%;
+    display: flex;
+    justify-content: space-around;
+}
