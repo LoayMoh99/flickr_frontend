@@ -3,6 +3,7 @@
     flex-wrap: wrap; 
     --height: 240;  /* Minimal row height */
     --ratio: 1; /* Default aspect ratio for photos that are not loaded yet */
+    padding-top: 10px;
   }
 
 .item {
@@ -10,6 +11,7 @@
     min-width: calc(var(--height) / var(--ratio) * 1px);
     margin: 2px;
     font-size: 0;
+    display: block;
   }
   
 .item img {
@@ -20,22 +22,39 @@
     flex-grow: 99999;
   }
 
+  /* Nav bar styles */
+  #li{
+    text-align: justify;
+    padding-left: 10px;
+  }
+
+  #space {
+    margin-right: 920px;
+  }
+
+  #icon-space{
+    margin-right: 30px;
+  }
+
+
 /* The overlay effect - lays on top of the container and over the image */
 .overlay {
   position: absolute;
   bottom: 0;
   background: rgb(0, 0, 0);
-  background: rgba(0, 0, 0, 0.5); /* Black see-through */
+  background: rgba(0, 0, 0, 0.5); 
   color: #f1f1f1;
   width: 100%;
   transition: .5s ease;
   opacity:0;
   color: white;
   font-size: 20px;
-  padding: 20px;
+  padding: auto;
   text-align: center;
 }
 
-.grid:hover .overlay {
+
+.item:hover .overlay {
   opacity: 1;
 }
+
