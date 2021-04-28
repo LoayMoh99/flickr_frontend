@@ -6,19 +6,20 @@
     padding-top: 10px;
   }
 
-.item {
+  .grid .item {
     flex: calc(var(--height) / var(--ratio));
     min-width: calc(var(--height) / var(--ratio) * 1px);
     margin: 2px;
     font-size: 0;
     display: block;
+    cursor: pointer;
   }
   
-.item img {
+  .grid .item img {
     width: 100%;
   }
   
-.placeholder {
+  .grid .placeholder {
     flex-grow: 99999;
   }
 
@@ -29,7 +30,7 @@
   }
 
   #space {
-    margin-right: 920px;
+    margin-right: 760px;
   }
 
   #icon-space{

@@ -6,6 +6,8 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { faTv } from '@fortawesome/free-solid-svg-icons'
 import { faShare } from '@fortawesome/free-solid-svg-icons'
 
+// import EditInfo from "./EditInfo"
+
 
 function NavBar(){
 
@@ -13,6 +15,7 @@ function NavBar(){
     const search = <FontAwesomeIcon icon={faSearch} color="DarkGrey"/>
     const tv =<FontAwesomeIcon icon={faTv} color="DarkGrey"/>
     const share =<FontAwesomeIcon icon={faShare} color="DarkGrey"/>
+
 
     return(
         <>
@@ -27,10 +30,10 @@ function NavBar(){
                 <li id="li"><a className="text-secondary"  href="#">View all</a></li>
                 </ul>
             </li>
-            <li id="icon-space"><a href="#">{pen}</a></li>
-            <li id="icon-space"><a href="#">{search}</a></li>
-            <li id="icon-space"><a href="#">{tv}</a></li>
-            <li id="icon-space"><a href="#">{share}</a></li>
+            <li id="icon-space"><a href="#" title="Edit photo info">{pen}</a></li>
+            <li id="icon-space"><a href="#" title="Search photostream">{search}</a></li>
+            <li id="icon-space"><a href="#" title="Toggle slideshow">{tv}</a></li>
+            <li id="icon-space"><a href="#" title="Share photostream">{share}</a></li>
         </ul>  
         </>
     );
