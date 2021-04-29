@@ -151,20 +151,20 @@
     margin-right: 20px;
 }
 
-.searchBox{
+.searchBox2{
     display: flex;
     /*margin-left: 15px;
     text-align: start;*/
 }
 
-.searchBox input{
+.searchBox2 input{
     font-size: 14px;
     width: 180px;
     border-radius: 0px 0.25rem 0.25rem 0px  !important;
     border: none;
     padding: 5px;
 }
-.searchBox .searchBtn{
+.searchBox2 .searchBtn{
     background-color: white;
     border-style: inset;
     border-color: -internal-light-dark(rgb(118, 118, 118), rgb(133, 133, 133));
@@ -179,7 +179,7 @@
     display: flex;
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    overflow: auto;
 }
 
 .navAndSearch .editNav li{

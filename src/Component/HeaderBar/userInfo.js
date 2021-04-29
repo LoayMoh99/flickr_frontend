@@ -56,7 +56,7 @@ export default function Userinfo(){
                             <li>Upload</li>
                         </ul>
                         <div className="searchAndClose">
-                        <div className="searchBox">
+                        <div className="searchBox2">
                             <button className="searchBtn">
                                 <i className="flaticon-search"></i>
                             </button>
