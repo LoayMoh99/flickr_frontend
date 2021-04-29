@@ -13,7 +13,7 @@ function About() {
                         <li><a href="">Jobs</a></li>
                     </ul>
                     <p id="log-sign">
-                        <a href=""><img src="https://combo.staticflickr.com/pw/images/tour/en-us/create-account-button.png"></img></a>
+                        <a href=""><img src="https://combo.staticflickr.com/pw/images/tour/en-us/create-account-button.png" alt=" "></img></a>
                         <br />
                         <a href="">or Sign in</a>
                     </p>
@@ -48,23 +48,23 @@ function About() {
                     <div class="team">
                        <div class="team-flex">
                             <div class="mem-flex">
-                                <a href=""><img src="https://farm66.staticflickr.com/65535/buddyicons/60065287@N00_r.jpg?1613071862#60065287@N00"></img></a>
+                                <a href=""><img src="https://farm66.staticflickr.com/65535/buddyicons/60065287@N00_r.jpg?1613071862#60065287@N00" alt=" "></img></a>
                                 <small class="grey">Farah</small>
                             </div>
                             <div class="mem-flex">
-                                <a href=""><img src="https://farm66.staticflickr.com/65535/buddyicons/60065287@N00_r.jpg?1613071862#60065287@N00"></img></a>
+                                <a href=""><img src="https://farm66.staticflickr.com/65535/buddyicons/60065287@N00_r.jpg?1613071862#60065287@N00" alt=" "></img></a>
                                 <small class="grey">Roaa</small>
                             </div>
                             <div class="mem-flex">
-                                <a href=""><img src="https://farm66.staticflickr.com/65535/buddyicons/60065287@N00_r.jpg?1613071862#60065287@N00"></img></a>
+                                <a href=""><img src="https://farm66.staticflickr.com/65535/buddyicons/60065287@N00_r.jpg?1613071862#60065287@N00" alt=" "></img></a>
                                 <small class="grey">Habiba</small>
                             </div>
                             <div class="mem-flex">
-                                <a href=""><img src="https://farm66.staticflickr.com/65535/buddyicons/60065287@N00_r.jpg?1613071862#60065287@N00"></img></a>
+                                <a href=""><img src="https://farm66.staticflickr.com/65535/buddyicons/60065287@N00_r.jpg?1613071862#60065287@N00" alt=" "></img></a>
                                 <small class="grey">Samar</small>
                             </div>
                             <div class="mem-flex">
-                                <a href=""><img src="https://farm66.staticflickr.com/65535/buddyicons/60065287@N00_r.jpg?1613071862#60065287@N00"></img></a>
+                                <a href=""><img src="https://farm66.staticflickr.com/65535/buddyicons/60065287@N00_r.jpg?1613071862#60065287@N00" alt=" "></img></a>
                                 <small class="grey">Khadija</small>
                             </div>
                         </div>
