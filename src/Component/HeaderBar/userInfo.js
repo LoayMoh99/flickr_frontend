@@ -7,6 +7,7 @@ export default function Userinfo(){
     return(
         <div className="uName">
             <div className="overlay">
+                <i className="flaticon-edit"></i>
                 <div className="userInfo">
                     <img src={defaultProfile}></img>
                     <div className="nameAndInfo">

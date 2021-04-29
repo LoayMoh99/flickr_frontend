@@ -15,6 +15,30 @@
     background: linear-gradient(180deg,rgba(255,255,255,0.25), rgba(0,0,0,0.75));
 }
 
+.uName .overlay:hover i{
+    right: 186px;
+    opacity: 1;
+}
+
+.uName .overlay{
+    text-align: end;
+}
+
+.uName .overlay i{
+    font-size: 20px;
+    color: white;
+    position: absolute;
+    top: 39px;
+    /*right: -37px;*/
+    right: 170px;
+    opacity: 0;
+    transition: all .2s ease-in-out;
+    -webkit-transition: all .2s ease-in-out;
+    -moz-transition: all .2s ease-in-out;
+    -ms-transition: all .2s ease-in-out;
+    -o-transition: all .2s ease-in-out;
+}
+
 .uName .overlay .userInfo{
     color: white !important;
     display: flex;
