@@ -11,7 +11,7 @@ export default function Userinfo(){
                 <div className="userInfo">
                     <img src={defaultProfile}></img>
                     <div className="nameAndInfo">
-                        <h2>user name</h2>
+                        <h1>user name</h1>
                         <div className="numbers">
                             <div className="follwingFollowers">
                                 <p>User Email</p>
