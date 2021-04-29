@@ -67,3 +67,53 @@
     display: flex;
     justify-content: space-around;
 }
+
+@media(max-width:1250px){
+    .uName .overlay .userInfo .nameAndInfo .numbers .joined p:last-child{
+        display: none;
+    }
+}
+
+@media(max-width:1150px){
+    .uName .overlay .userInfo .nameAndInfo .numbers .joined{
+        display: none;
+    }
+    .uName .overlay .userInfo .nameAndInfo .numbers .follwingFollowers{
+        width: 100%;
+    }
+}
+
+@media(max-width:812px){
+    .uName .overlay .userInfo{
+        height: 80%;
+        align-items: center;
+        transform: translate(-50%,-45%);
+    }
+
+    .uName .overlay .userInfo .nameAndInfo{
+        align-items: center;
+    }
+
+    .uName .overlay .userInfo img{
+        width: 25%;
+    
+    }
+
+    .uName .overlay .userInfo .nameAndInfo .numbers {
+        justify-content: center;
+    }
+
+    .uName .overlay .userInfo .nameAndInfo .numbers ul{
+        padding: 0;
+        margin: auto;
+    }
+
+    .uName .overlay .userInfo{
+        display: flex;
+        flex-direction: column;
+    }
+
+    .uName .overlay .userInfo .nameAndInfo .numbers .follwingFollowers p{
+        display: none;
+    }
+}
