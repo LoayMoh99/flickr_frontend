@@ -35,14 +35,14 @@ export default function Userinfo(){
                 </div>
                 <div className="navAndSearch extraPadding">
                     <ul className="editNav">
-                        <li>About</li>
-                        <li>Photostream</li>
-                        <li>Albums</li>
-                        <li>Favs</li>
-                        <li>Galleries</li>
-                        <li>Groups</li>
-                        <li>stats</li>
-                        <li>Camera Roll</li>
+                        <li className="defaultSelect mainHeadeNavCoices" >About</li>
+                        <li className=" mainHeadeNavCoices">Photostream</li>
+                        <li className=" mainHeadeNavCoices">Albums</li>
+                        <li className=" mainHeadeNavCoices">Favs</li>
+                        <li className=" mainHeadeNavCoices">Galleries</li>
+                        <li className=" mainHeadeNavCoices">Groups</li>
+                        <li className=" mainHeadeNavCoices">stats</li>
+                        <li className=" mainHeadeNavCoices">Camera Roll</li>
                     </ul>
                 </div>
             </div>
@@ -51,9 +51,9 @@ export default function Userinfo(){
                 <div className="modal-body">
                     <div className="navAndSearch">
                         <ul className="editNav">
-                            <li>Photostream</li>
-                            <li>Albums</li>
-                            <li>Upload</li>
+                            <li className="defaultSelect mainHeadeNavCoices2">Photostream</li>
+                            <li className=" mainHeadeNavCoices2">Albums</li>
+                            <li className=" mainHeadeNavCoices2">Upload</li>
                         </ul>
                         <div className="searchAndClose">
                         <div className="searchBox2">

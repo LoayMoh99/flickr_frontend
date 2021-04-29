@@ -145,7 +145,7 @@
     align-items: center;
 }
 
-.modal-container .modal-body .navAndSearch .searchBox{
+.modal-container .modal-body .navAndSearch .searchBox2{
     border: 1px solid var(--modalGray);
     border-radius: 5px;
     margin-right: 20px;
@@ -193,6 +193,11 @@
     color:black;
 }
 
+.navAndSearch .editNav .defaultSelect{
+    border-bottom: 3px solid var(--edidHoverBlue);
+    color:black;
+}
+
 .modal-container .modal-body .showPicInItems{
     height: -webkit-fill-available;
     overflow-y: scroll;
@@ -234,6 +239,7 @@
     }
 }
 
+
 @media(max-width:812px){
     .uName .overlay .userInfo{
         height: 80%;
@@ -266,5 +272,9 @@
 
     .uName .overlay .userInfo .nameAndInfo .numbers .follwingFollowers p{
         display: none;
+    }
+
+    .extraPadding{
+        padding: 0 20px;
     }
 }
