@@ -2,6 +2,8 @@
     --navBackgroundColor: rgba(21,21,23,.95);
     --listContentHoverColor:#f3f5f6;
     --mainHeaderHover:#6c757d;
+    --modalGray:#cfd6d9;
+    --edidHoverBlue:#0091dc;
 }
 ul{
     list-style: none;

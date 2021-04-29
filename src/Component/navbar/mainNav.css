@@ -162,6 +162,10 @@ a{
     margin-left: 15px;
 }
 
+.searchNotifivationUpload i.flaticon-close{
+    font-size: 20px ;
+}
+
 .searchBox{
     display: flex;
     margin-left: 15px;
@@ -264,9 +268,7 @@ a{
         max-width: 95%;
     }
 }
-.flaticon-close{
-    font-size: 20px !important;
-}
+
 
 @media(max-width:812px){
     .flaticon-cloud-computing{
