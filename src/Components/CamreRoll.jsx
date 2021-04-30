@@ -3,6 +3,7 @@
 /* eslint-disable linebreak-style */
 import React from 'react';
 import ImagesCR from './ImagesCR';
+import Modal from './Modal';
 
 function CamreRoll() {
   const images = [{ Url: 'https://picsum.photos/id/237/200/300', dateuploaded: new Date('2019-05-28'), datetaken: new Date('2019-05-19') }, { Url: 'https://picsum.photos/seed/picsum/200/300', dateuploaded: new Date('2019-06-10'), datetaken: new Date('2019-05-27') }];
@@ -57,6 +58,7 @@ function CamreRoll() {
           </div>
         </div>
       </div>
+      <Modal />
     </>
   );
 }
