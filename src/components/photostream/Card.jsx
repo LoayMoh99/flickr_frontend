@@ -1,4 +1,4 @@
-import React from "react"
+import React,{useState,useEffect} from "react"
 import './EditInfo.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faTrash} from '@fortawesome/free-solid-svg-icons'
@@ -8,7 +8,7 @@ import {faStar} from '@fortawesome/free-solid-svg-icons'
 import {faComment} from '@fortawesome/free-solid-svg-icons'
 
 
-function Card(){
+function Card(props){
 
     const remove = <FontAwesomeIcon icon={faTrash} color="White" />
     const lock = <FontAwesomeIcon icon={faLock} color="DarkGrey"/>
@@ -17,16 +17,32 @@ function Card(){
     const comment = <FontAwesomeIcon icon={faComment} color="DarkGrey"/>
 
 
+    function confirmDelete(id){
+        if (id===0){
+            console.log("hamsa7 carddddddd 1");
+        }else if (id===1){
+            console.log("hamsa7 carddddddd 2");
+        } 
+    }
+
+
     return(
         <>
         
         <div className="card">
-            <img src="https://picsum.photos/200/200?random=1" alt="" />
-            <button className="button">{remove}</button>
-            <div className="interaction-bar">
+            <img src={props.url} alt="" />
+            <button className="button"
+                onClick={ () =>{
+                    props.onDelete(props.id);}}
+                    // confirmDelete(props.id);}}
+            >{remove}</button>
+            <div className="interaction-bar"
+                onClick={() => {
+                props.onEdit(props.id);}}
+            >
                 <div className="title-bar">
-                <h1>Photo name</h1> 
-                <p>description</p>
+                <h1>{props.title}</h1> 
+                <p>{props.description}</p>
                 </div>
             </div>
             <ul  className="tools">
@@ -43,9 +59,9 @@ function Card(){
                         </ul>
                     </li>
                     <div id="info">
-                        <li > {comment} 0</li>
-                        <li > {fav} 0</li>
-                        <li > <div>{views} 0</div></li>
+                        <li > {comment} {props.numberOfComments}</li>
+                        <li > {fav} {props.numberOfFavs}</li>
+                        <li > <div>{views} {props.numberOfViews}</div></li>
 
                     </div>
 

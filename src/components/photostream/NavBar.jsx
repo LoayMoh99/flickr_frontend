@@ -20,8 +20,8 @@ function NavBar(){
     return(
         <>
         <ul className="nav nav-tabs">
-            <li className="nav-item dropdown" id="space">
-                <a className="dropdown-toggle text-secondary" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Public view<span className="caret"></span></a>
+            <li className="nav-item dropdown mr-auto" >
+                <a className="dropdown-toggle text-secondary"  data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">Public view<span className="caret"></span></a>
                 <ul className="dropdown-menu">
                 <li id="li"><a className="text-secondary"  href="#">Public view</a></li>
                 <li id="li"><a className="text-secondary"  href="#">Friend view</a></li>
