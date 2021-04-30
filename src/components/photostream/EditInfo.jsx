@@ -2,6 +2,7 @@ import React,{useState} from "react"
 import Card from "./Card"
 import Modal from "./Modal"
 import './EditInfo.css'
+import './Modal.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 
