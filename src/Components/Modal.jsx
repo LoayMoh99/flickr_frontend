@@ -2,6 +2,7 @@
 /* eslint-disable react/button-has-type */
 /* eslint-disable linebreak-style */
 import './Modal.css';
+import 'react-responsive-modal/styles.css';
 import React from 'react';
 
 function Modal() {
@@ -13,10 +14,11 @@ function Modal() {
       {/* <button id="myBtn">Open Modal</button> */}
       <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#myModal" data-backdrop="false">Large modal</button>
       {/* <!-- The Modal --> */}
-      <div id="myModal" className="modal">
+      <div id="myModal" className="modal modalmain" role="dialog">
         {/* <div className="modal modal-left fade"
         id="bottom_modal" tabIndex="-1" role="dialog" aria-labelledby="bottom_modal"> */}
         {/* <!-- Modal content --> */}
+        {/* <div className="modal-dialog modal-frame modal-bottom"> */}
         <div className="modal-content">
           <div className="modal-header">
             <span className="close">&times;</span>
@@ -30,8 +32,8 @@ function Modal() {
             <h3>Modal Footer</h3>
           </div>
         </div>
-
       </div>
+      {/* </div> */}
 
       {/* <script>
 // Get the modal

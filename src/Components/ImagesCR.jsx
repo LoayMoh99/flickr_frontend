@@ -1,4 +1,7 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable linebreak-style */
 /* eslint-disable no-unused-vars */
 /* eslint-disable react/prop-types */
 /* eslint-disable linebreak-style */
@@ -15,7 +18,7 @@ function ImagesCR(props) {
 
       <div className="column_adj">
 
-        <img id="content" src={Url} alt="cute dog" />
+        <img className="img-responsive" id="content" src={Url} alt="image_flickr" onClick={() => { props.onEdit(props.id); }} />
 
       </div>
       {/*
