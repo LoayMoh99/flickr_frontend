@@ -34,15 +34,22 @@
     float:left;
   }
 
-  #icon-space {
+  #icon-space{
     /* float: right; */
     /* margin:4px; */
     margin-right: 30px;
+
+  }
+
+  #icon-space button{
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
   }
 
 
 /* The overlay effect - lays on top of the container and over the image */
-.overlay {
+/* .overlay {
   position: absolute;
   bottom: 0;
   background: rgb(0, 0, 0);
@@ -60,5 +67,5 @@
 
 .item:hover .overlay {
   opacity: 1;
-}
+} */
 

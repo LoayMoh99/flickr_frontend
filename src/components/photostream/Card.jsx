@@ -17,14 +17,6 @@ function Card(props){
     const comment = <FontAwesomeIcon icon={faComment} color="DarkGrey"/>
 
 
-    function confirmDelete(id){
-        if (id===0){
-            console.log("hamsa7 carddddddd 1");
-        }else if (id===1){
-            console.log("hamsa7 carddddddd 2");
-        } 
-    }
-
 
     return(
         <>
