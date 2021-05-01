@@ -1,4 +1,6 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable no-unused-vars */
+/* eslint-disable linebreak-style */
 /* eslint-disable react/style-prop-object */
 /* eslint-disable linebreak-style */
 import React, { useState } from 'react';
@@ -83,11 +85,12 @@ function CamreRoll() {
       {/* <div className="container_body"> */}
 
       {/* </div> */}
-      <Modal />
+      {/* <Modal /> */}
 
       <main>
-        {isModalOpen && <EditModal onRequestClose={toggleModal} />}
+        {isModalOpen && <Modal onRequestClose={toggleModal} />}
       </main>
+
     </>
   );
 }

@@ -1,5 +1,37 @@
 /* The Modal (background) */
+.modal__backdrop_main {
+  background: none;
+  bottom: 0;
+  left: 0;
+  overflow: auto;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 1;
+}
 
+.modal__container_main {
+  background: #fff;
+
+  border-radius: 5px;
+  max-width: 1496px;
+  max-height: 416px;
+  height: 216px;
+  margin: 250px auto;
+  padding: 15px;
+  width: 1190px;
+  border-radius: 3px;
+  box-shadow: 0 1px 6px rgb(0 0 0 / 20%);
+  box-sizing: border-box;
+  overflow: auto; /* Enable scroll if needed */
+  -webkit-animation-name: slideIn;
+  -webkit-animation-duration: 0.4s;
+  animation-name: slideIn;
+  animation-duration: 0.4s;
+  position: relative; /* Stay in place */
+}
+
+/* old modal */
 .modalmain {
   display: none; /* Hidden by default */
   position: relative; /* Stay in place */

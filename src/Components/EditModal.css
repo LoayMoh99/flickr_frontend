@@ -175,6 +175,16 @@ main {
   font-size: 14px;
   padding-left: 10px;
 }
+.truncate:after {
+  content: "";
+  position: absolute;
+  top: 8px;
+  right: 1px;
+  background: url(https://combo.staticflickr.com/ap/build/images/sprites/icons-32dc0fa1.png) -527px -93px
+    no-repeat;
+  width: 10px;
+  height: 6px;
+}
 
 .fluid .modal .no-outline,
 .fluid .modal label:hover {
@@ -193,4 +203,46 @@ main {
   background-position: 100%;
   cursor: pointer;
   z-index: 2002;
+}
+
+.ui-dialog-arrow {
+  z-index: 4003;
+  position: absolute;
+  display: block;
+  width: 0;
+  height: 0;
+  border-left: 10px solid transparent;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid #58585b;
+  top: 19px;
+  right: -5px;
+  padding-right: 0;
+  background-image: none;
+}
+.ui-dialog-arrow:after {
+  z-index: 4003;
+  position: absolute;
+  display: block;
+  top: 1px;
+  right: -9px;
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-bottom: 9px solid #fff;
+}
+
+.ui-dropdown li {
+  text-align: left;
+  padding: 0.5em 1em;
+  color: #fff;
+  font-size: 13px;
+  min-width: 80px;
+  white-space: nowrap;
+  cursor: default;
+}
+
+.space {
+  padding: 143px;
 }

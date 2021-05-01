@@ -21,20 +21,7 @@ function ImagesCR(props) {
         <img className="img-responsive" id="content" src={Url} alt="image_flickr" onClick={() => { props.onEdit(props.id); }} />
 
       </div>
-      {/*
-        <div className="column_adj">
-          <a href="https://picsum.photos/seed/picsum/200/300" target="_blank" rel="noreferrer">
-            <img id="content" src="https://picsum.photos/seed/picsum/200/300" alt="cute dog" />
-          </a>
-        </div>
 
-        <div className="column_adj">
-          <a href="https://picsum.photos/seed/picsum/200/300" target="_blank" rel="noreferrer">
-            <img id="content" src="https://picsum.photos/seed/picsum/200/300" alt="cute dog" />
-          </a>
-        </div> */}
-
-      {/* </div> */}
     </>
   );
 }

@@ -1,25 +1,42 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable react/prop-types */
+/* eslint-disable react/destructuring-assignment */
+/* eslint-disable jsx-a11y/no-static-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
+/* eslint-disable linebreak-style */
+/* eslint-disable max-len */
+/* eslint-disable linebreak-style */
 /* eslint-disable react/button-has-type */
 /* eslint-disable linebreak-style */
 import './Modal.css';
 import 'react-responsive-modal/styles.css';
 import React from 'react';
 
-function Modal() {
+function Modal(props) {
   return (
     <>
-      <h2>Bottom Modal</h2>
+
+      <div className="modal__backdrop_main" onClick={props.onRequestClose}>
+        <div className="modal__container_main">
+          <span className="close" onClick={props.onRequestClose}>&times;</span>
+          <h3 className="modal__title_main">Editing # photos </h3>
+        </div>
+      </div>
+
+      {/* <h2>Bottom Modal</h2> */}
 
       {/* <!-- Trigger/Open The Modal --> */}
       {/* <button id="myBtn">Open Modal</button> */}
-      <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#myModal" data-backdrop="false">Large modal</button>
+      {/* <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#myModal" data-backdrop="false">Large modal</button> */}
       {/* <!-- The Modal --> */}
-      <div id="myModal" className="modal modalmain" role="dialog">
-        {/* <div className="modal modal-left fade"
+      {/* <div id="myModal" className="modal modalmain" role="dialog"> */}
+
+      {/* <div className="modal modal-left fade"
         id="bottom_modal" tabIndex="-1" role="dialog" aria-labelledby="bottom_modal"> */}
-        {/* <!-- Modal content --> */}
-        {/* <div className="modal-dialog modal-frame modal-bottom"> */}
-        <div className="modal-content">
+      {/* <!-- Modal content --> */}
+      {/* <div className="modal-dialog modal-frame modal-bottom"> */}
+
+      {/* <div className="modal-content">
           <div className="modal-header">
             <span className="close">&times;</span>
             <h2>Modal Header</h2>
@@ -32,7 +49,7 @@ function Modal() {
             <h3>Modal Footer</h3>
           </div>
         </div>
-      </div>
+      </div> */}
       {/* </div> */}
 
       {/* <script>
