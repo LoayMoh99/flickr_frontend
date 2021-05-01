@@ -1,8 +1,7 @@
 import React,{useState} from "react"
 import Card from "./Card"
-import Modal from "./Modal"
+import DeleteModal from "../DeleteModal/DeleteModal"
 import './EditInfo.css'
-import './Modal.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 
@@ -60,7 +59,7 @@ function EditInfo(){
         ))}
         </div>
         <main>
-        {isModalOpen && <Modal onRequestClose={toggleModal} onDelete={confirmDelete}/>}
+        {isModalOpen && <DeleteModal onRequestClose={toggleModal} onDelete={confirmDelete}/>}
         </main>
 
         </>

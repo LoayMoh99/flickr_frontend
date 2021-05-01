@@ -1,6 +1,5 @@
 import React from "react"
-import './EditInfo.css'
-import './Modal.css'
+import './DeleteModal.css'
 
 function Modal(props){
 

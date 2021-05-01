@@ -44,7 +44,9 @@ function Card(props){
 
   function open(){
       console.log("open photo")
-      setEdit(!isEditable);
+      if(isEditable){
+        setEdit(!isEditable);
+      }
   }
 
 
