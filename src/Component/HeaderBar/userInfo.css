@@ -244,7 +244,7 @@
     .uName .overlay .userInfo{
         height: 80%;
         align-items: center;
-        transform: translate(-50%,-45%);
+        transform: translate(-50%,-50%);
     }
 
     .uName .overlay .userInfo .nameAndInfo{
