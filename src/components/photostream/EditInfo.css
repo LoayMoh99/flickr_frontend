@@ -106,7 +106,7 @@
 
 .card-grid p{
     margin : 0; 
-    padding-top:0;
+    padding-top:5px;
     line-height : 15px;
     font-size: 14px;
     color:darkgrey;
@@ -169,4 +169,52 @@ img:hover + .button , .button:hover {
 #info li {
     float: right;
     margin:4px;
+}
+
+
+/* Editing field */
+.new-interaction-bar {
+    position: absolute;
+    /* padding: 8px 8px; */
+    /* padding: 9px 6px 6px; */
+    padding:0;
+    top:200px;
+    width: 100%;
+    height: 200px;
+    max-height: 200px;
+    min-height: 200px;
+    overflow-x: hidden;
+    transition: 0.3s;
+    z-index: auto;
+    background-color: #fff;
+}
+
+.new-interaction-bar button{
+    height: 29px;
+    min-width: 80px;
+    font-size: 14px;
+    background: #1c9be9;
+    color: #fff;
+    border-color: transparent;
+    font-weight: 600;
+    float: right;
+    border-radius: 3px;
+    border: none;
+    margin-right: 10px;
+    transition: background .15s ease-in-out;
+}
+
+
+#input-format input{
+    margin: 10px;
+    width:95%;
+    font-size: 16px;
+    color: #212124;
+}
+
+#input-format textarea{
+    margin: 10px;
+    width:95%;
+    font-size: 14px;
+    color:darkgrey;
 }

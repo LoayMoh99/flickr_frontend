@@ -18,22 +18,33 @@ function Card(props){
 
     const [isEditable,setEdit] = useState(false);
 
+    const [inputTitle, setInputTitle] = useState(props.title);
+    const [inputDescription , setInputDescription] = useState(props.description)
+
     function changeLayout(event){
         console.log(event);  
         setEdit(!isEditable);
-    }
+    // API
 
-    const [inputTitle, setInputTitle] = useState(props.title);
-    const [inputDescription , setInputDescription] = useState(props.description)
+    }
 
   function handleTitleChange(event) {
     const newTitle = event.target.value;
     setInputTitle(newTitle);
+    // API
+    console.log(inputTitle)
   }
 
   function handleDescriptionChange(event) {
     const newDescription  = event.target.value;
     setInputDescription(newDescription);
+    // API
+    console.log(inputDescription)
+  }
+
+  function open(){
+      console.log("open photo")
+      setEdit(!isEditable);
   }
 
 
@@ -41,7 +52,7 @@ function Card(props){
         <>
         
         <div className="card">
-            <img src={props.url} alt="" />
+            <img src={props.url} alt=""  onClick={open}/>
             <button className="button"
                 onClick={ () =>{
                     props.onDelete(props.id);}}
@@ -80,12 +91,17 @@ function Card(props){
                 
             :
             <>
-            <div className="interaction-bar">
-                    <div className="title-bar">
-                    <input type="text" onChange={handleTitleChange} value={inputTitle}></input> 
-                    <input type="text" onChange={handleDescriptionChange} value={inputDescription}></input> 
+            <div className="new-interaction-bar">
+                    <div id="input-format">
+                        <div class="form-group" >
+                            <input type="text" className="form-control"  onChange={handleTitleChange} value={inputTitle}></input> 
+                        </div>
+                        <div class="form-group">
+                            <textarea className="form-control" rows="3"  onChange={handleDescriptionChange}>{inputDescription}</textarea> 
+                        </div>
                     </div>
                     <button onClick={changeLayout}>Done</button>
+
             </div>
 
             </>

@@ -9,15 +9,8 @@ import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 function EditInfo(){
 
     const back = <FontAwesomeIcon icon={faArrowLeft} color="DarkGrey"/>
-    const userPhotos=[{photoId:0, photoUrl:"https://picsum.photos/500/300?random=1",ownerId:5,numFavs:6,numViews:8,onwerName:"Samar",title:"First Photo Title",description:"First Photo Description",numComments:7},{photoId:1, photoUrl:"https://picsum.photos/700/600?random=2",ownerId:6,numFavs:7,numViews:10,onwerName:"Samar2",title:"Second Photo Title",description:"Second Photo Description",numComments:20}]
+    const userPhotos=[{photoId:0, photoUrl:"https://picsum.photos/500/300?random=1",ownerId:5,numFavs:6,numViews:8,onwerName:"Samar",title:"First Photo Title",description:"First Photo Description",numComments:7},{photoId:1, photoUrl:"https://picsum.photos/700/600?random=2",ownerId:6,numFavs:7,numViews:10,onwerName:"Samar2",title:"Second Photo Title",description:"Second Photo Description",numComments:20},{photoId:2, photoUrl:"https://picsum.photos/600/300?random=1",ownerId:6,numFavs:60,numViews:100,onwerName:"Samar3",title:"Third Photo Title",description:"Third Photo Description",numComments:70},{photoId:3, photoUrl:"https://picsum.photos/500/200?random=1",ownerId:8,numFavs:67,numViews:80,onwerName:"Samar4",title:"Fourth Photo Title",description:"Fourth Photo Description",numComments:9},{photoId:4, photoUrl:"https://picsum.photos/200/300?random=1",ownerId:56,numFavs:6,numViews:8,onwerName:"Samar4",title:"Fifth Photo Title",description:"Fifth Photo Description",numComments:7},{photoId:5, photoUrl:"https://picsum.photos/500/300?random=2",ownerId:5,numFavs:6,numViews:8,onwerName:"Samar",title:"Sixth Photo Title",description:"Sixth Photo Description",numComments:7},{photoId:6, photoUrl:"https://picsum.photos/200/200?random=2",ownerId:5,numFavs:80,numViews:1000,onwerName:"Samar",title:"Seventh Photo Title",description:" Seventh Description",numComments:77}]
     
-    // const [isEditable,setEdit] = useState(false);
-
-    // function changeLayout(){
-    //     console.log(this);
-    //     setEdit(true);
-    //     return
-    // }
 
     // Modal
     const [isModalOpen, setModalIsOpen] = useState(false);
@@ -70,7 +63,6 @@ function EditInfo(){
         {isModalOpen && <Modal onRequestClose={toggleModal} onDelete={confirmDelete}/>}
         </main>
 
-        {/* {isEditable && <>} */}
         </>
     )
 
