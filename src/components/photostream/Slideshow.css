@@ -84,35 +84,6 @@
 
   }
 
-
-  
-  /* Specific to this particular image */
-  /* @media screen and (max-width: 1024px) { 
-    .overlay-content img {
-      left: 50%;
-      margin-left: -512px;   
-    }
-  } */
-  
- 
-  
-  /* .overlay .closebtn {
-    position: absolute;
-    top: 20px;
-    right: 45px;
-    font-size: 40px;
-    color:darkgrey;
-  } */
-
-
-  /* .overlay a {
-    padding: 8px;
-    text-decoration: none;
-    font-size: 36px;
-    color: #818181;
-    display: block;
-    transition: 0.3s;
-  } */
   
 
 
@@ -128,10 +99,4 @@
   #myNav{
       width: 100%;
   }
-
- /* #carousel-img{
-    margin: auto;
-    width: auto;
-    height:100%
-  } */
 

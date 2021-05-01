@@ -1,17 +1,18 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './Slideshow.css'
 
 function Slideshow(props){
+
 
     return(
     <>
     
     <div id="myNav" className="overlay" >
         <button className="close-btn" onClick={props.onRequestClose}>&times;</button>
-        <div className="overlay-content">
+        <div className="overlay-content" >
             <div id="carouselExampleControls" className="carousel slide" data-ride="carousel"> 
                 <div className="carousel-inner">
-                    <div className="carousel-item ">
+                    <div className="carousel-item active">
                         <img src="https://picsum.photos/500/200?random=1" alt="First slide"/>
                     </div>
                     <div className="carousel-item">
@@ -26,7 +27,8 @@ function Slideshow(props){
                     
                 </div>
                 <a className="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-                    <span className="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span className="carousel-control-prev-icon" aria-hidden="true"
+                    ></span>
                     <span className="sr-only">Previous</span>
                 </a>
                 <a className="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
@@ -34,6 +36,7 @@ function Slideshow(props){
                     <span className="sr-only">Next</span>
                 </a>
             </div>
+
         </div>
     </div>
 

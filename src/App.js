@@ -7,8 +7,8 @@ function App() {
   return (
     <div >
       {/* <h1>Photostream</h1> */}
-      {/* <Photostream/> */}
-      <EditInfo />
+      <Photostream/>
+      {/* <EditInfo /> */}
       {/* <Slideshow/> */}
     </div>
   );

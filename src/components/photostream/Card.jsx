@@ -86,7 +86,6 @@ function Card(props){
                         <li > {comment} {props.numberOfComments}</li>
                         <li > {fav} {props.numberOfFavs}</li>
                         <li > <div>{views} {props.numberOfViews}</div></li>
-
                     </div>
                 </ul>
             </>
