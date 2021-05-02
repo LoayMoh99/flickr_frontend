@@ -12,11 +12,13 @@
 
 .modal__container_main {
   background: #fff;
-
+  /* padding-top: 800px; */
+  top: 40%;
+  z-index: 100;
   border-radius: 5px;
   max-width: 1496px;
   max-height: 416px;
-  height: 216px;
+  height: 180px;
   margin: 250px auto;
   padding: 15px;
   width: 1190px;
@@ -24,11 +26,30 @@
   box-shadow: 0 1px 6px rgb(0 0 0 / 20%);
   box-sizing: border-box;
   overflow: auto; /* Enable scroll if needed */
-  -webkit-animation-name: slideIn;
-  -webkit-animation-duration: 0.4s;
+  transition-property: height, bottom;
+  transition-timing-function: ease-out;
+  transition-duration: 2s;
+  /* -webkit-transition-property: height, bottom;
+  -webkit-transition-timing-function: linear; */
+  /* -webkit-animation-name: slideIn;
+  -webkit-animation-duration: 0.5s;
   animation-name: slideIn;
-  animation-duration: 0.4s;
+  animation-duration: 0.5s; */
   position: relative; /* Stay in place */
+}
+/* .modal__container_main:open{
+    height: 216px;
+} */
+
+.modal__title_main {
+  font-size: 15px;
+  padding: 5px 2px 16px;
+  font-family: Proxima Nova, helvetica neue, helvetica, arial, sans-serif;
+  color: #75787a;
+  line-height: 17px;
+  font-weight: 400;
+  /* color: #212124; */
+  /* background-color: #f3f5f6; */
 }
 
 /* old modal */
@@ -59,9 +80,9 @@
   background-color: #fefefe;
   width: 100%;
   -webkit-animation-name: slideIn;
-  -webkit-animation-duration: 0.4s;
+  -webkit-animation-duration: 0.5s;
   animation-name: slideIn;
-  animation-duration: 0.4s;
+  animation-duration: 0.5s;
 }
 
 /* The Close Button */

@@ -1,4 +1,8 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable no-unused-vars */
+/* eslint-disable linebreak-style */
+/* eslint-disable indent */
+/* eslint-disable linebreak-style */
 /* eslint-disable react/prop-types */
 /* eslint-disable react/destructuring-assignment */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
@@ -10,7 +14,7 @@
 /* eslint-disable linebreak-style */
 import './Modal.css';
 import 'react-responsive-modal/styles.css';
-import React from 'react';
+import React, { useState } from 'react';
 
 function Modal(props) {
   return (
@@ -19,7 +23,7 @@ function Modal(props) {
       <div className="modal__backdrop_main" onClick={props.onRequestClose}>
         <div className="modal__container_main">
           <span className="close" onClick={props.onRequestClose}>&times;</span>
-          <h3 className="modal__title_main">Editing # photos </h3>
+          <h3 className="modal__title_main"># selected</h3>
         </div>
       </div>
 
