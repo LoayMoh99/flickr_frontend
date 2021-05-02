@@ -2,6 +2,7 @@ import React,{useState} from "react"
 import ImageGrid from "./ImageGrid"
 import NavBar from "./NavBar"
 import Slideshow from "./Slideshow"
+import './ImageGrid.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faStar} from '@fortawesome/free-solid-svg-icons'
 import {faComment} from '@fortawesome/free-solid-svg-icons'
@@ -22,6 +23,7 @@ function Photostream(){
 
     return (
         <>
+        <div className="photostream-body">
         <NavBar 
             onSlideshow={toggleModal}
         />
@@ -42,6 +44,7 @@ function Photostream(){
         <main>
         {isModalOpen && <Slideshow onRequestClose={toggleModal} />}
         </main>
+        </div>
         </>
    ) 
 }

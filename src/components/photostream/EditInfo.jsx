@@ -37,6 +37,7 @@ function EditInfo(){
     
     return(
         <>
+        <div className="EditInfo-body">
         <ul id="nav-list">
             <li id="nav-item"><a href="#" id="a">{back } Back to photostream</a></li>
            <li id="right "><p id="a">Edit in <a id="a2" href="#" >Camera Roll</a></p> </li>
@@ -61,7 +62,7 @@ function EditInfo(){
         <main>
         {isModalOpen && <DeleteModal onRequestClose={toggleModal} onDelete={confirmDelete}/>}
         </main>
-
+        </div>
         </>
     )
 

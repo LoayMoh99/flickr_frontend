@@ -1,3 +1,10 @@
+.EditInfo-body{
+
+    background: #f3f5f6;
+    padding: 10px 150px 10px 150px;
+
+}
+
 #nav-list {
     list-style-type: none;
     margin: 0;
