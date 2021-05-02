@@ -13,19 +13,19 @@
 .modal__container_main {
   background: #fff;
   /* padding-top: 800px; */
-  top: 40%;
+  top: 41%;
   z-index: 100;
   border-radius: 5px;
   max-width: 1496px;
   max-height: 416px;
-  height: 180px;
+  height: 170px;
   margin: 250px auto;
   padding: 15px;
   width: 1190px;
   border-radius: 3px;
   box-shadow: 0 1px 6px rgb(0 0 0 / 20%);
   box-sizing: border-box;
-  overflow: auto; /* Enable scroll if needed */
+  /* overflow: auto; Enable scroll if needed */
   transition-property: height, bottom;
   transition-timing-function: ease-out;
   transition-duration: 2s;
@@ -51,7 +51,20 @@
   /* color: #212124; */
   /* background-color: #f3f5f6; */
 }
-
+.space__modal_main {
+  padding: 25px;
+}
+.bottom_options_modal {
+  top: 0px;
+  padding: 75px 15px;
+}
+#delete_option {
+  padding-left: 620px;
+  color: rgb(199, 17, 17);
+}
+#clear_selection {
+  padding-left: 960px;
+}
 /* old modal */
 .modalmain {
   display: none; /* Hidden by default */

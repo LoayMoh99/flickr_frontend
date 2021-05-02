@@ -1,4 +1,6 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable import/no-duplicates */
+/* eslint-disable linebreak-style */
 /* eslint-disable no-unused-vars */
 /* eslint-disable linebreak-style */
 /* eslint-disable indent */
@@ -15,18 +17,63 @@
 import './Modal.css';
 import 'react-responsive-modal/styles.css';
 import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faLock } from '@fortawesome/free-solid-svg-icons';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
+import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 function Modal(props) {
+    const lock = <FontAwesomeIcon icon={faLock} color="DarkGrey" />;
+    const edit = <FontAwesomeIcon icon={faEdit} color="DarkGrey" />;
+    const add = <FontAwesomeIcon icon={faPlusSquare} color="DarkGrey" />;
+    const download = <FontAwesomeIcon icon={faArrowDown} color="DarkGrey" />;
+    const deleteit = <FontAwesomeIcon icon={faTrashAlt} color="red" />;
   return (
     <>
 
       <div className="modal__backdrop_main" onClick={props.onRequestClose}>
         <div className="modal__container_main">
           <span className="close" onClick={props.onRequestClose}>&times;</span>
-          <h3 className="modal__title_main"># selected</h3>
+          <div className="row">
+            <h3 className="modal__title_main"># selected</h3>
+            <h3 className="modal__title_main" id="clear_selection">Clear selection</h3>
+          </div>
+          <div className="row bottom_options_modal">
+            <h3 className="modal__title_main">
+              {lock}
+              {' '}
+              Privacy
+            </h3>
+            <span className="space__modal_main" />
+            <h3 className="modal__title_main">
+              {edit}
+              {' '}
+              Edit
+            </h3>
+            <span className="space__modal_main" />
+            <h3 className="modal__title_main">
+              {add}
+              {' '}
+              Add to album
+            </h3>
+            <span className="space__modal_main" />
+            <h3 className="modal__title_main">
+              {download}
+              {' '}
+              Download
+            </h3>
+            <h3 className="modal__title_main" id="delete_option">
+              {deleteit}
+              {' '}
+              Delete
+            </h3>
+          </div>
         </div>
       </div>
 
+      {/* <FontAwesomeIcon icon={['fal', 'fa-lock']} /> */}
       {/* <h2>Bottom Modal</h2> */}
 
       {/* <!-- Trigger/Open The Modal --> */}
@@ -83,6 +130,7 @@ window.onclick = function(event) {
   }
 }
 </script> */}
+
     </>
   );
 }

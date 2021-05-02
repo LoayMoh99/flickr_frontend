@@ -6,11 +6,14 @@
 /* eslint-disable react/style-prop-object */
 /* eslint-disable linebreak-style */
 import React, { useState } from 'react';
+import _, { map } from 'lodash';
+import moment from 'moment';
 import ImagesCR from './ImagesCR';
 import Modal from './Modal';
 import EditModal from './EditModal';
 import './CamreRoll.css';
 import './EditModal.css';
+// import { mockComponent } from 'react-dom/test-utils';
 
 function CamreRoll() {
   const images = [{ Url: 'https://picsum.photos/id/237/200/300', dateuploaded: new Date('2019-05-28'), id: '1' }, { Url: 'https://picsum.photos/200', dateuploaded: new Date('2019-06-10'), id: '2' }, { Url: 'https://picsum.photos/seed/picsum/200/300', dateuploaded: new Date('2019-06-11'), id: '3' }, { Url: 'https://picsum.photos/200/300?grayscale', dateuploaded: new Date('2019-06-10'), id: '4' }, { Url: 'https://picsum.photos/seed/picsum/200/300', dateuploaded: new Date('2019-06-10'), id: '5' }, { Url: 'https://picsum.photos/seed/picsum/200/300', dateuploaded: new Date('2019-06-10'), id: '6' }];
@@ -26,7 +29,8 @@ function CamreRoll() {
   const detectID = (id) => {
     console.log(id);
   };
-
+  const grouped = _.groupBy(sortedimagesuploaded, 'dateuploaded');
+  const monthName = (item) => moment(item.dateuploaded, 'YYYY-MM-DD').format('DD MMMM YYYY');
   const [toEdit, setToEdit] = useState([]);
 
   //   function toggleModal(event, id) {
@@ -35,8 +39,16 @@ function CamreRoll() {
   //     setToEdit((prevItems) => [...prevItems, event.src]);
   //     console.log(toEdit);
   //     console.log(id);
-  const toggleModal = (imgObj) => {
-    setToEdit((prevItems) => [...prevItems, imgObj]);
+  //   const toggleModal = (imgObj) => {
+  //     setToEdit((prevItems) => [...prevItems, imgObj]);
+  //     console.log(grouped);
+  //     console.log(toEdit);
+  //     // setModalIsOpen(!isModalOpen);
+  //   };
+  const toggleModal = (imObj) => {
+    console.log([imObj]);
+    setToEdit([imObj]);
+    console.log(grouped);
     console.log(toEdit);
     // setModalIsOpen(!isModalOpen);
   };
@@ -73,6 +85,8 @@ function CamreRoll() {
       {/* <div className="col-11"> */}
       <div className=" container_body">
 
+        {/* {grouped.map((arr) => <h5>{arr[0]}</h5>)} */}
+        {/* {map((arr) => ({ dateuploaded: arr[0], image: arr.slice(1) }))} */}
         { sortedimagesuploaded.map((image) => (
           <ImagesCR
             Url={image.Url}
