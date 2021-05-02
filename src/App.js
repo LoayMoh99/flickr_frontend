@@ -1,6 +1,8 @@
-import './App.css';
-import Header from './Component/navbar/mainNav'
-import Userinfo from './Component/HeaderBar/userInfo'
+import Header from './components/navbar/mainNav'
+import Userinfo from './components/HeaderBar/userInfo'
+/*import Photostream from "./components/photostream/Photostream"
+import EditInfo from "./components/photostream/EditInfo"
+import Slideshow from "./components/photostream/Slideshow"*/
 import React from 'react';
 
 function App() {

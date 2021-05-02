@@ -1,7 +1,6 @@
 import React from 'react'
 import './mainNav.css'
 import '../../fonts/font/flaticon.css'
-import '../../bootstrab/bootstrap.css'
 import flickrLogo from '../../img/flickr.png'
 import {toggleNav} from './navBar.js'
 import {toogleMobileSearchBox} from './navBar.js'

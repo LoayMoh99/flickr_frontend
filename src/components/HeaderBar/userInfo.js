@@ -1,7 +1,6 @@
 import React from 'react';
 import './userInfo.css';
 import '../../fonts/font/flaticon.css';
-import '../../bootstrab/bootstrap.css';
 import {showEdit} from './edit.js'
 import {closeEdit} from './edit'
 import defaultProfile from '../../img/deefault.jpg';
