@@ -6,7 +6,7 @@
 /* eslint-disable react/style-prop-object */
 /* eslint-disable linebreak-style */
 import React, { useState } from 'react';
-import _, { filter, map } from 'lodash';
+import _, { map } from 'lodash';
 import moment from 'moment';
 import ImagesCR from './ImagesCR';
 import Modal from './Modal';
@@ -18,86 +18,39 @@ import './EditModal.css';
 function CamreRoll() {
   const images = [{ Url: 'https://picsum.photos/id/237/200/300', dateuploaded: new Date('2019-05-28'), id: '1' }, { Url: 'https://picsum.photos/200', dateuploaded: new Date('2019-06-10'), id: '2' }, { Url: 'https://picsum.photos/seed/picsum/200/300', dateuploaded: new Date('2019-06-11'), id: '3' }, { Url: 'https://picsum.photos/200/300?grayscale', dateuploaded: new Date('2019-06-10'), id: '4' }, { Url: 'https://picsum.photos/seed/picsum/200/300', dateuploaded: new Date('2019-06-10'), id: '5' }, { Url: 'https://picsum.photos/seed/picsum/200/300', dateuploaded: new Date('2019-06-10'), id: '6' }];
   const sortedimagesuploaded = images.slice().sort((a, b) => b.dateuploaded - a.dateuploaded);
+  // const sortedimagestaken = images.slice().sort((a, b) => b.datetaken - a.datetaken);
+
   const [isModalOpen, setModalIsOpen] = useState(false);
   const [count, setCount] = useState(0);
-  const [toEdit, setToEdit] = useState([]);
   // const toggleModal = (id) => {
   //     setModalIsOpen(!isModalOpen);
   //     setID(id);
   // };
+  const detectID = (id) => {
+    console.log(id);
+  };
   const grouped = _.groupBy(sortedimagesuploaded, 'dateuploaded');
   const monthName = (item) => moment(item.dateuploaded, 'YYYY-MM-DD').format('DD MMMM YYYY');
-  // function to check if this image was already selected or a newly selected one
-  function containsObject(obj, list) {
-    return list.some((elem) => elem === obj);
-  }
-  // const handleReset = (list) => {
-  //   // Clone
-  //   let clonedlist = [...list];
-  //   // Edit
-  //   clonedlist = clonedlist.map((c) =>
-  //   // c.count = 0;
-  //     p);
-  //   // Set state
-  //   this.setState({ products });
-  // };
+  const [toEdit, setToEdit] = useState([]);
 
-  // IncrementHandler = (product) => {
-  //   // Clone
-  //   const products = [...this.state.products];
-  //   const index = products.indexOf(product);
-  //   products[index] = { ...products[index] };
-  //   // Edit
-  //   products[index].count++;
-  //   // Set State
-  //   this.setState({ products });
-  // };
+  //   function toggleModal(event, id) {
+  //     console.log(event.src);
 
-  // handleDelete = (product) => {
-  //   // Clone
-  //   const products = [...this.state.products];
-  //   const index = products.indexOf(product);
-  //   // Edit
-  //   products.splice(index, 1);
-  //   // Set State
-  //   this.setState({ products });
-  // };
-  // to toggle the modal .. if open then close and vice versa
+  //     setToEdit((prevItems) => [...prevItems, event.src]);
+  //     console.log(toEdit);
+  //     console.log(id);
   const toggleModal = (e, imgObj) => {
-    // if count was initially 0 .. this the first image to be selected .. open modal
-    console.log(count);
-    if (!count) {
-      if (!isModalOpen) {
-        setModalIsOpen(true);
-        setToEdit((prevItems) => [...prevItems, imgObj]);
-        // setToEdit(() => toEdit.push(imgObj));
-        setCount(count + 1);
-        console.log(count);
-        // we now checked if the image was already selected .. unselect it.. count --
-        // if no image left close modal
-      } else {
-        setModalIsOpen(false);
-      }
-    } else {
-      const isHere = containsObject(imgObj, toEdit);
-      console.log(isHere);
-      if (!isHere) {
-        setToEdit((prevItems) => [...prevItems, imgObj]);
-        // setToEdit(() => toEdit.push(imgObj));
-        setCount(count + 1);
-      }
-      console.log(count);
-      if (isHere) {
-        setCount(count - 1);
-      }
-      console.log(count);
-      // we now checked if the image was already selected .. unselect it.. count --
-      // if no image left close modal
-      console.log(toEdit);
-      if (!count) {
-        setModalIsOpen(false);
-      }
-    }
+    setToEdit((prevItems) => [...prevItems, imgObj]);
+  //     console.log(grouped);
+  //     console.log(toEdit);
+  //     // setModalIsOpen(!isModalOpen);
+  //   };
+  // const toggleModal = (imObj) => {
+  // console.log([imObj]);
+  // setToEdit([imObj]);
+    console.log(grouped);
+    console.log(toEdit);
+    // setModalIsOpen(!isModalOpen);
   };
 
   // setModalIsOpen(true);
@@ -136,10 +89,11 @@ function CamreRoll() {
         {/* {map((arr) => ({ dateuploaded: arr[0], image: arr.slice(1) }))} */}
         { sortedimagesuploaded.map((image) => (
           <ImagesCR
-            key={image.id}
+			key={image.id}
             Url={image.Url}
             image={image}
             onEdit={toggleModal}
+            detected={detectID}
             id={0}
           />
 

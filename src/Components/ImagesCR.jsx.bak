@@ -26,7 +26,7 @@ const ImagesCR = (props) => {
       <div className="column_adj">
 
         {/* <img className="img-responsive" id="content" src={Url} alt="image_flickr" onClick={(event) => { props.onEdit(event.currentTarget); }} /> */}
-        <img className="img-responsive" id="content" src={Url} alt="image_flickr" onClick={(event) => onEdit(event, image)} />
+        <img className="img-responsive" id="content" src={Url} alt="image_flickr" onClick={(event) => props.onEdit(event, image)} />
         {/* <img className="img-responsive" id="content" src={Url} alt="image_flickr" onClick={() => console.log(props.image)} /> */}
       </div>
       {/* </div> */}
