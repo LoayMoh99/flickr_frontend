@@ -1,4 +1,6 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable no-console */
+/* eslint-disable linebreak-style */
 /* eslint-disable react/no-this-in-sfc */
 /* eslint-disable linebreak-style */
 /* eslint-disable no-unused-vars */
@@ -29,7 +31,20 @@ function CamreRoll() {
   const monthName = (item) => moment(item.dateuploaded, 'YYYY-MM-DD').format('DD MMMM YYYY');
   // function to check if this image was already selected or a newly selected one
   function containsObject(obj, list) {
-    return list.some((elem) => elem === obj);
+    return list.some((elem) => elem.id === obj.id);
+  }
+  // to delete the element if unselected
+  function handleDelete(obj, list) {
+    const listClone = [...list];
+    const index = listClone.indexOf(obj);
+    // Edit
+    return listClone.splice(index, 1);
+  }
+  function handleIncrement(c) {
+    return c + 1;
+  }
+  function handleDecrement(c) {
+    return c - 1;
   }
   // const handleReset = (list) => {
   //   // Clone
@@ -65,37 +80,51 @@ function CamreRoll() {
   // to toggle the modal .. if open then close and vice versa
   const toggleModal = (e, imgObj) => {
     // if count was initially 0 .. this the first image to be selected .. open modal
-    console.log(count);
-    if (!count) {
+    let countCopy = count;
+    console.log(countCopy);
+    if (!countCopy) {
       if (!isModalOpen) {
-        setModalIsOpen(true);
+        // setModalIsOpen(true);
+        setModalIsOpen(!isModalOpen);
         setToEdit((prevItems) => [...prevItems, imgObj]);
         // setToEdit(() => toEdit.push(imgObj));
-        setCount(count + 1);
-        console.log(count);
+        // setCount(count + 1);
+        countCopy = handleIncrement(countCopy);
+        setCount(countCopy);
+        console.log(countCopy);
         // we now checked if the image was already selected .. unselect it.. count --
         // if no image left close modal
       } else {
-        setModalIsOpen(false);
+        // setModalIsOpen(false);
+        setModalIsOpen(!isModalOpen);
       }
     } else {
       const isHere = containsObject(imgObj, toEdit);
+      // const isHere = toEdit.includes(imgObj);
       console.log(isHere);
       if (!isHere) {
         setToEdit((prevItems) => [...prevItems, imgObj]);
         // setToEdit(() => toEdit.push(imgObj));
-        setCount(count + 1);
+        // setCount(count + 1);
+        // setCount(handleIncrement(count));
+        countCopy = handleIncrement(countCopy);
+        setCount(countCopy);
       }
       console.log(count);
       if (isHere) {
-        setCount(count - 1);
+        setToEdit(handleDelete(imgObj, toEdit));
+        // setCount(count - 1);
+        // setCount(handleDecrement(count));
+        countCopy = handleDecrement(countCopy);
+        setCount(countCopy);
       }
       console.log(count);
       // we now checked if the image was already selected .. unselect it.. count --
       // if no image left close modal
       console.log(toEdit);
-      if (!count) {
-        setModalIsOpen(false);
+      if (!countCopy) {
+        // setModalIsOpen(false);
+        setModalIsOpen(!isModalOpen);
       }
     }
   };

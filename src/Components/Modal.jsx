@@ -23,6 +23,7 @@ import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
+import ImagesMM from './ImagesMM';
 
 function Modal(props) {
     const lock = <FontAwesomeIcon icon={faLock} color="DarkGrey" />;
@@ -30,15 +31,24 @@ function Modal(props) {
     const add = <FontAwesomeIcon icon={faPlusSquare} color="DarkGrey" />;
     const download = <FontAwesomeIcon icon={faArrowDown} color="DarkGrey" />;
     const deleteit = <FontAwesomeIcon icon={faTrashAlt} color="red" />;
-  return (
-    <>
+    const imgEdit = [{ Url: 'https://picsum.photos/id/237/200/300', dateuploaded: new Date('2019-05-28'), id: '1' }, { Url: 'https://picsum.photos/200', dateuploaded: new Date('2019-06-10'), id: '2' }, { Url: 'https://picsum.photos/seed/picsum/200/300', dateuploaded: new Date('2019-06-11'), id: '3' }, { Url: 'https://picsum.photos/200/300?grayscale', dateuploaded: new Date('2019-06-10'), id: '4' }, { Url: 'https://picsum.photos/seed/picsum/200/300', dateuploaded: new Date('2019-06-10'), id: '5' }];
 
-      <div className="modal__backdrop_main" onClick={props.onRequestClose}>
+    return (
+      <>
+
+        {/* <div className="modal__backdrop_main" onClick={props.onRequestClose}> */}
         <div className="modal__container_main">
           <span className="close" onClick={props.onRequestClose}>&times;</span>
           <div className="row">
             <h3 className="modal__title_main"># selected</h3>
             <h3 className="modal__title_main" id="clear_selection">Clear selection</h3>
+          </div>
+          <div className="row" id="image_modal">
+            { imgEdit.map((image) => (
+              <ImagesMM
+                Url={image.Url}
+              />
+              ))}
           </div>
           <div className="row bottom_options_modal">
             <h3 className="modal__title_main">
@@ -71,23 +81,23 @@ function Modal(props) {
             </h3>
           </div>
         </div>
-      </div>
+        {/* </div> */}
 
-      {/* <FontAwesomeIcon icon={['fal', 'fa-lock']} /> */}
-      {/* <h2>Bottom Modal</h2> */}
+        {/* <FontAwesomeIcon icon={['fal', 'fa-lock']} /> */}
+        {/* <h2>Bottom Modal</h2> */}
 
-      {/* <!-- Trigger/Open The Modal --> */}
-      {/* <button id="myBtn">Open Modal</button> */}
-      {/* <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#myModal" data-backdrop="false">Large modal</button> */}
-      {/* <!-- The Modal --> */}
-      {/* <div id="myModal" className="modal modalmain" role="dialog"> */}
+        {/* <!-- Trigger/Open The Modal --> */}
+        {/* <button id="myBtn">Open Modal</button> */}
+        {/* <button type="button" className="btn btn-primary" data-toggle="modal" data-target="#myModal" data-backdrop="false">Large modal</button> */}
+        {/* <!-- The Modal --> */}
+        {/* <div id="myModal" className="modal modalmain" role="dialog"> */}
 
-      {/* <div className="modal modal-left fade"
+        {/* <div className="modal modal-left fade"
         id="bottom_modal" tabIndex="-1" role="dialog" aria-labelledby="bottom_modal"> */}
-      {/* <!-- Modal content --> */}
-      {/* <div className="modal-dialog modal-frame modal-bottom"> */}
+        {/* <!-- Modal content --> */}
+        {/* <div className="modal-dialog modal-frame modal-bottom"> */}
 
-      {/* <div className="modal-content">
+        {/* <div className="modal-content">
           <div className="modal-header">
             <span className="close">&times;</span>
             <h2>Modal Header</h2>
@@ -101,9 +111,9 @@ function Modal(props) {
           </div>
         </div>
       </div> */}
-      {/* </div> */}
+        {/* </div> */}
 
-      {/* <script>
+        {/* <script>
 // Get the modal
 var modal = document.getElementById("myModal");
 
@@ -131,7 +141,7 @@ window.onclick = function(event) {
 }
 </script> */}
 
-    </>
+      </>
   );
 }
 
