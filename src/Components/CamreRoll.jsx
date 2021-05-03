@@ -150,33 +150,33 @@ function CamreRoll() {
 
         </div>
       </ul>
-      {/* <div className="row">
-        <div className="col"> */}
-      {/* <nav className="nav flex-column">
-        <a className="nav-link active " aria-current="page" href="/#">2021</a>
-        <a className="nav-link " href="/#">- April</a>
-        <a className="nav-link text-secondary" href="/#">- January</a>
-      </nav> */}
-      {/* </div> */}
-      {/* <div className="col-11"> */}
-      <div className=" container_body">
+      <div className="row">
+        {/* <div className="col"> */}
+        <nav className="nav flex-column">
+          <a className="nav-link active " aria-current="page" href="/#">2021</a>
+          <a className="nav-link " href="/#">- April</a>
+          <a className="nav-link text-secondary" href="/#">- January</a>
+        </nav>
+        {/* </div> */}
+        {/* <div className="col-11"> */}
+        <div className=" container_body">
 
-        {/* {grouped.map((arr) => <h5>{arr[0]}</h5>)} */}
-        {/* {map((arr) => ({ dateuploaded: arr[0], image: arr.slice(1) }))} */}
-        { sortedimagesuploaded.map((image) => (
-          <ImagesCR
-            key={image.id}
-            Url={image.Url}
-            image={image}
-            onEdit={toggleModal}
-            id={0}
-          />
+          {/* {grouped.map((arr) => <h5>{arr[0]}</h5>)} */}
+          {/* {map((arr) => ({ dateuploaded: arr[0], image: arr.slice(1) }))} */}
+          { sortedimagesuploaded.map((image) => (
+            <ImagesCR
+              key={image.id}
+              Url={image.Url}
+              image={image}
+              onEdit={toggleModal}
+              id={0}
+            />
 
-        )) }
+          )) }
+
+        </div>
 
       </div>
-
-      {/* </div> */}
       {/* </div> */}
       {/* <div className="container_body"> */}
 
