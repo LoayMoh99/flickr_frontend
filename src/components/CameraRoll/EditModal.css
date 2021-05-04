@@ -150,7 +150,7 @@
 .edit-tag {
   padding-top: 25px;
 }
-.textarea {
+.textarea-edit {
   -webkit-writing-mode: horizontal-tb !important;
   text-rendering: auto;
   color: -internal-light-dark(black, white);

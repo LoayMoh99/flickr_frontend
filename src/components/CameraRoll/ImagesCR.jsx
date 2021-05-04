@@ -17,7 +17,7 @@ import './ImagesCR.css';
 
 const ImagesCR = (props) => {
 //   const { Url, dateupdated } = props;
-  const { Url, image, onEdit } = props;
+  const { url, image, onEdit } = props;
   return (
     <>
       {/* <h5 className="text-secondary">April 20, 2021</h5> */}
@@ -26,7 +26,7 @@ const ImagesCR = (props) => {
       <div className="column_adj">
 
         {/* <img className="img-responsive" id="content" src={Url} alt="image_flickr" onClick={(event) => { props.onEdit(event.currentTarget); }} /> */}
-        <img className="img-responsive" id="content" src={Url} alt="image_flickr" onClick={(event) => onEdit(event, image)} />
+        <img className="img-responsive" id="content" src={url} alt="image_flickr" onClick={(event) => onEdit(event, image)} />
         {/* <img className="img-responsive" id="content" src={Url} alt="image_flickr" onClick={() => console.log(props.image)} /> */}
       </div>
       {/* </div> */}

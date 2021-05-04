@@ -19,7 +19,7 @@ import React from 'react';
 import './ImagesMM.css';
 
 const ImagesMM = (props) => {
-  const { Url } = props;
+  const { url } = props;
   return (
     <>
       {/* <h5 className="text-secondary">April 20, 2021</h5> */}
@@ -28,7 +28,7 @@ const ImagesMM = (props) => {
       <div className="column_adj_modal">
 
         {/* <img className="img-responsive" id="content" src={Url} alt="image_flickr" onClick={(event) => { props.onEdit(event.currentTarget); }} /> */}
-        <img className="img-responsive" id="content_modal" src={Url} alt="image_flickr" />
+        <img className="img-responsive" id="content_modal" src={url} alt="image_flickr" />
         {/* <img className="img-responsive" id="content" src={Url} alt="image_flickr" onClick={() => console.log(props.image)} /> */}
       </div>
       {/* </div> */}

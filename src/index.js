@@ -9,7 +9,7 @@ import ReactDOM from 'react-dom';
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.css';
 import 'bootstrap/dist/js/bootstrap.js';
-import CameraRoll from './components/CamreRoll';
+import CameraRoll from './components/CameraRoll/CamreRoll';
 
 ReactDOM.render(<CameraRoll />, document.querySelector('#root'));
 

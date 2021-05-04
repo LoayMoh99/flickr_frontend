@@ -78,6 +78,7 @@
   z-index: 1; /* Sit on top */
   left: 0;
   top: 0;
+  text-align: center;
   /* right: 500px; */
   margin-right: 700px;
   max-width: 400px;
@@ -182,5 +183,11 @@
   }
   to {
     opacity: 1;
+  }
+}
+@media (max-width: 812px) {
+  .modal__container_main {
+    width: 300px;
+    right: 50%;
   }
 }

@@ -1,4 +1,6 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable no-undef */
+/* eslint-disable linebreak-style */
 /* eslint-disable max-len */
 /* eslint-disable react/jsx-indent */
 /* eslint-disable linebreak-style */
@@ -28,8 +30,8 @@ import './AddModal.css';
 // import { mockComponent } from 'react-dom/test-utils';
 
 function CamreRoll() {
-  const images = [{ Url: 'https://picsum.photos/id/237/200/300', dateuploaded: new Date('2019-05-28'), id: '1' }, { Url: 'https://picsum.photos/200', dateuploaded: new Date('2019-06-10'), id: '2' }, { Url: 'https://picsum.photos/seed/picsum/200/300', dateuploaded: new Date('2019-06-11'), id: '3' }, { Url: 'https://picsum.photos/200/300?grayscale', dateuploaded: new Date('2019-06-10'), id: '4' }, { Url: 'https://picsum.photos/seed/picsum/200/300', dateuploaded: new Date('2019-06-10'), id: '5' }, { Url: 'https://picsum.photos/seed/picsum/200/300', dateuploaded: new Date('2019-06-10'), id: '6' }];
-  const sortedimagesuploaded = images.slice().sort((a, b) => b.dateuploaded - a.dateuploaded);
+  const images = [{ photo_url: 'https://picsum.photos/id/237/200/300', createdAt: new Date('2019-05-28'), photo_id: '1' }, { photo_url: 'https://picsum.photos/200', createdAt: new Date('2019-06-10'), photo_id: '2' }, { photo_url: 'https://picsum.photos/seed/picsum/200/300', createdAt: new Date('2019-06-11'), photo_id: '3' }, { photo_url: 'https://picsum.photos/200/300?grayscale', createdAt: new Date('2019-06-10'), photo_id: '4' }, { photo_url: 'https://picsum.photos/seed/picsum/200/300', createdAt: new Date('2019-06-10'), photo_id: '5' }, { photo_url: 'https://picsum.photos/seed/picsum/200/300', createdAt: new Date('2019-06-10'), photo_id: '6' }];
+  const sortedimagesuploaded = images.slice().sort((a, b) => b.createdAt - a.createdAt);
   const [isModalOpen, setModalIsOpen] = useState(false);
   const [count, setCount] = useState(0);
   const [toEdit, setToEdit] = useState([]);
@@ -54,10 +56,10 @@ function CamreRoll() {
     // should alse clear the count and clear the to Edit array
   };
 
-  const monthName = (item) => moment(item.dateuploaded, 'YYYY-MM-DD').format('DD MMMM YYYY');
+  const monthName = (item) => moment(item.createdAt, 'YYYY-MM-DD').format('DD MMMM YYYY');
   // function to check if this image was already selected or a newly selected one
   function containsObject(obj, list) {
-    return list.some((elem) => elem.id === obj.id);
+    return list.some((elem) => elem.photo_id === obj.photo_id);
   }
   // to delete the element if unselected
   function handleDelete(obj, list) {
@@ -125,16 +127,16 @@ function CamreRoll() {
         setModalIsOpen(!isModalOpen);
       }
     }
-    const grouped = _.groupBy(sortedimagesuploaded, 'dateuploaded');
-    const keys = Object.keys(grouped);
-    const values = Object.values(grouped);
-    const imgDated = [];
+    // const grouped = _.groupBy(sortedimagesuploaded, 'dateuploaded');
+    // const keys = Object.keys(grouped);
+    // const values = Object.values(grouped);
+    // const [imgDated, setimgDated] = useState([]);
 
     // for (let i = 0; i < keys.length; i += 1)
     // {
     //   const imgCorresponding = values[i];
-    //   imgDated.push(<h5>{keys[i]}</h5>);
-    //   imgDated.push(
+    //   setimgDated(imgDated.push(<h5>{keys[i]}</h5>));
+    //   setimgDated(imgDated.push(
     //     imgCorresponding.map((image) => (
     //       <ImagesCR
     //         key={image.id}
@@ -144,7 +146,7 @@ function CamreRoll() {
     //         id={0}
     //       />
     //     )),
-    //   );
+    //   ));
     // }
   };
 
@@ -180,8 +182,8 @@ function CamreRoll() {
           {/* {map((arr) => ({ dateuploaded: arr[0], image: arr.slice(1) }))} */}
           { sortedimagesuploaded.map((image) => (
             <ImagesCR
-              key={image.id}
-              Url={image.Url}
+              key={image.photo_id}
+              url={image.photo_url}
               image={image}
               onEdit={toggleModal}
               id={0}

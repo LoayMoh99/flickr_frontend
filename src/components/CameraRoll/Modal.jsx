@@ -33,7 +33,7 @@ function Modal(props) {
     const add = <FontAwesomeIcon icon={faPlusSquare} color="DarkGrey" />;
     const download = <FontAwesomeIcon icon={faArrowDown} color="DarkGrey" />;
     const deleteit = <FontAwesomeIcon icon={faTrashAlt} color="red" />;
-    const imgEdit = [{ Url: 'https://picsum.photos/id/237/200/300', dateuploaded: new Date('2019-05-28'), id: '1' }, { Url: 'https://picsum.photos/200', dateuploaded: new Date('2019-06-10'), id: '2' }, { Url: 'https://picsum.photos/seed/picsum/200/300', dateuploaded: new Date('2019-06-11'), id: '3' }, { Url: 'https://picsum.photos/200/300?grayscale', dateuploaded: new Date('2019-06-10'), id: '4' }, { Url: 'https://picsum.photos/seed/picsum/200/300', dateuploaded: new Date('2019-06-10'), id: '5' }];
+    // const imgEdit = [{ Url: 'https://picsum.photos/id/237/200/300', dateuploaded: new Date('2019-05-28'), id: '1' }, { Url: 'https://picsum.photos/200', dateuploaded: new Date('2019-06-10'), id: '2' }, { Url: 'https://picsum.photos/seed/picsum/200/300', dateuploaded: new Date('2019-06-11'), id: '3' }, { Url: 'https://picsum.photos/200/300?grayscale', dateuploaded: new Date('2019-06-10'), id: '4' }, { Url: 'https://picsum.photos/seed/picsum/200/300', dateuploaded: new Date('2019-06-10'), id: '5' }];
 
     return (
       <>
@@ -53,7 +53,7 @@ function Modal(props) {
           <div className="row" id="image_modal">
             { props.imgSelected.map((image) => (
               <ImagesMM
-                Url={image.Url}
+                url={image.photo_url}
               />
               ))}
           </div>

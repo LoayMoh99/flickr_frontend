@@ -22,6 +22,9 @@ function AddModal(props) {
             {/* <span className="space-add" />
             <h3 className="modal__title_edit">Album </h3> */}
           </div>
+          <hr />
+          <input type="text" placeholder="Search albums" className="stuff-selection-search" tabIndex="0" />
+          <hr />
         </div>
       </div>
     </>
