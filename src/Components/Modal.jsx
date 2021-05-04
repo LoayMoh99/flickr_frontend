@@ -41,13 +41,17 @@ function Modal(props) {
         {/* <div className="modal__backdrop_main" onClick={props.onRequestClose}> */}
         <div className="modal__container_main">
           <div className="row">
-            <h3 className="modal__title_main"># selected</h3>
+            <h3 className="modal__title_main">
+              {props.countSelected}
+              {' '}
+              selected
+            </h3>
             <a href="/#" onClick={props.onRequestClose}>
               <h3 className="modal__title_main" id="clear_selection">Clear selection</h3>
             </a>
           </div>
           <div className="row" id="image_modal">
-            { imgEdit.map((image) => (
+            { props.imgSelected.map((image) => (
               <ImagesMM
                 Url={image.Url}
               />
@@ -69,11 +73,13 @@ function Modal(props) {
               </h3>
             </a>
             <span className="space__modal_main" />
-            <h3 className="modal__title_main">
-              {add}
-              {' '}
-              Add to album
-            </h3>
+            <a href="/#" onClick={props.onAddRequest}>
+              <h3 className="modal__title_main">
+                {add}
+                {' '}
+                Add to album
+              </h3>
+            </a>
             <span className="space__modal_main" />
             <h3 className="modal__title_main">
               {download}

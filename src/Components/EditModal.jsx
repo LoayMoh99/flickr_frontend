@@ -22,7 +22,14 @@ function EditModal(props) {
       <div className="modal__backdrop_edit">
         <div className="modal__container_edit">
           <span className="close_edit" onClick={props.onRequestEditClose}>&times;</span>
-          <h3 className="modal__title_edit">Editing # photos </h3>
+          <h3 className="modal__title_edit">
+            Editing
+            {' '}
+            {props.countEdit}
+            {' '}
+            photos
+            {' '}
+          </h3>
           <div className="title-desc-container">
             <input className="edit-title" type="text" placeholder="Change title" />
             <hr />

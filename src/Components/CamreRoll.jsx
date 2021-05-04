@@ -1,4 +1,8 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable no-use-before-define */
+/* eslint-disable linebreak-style */
+/* eslint-disable brace-style */
+/* eslint-disable linebreak-style */
 /* eslint-disable no-console */
 /* eslint-disable linebreak-style */
 /* eslint-disable react/no-this-in-sfc */
@@ -8,13 +12,15 @@
 /* eslint-disable react/style-prop-object */
 /* eslint-disable linebreak-style */
 import React, { useState } from 'react';
-import _, { filter, map } from 'lodash';
+import _, { filter, map, set } from 'lodash';
 import moment from 'moment';
 import ImagesCR from './ImagesCR';
 import Modal from './Modal';
 import EditModal from './EditModal';
+import AddModal from './AddModal';
 import './CamreRoll.css';
 import './EditModal.css';
+import './AddModal.css';
 // import { mockComponent } from 'react-dom/test-utils';
 
 function CamreRoll() {
@@ -24,15 +30,22 @@ function CamreRoll() {
   const [count, setCount] = useState(0);
   const [toEdit, setToEdit] = useState([]);
   const [isEditModalOpen, setEditModalOpen] = useState(false);
+  const [isAddModalOpen, setAddModalOpen] = useState(false);
+
+  const toggleAddModal = () => {
+    setAddModalOpen(!isAddModalOpen);
+  };
 
   const toggleEditModal = () => {
     setEditModalOpen(!isEditModalOpen);
   };
   const closeMainModal = () => {
     setModalIsOpen(!isModalOpen);
+    setCount(0);
+    setToEdit([]);
     // should alse clear the count and clear the to Edit array
   };
-  const grouped = _.groupBy(sortedimagesuploaded, 'dateuploaded');
+
   const monthName = (item) => moment(item.dateuploaded, 'YYYY-MM-DD').format('DD MMMM YYYY');
   // function to check if this image was already selected or a newly selected one
   function containsObject(obj, list) {
@@ -51,12 +64,14 @@ function CamreRoll() {
   function handleDecrement(c) {
     return c - 1;
   }
+
   // to toggle the modal .. if open then close and vice versa
   const toggleModal = (e, imgObj) => {
     // if count was initially 0 .. this the first image to be selected .. open modal
     let countCopy = count;
     console.log(countCopy);
     if (!countCopy) {
+      setToEdit([]);
       if (!isModalOpen) {
         // setModalIsOpen(true);
         setModalIsOpen(!isModalOpen);
@@ -98,9 +113,31 @@ function CamreRoll() {
       console.log(toEdit);
       if (!countCopy) {
         // setModalIsOpen(false);
+        setToEdit([]);
         setModalIsOpen(!isModalOpen);
       }
     }
+    const grouped = _.groupBy(sortedimagesuploaded, 'dateuploaded');
+    const keys = Object.keys(grouped);
+    const values = Object.values(grouped);
+    const imgDated = [];
+
+    // for (let i = 0; i < keys.length; i += 1)
+    // {
+    //   const imgCorresponding = values[i];
+    //   imgDated.push(<h5>{keys[i]}</h5>);
+    //   imgDated.push(
+    //     imgCorresponding.map((image) => (
+    //       <ImagesCR
+    //         key={image.id}
+    //         Url={image.Url}
+    //         image={image}
+    //         onEdit={toggleModal}
+    //         id={0}
+    //       />
+    //     )),
+    //   );
+    // }
   };
 
   // setModalIsOpen(true);
@@ -148,6 +185,28 @@ function CamreRoll() {
 
           )) }
 
+          {/* {keys.map((key) => (
+            <h5>
+              {key}
+            </h5>
+
+          ))} */}
+          {/* <div>
+            {imgDated}
+          </div> */}
+
+          <main>
+            {isModalOpen && (
+            <Modal
+              onRequestClose={closeMainModal}
+              onEditRequest={toggleEditModal}
+              onAddRequest={toggleAddModal}
+              imgSelected={toEdit}
+              countSelected={count}
+              id={0}
+            />
+            )}
+          </main>
         </div>
 
       </div>
@@ -157,19 +216,22 @@ function CamreRoll() {
       {/* </div> */}
       {/* <Modal /> */}
 
-      <main>
-        {isModalOpen && (
-        <Modal
-          onRequestClose={closeMainModal}
-          onEditRequest={toggleEditModal}
-          id={0}
-        />
-        )}
-      </main>
       <main className="main_edit">
         {isEditModalOpen && (
         <EditModal
           onRequestEditClose={toggleEditModal}
+          imgEdit={toEdit}
+          countEdit={count}
+        />
+        )}
+      </main>
+      <main className="main_edit">
+        {isAddModalOpen && (
+        <AddModal
+          onRequestAddClose={toggleAddModal}
+          imgAdd={toEdit}
+          countAdd={count}
+
         />
         )}
       </main>
