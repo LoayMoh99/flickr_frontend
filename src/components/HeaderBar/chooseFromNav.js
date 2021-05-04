@@ -1,5 +1,5 @@
-var lastelectedMainNav = document.getElementsByClassName('mainHeadeNavCoices')[0];
-var lastSelectedEditNav = document.getElementsByClassName('mainHeadeNavCoices')[0];
+var lastelectedMainNav = document.getElementsByClassName('mainHeadeNavCoices');
+var lastSelectedEditNav = document.getElementsByClassName('mainHeadeNavCoices');
 
 for (let i = 0; i < 8; i++) {
   var test = document.getElementsByClassName('mainHeadeNavCoices')[i];

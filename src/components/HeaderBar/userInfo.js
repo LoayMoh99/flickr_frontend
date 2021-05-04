@@ -1,10 +1,37 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
 import './userInfo.css';
 import '../../fonts/font/flaticon.css';
 import {showEdit} from './edit.js'
 import {closeEdit} from './edit'
 import defaultProfile from '../../img/deefault.jpg';
-export default function Userinfo(){
+import axios from 'axios'
+
+/*componentDidMount(){
+    axios.get('')
+    .then
+
+}*/
+
+export default function Userinfo(props){
+    const [isPhotoStream,setPhotoStream] = useState(false);
+    const [isAbout,setAbout] = useState(true);
+    function updateStat(){
+        setPhotoStream(!isPhotoStream);
+        setAbout(!isAbout);
+    }
+    /*const [data, setData] = useState();
+    useEffect(() => {
+        const fetchData = async () => {
+        const result = await axios(
+            'https://58003e7c-80ff-4927-a2f7-95afb9b9542b.mock.pstmn.io/getuserinfo',
+        );
+
+        setData(result);
+        };
+    
+        fetchData();
+    });
+    console.log(data);*/
     return(
         <div>
             <div>
@@ -14,18 +41,18 @@ export default function Userinfo(){
                         <div className="userInfo">
                             <img src={defaultProfile}></img>
                             <div className="nameAndInfo">
-                                <h1>user name</h1>
+                                <h1>{props.firstName} {props.lastName}</h1>
                                 <div className="numbers">
                                     <div className="follwingFollowers">
-                                        <p>User Email</p>
+                                        <p>{props.username}</p>
                                         <ul>
-                                            <li><a>followers</a></li>
-                                            <li><a>following</a></li>
+                                            <li><a>{props.num_followers} followers</a></li>
+                                            <li><a>{props.num_following} following</a></li>
                                         </ul>
                                     </div>
                                     <div className="joined">
-                                        <p># of Photos</p>
-                                        <p>Joined Year number</p>
+                                        <p>{props.num_public_photos} Photos</p>
+                                        <p>Joined {props.date_joined}</p>
                                     </div>
                                 </div>
                             </div>
@@ -34,8 +61,8 @@ export default function Userinfo(){
                 </div>
                 <div className="navAndSearch extraPadding">
                     <ul className="editNav">
-                        <li className="defaultSelect mainHeadeNavCoices" >About</li>
-                        <li className=" mainHeadeNavCoices">Photostream</li>
+                        <li className="defaultSelect mainHeadeNavCoices" onClick={updateStat}>About</li>
+                        <li className=" mainHeadeNavCoices" onClick={updateStat}>Photostream</li>
                         <li className=" mainHeadeNavCoices">Albums</li>
                         <li className=" mainHeadeNavCoices">Favs</li>
                         <li className=" mainHeadeNavCoices">Galleries</li>
@@ -44,6 +71,10 @@ export default function Userinfo(){
                         <li className=" mainHeadeNavCoices">Camera Roll</li>
                     </ul>
                 </div>
+            </div>
+            <div>
+                {/* {isPhotoStream && <h1>photoStream</h1>} */}
+                {/* {isAbout && <h1>About</h1>} */}
             </div>
         <div className="modal-container">
                 <div className="overlay2"></div>
