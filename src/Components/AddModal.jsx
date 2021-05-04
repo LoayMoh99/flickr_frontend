@@ -17,7 +17,11 @@ function AddModal(props) {
       <div className="modal__backdrop_edit">
         <div className="modal__container_edit">
           <span className="close_edit" onClick={props.onRequestAddClose}>&times;</span>
-          <h3 className="modal__title_edit">Add to </h3>
+          <div className="row">
+            <h3 className="modal__title_edit list-label">Add to: </h3>
+            {/* <span className="space-add" />
+            <h3 className="modal__title_edit">Album </h3> */}
+          </div>
         </div>
       </div>
     </>

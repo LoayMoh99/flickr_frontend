@@ -1,4 +1,7 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable max-len */
+/* eslint-disable react/jsx-indent */
+/* eslint-disable linebreak-style */
 /* eslint-disable no-use-before-define */
 /* eslint-disable linebreak-style */
 /* eslint-disable brace-style */
@@ -18,6 +21,7 @@ import ImagesCR from './ImagesCR';
 import Modal from './Modal';
 import EditModal from './EditModal';
 import AddModal from './AddModal';
+import SideNavBar from './SideNavBar';
 import './CamreRoll.css';
 import './EditModal.css';
 import './AddModal.css';
@@ -31,9 +35,13 @@ function CamreRoll() {
   const [toEdit, setToEdit] = useState([]);
   const [isEditModalOpen, setEditModalOpen] = useState(false);
   const [isAddModalOpen, setAddModalOpen] = useState(false);
+  const [isDeleteOpen, setDeleteOpen] = useState(false);
 
   const toggleAddModal = () => {
     setAddModalOpen(!isAddModalOpen);
+  };
+  const toggleDelete = () => {
+    setDeleteOpen(!isDeleteOpen);
   };
 
   const toggleEditModal = () => {
@@ -151,23 +159,19 @@ function CamreRoll() {
         <div className="col-11">
           <li className="nav-item dropdown">
             <a className="nav-link dropdown-toggle text-secondary" data-bs-toggle="dropdown" href="/#" role="button" aria-expanded="false">Date uploaded</a>
-            <div className="dropdown-menu">
-              {/* <ul>
-                <a className="dropdown-item" onClick={filterupdate} href="/#">Date uploaded</a>
-                <a className="dropdown-item" onClick={filtertaken} href="/#">Date taken</a>
-              </ul> */}
-            </div>
+            <div className="dropdown-menu" />
           </li>
 
         </div>
       </ul>
       <div className="row">
+      <SideNavBar />
         {/* <div className="col"> */}
-        <nav className="nav flex-column">
+        {/* <nav className="nav flex-column">
           <a className="nav-link active " aria-current="page" href="/#">2021</a>
           <a className="nav-link " href="/#">- April</a>
           <a className="nav-link text-secondary" href="/#">- January</a>
-        </nav>
+        </nav> */}
         {/* </div> */}
         {/* <div className="col-11"> */}
         <div className=" container_body">
@@ -201,6 +205,7 @@ function CamreRoll() {
               onRequestClose={closeMainModal}
               onEditRequest={toggleEditModal}
               onAddRequest={toggleAddModal}
+              onDeleteRequest={toggleDelete}
               imgSelected={toEdit}
               countSelected={count}
               id={0}
@@ -235,6 +240,16 @@ function CamreRoll() {
         />
         )}
       </main>
+      {/* <main className="main_edit">
+        {isAddModalOpen && (
+        <DeleteModal
+          onRequestDeleteClose={toggleDelete}
+          imgAdd={toEdit}
+          countAdd={count}
+
+        />
+        )}
+      </main> */}
 
     </>
   );

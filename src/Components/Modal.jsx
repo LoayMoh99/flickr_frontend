@@ -86,11 +86,13 @@ function Modal(props) {
               {' '}
               Download
             </h3>
-            <h3 className="modal__title_main" id="delete_option">
-              {deleteit}
-              {' '}
-              Delete
-            </h3>
+            <a href="/#" onClick={props.onDeleteRequest}>
+              <h3 className="modal__title_main" id="delete_option">
+                {deleteit}
+                {' '}
+                Delete
+              </h3>
+            </a>
           </div>
         </div>
         {/* </div> */}
