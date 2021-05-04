@@ -1,4 +1,6 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable linebreak-style */
 /* eslint-disable import/no-duplicates */
 /* eslint-disable linebreak-style */
 /* eslint-disable no-unused-vars */
@@ -38,10 +40,11 @@ function Modal(props) {
 
         {/* <div className="modal__backdrop_main" onClick={props.onRequestClose}> */}
         <div className="modal__container_main">
-          <span className="close" onClick={props.onRequestClose}>&times;</span>
           <div className="row">
             <h3 className="modal__title_main"># selected</h3>
-            <h3 className="modal__title_main" id="clear_selection">Clear selection</h3>
+            <a href="/#" onClick={props.onRequestClose}>
+              <h3 className="modal__title_main" id="clear_selection">Clear selection</h3>
+            </a>
           </div>
           <div className="row" id="image_modal">
             { imgEdit.map((image) => (
@@ -57,11 +60,14 @@ function Modal(props) {
               Privacy
             </h3>
             <span className="space__modal_main" />
-            <h3 className="modal__title_main">
-              {edit}
+            <a href="/#" onClick={props.onEditRequest}>
               {' '}
-              Edit
-            </h3>
+              <h3 className="modal__title_main">
+                {edit}
+                {' '}
+                Edit
+              </h3>
+            </a>
             <span className="space__modal_main" />
             <h3 className="modal__title_main">
               {add}

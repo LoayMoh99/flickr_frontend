@@ -1,11 +1,15 @@
 /* eslint-disable linebreak-style */
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-duplicates */
+/* eslint-disable linebreak-style */
 /* eslint-disable react/jsx-filename-extension */
 /* eslint-disable linebreak-style */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-import '../node_modules/bootstrap/dist/css/bootstrap.css';
-import CameraRoll from './Components/CamreRoll';
+import 'bootstrap';
+import 'bootstrap/dist/css/bootstrap.css';
+import 'bootstrap/dist/js/bootstrap.js';
+import CameraRoll from './components/CamreRoll';
 
 ReactDOM.render(<CameraRoll />, document.querySelector('#root'));
 

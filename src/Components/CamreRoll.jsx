@@ -23,10 +23,15 @@ function CamreRoll() {
   const [isModalOpen, setModalIsOpen] = useState(false);
   const [count, setCount] = useState(0);
   const [toEdit, setToEdit] = useState([]);
-  // const toggleModal = (id) => {
-  //     setModalIsOpen(!isModalOpen);
-  //     setID(id);
-  // };
+  const [isEditModalOpen, setEditModalOpen] = useState(false);
+
+  const toggleEditModal = () => {
+    setEditModalOpen(!isEditModalOpen);
+  };
+  const closeMainModal = () => {
+    setModalIsOpen(!isModalOpen);
+    // should alse clear the count and clear the to Edit array
+  };
   const grouped = _.groupBy(sortedimagesuploaded, 'dateuploaded');
   const monthName = (item) => moment(item.dateuploaded, 'YYYY-MM-DD').format('DD MMMM YYYY');
   // function to check if this image was already selected or a newly selected one
@@ -46,37 +51,6 @@ function CamreRoll() {
   function handleDecrement(c) {
     return c - 1;
   }
-  // const handleReset = (list) => {
-  //   // Clone
-  //   let clonedlist = [...list];
-  //   // Edit
-  //   clonedlist = clonedlist.map((c) =>
-  //   // c.count = 0;
-  //     p);
-  //   // Set state
-  //   this.setState({ products });
-  // };
-
-  // IncrementHandler = (product) => {
-  //   // Clone
-  //   const products = [...this.state.products];
-  //   const index = products.indexOf(product);
-  //   products[index] = { ...products[index] };
-  //   // Edit
-  //   products[index].count++;
-  //   // Set State
-  //   this.setState({ products });
-  // };
-
-  // handleDelete = (product) => {
-  //   // Clone
-  //   const products = [...this.state.products];
-  //   const index = products.indexOf(product);
-  //   // Edit
-  //   products.splice(index, 1);
-  //   // Set State
-  //   this.setState({ products });
-  // };
   // to toggle the modal .. if open then close and vice versa
   const toggleModal = (e, imgObj) => {
     // if count was initially 0 .. this the first image to be selected .. open modal
@@ -186,8 +160,16 @@ function CamreRoll() {
       <main>
         {isModalOpen && (
         <Modal
-          onRequestClose={toggleModal}
+          onRequestClose={closeMainModal}
+          onEditRequest={toggleEditModal}
           id={0}
+        />
+        )}
+      </main>
+      <main className="main_edit">
+        {isEditModalOpen && (
+        <EditModal
+          onRequestEditClose={toggleEditModal}
         />
         )}
       </main>
