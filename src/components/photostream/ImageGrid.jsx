@@ -25,7 +25,7 @@ function ImageGrid(props){
     const [isMousedOver, setMouseOver] = useState(false);
 
     function handleMouseOver() {
-        console.log(props.owner)
+        console.log(props.ownerName)
         setMouseOver(true);
       }
     
@@ -49,19 +49,12 @@ function ImageGrid(props){
             onMouseOver={handleMouseOver}
             onMouseOut={handleMouseOut}
             />
-            {/* <div className="overlay">My Name is John</div> */}
             {isMousedOver &&
             <> 
                 <div className="shadow-overlay">
                     <h1>{props.title}</h1>
-                    {/* <ul>
-                    <li><a href="#" id="para">by {props.owner}</a></li>
-                    <li><a href="#"> {comment} {props.numberOfComments}</a></li> 
-                    <li><a href="#"> {fav} {props.numberOfFavs}</a></li>
-                    </ul> */}
-                    
                     <ul  className="tools">
-                    <li><a href="#" id="para">by {props.owner}</a></li>
+                    <li><a href="#" id="para">by {props.ownerName}</a></li>
                     <div id="info">
                         <li>{addTo}</li>
                         <li > {comment} {props.numberOfComments}</li>

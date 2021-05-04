@@ -25,8 +25,6 @@ function NavBar(props){
                 <ul className="dropdown-menu">
                 <li id="li"><a className="text-secondary"  href="#">Public view</a></li>
                 <li id="li"><a className="text-secondary"  href="#">Friend view</a></li>
-                <li id="li"><a className="text-secondary"  href="#">Family view</a></li>
-                <li id="li"><a className="text-secondary"  href="#">Friend & Family view</a></li>
                 <li id="li"><a className="text-secondary"  href="#">View all</a></li>
                 </ul>
             </li>

@@ -6,12 +6,13 @@ import {faLock} from '@fortawesome/free-solid-svg-icons'
 import {faEye} from '@fortawesome/free-solid-svg-icons'
 import {faStar} from '@fortawesome/free-solid-svg-icons'
 import {faComment} from '@fortawesome/free-solid-svg-icons'
-
+import {faUnlock} from '@fortawesome/free-solid-svg-icons'
 
 function Card(props){
 
     const remove = <FontAwesomeIcon icon={faTrash} color="White" />
     const lock = <FontAwesomeIcon icon={faLock} color="DarkGrey"/>
+    const unlock = <FontAwesomeIcon icon={faUnlock} color="DarkGrey"/>
     const views = <FontAwesomeIcon icon={faEye} color="DarkGrey"/>
     const fav = <FontAwesomeIcon icon={faStar} color="DarkGrey"/>
     const comment = <FontAwesomeIcon icon={faComment} color="DarkGrey"/>
@@ -20,6 +21,8 @@ function Card(props){
 
     const [inputTitle, setInputTitle] = useState(props.title);
     const [inputDescription , setInputDescription] = useState(props.description)
+
+    const [privacy , setPrivacy] = useState(props.privacy)
 
     function changeLayout(event){
         console.log(event);  
@@ -72,14 +75,14 @@ function Card(props){
                 <ul  className="tools">
                     <li className="dropdown">
                             <button className="bttn bttn-secondary dropdown-toggle" type="button" id="dropdownMenuButton privacy" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {lock}
+                                {privacy? unlock :lock}
                             </button>
                             <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
                                 <li><a className="dropdown-item" href="#">Public</a></li>
                                 <li><a className="dropdown-item" href="#">Private</a></li>
                                 <li><a className="dropdown-item" href="#">Friends</a></li>
-                                <li><a className="dropdown-item" href="#">Family</a></li>
-                                <li><a className="dropdown-item" href="#">Friends and Family</a></li>
+                                {/* <li><a className="dropdown-item" href="#">Family</a></li>
+                                <li><a className="dropdown-item" href="#">Friends and Family</a></li> */}
                             </ul>
                     </li>
                     <div id="info">

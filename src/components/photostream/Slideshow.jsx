@@ -7,7 +7,7 @@ function Slideshow(props){
     return(
     <>
     
-    <div id="myNav" className="overlay" >
+    <div id="myNav" className="overlay-Modal" >
         <button className="close-btn" onClick={props.onRequestClose}>&times;</button>
         <div className="overlay-content" >
             <div id="carouselExampleControls" className="carousel slide" data-ride="carousel"> 
