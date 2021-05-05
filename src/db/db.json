@@ -303,7 +303,7 @@
         },
         {
             "photo_id": 22,
-            "photo_url": "https://picsum.photos/500/200?random=2",
+            "photo_url": "https://picsum.photos/300/200?random=4",
             "photo_owner_id": 0,
             "num_favs": 30,
             "num_views": 60,

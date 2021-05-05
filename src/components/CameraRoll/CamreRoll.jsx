@@ -16,7 +16,7 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable react/style-prop-object */
 /* eslint-disable linebreak-style */
-import React, { useState } from 'react';
+import React, { useState , useEffect } from 'react';
 import _, { filter, map, set } from 'lodash';
 import moment from 'moment';
 import ImagesCR from './ImagesCR';
@@ -29,9 +29,26 @@ import './CamreRoll.css';
 import './EditModal.css';
 import './AddModal.css';
 // import { mockComponent } from 'react-dom/test-utils';
+import axios from "axios"
+const endpoint = 'http://localhost:3001/'
 
 function CamreRoll() {
-  const images = [{ photo_url: 'https://picsum.photos/id/237/200/300', createdAt: new Date('2019-05-28'), photo_id: '1' }, { photo_url: 'https://picsum.photos/200', createdAt: new Date('2019-06-10'), photo_id: '2' }, { photo_url: 'https://picsum.photos/seed/picsum/200/300', createdAt: new Date('2019-06-11'), photo_id: '3' }, { photo_url: 'https://picsum.photos/200/300?grayscale', createdAt: new Date('2019-06-10'), photo_id: '4' }, { photo_url: 'https://picsum.photos/seed/picsum/200/300', createdAt: new Date('2019-06-10'), photo_id: '5' }, { photo_url: 'https://picsum.photos/seed/picsum/200/300', createdAt: new Date('2019-06-10'), photo_id: '6' }];
+  // const images = [{ photo_url: 'https://picsum.photos/id/237/200/300', createdAt: new Date('2019-05-28'), photo_id: '1' }, { photo_url: 'https://picsum.photos/200', createdAt: new Date('2019-06-10'), photo_id: '2' }, { photo_url: 'https://picsum.photos/seed/picsum/200/300', createdAt: new Date('2019-06-11'), photo_id: '3' }, { photo_url: 'https://picsum.photos/200/300?grayscale', createdAt: new Date('2019-06-10'), photo_id: '4' }, { photo_url: 'https://picsum.photos/seed/picsum/200/300', createdAt: new Date('2019-06-10'), photo_id: '5' }, { photo_url: 'https://picsum.photos/seed/picsum/200/300', createdAt: new Date('2019-06-10'), photo_id: '6' }];
+  
+  //Get photos
+  const [images, setImages] = useState([]);
+  useEffect(() => {
+      const fetchData = async () => {
+      const {data,status} = await axios.get( endpoint+'photos',);
+      console.log(status);
+      if (status === 200){
+          setImages(data);
+      }
+  };
+  
+    fetchData();
+  },[]);
+  
   const sortedimagesuploaded = images.slice().sort((a, b) => b.createdAt - a.createdAt);
   const [isModalOpen, setModalIsOpen] = useState(false);
   const [count, setCount] = useState(0);
@@ -39,12 +56,17 @@ function CamreRoll() {
   const [isEditModalOpen, setEditModalOpen] = useState(false);
   const [isAddModalOpen, setAddModalOpen] = useState(false);
   const [isDeleteOpen, setDeleteOpen] = useState(false);
+  const [idToDelete,setID]=useState(0);
+
+
 
   const toggleAddModal = () => {
     setAddModalOpen(!isAddModalOpen);
   };
-  const toggleDelete = () => {
+
+  const toggleDelete = (id) => {
     setDeleteOpen(!isDeleteOpen);
+    setID(id);
   };
 
   const toggleEditModal = () => {
@@ -56,6 +78,16 @@ function CamreRoll() {
     setToEdit([]);
     // should alse clear the count and clear the to Edit array
   };
+
+  function confirmDelete(){
+    if (idToDelete ===0){
+        console.log("hamsa7 carddddddd 1");
+    }else if (idToDelete===1){
+        console.log("hamsa7 carddddddd 2");
+    } 
+
+    toggleDelete(); 
+}
 
   const monthName = (item) => moment(item.createdAt, 'YYYY-MM-DD').format('DD MMMM YYYY');
   // function to check if this image was already selected or a newly selected one
@@ -167,6 +199,7 @@ function CamreRoll() {
 
         </div>
       </ul>
+      {/* <SideNavBar /> */}
       <div className="row">
       <SideNavBar />
         {/* <div className="col"> */}
@@ -187,7 +220,6 @@ function CamreRoll() {
               url={image.photo_url}
               image={image}
               onEdit={toggleModal}
-              id={0}
             />
 
           )) }
@@ -246,7 +278,8 @@ function CamreRoll() {
       <main>
         {isDeleteOpen && (
         <DeleteModal
-          onRequestDeleteClose={toggleDelete}
+          onRequestClose={toggleDelete}
+          onDelete={confirmDelete}
         />
         )}
       </main>

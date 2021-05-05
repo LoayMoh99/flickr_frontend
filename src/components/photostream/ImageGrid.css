@@ -90,6 +90,7 @@ img:hover + .shadow-overlay , .shadow-overlay:hover {
   min-height: 17px;
   /* margin-bottom:0; */
   position: absolute;
+  /* bottom :0; */
 }
 
 .shadow-overlay ul{
@@ -97,7 +98,8 @@ img:hover + .shadow-overlay , .shadow-overlay:hover {
   list-style-type: none;
   position: absolute;
   margin-top: 27px;
-  margin-bottom: 0;
+  /* margin-bottom: 0; */
+  bottom:0;
 }
 
 #para{
