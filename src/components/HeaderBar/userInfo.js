@@ -7,6 +7,7 @@ import defaultProfile from '../../img/deefault.jpg';
 import Photostream from '../photostream/Photostream'
 import CameraRoll from '../CameraRoll/CamreRoll'
 import axios from 'axios'
+import {Link} from "react-router-dom";
 
 /*componentDidMount(){
     axios.get('')
@@ -124,6 +125,9 @@ export default function Userinfo(props){
         fetchData();
     });
     console.log(data);*/
+    const navStyle={
+        color:'white'
+    };
     return(
         <div>
             <div>
@@ -139,7 +143,7 @@ export default function Userinfo(props){
                                         <p>{props.username}</p>
                                         <ul className="NavbarAndheaderul">
                                             <li><a>{props.num_followers} followers</a></li>
-                                            <li><a>{props.num_following} following</a></li>
+                                            <li><Link  style={navStyle} to="/FollwingFollowers"><a>{props.num_following} following</a></Link></li>
                                         </ul>
                                     </div>
                                     <div className="joined">

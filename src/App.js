@@ -5,6 +5,8 @@ import FollwingFollowers from './components/followingFollowers/followingFollower
 import Photostream from "./components/photostream/Photostream"
 import EditInfo from "./components/photostream/EditInfo"
 import Slideshow from "./components/photostream/Slideshow"
+import TotExplore from "./components/Explore/TotExplore"
+import CameraRoll from "./components/CameraRoll/CamreRoll"
 import About from "./components/About/About"
 import Blog from "./components/Blog/Blog"
 import Jobs from "./components/Job/Jobs"
@@ -52,6 +54,10 @@ function App() {
       <Route path="/About" component={About}/>
       <Route path="/Blog" component={Blog}/>
       <Route path="/Jobs" component={Jobs}/>
+      <Route path="/EditInfo" component={EditInfo}/>
+      <Route path="/CameraRoll" component={CameraRoll}/>
+      <Route path="/FollwingFollowers" component={FollwingFollowers}/>
+      {/* <Route path="/Explore" component={TotExplore}/> */}
       </Switch>
       <Footer/> 
     </div>

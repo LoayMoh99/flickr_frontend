@@ -6,6 +6,7 @@ import {toggleNav} from './navBar.js'
 import {toogleMobileSearchBox} from './navBar.js'
 import {readjustHeader} from './navBar.js'
 import defaultProfile from '../../img/deefault.jpg';
+import { Link } from 'react-router-dom'
 //import {Link} from "react-router-dom";
 export default function Header(){
     function checkSize(){
@@ -13,6 +14,9 @@ export default function Header(){
             readjustHeader();
         }
     }
+    const navStyle={
+        color:'white'
+    };
     window.addEventListener('resize',checkSize);
     return(
             <div>
@@ -45,7 +49,7 @@ export default function Header(){
                     </li>
                 </ul>
                 </li>
-                <li  className="mainHeaderTags youTag"><a className="active" href="#top">Explore</a>
+                <li  className="mainHeaderTags youTag"><Link style={navStyle} to="/Explore"><a className="active" href="#top">Explore</a></Link>
                 <ul className="subMenuYouContent NavbarAndheaderul">
                     <li>
                         <a href="#top">Recent Photos</a>
