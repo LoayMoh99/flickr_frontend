@@ -4,6 +4,8 @@ import '../../fonts/font/flaticon.css';
 import {showEdit} from './edit.js'
 import {closeEdit} from './edit'
 import defaultProfile from '../../img/deefault.jpg';
+import Photostream from '../photostream/Photostream'
+import CameraRoll from '../CameraRoll/CamreRoll'
 import axios from 'axios'
 
 /*componentDidMount(){
@@ -13,11 +15,11 @@ import axios from 'axios'
 }*/
 
 export default function Userinfo(props){
-    const [isPhotoStream,setPhotoStream] = useState(false);
-    const [isAbout,setAbout] = useState(true);
+    const [isPhotoStream,setPhotoStream] = useState(true);
+    const [isCameraRoll,setCameraRoll] = useState(false);
     function updateStat(){
         setPhotoStream(!isPhotoStream);
-        setAbout(!isAbout);
+        setCameraRoll(!isCameraRoll);
     }
     /*const [data, setData] = useState();
     useEffect(() => {
@@ -36,7 +38,7 @@ export default function Userinfo(props){
         <div>
             <div>
                 <div className="uName">
-                    <div className="overlay">
+                    <div className="overlay1">
                         <i className="flaticon-edit" onClick={()=>showEdit()}></i>
                         <div className="userInfo">
                             <img src={defaultProfile}></img>
@@ -45,7 +47,7 @@ export default function Userinfo(props){
                                 <div className="numbers">
                                     <div className="follwingFollowers">
                                         <p>{props.username}</p>
-                                        <ul>
+                                        <ul className="NavbarAndheaderul">
                                             <li><a>{props.num_followers} followers</a></li>
                                             <li><a>{props.num_following} following</a></li>
                                         </ul>
@@ -60,27 +62,27 @@ export default function Userinfo(props){
                     </div>
                 </div>
                 <div className="navAndSearch extraPadding">
-                    <ul className="editNav">
-                        <li className="defaultSelect mainHeadeNavCoices" onClick={updateStat}>About</li>
-                        <li className=" mainHeadeNavCoices" onClick={updateStat}>Photostream</li>
+                    <ul className="editNav NavbarAndheaderul">
+                        <li className="mainHeadeNavCoices">About</li>
+                        <li className=" mainHeadeNavCoices defaultSelect" onClick={updateStat}>Photostream</li>
                         <li className=" mainHeadeNavCoices">Albums</li>
                         <li className=" mainHeadeNavCoices">Favs</li>
                         <li className=" mainHeadeNavCoices">Galleries</li>
                         <li className=" mainHeadeNavCoices">Groups</li>
                         <li className=" mainHeadeNavCoices">stats</li>
-                        <li className=" mainHeadeNavCoices">Camera Roll</li>
+                        <li className=" mainHeadeNavCoices"  onClick={updateStat}>Camera Roll</li>
                     </ul>
                 </div>
             </div>
             <div>
-                {/* {isPhotoStream && <h1>photoStream</h1>} */}
-                {/* {isAbout && <h1>About</h1>} */}
+                {isPhotoStream && <Photostream/>}
+                {isCameraRoll && <CameraRoll/>}
             </div>
         <div className="modal-container">
                 <div className="overlay2"></div>
                 <div className="modal-body">
                     <div className="navAndSearch">
-                        <ul className="editNav">
+                        <ul className="editNav NavbarAndheaderul">
                             <li className="defaultSelect mainHeadeNavCoices2">Photostream</li>
                             <li className=" mainHeadeNavCoices2">Albums</li>
                             <li className=" mainHeadeNavCoices2">Upload</li>

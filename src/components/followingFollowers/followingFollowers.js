@@ -9,7 +9,7 @@ export default function FollwingFollowers(props){
                 <div className="imgg"></div>
                 <div className="listAndTitle">
                     <h3>People you follow</h3>
-                    <ul>
+                    <ul className="NavbarAndheaderul">
                         <li><a>photos from</a></li>
                         <li><a>photos of</a></li>
                         <li><a>list</a></li>

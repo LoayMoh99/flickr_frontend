@@ -27,9 +27,9 @@ export default function Header(){
             <img src={flickrLogo} alt="flickrLogo"></img>
             <h3>flickr</h3>
             </a>
-            <ul className="headSubMenu">
+            <ul className="headSubMenu NavbarAndheaderul">
                 <li  className="mainHeaderTags youTag"><a className="active" href="#top">You</a>
-                <ul className="subMenuYouContent">
+                <ul className="subMenuYouContent NavbarAndheaderul">
                     <li>
                         <a href="#top">About</a>
                     </li>
@@ -45,7 +45,7 @@ export default function Header(){
                 </ul>
                 </li>
                 <li  className="mainHeaderTags youTag"><a className="active" href="#top">Explore</a>
-                <ul className="subMenuYouContent">
+                <ul className="subMenuYouContent NavbarAndheaderul">
                     <li>
                         <a href="#top">Recent Photos</a>
                     </li>
@@ -55,7 +55,7 @@ export default function Header(){
                 </ul>
                 </li>
                 <li  className="mainHeaderTags youTag"><a className="active" href="#top">Prints</a>
-                <ul className="subMenuYouContent">
+                <ul className="subMenuYouContent NavbarAndheaderul">
                     <li>
                         <a href="#top">prints & wall arts</a>
                     </li>
@@ -85,7 +85,7 @@ export default function Header(){
         </div>
     </nav>
     <div className="hiddenHeaderList">
-        <ul>
+        <ul className="NavbarAndheaderul">
             <li>
                 <a href="#top">About</a>
             </li>

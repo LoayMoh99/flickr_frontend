@@ -23,7 +23,7 @@ export default function Footer(){
             </nav>
             <div className="downFooter navbar">
             <div className="container">
-                    <ul class="nav">
+                    <ul class="nav NavbarAndheaderul">
                     <li class="nav-item">
                         <a class="nav-link active" aria-current="page" href="#">Active</a>
                     </li>

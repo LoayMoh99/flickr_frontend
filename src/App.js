@@ -2,9 +2,9 @@ import Header from './components/navbar/mainNav'
 import Footer from './components/navbar/footer'
 import Userinfo from './components/HeaderBar/userInfo'
 import FollwingFollowers from './components/followingFollowers/followingFollowers'
-/*import Photostream from "./components/photostream/Photostream"
+import Photostream from "./components/photostream/Photostream"
 import EditInfo from "./components/photostream/EditInfo"
-import Slideshow from "./components/photostream/Slideshow"*/
+import Slideshow from "./components/photostream/Slideshow"
 import React from 'react';
 
 function App() {
@@ -23,7 +23,7 @@ function App() {
       firstName= "Farah"
       lastName= "Mostafa"
       />
-      <Footer/>
+      <Footer/> 
     </div>
   );
 }

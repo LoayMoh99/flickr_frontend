@@ -24,6 +24,7 @@ import Modal from './Modal';
 import EditModal from './EditModal';
 import AddModal from './AddModal';
 import SideNavBar from './SideNavBar';
+import DeleteModal from '../DeleteModal/DeleteModal'
 import './CamreRoll.css';
 import './EditModal.css';
 import './AddModal.css';
@@ -201,7 +202,7 @@ function CamreRoll() {
             {imgDated}
           </div> */}
 
-          <main>
+          <main className="main_Modal">
             {isModalOpen && (
             <Modal
               onRequestClose={closeMainModal}
@@ -242,16 +243,13 @@ function CamreRoll() {
         />
         )}
       </main>
-      {/* <main className="main_edit">
-        {isAddModalOpen && (
+      <main>
+        {isDeleteOpen && (
         <DeleteModal
           onRequestDeleteClose={toggleDelete}
-          imgAdd={toEdit}
-          countAdd={count}
-
         />
         )}
-      </main> */}
+      </main>
 
     </>
   );

@@ -5,7 +5,8 @@
     --modalGray:#cfd6d9;
     --edidHoverBlue:#0091dc;
 }
-ul{
+
+.NavbarAndheaderul{
     list-style: none;
     text-decoration: none;
 }
