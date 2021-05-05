@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import Header from './components/navbar/mainNav'
 
+/*import Photostream from "./components/photostream/Photostream"
+import EditInfo from "./components/photostream/EditInfo"
+import Slideshow from "./components/photostream/Slideshow"*/
+import React from 'react';
+import Explorenav from './components/Explore/Explorenav'
+import Explore_nav from './components/Explore/Exploresub-nav'
+import "./pictures"
+import catchRainbows from './pictures';
 function App() {
+  
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header/>
+      <Explorenav/>
+      <Explore_nav/>
+      <catchRainbows/>
     </div>
   );
 }
