@@ -37,7 +37,7 @@ export default function Userinfo(props){
     return(
         <div>
             <div>
-                <div className="uName">
+                <div className="uName" >
                     <div className="overlay1">
                         <i className="flaticon-edit" onClick={()=>showEdit()}></i>
                         <div className="userInfo">
