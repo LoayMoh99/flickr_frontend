@@ -17,10 +17,100 @@ import axios from 'axios'
 export default function Userinfo(props){
     const [isPhotoStream,setPhotoStream] = useState(true);
     const [isCameraRoll,setCameraRoll] = useState(false);
+    const [isAbout,setAbout] = useState(false);
+    const [isFaves,setFaves] = useState(false);
+    const [isAlbums,setAlbums] = useState(false);
+    const [isGallery,setGallery] = useState(false);
+    const [isGroup,setGroup] = useState(false);
+    const [isStats,setStats] = useState(false);
+
     function updateStat(){
-        setPhotoStream(!isPhotoStream);
-        setCameraRoll(!isCameraRoll);
+        setPhotoStream(isPhotoStream && !isPhotoStream);
+        setCameraRoll(isCameraRoll && !isCameraRoll);
+        setAlbums(isAlbums && !isAlbums);
+        setAbout(isAbout && !isAbout);
+        setFaves(isFaves && !isFaves);
+        setGallery(isGallery && !isGallery);
+        setGroup(isGroup && !isGroup);
+        setStats(true);
     }
+    function updateStatAbout(){
+        setPhotoStream(isPhotoStream && !isPhotoStream);
+        setCameraRoll(isCameraRoll && !isCameraRoll);
+        setAlbums(isAlbums && !isAlbums);
+        setAbout(true);
+        setFaves(isFaves && !isGallery);
+        setGallery(isGallery && !isFaves);
+        setGroup(isGroup && !isGroup);
+        setStats(isStats && !isStats);
+    }
+
+    function updateStatPhotStream(){
+        setPhotoStream(true);
+        setCameraRoll(isCameraRoll && !isCameraRoll);
+        setAlbums(isAlbums && !isAlbums);
+        setAbout(isAbout && !isAbout);
+        setFaves(isFaves && !isFaves);
+        setGallery(isGallery && !isGallery);
+        setGroup(isGroup && !isGroup);
+        setStats(isStats && !isStats);
+    }
+
+    function updateStatCameraRoll(){
+        setPhotoStream(isPhotoStream && !isPhotoStream);
+        setCameraRoll(true);
+        setAlbums(isAlbums && !isAlbums);
+        setAbout(isAbout && !isAbout);
+        setFaves(isFaves && !isFaves);
+        setGallery(isGallery && !isGallery);
+        setGroup(isGroup && !isGroup);
+        setStats(isStats && !isStats);
+    }
+
+    function updateStatAlbum(){
+        setPhotoStream(isPhotoStream && !isPhotoStream);
+        setCameraRoll(isCameraRoll && !isCameraRoll);
+        setAlbums(true);
+        setAbout(isAbout && !isAbout);
+        setFaves(isFaves && !isFaves);
+        setGallery(isGallery && !isGallery);
+        setGroup(isGroup && !isGroup);
+        setStats(isStats && !isStats);
+    }
+
+    function updateStatFaves(){
+        setPhotoStream(isPhotoStream && !isPhotoStream);
+        setCameraRoll(isCameraRoll && !isCameraRoll);
+        setAlbums(isAlbums && !isAlbums);
+        setAbout(isAbout && !isAbout);
+        setFaves(true);
+        setGallery(isGallery && !isGallery);
+        setGroup(isGroup && !isGroup);
+        setStats(isStats && !isStats);
+    }
+
+    function updateStatGallery(){
+        setPhotoStream(isPhotoStream && !isPhotoStream);
+        setCameraRoll(isCameraRoll && !isCameraRoll);
+        setAlbums(isAlbums && !isAlbums);
+        setAbout(isAbout && !isAbout);
+        setFaves(isFaves && !isFaves);
+        setGallery(true);
+        setGroup(isGroup && !isGroup);
+        setStats(isStats && !isStats);
+    }
+
+    function updateStatGroup(){
+        setPhotoStream(isPhotoStream && !isPhotoStream);
+        setCameraRoll(isCameraRoll && !isCameraRoll);
+        setAlbums(isAlbums && !isAlbums);
+        setAbout(isAbout && !isAbout);
+        setFaves(isFaves && !isFaves);
+        setGallery(isGallery && !isGallery);
+        setGroup(true);
+        setStats(isStats && !isStats);
+    }
+
     /*const [data, setData] = useState();
     useEffect(() => {
         const fetchData = async () => {
@@ -63,14 +153,14 @@ export default function Userinfo(props){
                 </div>
                 <div className="navAndSearch extraPadding">
                     <ul className="editNav NavbarAndheaderul">
-                        <li className="mainHeadeNavCoices">About</li>
-                        <li className=" mainHeadeNavCoices defaultSelect" onClick={updateStat}>Photostream</li>
-                        <li className=" mainHeadeNavCoices">Albums</li>
-                        <li className=" mainHeadeNavCoices">Favs</li>
-                        <li className=" mainHeadeNavCoices">Galleries</li>
-                        <li className=" mainHeadeNavCoices">Groups</li>
-                        <li className=" mainHeadeNavCoices">stats</li>
-                        <li className=" mainHeadeNavCoices"  onClick={updateStat}>Camera Roll</li>
+                        <li className="mainHeadeNavCoices" className={isAbout && "defaultSelect" }  onClick={updateStatAbout}>About</li>
+                        <li className=" mainHeadeNavCoices " className={isPhotoStream && "defaultSelect"} onClick={updateStatPhotStream}>Photostream</li>
+                        <li className=" mainHeadeNavCoices" className={isAlbums && "defaultSelect"}  onClick={updateStatAlbum}>Albums</li>
+                        <li className=" mainHeadeNavCoices" className={isFaves && "defaultSelect"}  onClick={updateStatFaves}>Favs</li>
+                        <li className=" mainHeadeNavCoices" className={isGallery && "defaultSelect"}  onClick={updateStatGallery}>Galleries</li>
+                        <li className=" mainHeadeNavCoices" className={isGroup && "defaultSelect"}  onClick={updateStatGroup}>Groups</li>
+                        <li className=" mainHeadeNavCoices" className={isStats && "defaultSelect"}  onClick={updateStat}>stats</li>
+                        <li className=" mainHeadeNavCoices" className={isCameraRoll && "defaultSelect"}  onClick={updateStatCameraRoll}>Camera Roll</li>
                     </ul>
                 </div>
             </div>
