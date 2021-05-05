@@ -14,15 +14,18 @@
   background: #fff;
   /* padding-top: 800px; */
   top: 41%;
-  right: 11%;
-  z-index: 0;
+  /* top: 9vh; */
+  bottom: 0;
+  /* width: inherit; */
+  right: 7.5%;
+  z-index: 5;
   border-radius: 5px;
   max-width: 1496px;
   max-height: 416px;
   height: 170px;
   margin: 250px auto;
   padding: 15px;
-  width: 1190px;
+  width: 1250px;
   border-radius: 3px;
   box-shadow: 0 1px 6px rgb(0 0 0 / 20%);
   box-sizing: border-box;
@@ -36,7 +39,7 @@
   -webkit-animation-duration: 0.5s;
   animation-name: slideIn;
   animation-duration: 0.5s; */
-  position: absolute; /* Stay in place */
+  position: fixed; /* Stay in place */
 }
 /* .modal__container_main:open{
     height: 216px;
@@ -65,11 +68,12 @@
 }
 #delete_option {
   padding: 5px;
-  padding-left: 550px;
+  padding-left: 573px;
   color: rgb(199, 17, 17);
 }
 #clear_selection {
-  padding-left: 960px;
+  padding-left: 1021px;
+  /* float: left; */
 }
 /* old modal */
 .modalmain {

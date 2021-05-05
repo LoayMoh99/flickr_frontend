@@ -2,8 +2,12 @@
   border-style: none;
 }
 .container_body {
-  padding: 1px 10px 10px 75px;
+  padding: 2px 0;
+  /* position: absolute; */
 }
-.main_Modal {
+/* .main_Modal {
   background: #f3f5f6;
+} */
+.sidephoto {
+  display: flex;
 }

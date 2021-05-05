@@ -200,30 +200,31 @@ function CamreRoll() {
         </div>
       </ul>
       {/* <SideNavBar /> */}
-      <div className="row">
-      <SideNavBar />
-        {/* <div className="col"> */}
-        {/* <nav className="nav flex-column">
-          <a className="nav-link active " aria-current="page" href="/#">2021</a>
-          <a className="nav-link " href="/#">- April</a>
-          <a className="nav-link text-secondary" href="/#">- January</a>
-        </nav> */}
-        {/* </div> */}
-        {/* <div className="col-11"> */}
-        <div className=" container_body">
+    <div className="sidephoto">
+        <SideNavBar />
+        <div className="row">
+          {/* <div className="col"> */}
+          {/* <nav className="nav flex-column">
+            <a className="nav-link active " aria-current="page" href="/#">2021</a>
+            <a className="nav-link " href="/#">- April</a>
+            <a className="nav-link text-secondary" href="/#">- January</a>
+          </nav> */}
+          {/* </div> */}
+          {/* <div className="col-11"> */}
+          <div className=" container_body">
 
-          {/* {grouped.map((arr) => <h5>{arr[0]}</h5>)} */}
-          {/* {map((arr) => ({ dateuploaded: arr[0], image: arr.slice(1) }))} */}
-          { sortedimagesuploaded.map((image) => (
-            <ImagesCR
-              key={image.photo_id}
-              url={image.photo_url}
-              image={image}
-              onEdit={toggleModal}
-            />
+            {/* {grouped.map((arr) => <h5>{arr[0]}</h5>)} */}
+            {/* {map((arr) => ({ dateuploaded: arr[0], image: arr.slice(1) }))} */}
+            { sortedimagesuploaded.map((image) => (
+              <ImagesCR
+                key={image.photo_id}
+                url={image.photo_url}
+                image={image}
+                onEdit={toggleModal}
+              />
 
-          )) }
-
+            )) }
+      </div>
           {/* {keys.map((key) => (
             <h5>
               {key}
@@ -234,6 +235,9 @@ function CamreRoll() {
             {imgDated}
           </div> */}
 
+        </div>
+
+      </div>
           <main className="main_Modal">
             {isModalOpen && (
             <Modal
@@ -247,9 +251,6 @@ function CamreRoll() {
             />
             )}
           </main>
-        </div>
-
-      </div>
       {/* </div> */}
       {/* <div className="container_body"> */}
 

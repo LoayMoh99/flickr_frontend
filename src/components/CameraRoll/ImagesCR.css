@@ -19,7 +19,7 @@
 }
 .column_adj {
   float: left;
-  /* width: 17%; */
+  /* width: 20%; */
   padding: 3px;
 }
 
@@ -34,5 +34,5 @@ body {
 }
 
 .pad_row {
-  padding: 10px 150px 10px 150px;
+  padding: 10px 150px 10px 10px;
 }
