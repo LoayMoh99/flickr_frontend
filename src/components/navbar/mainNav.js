@@ -6,6 +6,7 @@ import {toggleNav} from './navBar.js'
 import {toogleMobileSearchBox} from './navBar.js'
 import {readjustHeader} from './navBar.js'
 import defaultProfile from '../../img/deefault.jpg';
+//import {Link} from "react-router-dom";
 export default function Header(){
     function checkSize(){
         if(window.innerWidth>1080){
