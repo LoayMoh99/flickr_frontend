@@ -1,8 +1,26 @@
-import React,{useState} from 'react';
+import React,{useState,useEffect} from 'react';
 import './followingFollowers.css';
 import defaultProfile from '../../img/deefault.jpg';
+import axios from "axios"
+const endpoint = 'http://localhost:3001/'
 
 export default function FollwingFollowers(props){
+
+     //Get photos
+     const [following, setFollowing] = useState([]);
+
+     useEffect(() => {
+         const fetchData = async () => {
+         const {data,status} = await axios.get( endpoint+'following',);
+         console.log(status);
+         if (status === 200){
+             setFollowing(data);
+         }
+     };
+  
+     fetchData();
+   },[]);
+
     return(
         <div className="flwAndFlowing">
             <div className="picAndSelect">
@@ -41,27 +59,15 @@ export default function FollwingFollowers(props){
                 </tr>
             </thead>
             <tbody>
+            {following.map(user => (
                 <tr>
-                <th scope="row"><img src={defaultProfile}></img> {props.Fname} {props.Lname}</th>
-                <td>{props.num_photos}</td>
+                <th scope="row"><img src={defaultProfile}></img> {user.Fname} {user.Lname}</th>
+                <td>{user.num_photos}</td>
                 {/* <td>200</td> */}
-                <td>Otto</td>
+                <td>{user.last_upload}</td>
                 <td>Following(<a>Edit</a>)</td>
                 </tr>
-                <tr>
-                <th scope="row"><img src={defaultProfile}></img> {props.Fname} {props.Lname}</th>
-                <td>{props.num_photos}</td>
-                {/* <td>200</td> */}
-                <td>Otto</td>
-                <td>Following(<a>Edit</a>)</td>
-                </tr>
-                <tr>
-                <th scope="row"><img src={defaultProfile}></img> {props.Fname} {props.Lname}</th>
-                <td>{props.num_photos}</td>
-                {/* <td>200</td> */}
-                <td>Otto</td>
-                <td>Following(<a>Edit</a>)</td>
-                </tr>
+            ))}
             </tbody>
         </table>
         </div>
