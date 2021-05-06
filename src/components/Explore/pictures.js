@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from "react"
 import axios from "axios"
-import ImageGrid from "./Explore_grid"
+import ExploreGrid from "./Explore_grid"
 const endpoint = 'http://localhost:3001/'
 const filenames = [
   
@@ -10,21 +10,11 @@ const filenames = [
  
 
 export default function Pictures() {
-  //  for (let filename of filenames) {
-  //    const response = await fetch(filename);
-  //    const blob = await response.blob();
-  //    const img = document.createElement('img');
-  //    img.src = URL.createObjectURL(blob);
-  //    img.height=250;
-  //    img.style="padding:0 5px 5px 0";
   
-  //    document.getElementById("under").append(img);
-  //  }
-      //Get photos
       const [photos, setPhotos] = useState([]);
       useEffect(() => {
           const fetchData = async () => {
-          const {data,status} = await axios.get( endpoint+'photos',);
+          const {data,status} = await axios.get( endpoint+'photos2',);
           console.log(status);
           if (status === 200){
               setPhotos(data);
@@ -34,15 +24,8 @@ export default function Pictures() {
       fetchData();
     },[]);
       
-    const [isModalOpen, setModalIsOpen] = useState(false);
-    // const [isFull,setFull] = useState(false);
-
-    function toggleModal(){
-        setModalIsOpen(!isModalOpen);
-        console.log("l modal fata7")
-
-    }
-
+   
+   
     return (
       <>
       <div className="Explore-body">
@@ -50,7 +33,7 @@ export default function Pictures() {
 
       <div className="grid">
       {photos.map(photo => (
-          <ImageGrid
+          <ExploreGrid
           id = {photo.photo_id}
           url ={photo.photo_url} 
           title ={photo.title} 
