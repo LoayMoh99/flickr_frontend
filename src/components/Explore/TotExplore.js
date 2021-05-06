@@ -9,27 +9,16 @@ import Exploresub_nav from './Exploresub_nav'
 import Pictures from "./Pictures"
 
 function TotExplore() {
-  const files = [
-    "https://picsum.photos/300",
-     "https://picsum.photos/300",
-     "https://picsum.photos/250/150",
-     "https://picsum.photos/250",
-     "https://picsum.photos/250",
-     "https://picsum.photos/250",
-     "https://picsum.photos/250/150",
-     "https://picsum.photos/250",
-     "https://picsum.photos/250",
-     "https://picsum.photos/250",
-     "https://picsum.photos/250"
-  ];
-  Pictures(files)
+ 
+
   
   return (
     <div>
       
+     
+      <Pictures/>
       <Explorenav/>
       <Exploresub_nav/>
-      
     </div>
   );
   
