@@ -20,7 +20,7 @@ export default function Header(){
     window.addEventListener('resize',checkSize);
     return(
             <div>
-        <nav className="navbar">
+        <nav className="navbar fix_nav">
         <div className="container">
             <div className="logoPlusNav">
             <span className="menuIcon" onClick={()=>toggleNav()}>
@@ -33,19 +33,28 @@ export default function Header(){
             <h3>flickr</h3>
             </a>
             <ul className="headSubMenu NavbarAndheaderul">
-                <li  className="mainHeaderTags youTag"><a className="active" href="#top">You</a>
+                <li  className="mainHeaderTags youTag"><Link style={navStyle} to="/"><a className="active" href="#top">You</a></Link>
                 <ul className="subMenuYouContent NavbarAndheaderul">
                     <li>
                         <a href="#top">About</a>
                     </li>
                     <li>
-                        <a href="#top">Photostream</a>
+                        <Link  style={navStyle} to="/"><a href="#top">Photostream</a></Link>
                     </li>
                     <li>
                         <a href="#top">Albums</a>
                     </li>
                     <li>
                         <a href="#top">Favs</a>
+                    </li>
+                    <li>
+                        <a href="#top">Gallery</a>
+                    </li>
+                    <li>
+                        <a href="#top">Groups</a>
+                    </li>
+                    <li>
+                        <a href="#top">CameraRoll</a>
                     </li>
                 </ul>
                 </li>

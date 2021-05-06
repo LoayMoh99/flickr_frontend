@@ -44,18 +44,21 @@ export default function FollwingFollowers(props){
                 <tr>
                 <th scope="row"><img src={defaultProfile}></img> {props.Fname} {props.Lname}</th>
                 <td>{props.num_photos}</td>
+                {/* <td>200</td> */}
                 <td>Otto</td>
                 <td>Following(<a>Edit</a>)</td>
                 </tr>
                 <tr>
                 <th scope="row"><img src={defaultProfile}></img> {props.Fname} {props.Lname}</th>
                 <td>{props.num_photos}</td>
+                {/* <td>200</td> */}
                 <td>Otto</td>
                 <td>Following(<a>Edit</a>)</td>
                 </tr>
                 <tr>
                 <th scope="row"><img src={defaultProfile}></img> {props.Fname} {props.Lname}</th>
                 <td>{props.num_photos}</td>
+                {/* <td>200</td> */}
                 <td>Otto</td>
                 <td>Following(<a>Edit</a>)</td>
                 </tr>

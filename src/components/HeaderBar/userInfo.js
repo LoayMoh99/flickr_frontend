@@ -135,7 +135,7 @@ export default function Userinfo(props){
                     <div className="overlay1">
                         <i className="flaticon-edit" onClick={()=>showEdit()}></i>
                         <div className="userInfo">
-                            <img src={defaultProfile}></img>
+                            <div className="profImg" style={{backgroundImage: `url(${props.avatar_url})`}}></div>
                             <div className="nameAndInfo">
                                 <h1>{props.firstName} {props.lastName}</h1>
                                 <div className="numbers">

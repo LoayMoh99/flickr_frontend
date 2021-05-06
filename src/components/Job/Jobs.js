@@ -2,7 +2,7 @@ import React from 'react'
 import './Jobs.css'
 function Jobs() {
     return (
-        <div>
+        <div className="jobs">
             <header class="head">
                 <div>
                 <h1>Work at Flickr</h1>

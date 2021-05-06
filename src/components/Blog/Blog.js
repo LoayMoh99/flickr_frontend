@@ -2,7 +2,7 @@ import React from 'react'
 import './Blog.css'
 function Blog() {
     return (
-        <div>
+        <div className="blog">
             <div class="Blog-head">
                 <img src="https://blog.flickr.net/wp-content/uploads/sites/2/2021/04/safe_hero.jpg" alt=" "></img>
             </div>

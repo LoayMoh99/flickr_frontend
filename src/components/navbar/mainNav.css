@@ -7,14 +7,13 @@
     background-color: var(--navBackgroundColor);
     z-index: 10000;
     height: 60px;
-    
-    /* top: 0;
-    left: 0; */
 }
 
 .fix_nav{
     position: fixed !important;
     width: 100%;
+    top: 0;
+    left: 0;
 }
 
 .navbar .container{

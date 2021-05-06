@@ -1,6 +1,6 @@
 @import "./constants.css";
 
-.footer{
+.footerMain{
     background-color: var(--navBackgroundColor) !important;
     bottom: 0;
     text-align: center;
@@ -8,7 +8,7 @@
     /* width: 100%; */
 }
 
-.footer .navbar-nav{
+.footerMain .navbar-nav{
     border-bottom: 1px solid #6c757d;
     margin-bottom: 10px;
     width: 100%;
@@ -31,6 +31,13 @@
     align-items: end !important;
     justify-content: space-between;
 }
+.downFooter .container p{
+    color: #6c757d;
+}
+
+.downFooter .container i{
+    color: #6c757d;
+}
 
 .downFooter .container .nav{
     margin: 0;
@@ -49,11 +56,20 @@
     
 }
 
+.rowAdj{
+    width: 100%;
+    justify-content: space-between;
+}
+
+.downFooter .container .NavbarAndheaderul{
+    justify-content: center;
+} 
+
 .downFooter .container .socialMedia i:nth-child(2){
     margin: 0 10px;
 }
 @media(max-width:812px){
-    .downFooter .container{
+    .downfooterMain .container{
         flex-direction: column;
         align-items: center;
     }
