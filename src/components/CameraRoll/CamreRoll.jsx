@@ -57,7 +57,7 @@ function CamreRoll() {
   const [isAddModalOpen, setAddModalOpen] = useState(false);
   const [isDeleteOpen, setDeleteOpen] = useState(false);
   const [idToDelete,setID]=useState(0);
-
+  const [imgDated, setimgDated] = useState([]);
 
 
   const toggleAddModal = () => {
@@ -160,29 +160,51 @@ function CamreRoll() {
         setModalIsOpen(!isModalOpen);
       }
     }
-    // const grouped = _.groupBy(sortedimagesuploaded, 'dateuploaded');
-    // const keys = Object.keys(grouped);
-    // const values = Object.values(grouped);
     // const [imgDated, setimgDated] = useState([]);
-
+    
     // for (let i = 0; i < keys.length; i += 1)
     // {
-    //   const imgCorresponding = values[i];
-    //   setimgDated(imgDated.push(<h5>{keys[i]}</h5>));
-    //   setimgDated(imgDated.push(
-    //     imgCorresponding.map((image) => (
-    //       <ImagesCR
-    //         key={image.id}
-    //         Url={image.Url}
-    //         image={image}
-    //         onEdit={toggleModal}
-    //         id={0}
-    //       />
-    //     )),
-    //   ));
-    // }
-  };
+      //   const imgCorresponding = values[i];
+      //   setimgDated(imgDated.push(<h5>{keys[i]}</h5>));
+      //   setimgDated(imgDated.push(
+        //     imgCorresponding.map((image) => (
+          //       <ImagesCR
+          //         key={image.id}
+          //         Url={image.Url}
+          //         image={image}
+          //         onEdit={toggleModal}
+          //         id={0}
+          //       />
+          //     )),
+          //   ));
+          // }
+        };
 
+        const grouped = _.groupBy(sortedimagesuploaded, 'createdAt');
+        const keys = Object.keys(grouped);
+        const values = Object.values(grouped);
+        const tempImgDated = [];
+
+        useState(() => { for (let i = 0; i < keys.length; i += 1)
+    {
+      const imgCorresponding = values[i];
+      // dateFormat("2019-04-30T08:59:00.000Z", "mmmm dS, yyyy")
+      // tempImgDated.push(<div><h6>{monthName(keys[i])}</h6></div>);
+      tempImgDated.push(<div><h6>{keys[i]}</h6></div>);
+      tempImgDated.push(
+        imgCorresponding.map((image) => (
+            <ImagesCR
+              key={image.id}
+              Url={image.Url}
+              image={image}
+              onEdit={toggleModal}
+              id={0}
+            />
+        )),
+      );
+      tempImgDated.push(<br />);
+      setimgDated([...imgDated, ...tempImgDated]);
+    } });
   // setModalIsOpen(true);
 
   return (
@@ -224,6 +246,9 @@ function CamreRoll() {
               />
 
             )) }
+      {/* <div> */}
+        {/* {imgDated} */}
+      {/* </div> */}
       </div>
           {/* {keys.map((key) => (
             <h5>
@@ -231,9 +256,6 @@ function CamreRoll() {
             </h5>
 
           ))} */}
-          {/* <div>
-            {imgDated}
-          </div> */}
 
         </div>
 
