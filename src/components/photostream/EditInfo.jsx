@@ -45,11 +45,6 @@ function EditInfo(){
 
 
     function confirmDelete(){
-        if (idToDelete ===0){
-            console.log("hamsa7 carddddddd 1");
-        }else if (idToDelete===1){
-            console.log("hamsa7 carddddddd 2");
-        } 
 
         toggleModal(); 
     }

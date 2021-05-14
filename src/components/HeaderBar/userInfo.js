@@ -8,6 +8,8 @@ import Photostream from '../photostream/Photostream'
 import CameraRoll from '../CameraRoll/CamreRoll'
 import axios from 'axios'
 import {Link} from "react-router-dom";
+import Faves from '../Faves/Faves';
+import AlbumPreview from '../Album/AlbumPreview'
 
 /*componentDidMount(){
     axios.get('')
@@ -171,6 +173,8 @@ export default function Userinfo(props){
             <div>
                 {isPhotoStream && <Photostream/>}
                 {isCameraRoll && <CameraRoll/>}
+                {isFaves && <Faves/>}
+                {isAlbums && <AlbumPreview/>}
             </div>
         <div className="modal-container">
                 <div className="overlay2"></div>

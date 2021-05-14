@@ -38,6 +38,7 @@ function Photostream(){
         <div className="photostream-body">
         <NavBar 
             onSlideshow={toggleModal}
+            viewMode = {false}
         />
 
         <div className="grid">

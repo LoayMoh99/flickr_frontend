@@ -1,16 +1,17 @@
 import React,{useState} from "react"
 import './ImageGrid.css'
+import CommentBox from "./CommentBox"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faStar} from '@fortawesome/free-solid-svg-icons'
-import {faComment} from '@fortawesome/free-solid-svg-icons'
 import {faPlusSquare} from '@fortawesome/free-solid-svg-icons'
+import {faComment} from '@fortawesome/free-solid-svg-icons'
 
 function ImageGrid(props){
 
     // const images =["https://picsum.photos/300/200?random=1","https://picsum.photos/500/200?random=1","https://picsum.photos/600/200?random=1","https://picsum.photos/200/400?random=1","https://picsum.photos/300/400?random=1","https://picsum.photos/400/400?random=1","https://picsum.photos/500/400?random=1","https://picsum.photos/600/400?random=1","https://picsum.photos/200/500?random=1","https://picsum.photos/300/500?random=1","https://picsum.photos/400/500?random=1","https://picsum.photos/500/500?random=1","https://picsum.photos/600/500?random=1","https://picsum.photos/200/300?random=2","https://picsum.photos/300/300?random=2","https://picsum.photos/400/300?random=2","https://picsum.photos/500/300?random=2","https://picsum.photos/600/300?random=2","https://picsum.photos/200/200?random=2","https://picsum.photos/300/200?random=2","https://picsum.photos/400/200?random=2","https://picsum.photos/500/200?random=2","https://picsum.photos/600/200?random=2","https://picsum.photos/200/400?random=2","https://picsum.photos/300/400?random=2","https://picsum.photos/400/400?random=2","https://picsum.photos/500/300?random=3","https://picsum.photos/600/300?random=3","https://picsum.photos/200/200?random=3","https://picsum.photos/300/200?random=3","https://picsum.photos/400/200?random=3","https://picsum.photos/500/200?random=3"]
     const fav = <FontAwesomeIcon icon={faStar} color="white"/>
-    const comment = <FontAwesomeIcon icon={faComment} color="white"/>
     const addTo = <FontAwesomeIcon icon={faPlusSquare} color="white"/>
+    const comment = <FontAwesomeIcon icon={faComment} color="white"/>
 
     function setItemRatio() {
         this.parentNode.style.setProperty('--ratio', this.naturalHeight / this.naturalWidth);
@@ -25,7 +26,6 @@ function ImageGrid(props){
     const [isMousedOver, setMouseOver] = useState(false);
 
     function handleMouseOver() {
-        console.log(props.ownerName)
         setMouseOver(true);
       }
     
@@ -33,13 +33,19 @@ function ImageGrid(props){
         setMouseOver(false);
     }
 
-    console.log(props.title)
 
+    //Comment Box
+    const [isComment, setIsComment] = useState(false);
+
+    function openCommentBox(){
+        alert('openned');
+        // setIsComment(true);
+    }
 
     return(
         <>
             
-            <div className="item ">
+            <div className="item">
             <img 
             src={props.url} 
             onLoad={event => (
@@ -54,12 +60,13 @@ function ImageGrid(props){
                 <div className="shadow-overlay">
                     <h1>{props.title}</h1>
                     <ul  className="tools">
-                    <li><a href="#" id="para">by {props.ownerName}</a></li>
-                    <div id="info">
-                        <li>{addTo}</li>
-                        <li > {comment} {props.numberOfComments}</li>
-                        <li > {fav} {props.numberOfFavs}</li>
-                    </div>
+                        <li><a href="#" id="para">by {props.ownerName}</a></li>
+                        <div id="info">
+                            <li>{addTo}</li>
+                            <li onClick={openCommentBox}> {comment} {props.numberOfComments}</li>
+                            {/* <CommentBox numberOfComments= {props.numberOfComments}/> */}
+                            <li > {fav} {props.numberOfFavs}</li>
+                        </div>
                     </ul>
 
                 </div>

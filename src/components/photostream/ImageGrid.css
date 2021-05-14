@@ -58,7 +58,7 @@
 
 /* overlay */
 .shadow-overlay {
-  position:absolute;
+  /* position:absolute; */
   bottom: 0;
   color: #f1f1f1;
   width: 100%;
@@ -76,9 +76,9 @@
 }
 
 
-img:hover + .shadow-overlay , .shadow-overlay:hover {
+/* img:hover + .shadow-overlay , .shadow-overlay:hover {
   cursor:default;
-}
+} */
 
 .shadow-overlay h1{
   margin-top : 20px;
@@ -107,7 +107,9 @@ img:hover + .shadow-overlay , .shadow-overlay:hover {
   color: #fff;
   font-weight: 400;
   min-height: 17px;
+  display: auto;
 }
+
 
 /* #overlay-info{
   position: relative;
@@ -135,4 +137,5 @@ img:hover + .shadow-overlay , .shadow-overlay:hover {
   font-weight: 600;
   min-height: 17px;
   display: block;
+  cursor: pointer;
 }
