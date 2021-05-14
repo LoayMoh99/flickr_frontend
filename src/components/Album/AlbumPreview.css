@@ -77,3 +77,30 @@
     bottom: 0;
     position: absolute;
   }
+
+  .album-overview button{
+    position:absolute;
+    bottom: 5px;
+    right: 5px;
+    width: 34px;
+    height: 39px;
+    padding: 0;
+    min-width: auto;
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: auto;
+    /* display: none; */
+  }
+
+
+  .hover-album-info{
+    width: inherit;
+    height: 40%;
+    position: absolute;
+    transition: .5s ease;
+    bottom: 0;
+    z-index: auto;
+    cursor: pointer;
+    background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.8));
+  }

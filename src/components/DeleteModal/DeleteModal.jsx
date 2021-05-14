@@ -7,9 +7,9 @@ function Modal(props){
         <div className="modal__backdrop" >
             <div className="modal__container">
                 <span className="close" onClick={props.onRequestClose}>&times;</span>
-                <h3 className="modal__title">Delete 1 photo?</h3>
+                <h3 className="modal__title">{props.title}</h3>
                 <p>
-                You cannot reverse this action. Are you sure you want to permanently delete this photo?
+                {props.message}
                 </p>
                 <button id="confirm" type="button" onClick={ () =>{
                     props.onDelete();}}>
