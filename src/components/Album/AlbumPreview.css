@@ -104,3 +104,42 @@
     cursor: pointer;
     background-image: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,0.8));
   }
+
+
+  /* new album */
+  .new-modal-container{
+    background: #fff;
+    border-radius: 5px;
+    max-width: 400px;
+    max-height: 360px;
+    height: 360px;
+    margin: 250px auto;
+    padding: 15px;
+    width: 400px;
+    border-radius: 3px;
+    box-shadow: 0 1px 6px rgb(0 0 0 / 20%);
+    box-sizing: border-box;
+  }
+
+  #create {
+    height: 29px;
+    line-height: 29px;
+    min-width: 80px;
+    font-size: 14px;
+    background-color: #128fdc;
+    color: #fff;
+    box-sizing: border-box;
+    display: inline-block;
+    border-radius: 3px;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+    position: relative;
+  }
+
+  .new-modal-container button{
+    float: right;
+    bottom: 0;
+  }
+
+

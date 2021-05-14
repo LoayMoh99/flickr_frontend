@@ -37,7 +37,7 @@ function AlbumCard(){
                             onRequestClose={toggleModal} 
                             onDelete={confirmDelete} 
                             title = "Confirmation"
-                            message = "Do you really want to delete this album? (Don't worry, none of the contents will be deleted.)"
+                            message = "Do you really want to delete this album? (Don't worry, none of the contents will be deleted)"
                             />}
         {/* </main> */}
         </>

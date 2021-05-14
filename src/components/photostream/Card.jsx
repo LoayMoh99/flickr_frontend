@@ -24,25 +24,25 @@ function Card(props){
 
     const [privacy , setPrivacy] = useState(props.privacy)
 
-    function changeLayout(event){
-        console.log(event);  
+    function changeLayout(event){ 
         setEdit(!isEditable);
-    // API
+    }
 
+    function confirmEdit(){
+        console.log(inputTitle);
+        console.log(inputDescription);
+        //API
+        changeLayout();
     }
 
   function handleTitleChange(event) {
     const newTitle = event.target.value;
     setInputTitle(newTitle);
-    // API
-    console.log(inputTitle)
   }
 
   function handleDescriptionChange(event) {
     const newDescription  = event.target.value;
     setInputDescription(newDescription);
-    // API
-    console.log(inputDescription)
   }
 
   function open(){
@@ -101,10 +101,10 @@ function Card(props){
                             <input type="text" className="form-control"  onChange={handleTitleChange} value={inputTitle}></input> 
                         </div>
                         <div class="form-group">
-                            <textarea className="form-control" rows="3"  onChange={handleDescriptionChange}>{inputDescription}</textarea> 
+                            <textarea className="form-control" rows="3"  onChange={handleDescriptionChange}value={inputDescription}></textarea> 
                         </div>
                     </div>
-                    <button onClick={changeLayout}>Done</button>
+                    <button onClick={confirmEdit}>Done</button>
 
             </div>
 
