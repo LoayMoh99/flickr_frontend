@@ -11,11 +11,13 @@ import About from "./components/About/About"
 import Blog from "./components/Blog/Blog"
 import Jobs from "./components/Job/Jobs"
 import Signup from "./components/signup/signup"
+import AddPhotos from "./components/GroupPhotos/AddPhotos"
 import App2 from "./App2"
 import React,{useState,useEffect} from 'react';
 import axios from 'axios'
 import {BrowserRouter as Router, Switch , Route} from "react-router-dom";
 const endpoint = 'http://localhost:3001/'
+
 
 function App() {
 
@@ -59,6 +61,7 @@ function App() {
       <Route path="/CameraRoll" component={CameraRoll}/>
       <Route path="/FollwingFollowers" component={FollwingFollowers}/>
       <Route path="/Explore" component={TotExplore}/>
+      <Route patth="/Add" component={AddPhotos}/>
       </Switch>
       <Footer/> 
     </div>

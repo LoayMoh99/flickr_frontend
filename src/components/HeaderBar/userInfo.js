@@ -8,6 +8,7 @@ import Photostream from '../photostream/Photostream'
 import CameraRoll from '../CameraRoll/CamreRoll'
 import axios from 'axios'
 import {Link} from "react-router-dom";
+import GroupPhotos from "../GroupPhotos/GroupPhotos"
 
 /*componentDidMount(){
     axios.get('')
@@ -169,7 +170,7 @@ export default function Userinfo(props){
                 </div>
             </div>
             <div>
-                {isPhotoStream && <Photostream/>}
+                {isPhotoStream && <GroupPhotos/>}
                 {isCameraRoll && <CameraRoll/>}
             </div>
         <div className="modal-container">

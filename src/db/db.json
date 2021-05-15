@@ -14,6 +14,180 @@
         }
     ],
 
+    "albums":[
+        {
+            "_id": 0,
+            "title": "Album1",
+            "description": "description of album 1",
+            "createdAt": "string",
+            "updatedAt": "string",
+            "photos": [
+              0
+            ],
+            "coverPhoto": "Unknown Type: _id"
+          }
+
+    ],
+
+    "groupPhotos": [
+        {
+          "photo_id": 0,
+          "photo_url": "https://picsum.photos/600/200?random=1",
+          "photo_owner_id": 0,
+          "tag": [
+            {
+              "id": 0,
+              "comment": "string",
+              "photo_id": 0,
+              "taged_user_id": 0
+            }
+          ],
+          "comment": [
+            {
+              "id": 0,
+              "comment": "string",
+              "photo_id": 0,
+              "commented_user_id": 0
+            }
+          ],
+          "description": "desciption",
+          "photo_title": "Title",
+          "owner_username": "samarnabil",
+          "num_comments": 9,
+          "num_favs": 30
+        },
+        {
+            "photo_id": 1,
+            "photo_url": "https://picsum.photos/400/200?random=1",
+            "photo_owner_id": 0,
+            "tag": [
+              {
+                "id": 0,
+                "comment": "string",
+                "photo_id": 0,
+                "taged_user_id": 0
+              }
+            ],
+            "comment": [
+              {
+                "id": 0,
+                "comment": "string",
+                "photo_id": 0,
+                "commented_user_id": 0
+              }
+            ],
+            "description": "desciption",
+            "photo_title": "Title",
+            "owner_username": "samarnabil",
+            "num_comments": 9,
+            "num_favs": 30
+          },
+          {
+            "photo_id": 2,
+            "photo_url": "https://picsum.photos/400/400?random=1",
+            "photo_owner_id": 0,
+            "tag": [
+              {
+                "id": 2,
+                "comment": "string",
+                "photo_id": 0,
+                "taged_user_id": 0
+              }
+            ],
+            "comment": [
+              {
+                "id": 2,
+                "comment": "string",
+                "photo_id": 0,
+                "commented_user_id": 0
+              }
+            ],
+            "description": "desciption",
+            "photo_title": "Title",
+            "owner_username": "samarnabil",
+            "num_comments": 9,
+            "num_favs": 30
+          },
+          {
+            "photo_id": 3,
+            "photo_url": "https://picsum.photos/500/300?random=1",
+            "photo_owner_id": 0,
+            "tag": [
+              {
+                "id": 3,
+                "comment": "string",
+                "photo_id": 0,
+                "taged_user_id": 0
+              }
+            ],
+            "comment": [
+              {
+                "id": 3,
+                "comment": "string",
+                "photo_id": 0,
+                "commented_user_id": 0
+              }
+            ],
+            "description": "desciption",
+            "photo_title": "Title",
+            "owner_username": "samarnabil",
+            "num_comments": 9,
+            "num_favs": 30
+          },
+          {
+            "photo_id": 4,
+            "photo_url": "https://picsum.photos/300/200?random=1",
+            "photo_owner_id": 0,
+            "tag": [
+              {
+                "id": 4,
+                "comment": "string",
+                "photo_id": 0,
+                "taged_user_id": 0
+              }
+            ],
+            "comment": [
+              {
+                "id": 4,
+                "comment": "string",
+                "photo_id": 0,
+                "commented_user_id": 0
+              }
+            ],
+            "description": "desciption",
+            "photo_title": "Title",
+            "owner_username": "samarnabil",
+            "num_comments": 9,
+            "num_favs": 30
+          },
+          {
+            "photo_id": 5,
+            "photo_url": "https://picsum.photos/200/200?random=1",
+            "photo_owner_id": 0,
+            "tag": [
+              {
+                "id": 5,
+                "comment": "string",
+                "photo_id": 0,
+                "taged_user_id": 0
+              }
+            ],
+            "comment": [
+              {
+                "id": 5,
+                "comment": "string",
+                "photo_id": 0,
+                "commented_user_id": 0
+              }
+            ],
+            "description": "desciption",
+            "photo_title": "Title",
+            "owner_username": "samarnabil",
+            "num_comments": 9,
+            "num_favs": 30
+          }
+      ],
+
     "photos":[
         {
             "photo_id": 0,
