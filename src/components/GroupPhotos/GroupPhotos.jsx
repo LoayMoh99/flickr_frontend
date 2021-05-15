@@ -28,7 +28,7 @@ function GroupPhotos(){
     return(
         <>
         <div className="group-photos-body">
-            <ul>
+            <ul className="groupNav">
                 <h2>Group Pool</h2> 
                 <Link  style={navStyle} to="/Add"><button>Add photo</button></Link>
             </ul>

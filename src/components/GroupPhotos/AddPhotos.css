@@ -70,8 +70,8 @@
 .col1 .second .img-grid{
     display: flex;
     flex-wrap: wrap; 
-    height: 85px;  /* Minimal row height */
-    --ratio: 1; /* Default aspect ratio for photos that are not loaded yet */
+    height: 85px; 
+    --ratio: 1; 
 }
 
 .img-grid img{
@@ -121,8 +121,8 @@
 .col2 .second .add-grid{
     display: flex;
     flex-wrap: wrap; 
-    height: 85px;  /* Minimal row height */
-    --ratio: 1; /* Default aspect ratio for photos that are not loaded yet */
+    height: 85px;  
+    --ratio: 1; 
 }
 
 .add-grid img{

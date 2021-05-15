@@ -23,7 +23,7 @@
     margin-left: 30px;
 }
 
-.group-photos-body ul{
+.group-photos-body .groupNav{
     overflow: hidden;
     list-style-type: none;
     display: flex;

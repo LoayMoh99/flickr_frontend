@@ -108,7 +108,7 @@ function AddPhotos(){
                     {sizeToDelete === 0?
                         <button disabled={true}>ADD TO GROUP</button>
                         :
-                        <button>ADD TO GROUP</button>
+                        <button onClick={addPhoto}>ADD TO GROUP</button>
                     }
                     </div>
                 </div>
