@@ -38,43 +38,40 @@ function ImageGrid(props){
     const [isComment, setIsComment] = useState(false);
 
     function openCommentBox(){
-        alert('openned');
-        // setIsComment(true);
+        setIsComment(!isComment);
+        // alert(isComment);
     }
+
 
     return(
         <>
             
             <div className="item">
-            <img 
-            src={props.url} 
-            onLoad={event => (
-                event.currentTarget.naturalHeight? setItemRatio.call(event.currentTarget) : waitForLoad.call(event.currentTarget) 
-            )}
-            alt={props.title}
-            onMouseOver={handleMouseOver}
-            onMouseOut={handleMouseOut}
-            />
-            {isMousedOver &&
-            <> 
-                <div className="shadow-overlay">
+                <img 
+                src={props.url} 
+                onLoad={event => (
+                    event.currentTarget.naturalHeight? setItemRatio.call(event.currentTarget) : waitForLoad.call(event.currentTarget) 
+                )}
+                alt={props.title}
+                onMouseOver={handleMouseOver}
+                onMouseOut={handleMouseOut}
+                />
+                <div className="shadow-overlay" style={{display: isMousedOver || isComment?"block":"none"}}
+                    onMouseOver={handleMouseOver}
+                onMouseOut={handleMouseOut}>
                     <h1>{props.title}</h1>
                     <ul  className="tools">
                         <li><a href="#" id="para">by {props.ownerName}</a></li>
                         <div id="info">
                             <li>{addTo}</li>
-                            <li onClick={openCommentBox}> {comment} {props.numberOfComments}</li>
-                            {/* <CommentBox numberOfComments= {props.numberOfComments}/> */}
-                            <li > {fav} {props.numberOfFavs}</li>
-                        </div>
+                            <li  onClick={openCommentBox}> {comment} {props.numberOfComments}</li>
+                            <li > {fav} {props.numberOfFavs}</li> 
+                        </div>   
                     </ul>
-
+                    {isComment && <CommentBox numberOfComments= {props.numberOfComments} onClick={openCommentBox}/>}
                 </div>
-            </>}
-            </div>
-
+            </div> 
         </>
-
     )
 }
 

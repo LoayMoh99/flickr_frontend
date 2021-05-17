@@ -101,7 +101,7 @@ function Card(props){
                             <input type="text" className="form-control"  onChange={handleTitleChange} value={inputTitle}></input> 
                         </div>
                         <div class="form-group">
-                            <textarea className="form-control" rows="3"  onChange={handleDescriptionChange}value={inputDescription}></textarea> 
+                            <textarea className="form-control" rows="3"  onChange={handleDescriptionChange} value={inputDescription}></textarea> 
                         </div>
                     </div>
                     <button onClick={confirmEdit}>Done</button>
