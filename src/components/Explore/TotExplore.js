@@ -6,7 +6,7 @@ import Slideshow from "./components/photostream/Slideshow"*/
 import React from 'react';
 import Explorenav from './Explorenav'
 import Exploresub_nav from './Exploresub_nav'
-import Pictures from "./Pictures"
+import Pictures from "./pictures"
 
 function TotExplore() {
  
