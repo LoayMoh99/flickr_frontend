@@ -17,6 +17,42 @@
     height: 65%;
     margin: 5px 5px;
     /* border-bottom: 1px solid darkgrey; */
+    overflow: auto;
+    white-space: nowrap; 
+}
+
+.users-comments{
+    width:99%;
+    height:55px;
+    position: relative;
+    margin: 1px 1px;
+    padding: 7px;
+    background-color: transparent;
+    /* display: flex; */
+}
+
+.users-comments:hover{
+    background-color: rgba(0,0,0,0.1);
+}
+
+.users-comments a{
+    float:left;
+    color: #006dac;
+    font-size: 14px;
+    font-weight: bold;
+    text-decoration:none;
+    display: block;
+}
+
+.users-comments a:hover{
+    text-decoration: underline !important;
+}
+
+.users-comments p{
+    float: left;
+    color:#212124;
+    font-size: 14px;
+    display: block;
 }
 
 .comment-box hr{
