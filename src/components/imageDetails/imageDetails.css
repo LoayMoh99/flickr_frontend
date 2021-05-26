@@ -1,0 +1,32 @@
+.showedImage{
+    margin-top: 60px;
+    background-color: #212124;
+}
+.showedImage .imageSlide{
+    height: 100%;
+}
+
+.showedImage .carousel-inner{
+    height: 500px;
+}
+
+.carousel-inner .adjustCarousel-item{
+    height:100%;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 100px;
+}
+
+.carousel-inner .adjustCarousel-item img{
+    height: 100%;
+}
+
+.carousel-inner .adjustCarousel-item.active{
+    display: flex;
+}
+
+.adjustbutton{
+    width: 8% !important;
+    background-color: transparent;
+    border: none;
+}

@@ -4,6 +4,7 @@ import '../../fonts/font/flaticon.css';
 import {showEdit} from './edit.js'
 import {closeEdit} from './edit'
 import defaultProfile from '../../img/deefault.jpg';
+import Header from '../navbar/mainNav'
 import Photostream from '../photostream/Photostream'
 import CameraRoll from '../CameraRoll/CamreRoll'
 import axios from 'axios'
@@ -129,7 +130,11 @@ export default function Userinfo(props){
         color:'white'
     };
     return(
+        
         <div>
+            <div>
+            <Header/>
+            </div>
             <div>
                 <div className="uName" style={{backgroundImage: `url(${props.background_url})`}}>
                     <div className="overlay1">

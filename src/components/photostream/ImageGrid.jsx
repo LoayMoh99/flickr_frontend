@@ -39,7 +39,7 @@ function ImageGrid(props){
     return(
         <>
             
-            <div className="item ">
+            <div className="item " onClick={()=>{props.onOpenRequest(props.id)}}>
             <img 
             src={props.url} 
             onLoad={event => (

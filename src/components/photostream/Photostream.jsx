@@ -3,6 +3,7 @@ import ImageGrid from "./ImageGrid"
 import NavBar from "./NavBar"
 import Slideshow from "./Slideshow"
 import './ImageGrid.css'
+import ImageDetails from '../imageDetails/imageDetails'
 import axios from "axios"
 const endpoint = 'http://localhost:3001/'
 
@@ -26,11 +27,16 @@ function Photostream(){
     
     const [isModalOpen, setModalIsOpen] = useState(false);
     // const [isFull,setFull] = useState(false);
+    const [isPhoto, setPhoto] = useState(false);
 
     function toggleModal(){
         setModalIsOpen(!isModalOpen);
         console.log("l modal fata7")
 
+    }
+    function showPhoto(id){
+        console.log(id);
+        setPhoto(true);
     }
 
     return (
@@ -54,6 +60,7 @@ function Photostream(){
             numberOfFavs = {photo.num_favs}
             numberOfComments ={photo.num_comments}
             numberOfViews={photo.num_views}
+            onOpenRequest={showPhoto}
             />
         ))}
         <div className="placeholder"></div>
@@ -62,6 +69,8 @@ function Photostream(){
         <main>
         {isModalOpen && <Slideshow onRequestClose={toggleModal} />}
         </main>
+
+        {isPhoto && <ImageDetails/>}
         </div>
         </>
    ) 
