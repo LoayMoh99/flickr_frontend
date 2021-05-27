@@ -137,7 +137,6 @@ img:hover + .button , .button:hover {
 /* tools */
 .tools{
     border: 0;
-    /* height: 55px; */
     padding-left: 10px;
     display: flex;
     justify-content: space-between;
