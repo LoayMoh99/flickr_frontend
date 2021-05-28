@@ -97,7 +97,7 @@ function Card(props){
             <>
             <div className="new-interaction-bar">
                     <div id="input-format">
-                        <div class="form-group" >
+                        <div className="form-group" >
                             <input type="text" className="form-control"  onChange={handleTitleChange} value={inputTitle}></input> 
                         </div>
                         <div class="form-group">

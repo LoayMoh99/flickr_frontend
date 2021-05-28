@@ -46,9 +46,9 @@ function EditInfo(){
 
     function confirmDelete(){
         if (idToDelete ===0){
-            console.log("delte card 1");
+            console.log("hamsa7 carddddddd 1");
         }else if (idToDelete===1){
-            console.log("delete card 2");
+            console.log("hamsa7 carddddddd 2");
         } 
 
         toggleModal(); 
@@ -81,12 +81,7 @@ function EditInfo(){
         ))}
         </div>
         <main>
-        {isModalOpen && <DeleteModal 
-                            onRequestClose={toggleModal} 
-                            onDelete={confirmDelete}
-                            title = "Delete 1 photo?"
-                            message = "You cannot reverse this action. Are you sure you want to permanently delete this photo?"
-                            />}
+        {isModalOpen && <DeleteModal onRequestClose={toggleModal} onDelete={confirmDelete}/>}
         </main>
         </div>
         </>

@@ -4,25 +4,32 @@ import NavBar from "./NavBar"
 import Slideshow from "./Slideshow"
 import './ImageGrid.css'
 import axios from "axios"
-const endpoint = 'http://localhost:3001/'
+import getUserPhotos from "../../services/services"
+import configData from "../../config/development.json"
+const SERVER_URL = configData.SERVER_URL ;
 
-function Photostream(){
+function Photostream(props){
+
 
     //Get photos
     const [photos, setPhotos] = useState([]);
-    useEffect(() => {
-        const fetchData = async () => {
-        const {data,status} = await axios.get( endpoint+'photos',);
-        console.log(status);
-        if (status === 200){
-            setPhotos(data);
-        }
-    };
- 
-    fetchData();
-  },[]);
-    
-    
+
+// axios.defaults.headers.common['header1'] = 'value' // for all requests
+// const token = '..your token..'
+// let config = {
+//     headers: {
+//       token: 'value',
+//     }
+//   }
+//   {headers:{ 'Authorization': `Basic ${token}`}}
+
+useEffect( () =>{
+    getUserPhotos().then( response => {
+        setPhotos(response.data);
+    })
+  },[photos])
+
+
     
     const [isModalOpen, setModalIsOpen] = useState(false);
     // const [isFull,setFull] = useState(false);

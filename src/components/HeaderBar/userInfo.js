@@ -171,7 +171,7 @@ export default function Userinfo(props){
                 </div>
             </div>
             <div>
-                {isPhotoStream && <Photostream/>}
+                {isPhotoStream && <Photostream />}
                 {isCameraRoll && <CameraRoll/>}
                 {isFaves && <Faves/>}
                 {isAlbums && <AlbumPreview/>}
