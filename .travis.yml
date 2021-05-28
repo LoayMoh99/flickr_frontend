@@ -25,8 +25,8 @@ before_install:
 
 script:
 # Run tests with built Docker images:
-- echo Run react tests..
-- docker run -e CI=true loaymoh99/front-test
+- echo Run front tests..
+#- docker run -e CI=true loaymoh99/front-test
 
 
 after_success:
@@ -40,5 +40,5 @@ after_success:
 
 #deploying the new containers
 - echo Deploy here..
-#- "./deploy.sh"
+- "./deploy.sh"
 
