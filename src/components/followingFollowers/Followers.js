@@ -1,6 +1,8 @@
 import React,{useState,useEffect} from 'react';
 import './followingFollowers.css';
 import defaultProfile from '../../img/deefault.jpg';
+import Header from '../navbar/mainNav';
+import Footer from '../navbar/footer'
 import axios from "axios"
 const endpoint = 'http://localhost:3001/'
 
@@ -22,7 +24,9 @@ export default function Followers(props){
    },[]);
 
     return(
-        <div className="flwAndFlowing">
+        <div>
+            <Header/>
+            <div className="flwAndFlowing">
             <div className="picAndSelect">
                 <div className="imgg"></div>
                 <div className="listAndTitle">
@@ -70,6 +74,8 @@ export default function Followers(props){
             ))}
             </tbody>
         </table>
+        </div>
+        <Footer/>
         </div>
     )
 }
