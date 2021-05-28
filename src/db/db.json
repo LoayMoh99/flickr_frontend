@@ -518,6 +518,68 @@
             "last_upload": "2021-05-06"
         }
     ],
+    "followers": [
+        {
+            "Fname": "Farah",
+            "username": "farahMostafa",
+            "Lname": "Mostafa",
+            "email": "farahmostafa@example.com",
+            "id": 0,
+            "num_photos": 50,
+            "relation": "following || family || friend",
+            "last_upload": "2020-05-06"
+        },
+        {
+            "Fname": "Samar",
+            "username": "samarnabil",
+            "Lname": "Nabil",
+            "email": "samarnabil@example.com",
+            "id": 1,
+            "num_photos": 46,
+            "relation": "following || family || friend",
+            "last_upload": "2017-04-16"
+        },
+        {
+            "Fname": "Khadija",
+            "username": "khadijaswelam",
+            "Lname": "Swelam",
+            "email": "khadijaswelam@example.com",
+            "id": 2,
+            "num_photos": 100,
+            "relation": "following || family || friend",
+            "last_upload": "2011-05-06"
+        },
+        {
+            "Fname": "Habiba",
+            "username": "habibamohamed",
+            "Lname": "Mohamed",
+            "email": "habibamohamed@example.com",
+            "id": 3,
+            "num_photos": 39,
+            "relation": "following || family || friend",
+            "last_upload": "2009-05-06"
+        },
+        {
+            "Fname": "Roaa",
+            "username": "roaamagdy",
+            "Lname": "Magdy",
+            "email": "roaamagdy@example.com",
+            "id": 4,
+            "num_photos": 120,
+            "relation": "following || family || friend",
+            "last_upload": "2021-05-06"
+        },
+        {
+            "Fname": "Mohamed",
+            "username": "mohamedwael",
+            "Lname": "Wael",
+            "email": "mohamedwael@example.com",
+            "id": 5,
+            "num_photos": 70,
+            "relation": "following || family || friend",
+            "last_upload": "2021-05-06"
+        }
+    ],
     "photos2" :[
         {
             "photo_id": 0,

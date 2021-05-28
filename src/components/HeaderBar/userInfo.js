@@ -147,7 +147,7 @@ export default function Userinfo(props){
                                     <div className="follwingFollowers">
                                         <p>{props.username}</p>
                                         <ul className="NavbarAndheaderul">
-                                            <li><a>{props.num_followers} followers</a></li>
+                                        <li><Link  style={navStyle} to="/Followers"><a>{props.num_followers} followers</a></Link></li>
                                             <li><Link  style={navStyle} to="/FollwingFollowers"><a>{props.num_following} following</a></Link></li>
                                         </ul>
                                     </div>

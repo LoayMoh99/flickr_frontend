@@ -3,11 +3,8 @@ import '../../fonts/font/flaticon.css'
 import './Upload.css'
 import flickrPhoto from '../../img/flickr.jpg'
 import { Link } from 'react-router-dom'
-import './UploadActions'
 
 export default function Upload(props){
-    
-    
     const imageUpload = (e) => {
         const file = e.target.files[0];
         getBase64(file).then(base64 => {

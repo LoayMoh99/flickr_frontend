@@ -2,28 +2,24 @@ import React,{useState,useEffect} from 'react';
 import './followingFollowers.css';
 import defaultProfile from '../../img/deefault.jpg';
 import axios from "axios"
-import {Link} from "react-router-dom";
 const endpoint = 'http://localhost:3001/'
 
-export default function FollwingFollowers(props){
+export default function Followers(props){
 
      //Get photos
-        const [following, setFollowing] = useState([]);
+     const [following, setFollowing] = useState([]);
 
-        useEffect(() => {
-            const fetchData = async () => {
-            const {data,status} = await axios.get( endpoint+'following',);
-            console.log(status);
-            if (status === 200){
-                setFollowing(data);
-            }
-        };
-    
-        fetchData();
-    },[]);
-    const navStyle={
-        color:'black'
-        };
+     useEffect(() => {
+         const fetchData = async () => {
+         const {data,status} = await axios.get( endpoint+'followers',);
+         console.log(status);
+         if (status === 200){
+             setFollowing(data);
+         }
+     };
+  
+     fetchData();
+   },[]);
 
     return(
         <div className="flwAndFlowing">
@@ -51,7 +47,7 @@ export default function FollwingFollowers(props){
                 <span>Search :</span>
                 <input id="searchForm" className="form-control form-control-sml" type="text" placeholder="screen name,real name or email" aria-label=".form-control-sm example"></input>
                 <p>or</p>
-                <Link style={navStyle} to="/Followers"><a>who is following you?</a></Link>
+                <a>who is following you?</a>
             </div>
             <table className="table">
             <thead>

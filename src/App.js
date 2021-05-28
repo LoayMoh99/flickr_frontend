@@ -3,6 +3,7 @@ import Footer from './components/navbar/footer'
 import Userinfo from './components/HeaderBar/userInfo'
 import Upload from './components/upload/Upload'
 import FollwingFollowers from './components/followingFollowers/followingFollowers'
+import Followers from './components/followingFollowers/Followers'
 import ImageDetails from "./components/imageDetails/imageDetails"
 import Photostream from "./components/photostream/Photostream"
 import EditInfo from "./components/photostream/EditInfo"
@@ -33,6 +34,7 @@ function App() {
       <Route path="/EditInfo" component={EditInfo}/>
       <Route path="/CameraRoll" component={CameraRoll}/>
       <Route path="/FollwingFollowers" component={FollwingFollowers}/>
+      <Route path="/Followers" component={Followers}/>
       <Route path="/Explore" component={TotExplore}/>
       <Route path="/upload" component={Upload}/>
       </Switch>
