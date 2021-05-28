@@ -40,3 +40,8 @@
     padding: 10px 20px;
     border-radius: 5px;
 }
+
+#selectedImg{
+    width: 200px;
+    height: auto;
+}
