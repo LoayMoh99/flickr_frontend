@@ -13,7 +13,67 @@
             "lastName": "Mostafa"
         }
     ],
-
+    "album":[
+        {
+          "_id": 0,
+          "title": "First",
+          "description": "Second album title",
+          "createdAt": "2021-03-02",
+          "updatedAt": "2021-05-04",
+          "photos": [
+            {
+                "photo_id": 0,
+                "photo_url": "https://picsum.photos/300/200?random=1",
+                "photo_owner_id": 0,
+                "num_favs": 30,
+                "num_views": 60,
+                "num_comments":10,
+                "photo_owner_name": "Khadija Khaled",
+                "title": "First Photo Title",
+                "privacy": true,
+                "description": "First Photo description",
+                "createdAt": "2021-05-04"
+            },
+            {
+                "photo_id": 1,
+                "photo_url": "https://picsum.photos/500/200?random=1",
+                "photo_owner_id": 0,
+                "num_favs": 30,
+                "num_views": 60,
+                "num_comments":10,
+                "photo_owner_name": "Khadija Khaled",
+                "title": "First Photo Title",
+                "privacy": true,
+                "description": "Second Photo description",
+                "createdAt": "2021-05-04"
+            }
+          ],
+          "coverPhoto": "https://picsum.photos/600/200?random=1"
+        },
+        {
+            "_id": 0,
+            "title": "Second",
+            "description": "Second album title",
+            "createdAt": "2021-03-02",
+            "updatedAt": "2021-05-04",
+            "photos": [
+              {
+                  "photo_id": 0,
+                  "photo_url": "https://picsum.photos/300/200?random=1",
+                  "photo_owner_id": 0,
+                  "num_favs": 30,
+                  "num_views": 60,
+                  "num_comments":10,
+                  "photo_owner_name": "Khadija Khaled",
+                  "title": "First Photo Title",
+                  "privacy": true,
+                  "description": "First Photo description",
+                  "createdAt": "2021-05-04"
+              }
+            ],
+            "coverPhoto": "https://picsum.photos/300/200?random=1"
+          }
+      ],
     "photos":[
         {
             "photo_id": 0,

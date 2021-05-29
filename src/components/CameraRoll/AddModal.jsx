@@ -4,20 +4,46 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/no-static-element-interactions */
-import React from 'react';
+import React, { useState , useEffect } from 'react';
+import axios from "axios"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
+import AddAlbumImages from './AddAlbumImages';
 import './AddModal.css';
+const endpoint = 'http://localhost:3001/'
 
 function AddModal(props) {
 
-  const albumCover='https://picsum.photos/id/237/200/300';
+
+  const [album,setAlbum] =useState([]);
+  // const album_id=0;
+
+  //This function is called whenever this album page is opened
+  //It gets the details of the selected album and set the const album with these details 
+  useEffect(() => {
+    const fetchData = async () => {
+    const {data,status} = await axios.get( endpoint+'album',);
+    console.log(status);
+    console.log("got the album");
+  
+    if (status === 200){
+        setAlbum(data);
+    }
+   
+};
+
+  fetchData();
+},[]);
+console.log(album);
+
+
+
+  // const albumCover='https://picsum.photos/id/237/200/300';
   const search = <FontAwesomeIcon icon={faSearch} color="DarkGrey" />;
   const plus = <FontAwesomeIcon icon={faPlus} color="DarkGrey" />;
-  const check = <FontAwesomeIcon icon={faCheckCircle} color="cornflowerblue" size="1x"/>;
+
   return (
     <>
 
@@ -34,44 +60,23 @@ function AddModal(props) {
             <div className="searchIcon">
              {search}
             </div>
-          <input type="text" placeholder="Search albums" className="stuff-selection-search" tabIndex="0" />
+          <input type="text" placeholder="Search albums" className="searchInput" tabIndex="0" />
           </div>
           <hr id="hrSearch"/>
 
+
           <div className="addBody">
-
-            <div className="userAlbumAdd">
-              <div className="userAlbumCover">
-                {/* <div className="row"> */}
-                  <img className="img-responsive" id="contentAdd" src={albumCover} alt="image_flickr" />
-                  <div>
-                    <h5 className="albumTitleAdd">test1</h5>
-                    <h5 className="albumInfoAdd">3 items</h5>
-                  </div>
-                  <div className="checkIcon">
-                    {check}
-                  </div>
-                {/* </div> */}
-            </div>
-            </div>
-
-            <div className="userAlbumAdd">
-              <div className="userAlbumCover">
-                {/* <div className="row"> */}
-                  <img className="img-responsive" id="contentAdd" src={albumCover} alt="image_flickr" />
-                  <div>
-                    <h5 className="albumTitleAdd">test1</h5>
-                    <h5 className="albumInfoAdd">3 items</h5>
-                  </div>
-                  <div className="checkIcon">
-                    {check}
-                  </div>
-                {/* </div> */}
-            </div>
-            </div>
+            {album.map(album=>  
+            (<AddAlbumImages 
+            albumCover = {album.coverPhoto}
+            albumTitle = {album.title}
+            photoCount = {album.photos.length}
+           />)
+           ) 
+            }
          </div>
          <hr id="hrBottom"/>
-         <a href="/#" className="newAlbum">
+         <a href="/#" className="newAlbum" onClick={props.onRequestCreate}>
             {plus}
             {' '}
                Create new album

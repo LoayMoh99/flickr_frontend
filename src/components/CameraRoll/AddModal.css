@@ -20,14 +20,12 @@
   box-shadow: 0 1px 6px rgb(0 0 0 / 20%);
   box-sizing: border-box;
 }
-.stuff-selection-view
-  .stuff-selection
-  .stuff-selection-search
-  input.stuff-selection-search {
+.searchInput {
   -webkit-box-flex: 1;
   -webkit-flex: 1 1 auto;
-  border-style: none;
+  border-style: hidden;
   border: none;
+  border-color: transparent;
   -ms-flex: 1 1 auto;
   flex: 1 1 auto;
   padding: 8px 0;

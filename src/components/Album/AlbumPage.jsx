@@ -12,28 +12,44 @@ const endpoint = 'http://localhost:3001/'
 
 function AlbumPage() {
 
-      //Get photos
-  const [photos, setPhotos] = useState([]);
+
+  const [album,setAlbum] =useState([]);
+  const album_id=0;
+
+  //This function is called whenever this album page is opened
+  //It gets the details of the selected album and set the const album with these details 
   useEffect(() => {
-      const fetchData = async () => {
-      const {data,status} = await axios.get( endpoint+'photos',);
-      console.log(status);
-      if (status === 200){
-          setPhotos(data);
-      }
-  };
+    const fetchData = async () => {
+    const {data,status} = await axios.get( endpoint+'album?_id='+album_id,);
+    console.log(status);
+    console.log("got the album");
   
-    fetchData();
-  },[]);
+    if (status === 200){
+        setAlbum(data);
+    }
+   
+};
+
+  fetchData();
+},[]);
+console.log(album);
+
 
   const back = <FontAwesomeIcon icon={faArrowLeft} color="black"/>
   return (
       <>
       <div className="AlbumPage-body">
       <a href="#" id="backAlbum">{back } Back to albums list</a>
-        <AlbumCoverPhoto />
+      { album.map(album=> 
+        <AlbumCoverPhoto 
+        coverPhoto = {album.coverPhoto}
+        title = {album.title}
+        description = {album.description}
+        />
+        )}
+        
        <div className="grid">
-        {photos.map(photo => (
+        {album.map(album => album.photos.map(photo => (
             <ImageGrid
             id = {photo.photo_id}
             url ={photo.photo_url} 
@@ -47,7 +63,7 @@ function AlbumPage() {
             numberOfComments ={photo.num_comments}
             numberOfViews={photo.num_views}
             />
-        ))}
+        )))}
         <div className="placeholder"></div>
         </div>
         </div>

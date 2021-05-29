@@ -30,6 +30,7 @@ import './EditModal.css';
 import './AddModal.css';
 // import { mockComponent } from 'react-dom/test-utils';
 import axios from "axios"
+import CreateNewAlbumModal from './CreateNewAlbumModal';
 const endpoint = 'http://localhost:3001/'
 
 function CamreRoll() {
@@ -49,19 +50,24 @@ function CamreRoll() {
     fetchData();
   },[]);
   
-  const sortedimagesuploaded = images.slice().sort((a, b) => b.createdAt - a.createdAt);
+  const sortedImagesUploaded = images.slice().sort((a, b) => b.createdAt - a.createdAt);
   const [isModalOpen, setModalIsOpen] = useState(false);
   const [count, setCount] = useState(0);
   const [toEdit, setToEdit] = useState([]);
   const [isEditModalOpen, setEditModalOpen] = useState(false);
   const [isAddModalOpen, setAddModalOpen] = useState(false);
   const [isDeleteOpen, setDeleteOpen] = useState(false);
+  const [isCreateAlbumOpen , setCreateAlbumOpen] = useState(false);
   const [idToDelete,setID]=useState(0);
   const [imgDated, setimgDated] = useState([]);
 
 
+  
   const toggleAddModal = () => {
     setAddModalOpen(!isAddModalOpen);
+  };
+  const toggleCreateAlbum = () => {
+    setCreateAlbumOpen(!isCreateAlbumOpen);
   };
 
   const toggleDelete = (id) => {
@@ -81,9 +87,9 @@ function CamreRoll() {
 
   function confirmDelete(){
     if (idToDelete ===0){
-        console.log("hamsa7 carddddddd 1");
+        console.log("delete card 1");
     }else if (idToDelete===1){
-        console.log("hamsa7 carddddddd 2");
+        console.log("delete card 2");
     } 
 
     toggleDelete(); 
@@ -160,27 +166,9 @@ function CamreRoll() {
         setModalIsOpen(!isModalOpen);
       }
     }
-    // const [imgDated, setimgDated] = useState([]);
-    
-    // for (let i = 0; i < keys.length; i += 1)
-    // {
-      //   const imgCorresponding = values[i];
-      //   setimgDated(imgDated.push(<h5>{keys[i]}</h5>));
-      //   setimgDated(imgDated.push(
-        //     imgCorresponding.map((image) => (
-          //       <ImagesCR
-          //         key={image.id}
-          //         Url={image.Url}
-          //         image={image}
-          //         onEdit={toggleModal}
-          //         id={0}
-          //       />
-          //     )),
-          //   ));
-          // }
         };
 
-        const grouped = _.groupBy(sortedimagesuploaded, 'createdAt');
+        const grouped = _.groupBy(sortedImagesUploaded, 'createdAt');
         const keys = Object.keys(grouped);
         const values = Object.values(grouped);
         const tempImgDated = [];
@@ -225,19 +213,11 @@ function CamreRoll() {
     <div className="sidephoto">
         <SideNavBar />
         <div className="row">
-          {/* <div className="col"> */}
-          {/* <nav className="nav flex-column">
-            <a className="nav-link active " aria-current="page" href="/#">2021</a>
-            <a className="nav-link " href="/#">- April</a>
-            <a className="nav-link text-secondary" href="/#">- January</a>
-          </nav> */}
-          {/* </div> */}
-          {/* <div className="col-11"> */}
           <div className=" container_body">
 
             {/* {grouped.map((arr) => <h5>{arr[0]}</h5>)} */}
             {/* {map((arr) => ({ dateuploaded: arr[0], image: arr.slice(1) }))} */}
-            { sortedimagesuploaded.map((image) => (
+            { sortedImagesUploaded.map((image) => (
               <ImagesCR
                 key={image.photo_id}
                 url={image.photo_url}
@@ -250,12 +230,6 @@ function CamreRoll() {
         {/* {imgDated} */}
       {/* </div> */}
       </div>
-          {/* {keys.map((key) => (
-            <h5>
-              {key}
-            </h5>
-
-          ))} */}
 
         </div>
 
@@ -292,6 +266,7 @@ function CamreRoll() {
         {isAddModalOpen && (
         <AddModal
           onRequestAddClose={toggleAddModal}
+          onRequestCreate={toggleCreateAlbum}
           imgAdd={toEdit}
           countAdd={count}
 
@@ -303,6 +278,15 @@ function CamreRoll() {
         <DeleteModal
           onRequestClose={toggleDelete}
           onDelete={confirmDelete}
+        />
+        )}
+      </main>
+      <main>
+        {isCreateAlbumOpen && (
+        <CreateNewAlbumModal
+          onRequestCreateClose={toggleCreateAlbum}
+          imgCreateAlbum={toEdit}
+          
         />
         )}
       </main>
