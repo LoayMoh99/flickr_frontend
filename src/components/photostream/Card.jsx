@@ -1,67 +1,89 @@
-import React,{useState} from "react"
+import React,{useEffect, useState} from "react"
 import './EditInfo.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faTrash} from '@fortawesome/free-solid-svg-icons'
-import {faLock} from '@fortawesome/free-solid-svg-icons'
-import {faEye} from '@fortawesome/free-solid-svg-icons'
-import {faStar} from '@fortawesome/free-solid-svg-icons'
-import {faComment} from '@fortawesome/free-solid-svg-icons'
-import {faUnlock} from '@fortawesome/free-solid-svg-icons'
+import {faTrash,faLock,faEye,faStar,faComment,faUnlock} from '@fortawesome/free-solid-svg-icons'
+import {PutPhoto} from "../../services/photoServices"
+
 
 function Card(props){
 
     const remove = <FontAwesomeIcon icon={faTrash} color="White" />
     const lock = <FontAwesomeIcon icon={faLock} color="DarkGrey"/>
     const unlock = <FontAwesomeIcon icon={faUnlock} color="DarkGrey"/>
-    const views = <FontAwesomeIcon icon={faEye} color="DarkGrey"/>
+    // const views = <FontAwesomeIcon icon={faEye} color="DarkGrey"/>
     const fav = <FontAwesomeIcon icon={faStar} color="DarkGrey"/>
     const comment = <FontAwesomeIcon icon={faComment} color="DarkGrey"/>
 
     const [isEditable,setEdit] = useState(false);
-
     const [inputTitle, setInputTitle] = useState(props.title);
-    const [inputDescription , setInputDescription] = useState(props.description)
+    const [inputDescription , setInputDescription] = useState(props.description);
+    const [privacy , setPrivacy] = useState(props.privacy);
+    const [isPublic , setIsPublic] = useState (false);
 
-    const [privacy , setPrivacy] = useState(props.privacy)
+    // const currentPrivacy = privacy
+    // if(props.privacy === 'public'){
+    //     setIsPublic(true);
+    // }else{
+    //     setIsPublic(false);
+    // }
 
-    function changeLayout(event){ 
+    function handleTitleChange(event) {
+        const newTitle = event.target.value;
+        setInputTitle(newTitle);
+    }
+
+    function handleDescriptionChange(event) {
+        const newDescription  = event.target.value;
+        setInputDescription(newDescription);
+    }
+
+    function changeToPublic(){
+
+    }
+
+    function changeToPrivate(){
+
+    }
+
+    function changeLayout(){ 
         setEdit(!isEditable);
     }
+
 
     function confirmEdit(){
         console.log(inputTitle);
         console.log(inputDescription);
+        // console.log(privacy);
+        console.log(props.id)
+        // const object = {photos:[props.id] , title:inputTitle , description:inputDescription , privacy:privacy}
+        const object =       {
+            "photoUrl": props.url,
+            "ownerId": props.ownerId,
+            "num_favs": props.numberOfFavs,
+            "comments": [0,1,2,3],
+            "title": inputTitle,
+            "privacy": privacy,
+            "description": inputDescription,
+            "createdAt": "2021-05-29",
+            "UpdatedAt": "2021-05-29"
+        }
         //API
+        PutPhoto(props.id,object).then( response => {
+            console.log(response);
+        });
         changeLayout();
     }
 
-  function handleTitleChange(event) {
-    const newTitle = event.target.value;
-    setInputTitle(newTitle);
-  }
-
-  function handleDescriptionChange(event) {
-    const newDescription  = event.target.value;
-    setInputDescription(newDescription);
-  }
-
-  function open(){
-      console.log("open photo")
-      if(isEditable){
-        setEdit(!isEditable);
-      }
-  }
 
 
     return(
         <>
         
         <div className="card">
-            <img src={props.url} alt=""  onClick={open}/>
+            <img src={props.url} alt=""  />
             <button className="button"
                 onClick={ () =>{
                     props.onDelete(props.id);}}
-                    // confirmDelete(props.id);}}
             >{remove}</button>
             {!isEditable? 
             <>
@@ -75,20 +97,17 @@ function Card(props){
                 <ul  className="tools">
                     <li className="dropdown">
                             <button className="bttn bttn-secondary dropdown-toggle" type="button" id="dropdownMenuButton privacy" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                {privacy? unlock :lock}
+                                {isPublic? unlock :lock}
                             </button>
                             <ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <li><a className="dropdown-item" href="#">Public</a></li>
-                                <li><a className="dropdown-item" href="#">Private</a></li>
-                                <li><a className="dropdown-item" href="#">Friends</a></li>
-                                {/* <li><a className="dropdown-item" href="#">Family</a></li>
-                                <li><a className="dropdown-item" href="#">Friends and Family</a></li> */}
+                                <li onClick={changeToPublic}><a className="dropdown-item" href="#">Public</a></li>
+                                <li onClick={changeToPrivate}><a className="dropdown-item" href="#">Private</a></li>
                             </ul>
                     </li>
                     <div id="info">
                         <li > {comment} {props.numberOfComments}</li>
                         <li > {fav} {props.numberOfFavs}</li>
-                        <li > <div>{views} {props.numberOfViews}</div></li>
+                        {/* <li > <div>{views} {props.numberOfViews}</div></li> */}
                     </div>
                 </ul>
             </>
@@ -105,7 +124,6 @@ function Card(props){
                         </div>
                     </div>
                     <button onClick={confirmEdit}>Done</button>
-
             </div>
 
             </>

@@ -1,6 +1,5 @@
 import React,{useState} from "react"
-import './ImageGrid.css'
-import CommentBox from "./CommentBox"
+import CommentBox from "../Comments/CommentBox"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faStar, faStarHalfAlt,faPlusSquare,faComment} from '@fortawesome/free-solid-svg-icons'
 
@@ -52,7 +51,6 @@ function ImageGrid(props){
 
     return(
         <>
-            
             <div className="item">
                 <img 
                 src={props.url} 
@@ -64,18 +62,18 @@ function ImageGrid(props){
                 onMouseOut={handleMouseOut}
                 />
                 <div className="shadow-overlay" style={{display: isMousedOver || isComment?"block":"none"}}
-                    onMouseOver={handleMouseOver}
-                onMouseOut={handleMouseOut}>
+                    onMouseOver={handleMouseOver} 
+                    onMouseOut={handleMouseOut}>
                     <h1>{props.title}</h1>
                     <ul  className="tools">
-                        <li><a href="#" id="para">by {props.ownerName}</a></li>
+                        <li><a href="#" id="para">by YOU!</a></li>
                         <div id="info">
                             <li>{addTo}</li>
                             <li  onClick={openCommentBox}> {comment} {props.numberOfComments}</li>
                             <li onClick={addToFav} > {fav} {props.numberOfFavs}</li> 
                         </div>   
                     </ul>
-                    {isComment && <CommentBox numberOfComments= {props.numberOfComments} onClick={openCommentBox}/>}
+                    {isComment && <CommentBox numberOfComments= {props.numberOfComments} photo_id={props.id} onClick={openCommentBox}/>}
                 </div>
             </div> 
         </>

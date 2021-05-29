@@ -1,7 +1,6 @@
 import React,{useState,useEffect} from "react"
 import ImageGrid from "../photostream/ImageGrid"
 import NavBar from "../photostream/NavBar"
-import Slideshow from "../photostream/Slideshow"
 import axios from "axios"
 const endpoint = 'http://localhost:3001/'
 
@@ -23,21 +22,11 @@ fetchData();
 
 
 
-const [isModalOpen, setModalIsOpen] = useState(false);
-// const [isFull,setFull] = useState(false);
-
-function toggleModal(){
-    setModalIsOpen(!isModalOpen);
-    console.log("l modal fata7")
-
-}
-
 return (
     <>
     <div className="photostream-body">
     <NavBar 
-        onSlideshow={toggleModal}
-        viewMode = {true}
+        viewMode = {false}
     />
 
     <div className="grid">
@@ -59,9 +48,6 @@ return (
     <div className="placeholder"></div>
     </div>
 
-    <main>
-    {isModalOpen && <Slideshow onRequestClose={toggleModal} />}
-    </main>
     </div>
     </>
 )

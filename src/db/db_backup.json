@@ -15,393 +15,476 @@
   ],
   "photos": [
     {
-      "id": 0,
-      "photoUrl": "https://picsum.photos/300/200?random=1",
-      "ownerId": 0,
+      "photo_url": "https://picsum.photos/300/200?random=1",
+      "photo_owner_id": 0,
       "num_favs": 30,
-      "comments": [
-        0,
-        1,
-        2,
-        3
-      ],
-      "title": "titttlleee",
+      "num_views": 60,
+      "num_comments": 10,
+      "photo_owner_name": "Samar Nabil",
+      "title": "samar title",
       "privacy": "public",
-      "description": "descriptionnn",
-      "createdAt": "2021-05-29",
-      "UpdatedAt": "2021-05-29"
+      "description": "samar description",
+      "createdAt": "2021-05-04",
+      "id": 0
     },
     {
       "id": 1,
-      "photoUrl": "https://picsum.photos/500/200?random=1",
-      "ownerId": 0,
-      "num_favs": 40,
-      "comments": [
-        0,
-        1,
-        2,
-        3
-      ],
-      "title": "titttlleee",
+      "photo_url": "https://picsum.photos/500/200?random=1",
+      "photo_owner_id": 0,
+      "num_favs": 30,
+      "num_views": 60,
+      "num_comments": 10,
+      "photo_owner_name": "Samar Nabil",
+      "title": "First Photo Title",
       "privacy": "public",
-      "description": "descriptionnn",
-      "createdAt": "2021-05-29",
-      "UpdatedAt": "2021-05-29"
+      "description": "First Photo description",
+      "createdAt": "2021-05-04"
     },
     {
       "id": 2,
-      "photoUrl": "https://picsum.photos/600/200?random=1",
-      "ownerId": 0,
-      "num_favs": 8,
-      "comments": [
-        0,
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10
-      ],
-      "title": "titttlleee",
-      "privacy": "private",
-      "description": "descriptionnn",
-      "createdAt": "2021-05-29",
-      "UpdatedAt": "2021-05-29"
+      "photo_url": "https://picsum.photos/600/200?random=1",
+      "photo_owner_id": 0,
+      "num_favs": 30,
+      "num_views": 60,
+      "num_comments": 10,
+      "photo_owner_name": "Samar Nabil",
+      "title": "First Photo Title",
+      "privacy": "public",
+      "description": "First Photo description",
+      "createdAt": "2021-05-04"
     },
     {
       "id": 3,
-      "photoUrl": "https://picsum.photos/400/400?random=1",
-      "ownerId": 0,
-      "num_favs": 4,
-      "comments": [
-        0,
-        1,
-        2,
-        3,
-        4,
-        5,
-        6
-      ],
-      "title": "titttlleee",
-      "privacy": "private",
-      "description": "descriptionnn",
-      "createdAt": "2021-05-29",
-      "UpdatedAt": "2021-05-29"
+      "photo_url": "https://picsum.photos/400/400?random=3",
+      "photo_owner_id": 0,
+      "num_favs": 30,
+      "num_views": 60,
+      "num_comments": 10,
+      "photo_owner_name": "Samar Nabil",
+      "title": "First Photo Title",
+      "privacy": "public",
+      "description": "First Photo description",
+      "createdAt": "2021-05-04"
     },
     {
       "id": 4,
-      "photoUrl": "https://picsum.photos/300/400?random=1",
-      "ownerId": 0,
-      "num_favs": 4,
-      "comments": [
-        0,
-        1,
-        2,
-        3,
-        4,
-        5
-      ],
-      "title": "titttlleee",
-      "privacy": "private",
-      "description": "descriptionnn",
-      "createdAt": "2021-05-29",
-      "UpdatedAt": "2021-05-29"
+      "photo_url": "https://picsum.photos/300/400?random=1",
+      "photo_owner_id": 0,
+      "num_favs": 30,
+      "num_views": 60,
+      "num_comments": 10,
+      "photo_owner_name": "Samar Nabil",
+      "title": "First Photo Title",
+      "privacy": "public",
+      "description": "First Photo description",
+      "createdAt": "2021-05-04"
     },
     {
       "id": 5,
-      "photoUrl": "https://picsum.photos/400/400?random=2",
-      "ownerId": 0,
-      "num_favs": 400,
-      "comments": [
-        0,
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11,
-        12,
-        13,
-        14
-      ],
-      "title": "titttlleee",
-      "privacy": "public",
-      "description": "descriptionnn",
-      "createdAt": "2021-05-29",
-      "UpdatedAt": "2021-05-29"
+      "photo_url": "https://picsum.photos/400/400?random=1",
+      "photo_owner_id": 0,
+      "num_favs": 30,
+      "num_views": 60,
+      "num_comments": 10,
+      "photo_owner_name": "Samar Nabil",
+      "title": "First Photo Title",
+      "privacy": "private",
+      "description": "First Photo description",
+      "createdAt": "2021-05-04"
     },
     {
       "id": 6,
-      "photoUrl": "https://picsum.photos/500/400?random=1",
-      "ownerId": 0,
-      "num_favs": 56,
-      "comments": [
-        0,
-        1,
-        2,
-        3
-      ],
-      "title": "titttlleee",
-      "privacy": "public",
-      "description": "descriptionnn",
-      "createdAt": "2021-05-29",
-      "UpdatedAt": "2021-05-29"
+      "photo_url": "https://picsum.photos/500/400?random=1",
+      "photo_owner_id": 0,
+      "num_favs": 30,
+      "num_views": 60,
+      "num_comments": 10,
+      "photo_owner_name": "Samar Nabil",
+      "title": "First Photo Title",
+      "privacy": "private",
+      "description": "First Photo description",
+      "createdAt": "2021-05-04"
     },
     {
       "id": 7,
-      "photoUrl": "https://picsum.photos/600/400?random=1",
-      "ownerId": 0,
-      "num_favs": 56,
-      "comments": [
-        0,
-        1,
-        2,
-        3
-      ],
-      "title": "titttlleee",
-      "privacy": "public",
-      "description": "descriptionnn",
-      "createdAt": "2021-05-29",
-      "UpdatedAt": "2021-05-29"
+      "photo_url": "https://picsum.photos/600/400?random=1",
+      "photo_owner_id": 0,
+      "num_favs": 30,
+      "num_views": 60,
+      "num_comments": 10,
+      "photo_owner_name": "Samar Nabil",
+      "title": "First Photo Title",
+      "privacy": "private",
+      "description": "First Photo description",
+      "createdAt": "2021-05-04"
     },
     {
       "id": 8,
-      "photoUrl": "https://picsum.photos/300/500?random=4",
-      "ownerId": 0,
-      "num_favs": 56,
-      "comments": [
-        0,
-        1,
-        2,
-        3
-      ],
-      "title": "titttlleee",
-      "privacy": "private",
-      "description": "descriptionnn",
-      "createdAt": "2021-05-29",
-      "UpdatedAt": "2021-05-29"
+      "photo_url": "https://picsum.photos/300/500?random=4",
+      "photo_owner_id": 0,
+      "num_favs": 30,
+      "num_views": 60,
+      "num_comments": 10,
+      "photo_owner_name": "Samar Nabil",
+      "title": "First Photo Title",
+      "privacy": "public",
+      "description": "First Photo description",
+      "createdAt": "2021-05-04"
     },
     {
       "id": 9,
-      "photoUrl": "https://picsum.photos/400/300?random=4",
-      "ownerId": 0,
-      "num_favs": 56,
-      "comments": [
-        0,
-        1,
-        2,
-        3
-      ],
-      "title": "titttlleee",
+      "photo_url": "https://picsum.photos/400/300?random=4",
+      "photo_owner_id": 0,
+      "num_favs": 30,
+      "num_views": 60,
+      "num_comments": 10,
+      "photo_owner_name": "Samar Nabil",
+      "title": "First Photo Title",
       "privacy": "private",
-      "description": "descriptionnn",
-      "createdAt": "2021-05-29",
-      "UpdatedAt": "2021-05-29"
+      "description": "First Photo description",
+      "createdAt": "2021-05-04"
     },
     {
       "id": 10,
-      "photoUrl": "https://picsum.photos/500/300?random=4",
-      "ownerId": 0,
-      "num_favs": 56,
-      "comments": [
-        0,
-        1,
-        2,
-        3
-      ],
-      "title": "titttlleee",
-      "privacy": "private",
-      "description": "descriptionnn",
-      "createdAt": "2021-05-29",
-      "UpdatedAt": "2021-05-29"
+      "photo_url": "https://picsum.photos/500/300?random=4",
+      "photo_owner_id": 0,
+      "num_favs": 30,
+      "num_views": 60,
+      "num_comments": 10,
+      "photo_owner_name": "Samar Nabil",
+      "title": "First Photo Title",
+      "privacy": "public",
+      "description": "First Photo description",
+      "createdAt": "2021-05-04"
     },
     {
       "id": 11,
-      "photoUrl": "https://picsum.photos/400/500?random=1",
-      "ownerId": 0,
-      "num_favs": 56,
-      "comments": [
-        0,
-        1,
-        2,
-        3
-      ],
-      "title": "titttlleee",
-      "privacy": "private",
-      "description": "descriptionnn",
-      "createdAt": "2021-05-29",
-      "UpdatedAt": "2021-05-29"
+      "photo_url": "https://picsum.photos/400/500?random=1",
+      "photo_owner_id": 0,
+      "num_favs": 30,
+      "num_views": 60,
+      "num_comments": 10,
+      "photo_owner_name": "Samar Nabil",
+      "title": "First Photo Title",
+      "privacy": "public",
+      "description": "First Photo description",
+      "createdAt": "2021-05-04"
     },
     {
       "id": 12,
-      "photoUrl": "https://picsum.photos/500/500?random=1",
-      "ownerId": 0,
-      "num_favs": 56,
-      "comments": [
-        0,
-        1,
-        2,
-        3
-      ],
-      "title": "titttlleee",
-      "privacy": "private",
-      "description": "descriptionnn",
-      "createdAt": "2021-05-29",
-      "UpdatedAt": "2021-05-29"
+      "photo_url": "https://picsum.photos/500/500?random=1",
+      "photo_owner_id": 0,
+      "num_favs": 30,
+      "num_views": 60,
+      "num_comments": 10,
+      "photo_owner_name": "Samar Nabil",
+      "title": "First Photo Title",
+      "privacy": "public",
+      "description": "First Photo description",
+      "createdAt": "2021-05-04"
     },
     {
       "id": 13,
-      "photoUrl": "https://picsum.photos/600/500?random=1",
-      "ownerId": 0,
-      "num_favs": 56,
-      "comments": [
-        0,
-        1,
-        2,
-        3
-      ],
-      "title": "titttlleee",
-      "privacy": "private",
-      "description": "descriptionnn",
-      "createdAt": "2021-05-29",
-      "UpdatedAt": "2021-05-29"
+      "photo_url": "https://picsum.photos/600/500?random=1",
+      "photo_owner_id": 0,
+      "num_favs": 30,
+      "num_views": 60,
+      "num_comments": 10,
+      "photo_owner_name": "Samar Nabil",
+      "title": "First Photo Title",
+      "privacy": "public",
+      "description": "First Photo description",
+      "createdAt": "2021-05-04"
     },
     {
       "id": 14,
-      "photoUrl": "https://picsum.photos/200/300?random=2",
-      "ownerId": 0,
-      "num_favs": 56,
-      "comments": [
-        0,
-        1,
-        2,
-        3,
-        4,
-        5,
-        6
-      ],
-      "title": "titttlleee",
+      "photo_url": "https://picsum.photos/200/300?random=2",
+      "photo_owner_id": 0,
+      "num_favs": 30,
+      "num_views": 60,
+      "num_comments": 10,
+      "photo_owner_name": "Samar Nabil",
+      "title": "First Photo Title",
       "privacy": "private",
-      "description": "descriptionnn",
-      "createdAt": "2021-05-29",
-      "UpdatedAt": "2021-05-29"
+      "description": "First Photo description",
+      "createdAt": "2021-05-04"
     },
     {
       "id": 15,
-      "photoUrl": "https://picsum.photos/300/300?random=2",
-      "ownerId": 0,
-      "num_favs": 56,
-      "comments": [
-        0,
-        1,
-        2,
-        3
-      ],
-      "title": "titttlleee",
+      "photo_url": "https://picsum.photos/300/300?random=2",
+      "photo_owner_id": 0,
+      "num_favs": 30,
+      "num_views": 60,
+      "num_comments": 10,
+      "photo_owner_name": "Samar Nabil",
+      "title": "First Photo Title",
+      "privacy": "public",
+      "description": "First Photo description",
+      "createdAt": "2021-05-04"
+    },
+    {
+      "id": 16,
+      "photo_url": "https://picsum.photos/400/300?random=2",
+      "photo_owner_id": 0,
+      "num_favs": 30,
+      "num_views": 60,
+      "num_comments": 10,
+      "photo_owner_name": "Samar Nabil",
+      "title": "First Photo Title",
       "privacy": "private",
-      "description": "descriptionnn",
-      "createdAt": "2021-05-29",
-      "UpdatedAt": "2021-05-29"
+      "description": "First Photo description",
+      "createdAt": "2021-05-04"
+    },
+    {
+      "id": 17,
+      "photo_url": "https://picsum.photos/500/300?random=2",
+      "photo_owner_id": 0,
+      "num_favs": 30,
+      "num_views": 60,
+      "num_comments": 10,
+      "photo_owner_name": "Samar Nabil",
+      "title": "First Photo Title",
+      "privacy": "private",
+      "description": "First Photo description",
+      "createdAt": "2021-05-04"
+    },
+    {
+      "id": 18,
+      "photo_url": "https://picsum.photos/600/300?random=2",
+      "photo_owner_id": 0,
+      "num_favs": 30,
+      "num_views": 60,
+      "num_comments": 10,
+      "photo_owner_name": "Samar Nabil",
+      "title": "First Photo Title",
+      "privacy": "public",
+      "description": "First Photo description",
+      "createdAt": "2021-05-04"
+    },
+    {
+      "id": 19,
+      "photo_url": "https://picsum.photos/200/200?random=2",
+      "photo_owner_id": 0,
+      "num_favs": 30,
+      "num_views": 60,
+      "num_comments": 10,
+      "photo_owner_name": "Samar Nabil",
+      "title": "First Photo Title",
+      "privacy": "public",
+      "description": "First Photo description",
+      "createdAt": "2021-05-04"
+    },
+    {
+      "id": 20,
+      "photo_url": "https://picsum.photos/300/200?random=2",
+      "photo_owner_id": 0,
+      "num_favs": 30,
+      "num_views": 60,
+      "num_comments": 10,
+      "photo_owner_name": "Samar Nabil",
+      "title": "First Photo Title",
+      "privacy": "private",
+      "description": "First Photo description",
+      "createdAt": "2021-05-04"
+    },
+    {
+      "id": 21,
+      "photo_url": "https://picsum.photos/400/200?random=2",
+      "photo_owner_id": 0,
+      "num_favs": 30,
+      "num_views": 60,
+      "num_comments": 10,
+      "photo_owner_name": "Samar Nabil",
+      "title": "First Photo Title",
+      "privacy": "private",
+      "description": "First Photo description",
+      "createdAt": "2021-05-04"
+    },
+    {
+      "id": 22,
+      "photo_url": "https://picsum.photos/300/200?random=4",
+      "photo_owner_id": 0,
+      "num_favs": 30,
+      "num_views": 60,
+      "num_comments": 10,
+      "photo_owner_name": "Samar Nabil",
+      "title": "First Photo Title",
+      "privacy": "private",
+      "description": "First Photo description",
+      "createdAt": "2021-05-04"
+    },
+    {
+      "id": 23,
+      "photo_url": "https://picsum.photos/600/200?random=2",
+      "photo_owner_id": 0,
+      "num_favs": 30,
+      "num_views": 60,
+      "num_comments": 10,
+      "photo_owner_name": "Samar Nabil",
+      "title": "First Photo Title",
+      "privacy": "public",
+      "description": "First Photo description",
+      "createdAt": "2021-05-04"
+    },
+    {
+      "id": 24,
+      "photo_url": "https://picsum.photos/200/400?random=2",
+      "photo_owner_id": 0,
+      "num_favs": 30,
+      "num_views": 60,
+      "num_comments": 10,
+      "photo_owner_name": "Samar Nabil",
+      "title": "First Photo Title",
+      "privacy": "public",
+      "description": "First Photo description",
+      "createdAt": "2021-05-04"
+    },
+    {
+      "id": 25,
+      "photo_url": "https://picsum.photos/300/400?random=2",
+      "photo_owner_id": 0,
+      "num_favs": 30,
+      "num_views": 60,
+      "num_comments": 10,
+      "photo_owner_name": "Samar Nabil",
+      "title": "First Photo Title",
+      "privacy": "public",
+      "description": "First Photo description",
+      "createdAt": "2021-05-04"
+    },
+    {
+      "id": 26,
+      "photo_url": "https://picsum.photos/400/400?random=2",
+      "photo_owner_id": 0,
+      "num_favs": 30,
+      "num_views": 60,
+      "num_comments": 10,
+      "photo_owner_name": "Samar Nabil",
+      "title": "First Photo Title",
+      "privacy": "public",
+      "description": "First Photo description",
+      "createdAt": "2021-05-04"
+    },
+    {
+      "id": 27,
+      "photo_url": "https://picsum.photos/500/300?random=3",
+      "photo_owner_id": 0,
+      "num_favs": 30,
+      "num_views": 60,
+      "num_comments": 10,
+      "photo_owner_name": "Samar Nabil",
+      "title": "First Photo Title",
+      "privacy": "public",
+      "description": "First Photo description",
+      "createdAt": "2021-05-04"
+    },
+    {
+      "id": 28,
+      "photo_url": "https://picsum.photos/600/300?random=3",
+      "photo_owner_id": 0,
+      "num_favs": 30,
+      "num_views": 60,
+      "num_comments": 10,
+      "photo_owner_name": "Samar Nabil",
+      "title": "First Photo Title",
+      "privacy": "public",
+      "description": "First Photo description",
+      "createdAt": "2021-05-04"
+    },
+    {
+      "id": 29,
+      "photo_url": "https://picsum.photos/200/200?random=3",
+      "photo_owner_id": 0,
+      "num_favs": 30,
+      "num_views": 60,
+      "num_comments": 10,
+      "photo_owner_name": "Samar Nabil",
+      "title": "First Photo Title",
+      "privacy": "public",
+      "description": "First Photo description",
+      "createdAt": "2021-05-04"
+    },
+    {
+      "id": 30,
+      "photo_url": "https://picsum.photos/300/200?random=3",
+      "photo_owner_id": 0,
+      "num_favs": 30,
+      "num_views": 60,
+      "num_comments": 10,
+      "photo_owner_name": "Samar Nabil",
+      "title": "First Photo Title",
+      "privacy": "public",
+      "description": "First Photo description",
+      "createdAt": "2021-05-04"
+    },
+    {
+      "id": 31,
+      "photo_url": "https://picsum.photos/400/200?random=3",
+      "photo_owner_id": 0,
+      "num_favs": 30,
+      "num_views": 60,
+      "num_comments": 10,
+      "photo_owner_name": "Samar Nabil",
+      "title": "First Photo Title",
+      "privacy": "public",
+      "description": "First Photo description",
+      "createdAt": "2021-05-04"
+    },
+    {
+      "id": 32,
+      "photo_url": "https://picsum.photos/500/200?random=3",
+      "photo_owner_id": 0,
+      "num_favs": 30,
+      "num_views": 60,
+      "num_comments": 10,
+      "photo_owner_name": "Samar Nabil",
+      "title": "First Photo Title",
+      "privacy": "public",
+      "description": "First Photo description",
+      "createdAt": "2021-05-04"
     }
   ],
-  "comments": [
-    {
-      "comment": "comment title",
-      "id": "0",
-      "user": {
-        "Fname": "John",
-        "Lname": "Smith",
-        "id": "100"
+  "comments":[
+      {
+        "comment": "7asbyyy allaaaah",
+        "id": "0",
+        "user": {
+          "Fname": "John",
+          "Lname": "Smith"
+        },
+        "createdAt": "2020-5-23",
+        "updatedAt": "2021-4-2"
       },
-      "createdAt": "2020-5-23",
-      "updatedAt": "2021-4-2"
-    },
-    {
-      "comment": "comment title",
-      "id": "1",
-      "user": {
-        "Fname": "Samar",
-        "Lname": "Nabil",
-        "id": "100"
+      {
+        "comment": "yaraaaaab",
+        "id": "1",
+        "user": {
+          "Fname": "Samar",
+          "Lname": "Nabil"
+        },
+        "createdAt": "2020-5-23",
+        "updatedAt": "2021-4-2"
       },
-      "createdAt": "2020-5-23",
-      "updatedAt": "2021-4-2"
-    },
-    {
-      "comment": "comment",
-      "id": "2",
-      "user": {
-        "Fname": "hi",
-        "Lname": "hi",
-        "id": "100"
+      {
+        "comment": "offffff",
+        "id": "2",
+        "user": {
+          "Fname": "hi",
+          "Lname": "hi"
+        },
+        "createdAt": "2020-5-23",
+        "updatedAt": "2021-4-2"
       },
-      "createdAt": "2020-5-23",
-      "updatedAt": "2021-4-2"
-    },
-    {
-      "comment": "!!!!!!!!!!",
-      "id": "3",
-      "user": {
-        "Fname": "John",
-        "Lname": "Smith",
-        "id": "100"
-      },
-      "createdAt": "2020-5-23",
-      "updatedAt": "2021-4-2"
-    },
-    {
-      "comment": "samar new comment",
-      "user": {
-        "Fname": "John",
-        "Lname": "Smith",
-        "id": "100"
-      },
-      "createdAt": "2020-5-23",
-      "updatedAt": "2021-4-2",
-      "id": "IDWU92j"
-    },
-    {
-      "comment": "hi",
-      "user": {
-        "Fname": "John",
-        "Lname": "Smith",
-        "id": "100"
-      },
-      "createdAt": "2020-5-23",
-      "updatedAt": "2021-4-2",
-      "id": "C4zjCaQ"
-    },
-    {
-      "comment": "hey",
-      "user": {
-        "Fname": "John",
-        "Lname": "Smith",
-        "id": "100"
-      },
-      "createdAt": "2020-5-23",
-      "updatedAt": "2021-4-2",
-      "id": "rUMhykg"
-    },
-    {
-      "comment": "new comment",
-      "user": {
-        "Fname": "John",
-        "Lname": "Smith",
-        "id": "100"
-      },
-      "createdAt": "2020-5-23",
-      "updatedAt": "2021-4-2",
-      "id": "hcPvs9x"
-    }
+      {
+        "comment": "!!!!!!!!!!",
+        "id": "3",
+        "user": {
+          "Fname": "John",
+          "Lname": "Smith"
+        },
+        "createdAt": "2020-5-23",
+        "updatedAt": "2021-4-2"
+      }
   ],
   "following": [
     {

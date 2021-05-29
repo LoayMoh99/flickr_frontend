@@ -4,7 +4,6 @@ import Userinfo from './components/HeaderBar/userInfo'
 import FollwingFollowers from './components/followingFollowers/followingFollowers'
 import Photostream from "./components/photostream/Photostream"
 import EditInfo from "./components/photostream/EditInfo"
-import Slideshow from "./components/photostream/Slideshow"
 import TotExplore from "./components/Explore/TotExplore"
 import CameraRoll from "./components/CameraRoll/CamreRoll"
 import About from "./components/About/About"
