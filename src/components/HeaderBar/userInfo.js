@@ -112,20 +112,6 @@ export default function Userinfo(props){
         setGroup(true);
         setStats(isStats && !isStats);
     }
-
-    /*const [data, setData] = useState();
-    useEffect(() => {
-        const fetchData = async () => {
-        const result = await axios(
-            'https://58003e7c-80ff-4927-a2f7-95afb9b9542b.mock.pstmn.io/getuserinfo',
-        );
-
-        setData(result);
-        };
-    
-        fetchData();
-    });
-    console.log(data);*/
     const navStyle={
         color:'white'
     };

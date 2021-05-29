@@ -10,7 +10,7 @@ import axios from "axios"
 const endpoint = 'http://localhost:3001/'
 //import { Link } from 'react-router-dom'
 export default function ImageDetails(props){
-    const [photos, setPhotos] = useState([]);
+    const [images, setPhotos] = useState([]);
     useEffect(() => {
         const fetchData = async () => {
         const {data,status} = await axios.get( endpoint+'photos',);
@@ -22,16 +22,18 @@ export default function ImageDetails(props){
     
         fetchData();
     },[]);
+    const image=images[0].photo_url;
+    console.log(image);
     return(
         <div className="showedImage">
             <div id="carouselExampleControls" className="carousel slide"  data-bs-interval="false">
             <div className="carousel-inner">
             <div className="carousel-item active adjustCarousel-item">
                 <div className="imageSlide">
-                    <img src={photos[0].photo_url} alt=""></img>
+                    <img src={image} alt=""></img>
                 </div>
             </div>
-            {photos.map(photo=>(<ViewedImage url={photo.photo_url}/>))} 
+            {images.map(photo=>(<ViewedImage url={images.photo_url}/>))} 
                 </div>
                 <button className="carousel-control-prev adjustbutton" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                     <span className="carousel-control-prev-icon" aria-hidden="true"></span>

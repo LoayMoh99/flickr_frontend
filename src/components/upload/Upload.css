@@ -44,4 +44,11 @@
 #selectedImg{
     width: 200px;
     height: auto;
+    border:2px palevioletred solid;
+}
+
+.postPhoto{
+    margin-left: 20px;
+    border: 1px darkslategray solid;
+    border-radius: 10px;
 }
