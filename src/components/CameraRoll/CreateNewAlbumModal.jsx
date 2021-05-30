@@ -1,8 +1,27 @@
-import React from 'react';
+import React,{useState , useEffect } from 'react';
 import './EditModal.css';
 import './CreateNewAlbumModal.css';
 
 function CreateNewAlbumModal(props) {
+
+  //new titles and description
+  const [inputTitle, setInputTitle] = useState("");
+  const [inputDescription , setInputDescription] = useState("");
+  
+  console.log(props.imgIdsCreateAlbum);
+  function handleTitleChange(event) {
+    const newTitle = event.target.value;
+    setInputTitle(newTitle);
+    // API
+    console.log(inputTitle);
+  }
+
+  function handleDescriptionChange(event) {
+    const newDescription  = event.target.value;
+    setInputDescription(newDescription);
+    // API
+    console.log(inputDescription);
+  }
 
   return (
     <>
@@ -14,9 +33,9 @@ function CreateNewAlbumModal(props) {
             Create a new album
           </h3>
           {/* <div className="title-desc-container"> */}
-            <input className="createTitle" type="text" placeholder="Album name" />
+            <input className="createTitle" type="text" placeholder="Album name" onChange={handleTitleChange} />
             {/* <hr /> */}
-            <textarea className="createDescription" placeholder="Description (optional)" />
+            <textarea className="createDescription" placeholder="Description (optional)" onChange={handleDescriptionChange} />
 
           {/* </div> */}
           

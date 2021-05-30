@@ -60,7 +60,7 @@ function CamreRoll() {
   const [isCreateAlbumOpen , setCreateAlbumOpen] = useState(false);
   const [idToDelete,setID]=useState(0);
   const [imgDated, setimgDated] = useState([]);
-
+  const [toEditIds, setToEditIds] = useState([]);
 
   
   const toggleAddModal = () => {
@@ -107,6 +107,7 @@ function CamreRoll() {
     // Edit
     return listClone.splice(index, 1);
   }
+
   function handleIncrement(c) {
     return c + 1;
   }
@@ -120,13 +121,18 @@ function CamreRoll() {
     let countCopy = count;
     console.log(countCopy);
     if (!countCopy) {
+
       setToEdit([]);
+      setToEditIds([]);
+
       if (!isModalOpen) {
-        // setModalIsOpen(true);
+
         setModalIsOpen(!isModalOpen);
+
         setToEdit((prevItems) => [...prevItems, imgObj]);
-        // setToEdit(() => toEdit.push(imgObj));
-        // setCount(count + 1);
+        setToEditIds((prevItems)=>[...prevItems,imgObj.photo_id]);
+
+
         countCopy = handleIncrement(countCopy);
         setCount(countCopy);
         console.log(countCopy);
@@ -138,21 +144,22 @@ function CamreRoll() {
       }
     } else {
       const isHere = containsObject(imgObj, toEdit);
-      // const isHere = toEdit.includes(imgObj);
+      
       console.log(isHere);
       if (!isHere) {
+
         setToEdit((prevItems) => [...prevItems, imgObj]);
-        // setToEdit(() => toEdit.push(imgObj));
-        // setCount(count + 1);
-        // setCount(handleIncrement(count));
+        setToEditIds((prevItems)=>[...prevItems,imgObj.photo_id]);
+
         countCopy = handleIncrement(countCopy);
         setCount(countCopy);
       }
       console.log(count);
       if (isHere) {
+
         setToEdit(handleDelete(imgObj, toEdit));
-        // setCount(count - 1);
-        // setCount(handleDecrement(count));
+        setToEditIds(handleDelete(imgObj.photo_id, toEditIds));
+
         countCopy = handleDecrement(countCopy);
         setCount(countCopy);
       }
@@ -160,13 +167,29 @@ function CamreRoll() {
       // we now checked if the image was already selected .. unselect it.. count --
       // if no image left close modal
       console.log(toEdit);
+      console.log(toEditIds);
+
       if (!countCopy) {
-        // setModalIsOpen(false);
+     
         setToEdit([]);
+        setToEditIds([]);
+
         setModalIsOpen(!isModalOpen);
       }
     }
+
         };
+
+      // // extract ids from toEdit photos array
+      // toEdit.map(photoSelected=>setToEditIds((prevItems) => [...prevItems,photoSelected.photo_id]));
+      //   console.log(toEditIds);
+
+        // function extractToEditIds(){
+        //   let prevItems=[];
+        //  toEdit.map(photoSelected=>(prevItems) => [...prevItems,photoSelected.photo_id]);
+        //  //console.log(toEditIds);
+        //  return prevItems;
+        // }
 
         const grouped = _.groupBy(sortedImagesUploaded, 'createdAt');
         const keys = Object.keys(grouped);
@@ -269,7 +292,7 @@ function CamreRoll() {
           onRequestCreate={toggleCreateAlbum}
           imgAdd={toEdit}
           countAdd={count}
-
+          
         />
         )}
       </main>
@@ -281,11 +304,14 @@ function CamreRoll() {
         />
         )}
       </main>
+
+
+
       <main>
         {isCreateAlbumOpen && (
         <CreateNewAlbumModal
           onRequestCreateClose={toggleCreateAlbum}
-          imgCreateAlbum={toEdit}
+          imgIdsCreateAlbum={toEditIds}
           
         />
         )}
