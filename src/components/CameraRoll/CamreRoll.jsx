@@ -180,17 +180,6 @@ function CamreRoll() {
 
         };
 
-      // // extract ids from toEdit photos array
-      // toEdit.map(photoSelected=>setToEditIds((prevItems) => [...prevItems,photoSelected.photo_id]));
-      //   console.log(toEditIds);
-
-        // function extractToEditIds(){
-        //   let prevItems=[];
-        //  toEdit.map(photoSelected=>(prevItems) => [...prevItems,photoSelected.photo_id]);
-        //  //console.log(toEditIds);
-        //  return prevItems;
-        // }
-
         const grouped = _.groupBy(sortedImagesUploaded, 'createdAt');
         const keys = Object.keys(grouped);
         const values = Object.values(grouped);
@@ -291,6 +280,7 @@ function CamreRoll() {
           onRequestAddClose={toggleAddModal}
           onRequestCreate={toggleCreateAlbum}
           imgAdd={toEdit}
+          imgAddIds= {toEditIds}
           countAdd={count}
           
         />

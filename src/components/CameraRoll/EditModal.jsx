@@ -11,11 +11,13 @@ import React from 'react';
 // import { fa-tag } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTag } from '@fortawesome/free-solid-svg-icons';
+import { faUserFriends } from '@fortawesome/free-solid-svg-icons';
 import './EditModal.css';
 import DropdownPrivacy from './DropdownPrivacy'; 
 
 function EditModal(props) {
   const tag = <FontAwesomeIcon icon={faTag} color="DarkGrey" />;
+  const people = <FontAwesomeIcon icon={faUserFriends} color="DarkGrey" />;
   return (
     <>
 
@@ -40,10 +42,17 @@ function EditModal(props) {
 
           <span className="space" />
           <DropdownPrivacy />
-          <div className="edit-tag">
-            {tag}
-            {'  '}
-            <input type="text" className="no-outline" placeholder="Add new tags" />
+          <div className="row">
+            <div className="edit-tag">
+              {tag}
+              {'  '}
+              <input type="text" className="no-outline" placeholder="Add new tags" />
+            </div>
+            <div className="edit-tag">
+              {people}
+              {'  '}
+              <input type="text" className="no-outline" placeholder="Add new people" />
+            </div>
           </div>
           <div className="edit-footer">
             <button

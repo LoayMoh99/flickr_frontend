@@ -148,6 +148,8 @@
 }
 .edit-tag {
   padding-top: 25px;
+  margin-right: 76px;
+  margin-left: 20px;
 }
 .textarea-edit {
   -webkit-writing-mode: horizontal-tb !important;

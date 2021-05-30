@@ -16,9 +16,8 @@ const endpoint = 'http://localhost:3001/'
 
 function AddModal(props) {
 
-
   const [album,setAlbum] =useState([]);
-  // const album_id=0;
+  const  { imgAddIds }= props;
 
   //This function is called whenever this album page is opened
   //It gets the details of the selected album and set the const album with these details 
@@ -41,6 +40,8 @@ console.log(album);
   // const albumCover='https://picsum.photos/id/237/200/300';
   const search = <FontAwesomeIcon icon={faSearch} color="DarkGrey" />;
   const plus = <FontAwesomeIcon icon={faPlus} color="DarkGrey" />;
+
+
 
   return (
     <>
@@ -68,7 +69,10 @@ console.log(album);
             (<AddAlbumImages 
             albumCover = {album.coverPhoto}
             albumTitle = {album.title}
-            photoCount = {album.photos.length}
+            //photoCount = {album.photos.length}
+            albumId ={album._id}
+            albumPhotos = {album.photos}
+            imgAddIds = {imgAddIds}
            />)
            ) 
             }
@@ -82,7 +86,7 @@ console.log(album);
          <button
               id="doneAdd"
               type="button"
-             // onClick={props.onRequestEditClose} // should be modified to actually upadate the database with the last edit
+              onClick={props.onRequestAddClose}
             >Done</button>
         </div>
       </div>

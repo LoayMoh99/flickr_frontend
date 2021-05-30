@@ -14,6 +14,7 @@ function AlbumPage() {
 
 
   const [album,setAlbum] =useState([]);
+  // const { album_id } = props;
   const album_id=0;
 
   //This function is called whenever this album page is opened
