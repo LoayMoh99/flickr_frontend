@@ -33,7 +33,7 @@ function ImageGrid(props){
         setMouseOver(false);
     }
 
-    console.log(props.title)
+    console.log(props.id)
 
 
     return(

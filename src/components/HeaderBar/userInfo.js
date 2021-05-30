@@ -9,6 +9,7 @@ import Photostream from '../photostream/Photostream'
 import CameraRoll from '../CameraRoll/CamreRoll'
 import axios from 'axios'
 import {Link} from "react-router-dom";
+const endpoint = 'http://localhost:3001/'
 
 /*componentDidMount(){
     axios.get('')
@@ -16,7 +17,11 @@ import {Link} from "react-router-dom";
 
 }*/
 
+
+
+
 export default function Userinfo(props){
+    
     const [isPhotoStream,setPhotoStream] = useState(true);
     const [isCameraRoll,setCameraRoll] = useState(false);
     const [isAbout,setAbout] = useState(false);
@@ -115,6 +120,8 @@ export default function Userinfo(props){
     const navStyle={
         color:'white'
     };
+
+
     return(
         
         <div>
@@ -133,8 +140,8 @@ export default function Userinfo(props){
                                     <div className="follwingFollowers">
                                         <p>{props.username}</p>
                                         <ul className="NavbarAndheaderul">
-                                        <li><Link  style={navStyle} to="/Followers"><a>{props.num_followers} followers</a></Link></li>
-                                            <li><Link  style={navStyle} to="/FollwingFollowers"><a>{props.num_following} following</a></Link></li>
+                                        <li><Link  style={navStyle} to="/Followers">{props.num_followers} followers</Link></li>
+                                            <li><Link  style={navStyle} to="/FollwingFollowers">{props.num_following} following</Link></li>
                                         </ul>
                                     </div>
                                     <div className="joined">

@@ -5,6 +5,7 @@ import Slideshow from "./Slideshow"
 import './ImageGrid.css'
 import ImageDetails from '../imageDetails/imageDetails'
 import axios from "axios"
+import { Link } from 'react-router-dom'
 const endpoint = 'http://localhost:3001/'
 
 function Photostream(){
@@ -22,7 +23,9 @@ function Photostream(){
  
     fetchData();
   },[]);
-    
+  const navStyle={
+    color:'white'
+};
     
     
     const [isModalOpen, setModalIsOpen] = useState(false);
@@ -34,10 +37,18 @@ function Photostream(){
         console.log("l modal fata7")
 
     }
+    const [isPhotoSelected, setPhotoSelected] = useState(false);
     function showPhoto(id){
-        console.log(id);
+        console.log("PhotoStream",id);
         setPhoto(true);
+        setPhotoSelected(id);
     }
+
+    
+    // function showPhotoSelected(url){
+    //     console.log("URL"+url);
+    //     setPhotoSelected(url);
+    // }
 
     return (
         <>
@@ -49,7 +60,7 @@ function Photostream(){
         <div className="grid">
         {photos.map(photo => (
             <ImageGrid
-            id = {photo.photo_id}
+            id = {photo.id}
             url ={photo.photo_url} 
             title ={photo.title} 
             description = {photo.description}
@@ -61,6 +72,7 @@ function Photostream(){
             numberOfComments ={photo.num_comments}
             numberOfViews={photo.num_views}
             onOpenRequest={showPhoto}
+            // onClick={showPhotoSelected}
             />
         ))}
         <div className="placeholder"></div>
@@ -70,7 +82,8 @@ function Photostream(){
         {isModalOpen && <Slideshow onRequestClose={toggleModal} />}
         </main>
 
-        {isPhoto && <ImageDetails/>}
+        {/* {isPhoto && <ImageDetails photo_url={}/>} */}
+        {isPhoto && <Link  style={navStyle} to="/imagedetails"><ImageDetails photo_id={isPhotoSelected}/></Link>}
         </div>
         </>
    ) 

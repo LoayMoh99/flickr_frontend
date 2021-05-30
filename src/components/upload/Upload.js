@@ -10,30 +10,41 @@ const endpoint = 'http://localhost:3001/'
 
 export default function Upload(props){
 
-    useEffect(() => {
-        fetchData();
-    }, []);
+    
+    //const [data, setData] = useState([]);
+
+    // useEffect(() => {
+    //     fetchData();
+    // }, []);
     const navStyle={
         color:'black'
     };
 
     //////////////////////////post now////////////////////////////////////////////////
 
-    const [data, setData] = useState([]);
+    // const fetchData = async () => {
+    //     const { photoos, status } = await axios.get(endpoint + "photos",);
+    //     console.log(status);
+    //     if (status === 200) {
+    //         setData(photoos);
+    //     }
+    // };
 
-    const fetchData = async () => {
-        const { data, status } = await axios.get(endpoint + "photos",);
-        console.log(status);
-        if (status === 200) {
-            setData(data);
-        }
-    };
+    const [image, setImage] = useState("");
+    const onchange = e => setImage(URL.createObjectURL(e.target.files[0]));
+
+    const [tag, setTag] = useState();
+    const addtag = e => setTag(e.target.value);
+    console.log(tag);
+
+    const plus = <FontAwesomeIcon icon={faPlusCircle} color="DarkGrey" />;
 
     const addImageToCameraroll = async () => {
         console.log("yalahwaaaiii");
         console.log(image);
         const newImage = {
-            photo_id: 33,
+            //photo_id: 33,
+            //change it to image
             photo_url: image,
             photo_owner_id: 0,
             num_favs: 30,
@@ -46,24 +57,17 @@ export default function Upload(props){
             createdAt: "2021-06-04"
         };
         console.log("status1");
-        const { status } = await axios.post(endpoint + "photos", newImage);
+        const { status } = await axios.post(endpoint+"photos", newImage);
         console.log("status");
         console.log(status);
-        if (status === 201) {
-            fetchData();
-        }
+        // if (status === 201) {
+        //     fetchData();
+        // }
     };
 
     ///////////////////////////////////////////////////////////////////////////////////////////
 
-    const [image, setImage] = useState();
-    const onchange = e => setImage(URL.createObjectURL(e.target.files[0]));
-
-    const [tag, setTag] = useState();
-    const addtag = e => setTag(e.target.value);
-    console.log(tag);
-
-    const plus = <FontAwesomeIcon icon={faPlusCircle} color="DarkGrey" />;
+    
 
     return(
         <div className="uploadNavbar">
@@ -82,7 +86,6 @@ export default function Upload(props){
             </div>
             </div>
             </nav>
-
             <div className="uploadText">
                 {!image && <div><h3>You can upload 1000 more photos and videos</h3>
                 <p>Drag & drop photos here</p>
