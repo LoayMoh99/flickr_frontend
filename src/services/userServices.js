@@ -66,8 +66,28 @@ export async function GetUserFavs(){
 
 export async function PostUserFavs(id,object){
   try{
-      // const response = await axios.post( SERVER_URL+'user/fav',id);
-      const response = await axios.post( SERVER_URL+'userFav');
+      // const response = await axios.post( SERVER_URL+'favs',id);
+      const response = await axios.post( SERVER_URL+'userFav',object);
+      //Success
+      return(response)
+  } catch (error){
+      if (error.response){
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request){
+        console.log(error.request);
+      } else {
+        console.log('Error', error.message);
+      }
+      console.log(error);
+  }
+};
+
+export async function DeleteUserFavs(id){
+  try{
+      // const response = await axios.delete( SERVER_URL+'favs?photo_id='+id);
+      const response = await axios.delete( SERVER_URL+'userFav/'+id);
       //Success
       return(response)
   } catch (error){

@@ -2,6 +2,8 @@ import React,{useState} from "react"
 import CommentBox from "../Comments/CommentBox"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faStar,faPlusSquare,faComment} from '@fortawesome/free-solid-svg-icons'
+import {PostUserFavs,DeleteUserFavs} from '../../services/userServices'
+
 
 function ImageGrid(props){
 
@@ -40,6 +42,34 @@ function ImageGrid(props){
     function addToFav(){
         console.log(props.id);
         //api
+        const object={
+            "photoUrl": "https://picsum.photos/200/200?random=2",
+            "title": "added Fav",
+            "descript": "description",
+            "Fav": [],
+            "privacy": "public",
+            "tags": [],
+            "ownerId": 0,
+            "peopleTags": [],
+            "comments": 78,
+            "Favs": 60,
+            "Username": "username",
+            "Name": "Samar Nabil"
+        }
+        PostUserFavs(props.id,object).then( response => {
+            console.log(response);
+            if(response.status === 500){
+                DeleteUserFavs(props.id).then( response => {
+                    console.log(response);
+                })
+            }
+        })
+    }
+
+    function deleteFav(){
+        DeleteUserFavs(props.id).then( response => {
+            console.log(response);
+        })
     }
 
     return(
@@ -65,7 +95,7 @@ function ImageGrid(props){
                             <li  onClick={openCommentBox}> {comment} {props.numberOfComments}</li>
                             {isUser?
                                 <>
-                                {isFav? <li onClick={addToFav}>{fav} {props.numberOfFavs}</li>:<li> {fav} {props.numberOfFavs}</li>}
+                                {isFav? <li onClick={deleteFav}>{fav} {props.numberOfFavs}</li>:<li> {fav} {props.numberOfFavs}</li>}
                                 </>
                             :
                             <li onClick={addToFav}>{fav} {props.numberOfFavs}</li>}

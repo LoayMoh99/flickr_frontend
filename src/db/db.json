@@ -552,7 +552,7 @@
       "Name": "Samar Nabil"
     }
   ],
-  "peoplePhotos":[
+  "peoplePhotos": [
     {
       "id": 0,
       "userName": "samarnabil",
@@ -659,7 +659,7 @@
       "numberOfComments": 5
     }
   ],
-  "peopleFav":[
+  "peopleFav": [
     {
       "id": 0,
       "userName": "peoplefav",
@@ -702,6 +702,5 @@
       "photoUrl": "https://picsum.photos/600/200?random=2",
       "numberOfComments": 7
     }
-  
   ]
 }
