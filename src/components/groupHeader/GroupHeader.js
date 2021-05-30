@@ -78,9 +78,9 @@ fetchData();
                                 <div className="numbers">
                                     <div className="follwingFollowers">
                                         <p>{props.username}</p>
-                                        <ul className="NavbarAndheaderul">
-                                        <li><Link  style={navStyle} to="/Followers">{props.num_followers} followers</Link></li>
-                                            <li><Link  style={navStyle} to="/FollwingFollowers">{props.num_following} following</Link></li>
+                                        <ul className="NavbarAndheaderul"  id="groupAdj">
+                                            <li>Members</li>
+                                            <li> Photos</li>
                                         </ul>
                                     </div>
                                     <div className="joined">
