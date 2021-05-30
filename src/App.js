@@ -27,7 +27,7 @@ function App() {
     <Router>
     <div className="App">
       {/* <Header/> */}
-      {/* <Switch>
+      <Switch>
       <Route path="/" exact component={App2}/>
       <Route path="/About" component={About}/>
       <Route path="/Blog" component={Blog}/>
@@ -38,12 +38,12 @@ function App() {
       <Route path="/Followers" component={Followers}/>
       <Route path="/Explore" component={TotExplore}/>
       <Route path="/upload" component={Upload}/>
-      <Route path="/imagedetails" component={ImageDetails}/>
-      </Switch> */}
+      <Route path="/imagedetails/:id" component={ImageDetails}/>
+      </Switch>
       {/* <ImageDetails
       image_url= {dd}
       /> */}
-      <GroupHeader groupId="608c80ce54e3d74b34d9bb5a"/>
+      {/* <GroupHeader groupId="608c80ce54e3d74b34d9bb5a"/> */}
       {/* <Footer/>  */}
     </div>
     </Router>

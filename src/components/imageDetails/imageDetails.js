@@ -6,17 +6,23 @@ import defaultProfile from '../../img/deefault.jpg';
 import t1 from '../../img/img/dBackground.jpg';
 import t2 from '../../img/img/ddBackground.jpg'
 import ViewedImage from './ViewedImage'
+import Header from '../navbar/mainNav';
 import axios from "axios"
+import { Link,useLocation } from 'react-router-dom'
+import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 const endpoint = 'http://localhost:3001/'
-//import { Link } from 'react-router-dom'
-export default function ImageDetails(props){
-    
+export default function ImageDetails(){
+    //const location=useLocation();
+    //const locationParam=location.params;
+    const {id}=useParams();
+    console.log("locationooo"+id);
+    console.log("location isPhotoSelected"+id);
     const [images, setPhotos] = useState([]);
     const [image, setImage] = useState("");
-    const [selectedId,setSelectedI]=useState(props.photo_id);
+    //const [selectedId,setSelectedI]=useState(locationParam.photo_id);
     //const Id=(props.photo_id).toString();
     console.log("imageeeee"+image);
-    console.log("idddddddddd"+props.photo_id);
+    console.log("idddddddddd"+id);
     useEffect(() => {
         const fetchData = async () => {
         const {data,status} = await axios.get( endpoint+'photos');
@@ -24,8 +30,8 @@ export default function ImageDetails(props){
         if (status === 200){
             setPhotos(data);
         }
-        const response = await axios.get( endpoint+'photos?id='+props.photo_id);
-        console.log(response);
+        const response = await axios.get( endpoint+'photos?id='+id);
+        console.log("resonse",response);
         if (response.status === 200){
             console.log("status2",response.status);
             setImage(response.data[0].photo_url);
@@ -39,7 +45,9 @@ export default function ImageDetails(props){
     },[]);
     console.log(image);
     return(
-        <div className="showedImage">
+        <div>
+            <Header/>
+            <div className="showedImage">
             <div id="carouselExampleControls" className="carousel slide"  data-bs-interval="false">
             <div className="carousel-inner">
             <div className="carousel-item active adjustCarousel-item">
@@ -56,6 +64,7 @@ export default function ImageDetails(props){
                     <span className="carousel-control-next-icon" aria-hidden="true"></span>
                 </button>
                 </div>
+        </div>
         </div>
     );
 }

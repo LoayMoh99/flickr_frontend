@@ -41,7 +41,7 @@
       "createdAt": "2021-05-04"
     },
     {
-      "photo_url": "blob:http://localhost:3000/fc71a771-1fbf-4370-a3b9-2995c5454018",
+      "photo_url": "blob:http://localhost:3000/877f5844-067e-4148-a8f1-ba2b075f2451",
       "photo_owner_id": 0,
       "num_favs": 30,
       "num_views": 60,
@@ -52,19 +52,6 @@
       "description": "First Photo description",
       "createdAt": "2021-06-04",
       "id": 33
-    },
-    {
-      "photo_url": "blob:http://localhost:3000/5eb13aa1-2c47-4568-ab15-9ed02ba1ecb5",
-      "photo_owner_id": 0,
-      "num_favs": 30,
-      "num_views": 60,
-      "num_comments": 10,
-      "photo_owner_name": "Farah Mostafa",
-      "title": "First Photo Title",
-      "privacy": true,
-      "description": "First Photo description",
-      "createdAt": "2021-06-04",
-      "id": 34
     }
   ],
   "following": [

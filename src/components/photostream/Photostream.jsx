@@ -5,7 +5,8 @@ import Slideshow from "./Slideshow"
 import './ImageGrid.css'
 import ImageDetails from '../imageDetails/imageDetails'
 import axios from "axios"
-import { Link } from 'react-router-dom'
+import $ from 'jquery'; 
+import { Link , Route, useParams } from 'react-router-dom'
 const endpoint = 'http://localhost:3001/'
 
 function Photostream(){
@@ -22,8 +23,8 @@ function Photostream(){
     };
  
     fetchData();
-  },[]);
-  const navStyle={
+    },[]);
+    const navStyle={
     color:'white'
 };
     
@@ -37,18 +38,19 @@ function Photostream(){
         console.log("l modal fata7")
 
     }
-    const [isPhotoSelected, setPhotoSelected] = useState(false);
+    let strId;
+    let isPhotoSelected;
     function showPhoto(id){
         console.log("PhotoStream",id);
+        isPhotoSelected=id;
         setPhoto(true);
-        setPhotoSelected(id);
+        console.log("after click",isPhotoSelected);
+        strId=isPhotoSelected.toString();
+        console.log("sent id str",strId);
     }
-
+    console.log("isPhoto",isPhoto);
+    console.log("sent id",isPhotoSelected);
     
-    // function showPhotoSelected(url){
-    //     console.log("URL"+url);
-    //     setPhotoSelected(url);
-    // }
 
     return (
         <>
@@ -59,6 +61,7 @@ function Photostream(){
 
         <div className="grid">
         {photos.map(photo => (
+            <Link  style={navStyle} to={`/imagedetails/${photo.id}`}>
             <ImageGrid
             id = {photo.id}
             url ={photo.photo_url} 
@@ -72,8 +75,7 @@ function Photostream(){
             numberOfComments ={photo.num_comments}
             numberOfViews={photo.num_views}
             onOpenRequest={showPhoto}
-            // onClick={showPhotoSelected}
-            />
+            /></Link>
         ))}
         <div className="placeholder"></div>
         </div>
@@ -83,7 +85,9 @@ function Photostream(){
         </main>
 
         {/* {isPhoto && <ImageDetails photo_url={}/>} */}
-        {isPhoto && <Link  style={navStyle} to="/imagedetails"><ImageDetails photo_id={isPhotoSelected}/></Link>}
+        {/* {isPhoto && <Link  style={navStyle} to="/imagedetails"><ImageDetails photo_id={isPhotoSelected}/></Link>} */}
+        
+        {/* {isPhoto &&  farahh</Link>} */}
         </div>
         </>
    ) 
