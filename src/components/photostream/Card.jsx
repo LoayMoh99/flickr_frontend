@@ -20,12 +20,6 @@ function Card(props){
     const [privacy , setPrivacy] = useState(props.privacy);
     const [isPublic , setIsPublic] = useState (false);
 
-    // const currentPrivacy = privacy
-    // if(props.privacy === 'public'){
-    //     setIsPublic(true);
-    // }else{
-    //     setIsPublic(false);
-    // }
 
     function handleTitleChange(event) {
         const newTitle = event.target.value;
@@ -38,11 +32,43 @@ function Card(props){
     }
 
     function changeToPublic(){
-
+        setPrivacy('public');
+          // const object = {photos:[props.id] , title:inputTitle , description:inputDescription , privacy:privacy}
+        const object ={
+            "photoUrl": props.url,
+            "ownerId": props.ownerId,
+            "num_favs": props.numberOfFavs,
+            "comments": [0,1,2,3],
+            "title": inputTitle,
+            "privacy": privacy,
+            "description": inputDescription,
+            "createdAt": "2021-05-29",
+            "UpdatedAt": "2021-05-29"
+        }
+        //API
+        PutPhoto(props.id,object).then( response => {
+            console.log(response);
+        });
     }
 
     function changeToPrivate(){
-
+        setPrivacy('private');
+        // const object = {photos:[props.id] , title:inputTitle , description:inputDescription , privacy:privacy}
+      const object ={
+          "photoUrl": props.url,
+          "ownerId": props.ownerId,
+          "num_favs": props.numberOfFavs,
+          "comments": [0,1,2,3],
+          "title": inputTitle,
+          "privacy": privacy,
+          "description": inputDescription,
+          "createdAt": "2021-05-29",
+          "UpdatedAt": "2021-05-29"
+      }
+      //API
+      PutPhoto(props.id,object).then( response => {
+          console.log(response);
+      });
     }
 
     function changeLayout(){ 
@@ -53,7 +79,6 @@ function Card(props){
     function confirmEdit(){
         console.log(inputTitle);
         console.log(inputDescription);
-        // console.log(privacy);
         console.log(props.id)
         // const object = {photos:[props.id] , title:inputTitle , description:inputDescription , privacy:privacy}
         const object =       {
@@ -73,7 +98,6 @@ function Card(props){
         });
         changeLayout();
     }
-
 
 
     return(

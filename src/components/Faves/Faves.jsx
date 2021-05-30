@@ -1,25 +1,36 @@
 import React,{useState,useEffect} from "react"
 import ImageGrid from "../photostream/ImageGrid"
 import NavBar from "../photostream/NavBar"
-import axios from "axios"
-const endpoint = 'http://localhost:3001/'
+import {GetUserFavs} from "../../services/userServices"
+import {GetPeopleFavs} from "../../services/peopleServices"
 
-function Faves(){
+function Faves(props){
 
-//Get Fav photos
-const [photos, setPhotos] = useState([]);
-useEffect(() => {
-    const fetchData = async () => {
-    const {data,status} = await axios.get( endpoint+'photos',);
-    console.log(status);
-    if (status === 200){
-        setPhotos(data);
-    }
-};
+    //user/people boolean -> from userInfo token handling
+    // const [isUser , setIsUser] = useState([props.isUser])
+    const [isUser , setIsUser] = useState(true);
+    // const [userId , setUserId] = useState(props.userId)
+    const [userId , setUserId] = useState(0);
+    // const [userName , setUserName] = useState(props.userName)
+    const [userName , setUserName] = useState('');
+    const [isFav , setIsFav] = useState(true);
+ 
+    //Get Fav photos
+    const [userFavs, setUserFavs] = useState([]);
+    const [peopleFavs, setPeopleFavs] = useState([]);
 
-fetchData();
-},[]);
+    //get request
+    useEffect( () =>{
+        // get user favs
+        GetUserFavs().then( response => {
+            setUserFavs(response.data);
+        })
 
+        //get people favs by userName
+        GetPeopleFavs(userName).then( response => {
+            setPeopleFavs(response.data);
+        })
+    },[userFavs,userId])
 
 
 return (
@@ -28,26 +39,45 @@ return (
     <NavBar 
         viewMode = {false}
     />
-
     <div className="grid">
-    {photos.map(photo => (
-        <ImageGrid
-        id = {photo.photo_id}
-        url ={photo.photo_url} 
-        title ={photo.title} 
-        description = {photo.description}
-        date = {photo.createdAt}
-        privacy = {photo.privacy}
-        ownerName = {photo.photo_owner_name}
-        ownerId = {photo.photo_owner_id}
-        numberOfFavs = {photo.num_favs}
-        numberOfComments ={photo.num_comments}
-        numberOfViews={photo.num_views}
-        />
-    ))}
+    {isUser?
+        <>
+        {userFavs.map(photo => (
+            <ImageGrid
+            id = {photo.id}
+            url ={photo.photoUrl} 
+            title ={photo.title} 
+            description = ''
+            privacy = {photo.privacy}
+            ownerName = {photo.Name}
+            ownerId = {photo.ownerId}
+            numberOfFavs = {photo.Favs}
+            numberOfComments ={photo.comments}
+            viewMode ={isUser}
+            favMode = {isFav}
+            />
+        ))}
+        </>
+    :
+        //get people favs
+        <>
+        {peopleFavs.map(photo => (
+            <ImageGrid
+            id = {photo.id}
+            url ={photo.photoUrl} 
+            title ={photo.title} 
+            description = ''
+            privacy = 'public'
+            ownerName = {photo.userName}
+            numberOfFavs = '1'
+            numberOfComments ={photo.numberOfComments}
+            viewMode ={isUser}
+            />
+        ))}
+        </>
+    }
     <div className="placeholder"></div>
     </div>
-
     </div>
     </>
 )

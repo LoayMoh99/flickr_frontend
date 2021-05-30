@@ -4,9 +4,7 @@ const SERVER_URL = configData.SERVER_URL ;
 
 export default async function DeletePhoto (ids){
     try{
-        // ids.map( id => {
-        //     const response = await axios.delete( SERVER_URL+'photos?photo_id='+id);
-        // })
+        // const response = await axios.delete( SERVER_URL+'photo/',ids);
         const response = await axios.delete(SERVER_URL+'photos/'+ids[0])
         //Success
         return(response)
@@ -36,7 +34,7 @@ export default async function DeletePhoto (ids){
 
 export async function PutPhoto (id, object){
     try{
-        // const response = await axios.put(SERVER_URL+'photos?photo_id='+id, object)
+        // const response = await axios.put(SERVER_URL+'photo', object)
         const response = await axios.put(SERVER_URL+'photos/'+id , object)
         //Success
         return(response)

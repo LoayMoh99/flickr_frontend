@@ -12,8 +12,9 @@ const SERVER_URL = configData.SERVER_URL ;
 //   {headers:{ 'Authorization': `Basic ${token}`}}
 
 //User
-export default async function getUserPhotos (){
+export default async function GetUserPhotos (){
     try{
+        // const response = await axios.get( SERVER_URL+'user/photos');
         const response = await axios.get( SERVER_URL+'photos');
         //Success
         return(response)
@@ -39,4 +40,46 @@ export default async function getUserPhotos (){
         }
         console.log(error);
     }
-  };
+};
+
+
+// Favs
+export async function GetUserFavs(){
+  try{
+      // const response = await axios.get( SERVER_URL+'user/fav');
+      const response = await axios.get( SERVER_URL+'userFav');
+      //Success
+      return(response)
+  } catch (error){
+      if (error.response){
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request){
+        console.log(error.request);
+      } else {
+        console.log('Error', error.message);
+      }
+      console.log(error);
+  }
+};
+
+export async function PostUserFavs(id,object){
+  try{
+      // const response = await axios.post( SERVER_URL+'user/fav',id);
+      const response = await axios.post( SERVER_URL+'userFav');
+      //Success
+      return(response)
+  } catch (error){
+      if (error.response){
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request){
+        console.log(error.request);
+      } else {
+        console.log('Error', error.message);
+      }
+      console.log(error);
+  }
+};

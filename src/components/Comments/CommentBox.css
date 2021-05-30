@@ -34,6 +34,7 @@
     background-color: rgba(0,0,0,0.1);
 }
 
+
 .users-comments a{
     float:left;
     color: #006dac;
@@ -45,6 +46,13 @@
 
 .users-comments a:hover{
     text-decoration: underline !important;
+}
+
+#delete-comment{
+    color: #aaaaaa;
+    font-size: 22px;
+    font-weight: bold;
+    text-align: right;
 }
 
 .users-comments p{
@@ -88,5 +96,11 @@
     cursor: pointer;
     float:right;
     margin-right: 5px;
+}
+
+.delete-comment{
+    color: #aaaaaa;
+    font-size: 20px;
+    font-weight: bold;
 
 }
