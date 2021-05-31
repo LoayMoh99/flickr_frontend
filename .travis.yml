@@ -28,8 +28,6 @@ script:
 - echo Run front tests..
 #- docker run -e CI=true loaymoh99/front-test
 
-
-after_success:
 #Buildng and then pushing the new images to docker hub
 - echo Building the production Docker image..
 - docker build -t loaymoh99/dkr-dropoids-front .
@@ -38,6 +36,8 @@ after_success:
 - echo Pushing the Docker images..
 - docker push loaymoh99/dkr-dropoids-front
 
+
+after_success:
 #deploying the new containers
 - echo Deploy here..
 - "./deploy.sh"
