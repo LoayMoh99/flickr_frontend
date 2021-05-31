@@ -70,8 +70,7 @@ function AddPhotos(props){
             PostGroupPhotos(id,photo_id,object).then( response => {
                 console.log(response);
                 //link to group pool
-                // <Link style={navStyle} to="/"></Link>
-                //get group by id
+                props.history.push('/');
             })
         })
     }
