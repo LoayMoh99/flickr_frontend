@@ -52,12 +52,12 @@ export default function ImageDetails(props){
     
         fetchData();
     },[]);
-
+    /////////////////////////////////////////API///////////////////////////////
     function postTnewMessage(){
-        const sentComment={
-            photoId:id, 
-            comment: "YALLLAHHHWAIIII222222222222",
-        }
+        // const sentComment={
+        //     photoId:id, 
+        //     comment: newComment
+        // }
         // const response= await axios.post( endpoint+'comments?id='+id,sentComment);
         // if(response.status===200){
         //     console.log("posted");

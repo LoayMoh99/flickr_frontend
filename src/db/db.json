@@ -133,11 +133,34 @@
       "createdAt": "2021-05-30",
       "UpdatedAt": "2021-05-30",
       "id": 4
+    },
+    {
+      "photoUrl": "blob:http://localhost:3000/e0d18d03-8b8e-4ea1-a3be-4c5d11b3aece",
+      "ownerId": 0,
+      "Fav": [
+        0
+      ],
+      "comments": [
+        0
+      ],
+      "title": 1235,
+      "privacy": "private",
+      "description": "cats",
+      "tags": [],
+      "peopleTags": [
+        {
+          "tagging": "string",
+          "tagged": []
+        }
+      ],
+      "createdAt": "2021-05-30",
+      "UpdatedAt": "2021-05-30",
+      "id": 5
     }
   ],
-  "comments":[
+  "comments": [
     {
-      "photoId":"1", 
+      "photoId": "1",
       "comment": "YALLLAHHHWAIIII",
       "id": "1",
       "user": {
@@ -149,7 +172,7 @@
       "updatedAt": "2021-4-2"
     },
     {
-      "photoId":"1",
+      "photoId": "1",
       "comment": "YALLLAHHHWAIIII",
       "id": "2",
       "user": {

@@ -148,6 +148,11 @@ a{
     
 }
 
+.adjustedFoeSearch{
+    width: 223px;
+    margin-top: 30px;
+}
+
 .flaticon-search.hiddenIcon{
     display: none;
 }

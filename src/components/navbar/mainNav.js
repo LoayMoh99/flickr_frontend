@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './mainNav.css'
 import '../../fonts/font/flaticon.css'
 import flickrLogo from '../../img/flickr.png'
@@ -8,6 +8,9 @@ import {readjustHeader} from './navBar.js'
 import defaultProfile from '../../img/deefault.jpg';
 import { Link } from 'react-router-dom'
 export default function Header(){
+    //
+    const [searchText,setSearchText]=useState();
+    const showDropDown = e => setSearchText(e.target.value);
     function checkSize(){
         if(window.innerWidth>1080){
             readjustHeader();
@@ -16,6 +19,7 @@ export default function Header(){
     const navStyle={
         color:'white'
     };
+    
     window.addEventListener('resize',checkSize);
     return(
             <div>
@@ -76,18 +80,42 @@ export default function Header(){
                 </li>
             </ul>
             </div>
-            <div className="searchBox hiddenIconSearch biggerBox">
+            <div className="searchBox hiddenIconSearch biggerBox youTag">
                     <button className="searchBtn">
                         <i className="flaticon-search"></i>
                     </button>
-                    <input type="text" placeholder="Photos, People or Groups   "/>
+                    <input onChange={showDropDown} type="text" placeholder="Photos, People or Groups   "/>
+                    {searchText && <ul className="subMenuYouContent adjustedFoeSearch" >
+                    <li>
+                        <a href="#top">Search photos</a>
+                    </li>
+                    <li>
+                        {/* <Link  style={navStyle} to="/"><p id="linkedParagraph">Photostream</p></Link> */}
+                        <a>Search people</a>
+                    </li>
+                    <li>
+                        <a href="#top">Search group</a>
+                    </li>
+                </ul>}
             </div>
-            <div className="searchNotifivationUpload">
+            <div className="searchNotifivationUpload  youTag">
                 <div className="searchBox">
                     <button className="searchBtn">
                         <i className="flaticon-search"></i>
                     </button>
-                    <input type="text" placeholder="Photos, People or Groups   "/>
+                    <input onChange={showDropDown} type="text" placeholder="Photos, People or Groups   "/>
+                    {searchText && <ul className="subMenuYouContent adjustedFoeSearch" >
+                    <li>
+                        <a href="#top">Search photos</a>
+                    </li>
+                    <li>
+                        {/* <Link  style={navStyle} to="/"><p id="linkedParagraph">Photostream</p></Link> */}
+                        <a>Search people</a>
+                    </li>
+                    <li>
+                        <a href="#top">Search group</a>
+                    </li>
+                </ul>}
                 </div>
                 <i className="flaticon-close hiddenIconSearch" onClick={()=>toogleMobileSearchBox()}></i>
                 <i className="flaticon-search coreSearch hiddenIcon" onClick={()=>toogleMobileSearchBox()}></i>

@@ -67,13 +67,23 @@ export default function Upload(props){
             UpdatedAt: "2021-05-30"
         };
         console.log("status1");
-        const { status } = await axios.post(endpoint+"photos", newImage);
+        const { data,status } = await axios.post(endpoint+"photos", newImage);
+        // console.log("info of photo added",data);
         console.log("status");
         console.log(status);
         ///////////////////////////////////////////////////////API//////////////////////////////////////////////
-        // if (status === 200) {
-        //     fetchData();
-        // }
+        /*if (status === 200) {
+           newtag={
+               "photos": [
+                    data.id
+                ],
+                tag: "Nature"
+           }
+           const response = await axios.post(endpoint+"tag", newtag);
+           if(resonse.statuse===200){
+               console.log("tag is added");
+           }
+        }*/
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
     };
 
