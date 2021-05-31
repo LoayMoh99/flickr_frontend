@@ -4,7 +4,7 @@ import NavBar from "./NavBar"
 import './ImageGrid.css'
 import {GetUserPhotos} from "../../services/userServices"
 import GetPeoplePhotos from "../../services/peopleServices"
-import ImageDetails from '../imageDetails/ImageDetails'
+import ImageDetails from '../imageDetails/imageDetails'
 import axios from "axios"
 import $ from 'jquery'; 
 import { Link , Route, useParams } from 'react-router-dom'

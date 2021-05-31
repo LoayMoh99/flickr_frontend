@@ -3,7 +3,7 @@ import '../../fonts/font/flaticon.css'
 import './imageDetails.css'
 import { Carousel } from 'react-responsive-carousel';
 import defaultProfile from '../../img/deefault.jpg';
-import Footer from '../navbar/Footer'
+import Footer from '../navbar/footer'
 import t1 from '../../img/img/dBackground.jpg';
 import t2 from '../../img/img/ddBackground.jpg'
 import ViewedImage from './ViewedImage'
