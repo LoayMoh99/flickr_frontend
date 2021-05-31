@@ -1,6 +1,6 @@
 {
   "user": {
-    "id":0,
+    "id": 0,
     "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
     "Fname": "Farah",
     "Lname": "Mostafa",
@@ -405,6 +405,17 @@
       "createdAt": "2020-5-23",
       "updatedAt": "2021-4-2",
       "id": "hcPvs9x"
+    },
+    {
+      "comment": "hii",
+      "user": {
+        "Fname": "John",
+        "Lname": "Smith",
+        "id": "100"
+      },
+      "createdAt": "2020-5-23",
+      "updatedAt": "2021-4-2",
+      "id": "qQjcBH_"
     }
   ],
   "following": [
