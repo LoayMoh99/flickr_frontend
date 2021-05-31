@@ -15,86 +15,103 @@
   ],
   "album": [
     {
-      "_id": 1,
-      "title": "First",
-      "description": "Second album title",
-      "createdAt": "2021-03-02",
-      "updatedAt": "2021-05-04",
+      "_id": "1",
+      "title": "Album1",
+      "description": "my album",
+      "ownerId": {
+        "_id": "609dd9ac9a52002aa498befe",
+        "Fname": "Mostafa",
+        "Lname": "Ashraf",
+        "UserName": "Mostafa123",
+        "Email": "test@test.com",
+        "Avatar": "609dd9ac9a52002aa498befe"
+      },
       "photos": [
         {
-          "photo_id": 0,
-          "photo_url": "https://picsum.photos/300/200?random=1",
-          "photo_owner_id": 0,
-          "num_favs": 30,
-          "num_views": 60,
-          "num_comments": 10,
-          "photo_owner_name": "Khadija Khaled",
-          "title": "First Photo Title",
-          "privacy": true,
-          "description": "First Photo description",
-          "createdAt": "2021-05-04"
+          "_id": "1",
+          "title": "photo1",
+          "description": "my photo",
+          "photoUrl":"https://picsum.photos/600/200?random=1",
+          "Fav": [
+            "60b222e537838723b02201fd"
+          ],
+          "privacy": "private",
+          "ownerId": {
+            "_id": "609dd9ac9a52002aa498befe",
+            "Fname": "Mostafa",
+            "Lname": "Ashraf",
+            "UserName": "Mostafa123",
+            "Email": "test@test.com",
+            "Avatar": "609dd9ac9a52002aa498befe"
+          },
+          "tags": [
+            "Nature"
+          ],
+          "peopleTags": [
+            {
+              "tagging": "integer",
+              "tagged": [
+                "60b222e537838723b02201fd"
+              ],
+              "createdAt": "2021-05-29T11:17:57.326Z",
+              "updatedAt": "2021-05-29T11:17:57.326Z"
+            }
+          ],
+          "comments": [
+            {
+              "comment": "this is a comment",
+              "user": "60b222e537838723b02201fd",
+              "createdAt": "2021-05-29T11:17:57.326Z",
+              "updatedAt": "2021-05-29T11:17:57.326Z"
+            }
+          ],
+          "createdAt": "2021-05-29T11:17:57.326Z",
+          "updatedAt": "2021-05-29T11:17:57.326Z"
+        }
+      ],
+      "coverPhoto": {
+        "_id": "60b222e537838723b02201fd",
+        "title": "photo1",
+        "description": "my photo",
+        "photoUrl":"https://picsum.photos/300/400?random=1",
+        "Fav": [
+          "60b222e537838723b02201fd"
+        ],
+        "privacy": "private",
+        "ownerId": {
+          "_id": "609dd9ac9a52002aa498befe",
+          "Fname": "Mostafa",
+          "Lname": "Ashraf",
+          "UserName": "Mostafa123",
+          "Email": "test@test.com",
+          "Avatar": "609dd9ac9a52002aa498befe"
         },
-        {
-          "photo_id": 1,
-          "photo_url": "https://picsum.photos/500/200?random=1",
-          "photo_owner_id": 0,
-          "num_favs": 30,
-          "num_views": 60,
-          "num_comments": 10,
-          "photo_owner_name": "Khadija Khaled",
-          "title": "First Photo Title",
-          "privacy": true,
-          "description": "Second Photo description",
-          "createdAt": "2021-05-04"
-        }
-      ],
-      "coverPhoto": "https://picsum.photos/600/200?random=1"
-    },
-    {
-      "_id": 2,
-      "title": "Second",
-      "description": "Second album title",
-      "createdAt": "2021-03-02",
-      "updatedAt": "2021-05-04",
-      "photos": [
-        {
-          "photo_id": 0,
-          "photo_url": "https://picsum.photos/300/200?random=1",
-          "photo_owner_id": 0,
-          "num_favs": 30,
-          "num_views": 60,
-          "num_comments": 10,
-          "photo_owner_name": "Khadija Khaled",
-          "title": "First Photo Title",
-          "privacy": true,
-          "description": "First Photo description",
-          "createdAt": "2021-05-04"
-        }
-      ],
-      "coverPhoto": "https://picsum.photos/300/200?random=1"
-    },
-    {
-      "photos": [
-        1
-      ],
-      "id": 3
-    },
-    {
-      "photos": [
-        1
-      ],
-      "id": 4
-    },
-    {
-      "id": 19,
-      "title": "jjj",
-      "description": "hhh",
-      "createdAt": "2021-03-02",
-      "updatedAt": "2021-05-04",
-      "photos": [
-        2
-      ],
-      "coverPhoto": 2
+        "tags": [
+          "Nature"
+        ],
+        "peopleTags": [
+          {
+            "tagging": "integer",
+            "tagged": [
+              "60b222e537838723b02201fd"
+            ],
+            "createdAt": "2021-05-29T11:17:57.326Z",
+            "updatedAt": "2021-05-29T11:17:57.326Z"
+          }
+        ],
+        "comments": [
+          {
+            "comment": "this is a comment",
+            "user": "60b222e537838723b02201fd",
+            "createdAt": "2021-05-29T11:17:57.326Z",
+            "updatedAt": "2021-05-29T11:17:57.326Z"
+          }
+        ],
+        "createdAt": "2021-05-29T11:17:57.326Z",
+        "updatedAt": "2021-05-29T11:17:57.326Z"
+      },
+      "createdAt": "2021-05-29T11:17:57.326Z",
+      "updatedAt": "2021-05-29T11:17:57.326Z"
     }
   ],
   "photos": [

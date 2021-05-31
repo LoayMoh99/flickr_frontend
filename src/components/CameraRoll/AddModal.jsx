@@ -67,7 +67,7 @@ console.log(album);
           <div className="addBody">
             {album.map(album=>  
             (<AddAlbumImages 
-            albumCover = {album.coverPhoto}
+            albumCover = {album.coverPhoto.photoUrl}
             albumTitle = {album.title}
             //photoCount = {album.photos.length}
             albumId ={album._id}

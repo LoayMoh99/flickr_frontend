@@ -8,12 +8,12 @@ function AlbumCoverPhoto(props) {
 //const coverPhoto="https://picsum.photos/500/300?random=1";
 // const {isUser}= props; // from props
 const isUser =true;
-const { coverPhoto, title, description , photos , album_id } = props;
+const { coverPhoto, title, description , photos , album_id , ownerFname ,ownerLname } = props;
 const pen =  <FontAwesomeIcon icon={faPen} color="white" size="1x" />;
-const avatarUrl="https://picsum.photos/500/300?random=1";
+//const avatarUrl="https://picsum.photos/500/300?random=1";
 const countPhotos=photos.length;
 
-const userName= "Khadija Swelam";
+//const userName= "Khadija Swelam";
 
   //new titles and description
   const [inputTitle, setInputTitle] = useState(title);
@@ -32,6 +32,10 @@ const userName= "Khadija Swelam";
     setInputDescription(newDescription);
     setIsChanged(true);
     console.log(inputDescription);
+    if(newDescription==="")
+    {
+        setInputDescription("Click here to enter a description for this album");
+    }
   }
   const albumUpdated ={
     "title": inputTitle,
@@ -112,7 +116,9 @@ return (
                 <a class="userName" href="/#">
                         By:
                         {' '}
-                        {userName}
+                        {ownerFname}
+                        {' '}
+                        {ownerLname}
                 </a>
             </h5>
         </div>

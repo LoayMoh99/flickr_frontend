@@ -270,6 +270,7 @@ function CamreRoll() {
         <EditModal
           onRequestEditClose={toggleEditModal}
           imgEdit={toEdit}
+          imgEditIds= {toEditIds}
           countEdit={count}
         />
         )}

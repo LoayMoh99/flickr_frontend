@@ -15,7 +15,7 @@ function AlbumPage() {
 
   const [album,setAlbum] =useState([]);
   // const { album_id } = props;
-  const album_id=1;
+  const album_id="1";
 
   //This function is called whenever this album page is opened
   //It gets the details of the selected album and set the const album with these details 
@@ -43,10 +43,12 @@ console.log(album);
       <a href="#" id="backAlbum">{back } Back to albums list</a>
       { album.map(album=> 
         <AlbumCoverPhoto 
-        coverPhoto = {album.coverPhoto}
+        coverPhoto = {album.coverPhoto.photoUrl}
         title = {album.title}
         description = {album.description}
         photos = {album.photos}
+        ownerFname ={album.ownerId.Fname}
+        ownerLname ={album.ownerId.Lname}
         album_id = {album_id}
         />
         )}
@@ -54,16 +56,16 @@ console.log(album);
        <div className="grid">
         {album.map(album => album.photos.map(photo => (
             <ImageGrid
-            id = {photo.photo_id}
-            url ={photo.photo_url} 
+            id = {photo._id}
+            url ={photo.photoUrl} 
             title ={photo.title} 
             description = {photo.description}
             date = {photo.createdAt}
             privacy = {photo.privacy}
-            ownerName = {photo.photo_owner_name}
-            ownerId = {photo.photo_owner_id}
-            numberOfFavs = {photo.num_favs}
-            numberOfComments ={photo.num_comments}
+            ownerName = {photo.ownerId.UserName}
+            ownerId = {photo.ownerId._id}
+            numberOfFavs = {photo.Fav.length}
+            numberOfComments ={photo.comments.length}
             numberOfViews={photo.num_views}
             />
         )))}

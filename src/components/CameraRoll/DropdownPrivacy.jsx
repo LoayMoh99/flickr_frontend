@@ -1,27 +1,44 @@
 /* eslint-disable linebreak-style */
-import React from 'react';
+import React, {useState} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSortDown } from '@fortawesome/free-solid-svg-icons';
 import './DropdownPrivacy.css';
 
-function DropdownPrivacy() {
+function DropdownPrivacy(props) {
+  const {imgEditIds} = props;
+  console.log(imgEditIds);
   const arrow = <FontAwesomeIcon icon={faSortDown} color="DarkGrey" />;
+  const [privacy,setPrivacy] = useState("private");
+
+  const updatePrivacy ={
+    "privacy":privacy
+  }
+
+  function changePrivacy(event){
+    const privacyState=event.target.value;
+    setPrivacy(privacyState);
+    console.log(privacy);
+
+    // call API
+
+  }
+
+
+
   return (
     <>
-      {/* <div className="styled"> */}
 
-      {/* <select className="form-control" data-style="btn-primary"> */}
-      <select>
+      <select onChange={changePrivacy}>
         <span className="styled" />
-        <option value="Public">
+        <option value="private">
           Public
-          {' '}
         </option>
-        <option value="Private">Private</option>
-        <option value="Friends">Friends</option>
+        <option value="public">
+          Private
+        </option>
       </select>
       {arrow}
-      {/* </div> */}
+
     </>
   );
 }

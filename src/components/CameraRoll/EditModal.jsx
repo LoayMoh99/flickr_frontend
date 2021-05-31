@@ -7,6 +7,7 @@
 /* eslint-disable max-len */
 /* eslint-disable linebreak-style */
 import React, {useState} from 'react';
+import axios from "axios"
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { fa-tag } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -14,16 +15,24 @@ import { faTag } from '@fortawesome/free-solid-svg-icons';
 import { faUserFriends } from '@fortawesome/free-solid-svg-icons';
 import './EditModal.css';
 import DropdownPrivacy from './DropdownPrivacy'; 
-
+const endpoint = 'http://localhost:3001/'
 function EditModal(props) {
+  const {imgEditIds} =props; // array of selected photos to edit to pass them to the API
+  console.log(imgEditIds); 
+
+
   const tag = <FontAwesomeIcon icon={faTag} color="DarkGrey" />;
   const people = <FontAwesomeIcon icon={faUserFriends} color="DarkGrey" />;
   const [tagAdded,setTagAdded] = useState(false);
   const [peopleAdded, setPeopleAdded]= useState(false);
+  const [titleAdded,setTitleAdded] = useState(false);
+  const [descriptionAdded, setDescriptionAdded]= useState(false);
   const [inputTag, setInputTag] = useState("");
   const [inputPeople , setInputPeople] = useState("");
+  const [inputTitle, setInputTitle] = useState("");
+  const [inputDescription , setInputDescription] = useState("");
   
-  function handleTagChange(event){
+  function handleTagChange(event){ // on tag input change .. take this change to set the new tag and indicate that there was a change in this field
     setTagAdded(true);
     const newTag = event.target.value;
     setInputTag(newTag);
@@ -32,7 +41,12 @@ function EditModal(props) {
     {
       setTagAdded(false);
     }
+    console.log('tagAdded');
+    console.log(tagAdded);
   }
+
+
+
   function handlePeopleChange(event){
     setPeopleAdded(true);
     const newPeople = event.target.value;
@@ -42,10 +56,136 @@ function EditModal(props) {
     {
       setPeopleAdded(false);
     }
+    console.log('peopleAdded');
+    console.log(peopleAdded);
   }
 
-  
 
+
+  function handleTitleChange(event) {
+    setTitleAdded(true);
+    const newTitle = event.target.value;
+    setInputTitle(newTitle);
+    console.log(inputTitle);
+    if(newTitle==="")
+    {
+      setTitleAdded(false);
+    }
+    console.log('titleAdded');
+    console.log(titleAdded);
+  }
+
+
+
+  function handleDescriptionChange(event) {
+    setDescriptionAdded(true);
+    const newDescription  = event.target.value;
+    setInputDescription(newDescription);
+    console.log(inputDescription);
+    if(newDescription==="")
+    {
+      setDescriptionAdded(false);
+    }
+    console.log('descrpAdded');
+    console.log(descriptionAdded);
+  }
+
+
+// To addPeopleTag
+const updatedPhotoPeopleTag ={
+  "photos":imgEditIds,
+  "tagged":[inputPeople]
+};
+
+
+// To addPeopleTag
+const updatedPhotoTag ={
+  "photos":imgEditIds,
+  "tag":[inputTag]
+};
+
+//to add title
+const updatedTitle ={
+  "photos":imgEditIds,
+  "title":inputTitle
+};
+//to add description
+const updatedDescription ={
+  "photos":imgEditIds,
+  "description":inputDescription
+};
+//to add title & description
+const updatedTitleDescription ={
+  "photos":imgEditIds,
+  "title":inputTitle,
+  "description":inputDescription
+};
+
+async function addPeopleTag (object)
+{
+          try{
+       const response = await axios.post(endpoint+'photo/peopletag', object);
+
+      
+      return(response)
+  } catch (error){
+      if (error.response){
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request){
+        console.log(error.request);
+      } else {
+        console.log('Error', error.message);
+      }
+      console.log(error);
+  }
+};
+
+async function addTag (object)
+{
+          try{
+       const response = await axios.post(endpoint+'photo/tag', object);
+    
+      return(response)
+  } catch (error){
+      if (error.response){
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request){
+        console.log(error.request);
+      } else {
+        console.log('Error', error.message);
+      }
+      console.log(error);
+  }
+};
+
+function confirmEdit()
+{
+  if(tagAdded) // call addTag handler
+  {
+    addTag(updatedPhotoTag);
+  }
+  if(peopleAdded) // call addPeople handler
+  {
+    addPeopleTag(updatedPhotoPeopleTag);
+
+  }
+  if(titleAdded && descriptionAdded) // call update title & description handler with object title and description
+  {
+      //updatedTitleDescription
+  }
+  else if(titleAdded && !descriptionAdded) // call update title & description handler with only title changed
+  {
+    //updatedTitle
+
+  }else if(!titleAdded && descriptionAdded) // call update title & description handler with only description
+  {
+    //updatedDescription
+  }
+}
 
   return (
     <>
@@ -62,32 +202,35 @@ function EditModal(props) {
             {' '}
           </h3>
           <div className="title-desc-container">
-            <input className="edit-title" type="text" placeholder="Change title" onChange={handleTagChange}/>
+            <input className="edit-title" type="text" placeholder="Change title"  onChange={handleTitleChange}/>
             <hr />
-            <textarea className="edit-description" placeholder="Change description" onChange={handlePeopleChange}/>
+            <textarea className="edit-description" placeholder="Change description"  onChange={handleDescriptionChange}/>
 
           </div>
           <span className="privacy-label">Who can see this photo ?</span>
 
           <span className="space" />
-          <DropdownPrivacy />
+          <DropdownPrivacy 
+          imgEditIds={imgEditIds}
+          />
+
           <div className="row">
             <div className="edit-tag">
               {tag}
               {'  '}
-              <input type="text" className="no-outline" placeholder="Add new tags" />
+              <input type="text" className="no-outline" placeholder="Add new tags"  onChange={handleTagChange} />
             </div>
             <div className="edit-tag">
               {people}
               {'  '}
-              <input type="text" className="no-outline" placeholder="Add new people" />
+              <input type="text" className="no-outline" placeholder="Add new people" onChange={handlePeopleChange} />
             </div>
           </div>
           <div className="edit-footer">
             <button
               id="save_edit"
               type="button"
-              onClick={props.onRequestEditClose} // should be modified to actually upadate the database with the last edit
+              onClick={confirmEdit} // should be modified to actually upadate the database with the last edit
             >
               Save
             </button>
