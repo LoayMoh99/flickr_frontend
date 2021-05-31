@@ -8,7 +8,7 @@ import CameraRoll from "./components/CameraRoll/CamreRoll"
 import About from "./components/About/About"
 import Blog from "./components/Blog/Blog"
 import Jobs from "./components/Job/Jobs"
-import Signup from "./components/signup/signup"
+import Signup from "./components/Signup/signup"
 import Login from "./components/UserLogin/Login"
 import React from 'react';
 import {BrowserRouter as Router, Switch , Route} from "react-router-dom";
