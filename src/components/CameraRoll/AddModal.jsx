@@ -38,7 +38,7 @@ function AddModal(props) {
 console.log(album);
 
   // const albumCover='https://picsum.photos/id/237/200/300';
-  const search = <FontAwesomeIcon icon={faSearch} color="DarkGrey" />;
+  //const search = <FontAwesomeIcon icon={faSearch} color="DarkGrey" />;
   const plus = <FontAwesomeIcon icon={faPlus} color="DarkGrey" />;
 
 

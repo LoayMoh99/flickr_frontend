@@ -44,7 +44,7 @@ function CreateNewAlbumModal(props) {
 
 
     const album = { 
-        "id" : 28,
+        "id" : 29,
         "title": inputTitle,
         "description":inputDescription,
         "createdAt": "2021-03-02",

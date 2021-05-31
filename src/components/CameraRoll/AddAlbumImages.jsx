@@ -84,7 +84,7 @@ function AddAlbumImages(props) {
       };
   
       function containsPhotos(obj) {
-        return imgAddIds.some((elem) => elem === obj.photo_id);
+        return imgAddIds.some((elem) => elem._id === obj._id);
       }
   
     // to check whether the selected photos ids are all present in a specific album or not
