@@ -74,7 +74,7 @@ return (
    <div className="coverPhoto" style={{backgroundImage: `url(${coverPhoto})`}}>
        <div className="overlayAlbum">
                 <div className="spaceAlbumHeader">
-                    {/* <span className="spaceTop" >   */}
+                   
                        {isUser&& <a href="/#" className="editPen" >   
                                 {pen}
                         </a>}
