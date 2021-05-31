@@ -6,9 +6,9 @@ const endpoint = 'http://localhost:3001/'
 
 function AlbumCoverPhoto(props) {
 //const coverPhoto="https://picsum.photos/500/300?random=1";
-
-
-const { coverPhoto, title, description , photos } = props;
+// const {isUser}= props; // from props
+const isUser =true;
+const { coverPhoto, title, description , photos , album_id } = props;
 const pen =  <FontAwesomeIcon icon={faPen} color="white" size="1x" />;
 const avatarUrl="https://picsum.photos/500/300?random=1";
 const countPhotos=photos.length;
@@ -56,30 +56,49 @@ const userName= "Khadija Swelam";
         }
         console.log(error);
     }
-};
+
+    };
+
+    function Update(){
+        UpdateAlbum (album_id, albumUpdated);
+        setIsChanged(false);
+    };
 
 
 return (
     <>
    <div className="coverPhoto" style={{backgroundImage: `url(${coverPhoto})`}}>
-        <div className="overlayAlbum">
+       <div className="overlayAlbum">
                 <div className="spaceAlbumHeader">
                     {/* <span className="spaceTop" >   */}
-                        <a href="/#" className="editPen" >   
+                       {isUser&& <a href="/#" className="editPen" >   
                                 {pen}
-                        </a>
-                     <div className="inputBarAlbumCover">
-                    <div id="inputFormatAlbum">
-                        <div class="form-group" >
-                            <input type="text" className="form-control"  onChange={handleTitleChange} value={inputTitle}></input> 
+                        </a>}
+                    {isUser&&<div className="inputBarAlbumCover">
+                        <div id="inputFormatAlbum">
+                            <div class="form-group" >
+                                <input type="text" className="form-control"  onChange={handleTitleChange} value={inputTitle}></input> 
+                            </div>
+                            <div class="form-group">
+                                <textarea className="formControlTextarea" rows="3"  onChange={handleDescriptionChange}>{inputDescription}</textarea> 
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <textarea className="formControlTextarea" rows="3"  onChange={handleDescriptionChange}>{inputDescription}</textarea> 
-                        </div>
-                    <button className="button" >Done</button>
-                    </div>
 
-            </div>
+                    </div>}
+                    {!isUser&&<div className="inputBarAlbumCover">
+                        <div id="inputFormatAlbum">
+                            <div class="form-group" >
+                                <input type="text" className="form-control"  value={inputTitle} disabled></input> 
+                            </div>
+                            <div class="form-group">
+                                <textarea className="formControlTextarea" rows="3"disabled >{inputDescription}</textarea> 
+                            </div>
+                        </div>
+
+                    </div>}
+                    {
+                        isChanged&&<button className="doneEdit"onClick={Update}>Done</button> 
+                    }  
 
                </div>
                <h5 className="countPhotos">

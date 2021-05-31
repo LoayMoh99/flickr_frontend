@@ -61,7 +61,7 @@ function CreateNewAlbumModal(props) {
         coverPhoto:coverPhotoId
           
     };
-    async function createAlbum (){
+    async function createAlbum (album){
     console.log(album);
     try{
 
@@ -82,6 +82,10 @@ function CreateNewAlbumModal(props) {
     }
     }
 
+    function create (){
+        createAlbum(album);
+        props.onRequestCreateClose();
+    }
 
   return (
     <>
@@ -103,7 +107,7 @@ function CreateNewAlbumModal(props) {
             <button
               id="save_edit"
               type="button"
-              onClick={createAlbum} 
+              onClick={create} 
             >
               Create
             </button>

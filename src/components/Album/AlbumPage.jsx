@@ -47,6 +47,7 @@ console.log(album);
         title = {album.title}
         description = {album.description}
         photos = {album.photos}
+        album_id = {album_id}
         />
         )}
         
