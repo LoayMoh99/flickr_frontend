@@ -48,6 +48,14 @@ fetchData();
         color:'white'
     };
 
+    function joinGroup(){
+        /*const RequestToJoin={
+            id=props.groupId
+        }
+        const response=await axios.post( endpoint+'groups?id='+props.groupId);???????????????lesa el backend mazabatoha4
+        */
+    }
+
     function updateOverview(){
         setGroupOverview(true);
         setGroupPhotos(isGroupPhotos && !isGroupPhotos);
@@ -80,7 +88,7 @@ fetchData();
                             <div className="nameAndInfo">
                                 <div id="groupNameAndButtton">
                                     <h1>{groupInfo.name}</h1>
-                                    {!isJoiningGroup&&<button>{plusIcon} Follow</button>}
+                                    {!isJoiningGroup&&<button onClick={joinGroup()}>{plusIcon} Follow</button>}
                                 </div>
                                 <div className="numbers">
                                     <div className="follwingFollowers">

@@ -264,6 +264,15 @@ a{
     color: black;
 }
 
+.logOut{
+    border: none;
+    padding: 5px 10px;
+    color: white;
+    background-color: red;
+    margin-left: 15px;
+    border-radius: 5px;
+}
+
 @media(max-width:1080px){
     .searchBox{
         display: none;

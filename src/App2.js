@@ -26,7 +26,7 @@ console.log(userInfo);
           num_followers= {userInfo.Followers}
           num_views= {userInfo.views}
           date_joined= {userInfo.Date_joined}
-          num_public_photos= {userInfo.num_public_photos}
+          num_public_photos= {userInfo.Photo}
           avatar_url= {userInfo.Avatar}
           background_url = {userInfo.BackGround}
           username= {userInfo.UserName}

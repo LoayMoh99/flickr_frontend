@@ -56,6 +56,12 @@
     padding: 10px 0;
     width: 100%;
 }
+
+.previewedPhotoComments{
+    height: 110px;
+    width: 300px;
+}
+
 .imagePreview .previewedPhotoComments:hover{
     background-color: white;
 }

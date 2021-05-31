@@ -1,9 +1,9 @@
 //import {showEdit} from './edit'
 //import {closeEdit} from './edit'
-import React from 'react';
-import * as Adapter from 'enzyme-adapter-react-16';
-import { shallow } from '../../../node_modules/enzyme/ShallowWrapper';
-import {Userinfo} from "./userInfo"
+// import React from 'react';
+// import * as Adapter from 'enzyme-adapter-react-16';
+// import { shallow } from '../../../node_modules/enzyme/ShallowWrapper';
+// import {Userinfo} from "./userInfo"
 
 test ('showEdit',()=>{
     //const ModalReq = shallow('Userinfo');

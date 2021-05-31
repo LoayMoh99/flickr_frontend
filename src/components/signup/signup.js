@@ -1,17 +1,27 @@
+import React , {useState} from 'react';
 import './signup.css';
+import useForm from "./userForm";
+import validateSignup from "./validateSignUp";
 //import arrowlogo from '../../img/dBackground.jpg';
 
 export default function Signup() {
+
+    const {handleChange,handleSubmit,values,errors} = useForm(submit, validateSignup);
+
+    function submit() {
+        console.log("submitted succesfully");
+    } 
+
   return (
     <div className="main">
 
-      <div class="header">
+    <div class="header">
         <div class="container">
             <p>flickr</p>
         </div>
-      </div>
+        </div>
 
-      <div class="card-container">
+        <div class="card-container">
         <div class="card">
             <div class="content-container">
                 
@@ -22,30 +32,32 @@ export default function Signup() {
 
                 <h6>Sign up for Flickr</h6>
 
-                <form action="" method="GET">
+                <form onSubmit={handleSubmit} noValidate>
                 
                     <div class="box-one">
-                        <input type="text" id="firstname" required/>
+                        <input type="text" name="firstname" id="firstname" />
                         <label for="firstname">First name</label>
                     </div>
                     
                     <div class="box-one">
-                        <input type="text" id="lastname" required/>
+                        <input type="text" name="lastname" id="lastname" />
                         <label for="lastname">Last name</label>
                     </div>
                     
                     <div class="box-one">
-                        <input type="number" id="yourage" required/>
+                        <input type="number" name="yourage" id="yourage"  min="13"/>
                         <label for="yourage">Your age</label>
                     </div>
                     
                     <div class="box-one">
-                        <input type="email" id="email" required/>
+                        <input type="email" name="email" requird id="email" value={values.email} onChange={handleChange}/>
+                        {errors.email && <p className="error">{errors.email}</p>}
                         <label for="email">Email</label>
                     </div>
                     
                     <div class="box-one">
-                        <input type="password" id="password" required/>
+                        <input type="password" name="password" id="password" value={values.password} onChange={handleChange}/>
+                        {errors.password && <p className="error">{errors.password}</p>}
                         <label for="password">Password</label>
                         <div class="eye-box">
                             <i class="far fa-eye"></i>
@@ -55,7 +67,7 @@ export default function Signup() {
 
                     
                     <div class="signup-button">
-                        <button>Sign up</button>
+                        <input type="submit" value="Signup"></input>
                     </div>
 
                 </form>
@@ -78,7 +90,7 @@ export default function Signup() {
                 </div>
             </div>
             <footer>
-                <div class="select-Lang">
+                <div class="custom-select">
                     <select name="language" id="lang">
                         <option class="eng">English</option>
                         <option class="deutsch">Deutsch</option>
@@ -101,9 +113,9 @@ export default function Signup() {
                     <a href="#" class="tems">Terms</a>
                 </div>
             </footer>
-          </div>
-      </div>
+            </div>
+        </div>
     </div>
     
-  );
+    );
 }
