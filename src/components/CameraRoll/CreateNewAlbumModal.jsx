@@ -9,6 +9,7 @@ function CreateNewAlbumModal(props) {
   //new titles and description
   const [inputTitle, setInputTitle] = useState("");
   const [inputDescription , setInputDescription] = useState("");
+  const [isNull,setIsNull]=useState(true);
   const { imgIdsCreateAlbum } = props; 
   const coverPhotoId = imgIdsCreateAlbum[0];
   console.log(props.imgIdsCreateAlbum);
@@ -16,6 +17,13 @@ function CreateNewAlbumModal(props) {
   function handleTitleChange(event) {
     const newTitle = event.target.value;
     setInputTitle(newTitle);
+    if(inputTitle==="")
+    {
+        setIsNull(true);
+    }
+    else{
+        setIsNull(false);
+    }
     console.log(inputTitle);
   }
 
@@ -36,7 +44,7 @@ function CreateNewAlbumModal(props) {
 
 
     const album = { 
-        "id" : 19,
+        "id" : 28,
         "title": inputTitle,
         "description":inputDescription,
         "createdAt": "2021-03-02",
@@ -83,7 +91,10 @@ function CreateNewAlbumModal(props) {
     }
 
     function create (){
-        createAlbum(album);
+        if(!isNull) //title is a required input can not be null
+        {
+            createAlbum(album);
+        }
         props.onRequestCreateClose();
     }
 
@@ -97,11 +108,12 @@ function CreateNewAlbumModal(props) {
             Create a new album
           </h3>
           {/* <div className="title-desc-container"> */}
+         
             <input className="createTitle" type="text" placeholder="Album name" onChange={handleTitleChange} required/>
             {/* <hr /> */}
             <textarea className="createDescription" placeholder="Description (optional)" onChange={handleDescriptionChange} />
-
-          {/* </div> */}
+           
+         
           
           <div className="createFooter">
             <button
@@ -115,6 +127,7 @@ function CreateNewAlbumModal(props) {
               Cancel
             </button>
           </div>
+         
         </div>
       </div>
 

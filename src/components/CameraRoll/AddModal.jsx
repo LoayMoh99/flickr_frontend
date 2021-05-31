@@ -34,7 +34,7 @@ function AddModal(props) {
 };
 
   fetchData();
-},[]);
+},[album]);
 console.log(album);
 
   // const albumCover='https://picsum.photos/id/237/200/300';
@@ -55,13 +55,13 @@ console.log(album);
             <h3 className="modalAdd">Album </h3>
           </div>
           <hr id="hrSearch"/>
-          <div className="row">
+          {/* <div className="row">
             <div className="searchIcon">
              {search}
             </div>
           <input type="text" placeholder="Search albums" className="searchInput" tabIndex="0" />
           </div>
-          <hr id="hrSearch"/>
+          <hr id="hrSearch"/> */}
 
 
           <div className="addBody">
