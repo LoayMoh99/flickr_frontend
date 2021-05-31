@@ -1,57 +1,164 @@
 {
   "user": [
     {
-      "num_following": 88,
-      "num_followers": 120,
-      "num_views": 70,
-      "date_joined": "2021-05-04",
-      "num_public_photos": 30,
-      "avatar_url": "https://picsum.photos/500/300?random=1",
-      "background_url": "https://picsum.photos/500/300?random=1",
-      "username": "FaraMostafa",
-      "firstName": "Farah",
-      "lastName": "Mostafa"
+      "Fname": "Farah",
+      "Lname": "Mostafa",
+      "Following": 150,
+      "Followers": 100,
+      "views": 70,
+      "num_public_photos": 3,
+      "Date_joined": "2021-05-30",
+      "Email": "emal@gmail",
+      "UserName": "FaraMostafa",
+      "Avatar": "https://picsum.photos/500/300?random=1",
+      "BackGround": "https://picsum.photos/500/300?random=2",
+      "About": {
+        "Description": "string",
+        "Hometown": "string",
+        "Occupation": "string",
+        "CurrentCity": "string"
+      }
     }
   ],
   "photos": [
     {
-      "id": 31,
-      "photo_url": "https://picsum.photos/400/200?random=3",
-      "photo_owner_id": 0,
-      "num_favs": 30,
-      "num_views": 60,
-      "num_comments": 10,
-      "photo_owner_name": "Samar Nabil",
-      "title": "First Photo Title",
-      "privacy": true,
-      "description": "First Photo description",
-      "createdAt": "2021-05-04"
+      "id": 1,
+      "photoUrl": "https://picsum.photos/400/200?random=3",
+      "ownerId": 0,
+      "Fav": [
+        0
+      ],
+      "comments": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "title": 1235,
+      "privacy": "private",
+      "description": "ay7aga",
+      "tags": [
+        "ay7aga2"
+      ],
+      "peopleTags": [
+        {
+          "tagging": "string",
+          "tagged": [
+            "string"
+          ]
+        }
+      ],
+      "createdAt": "2021-05-30",
+      "UpdatedAt": "2021-05-30"
     },
     {
-      "id": 32,
-      "photo_url": "https://picsum.photos/500/200?random=3",
-      "photo_owner_id": 0,
-      "num_favs": 30,
-      "num_views": 60,
-      "num_comments": 10,
-      "photo_owner_name": "Samar Nabil",
-      "title": "First Photo Title",
-      "privacy": true,
-      "description": "First Photo description",
-      "createdAt": "2021-05-04"
+      "id": 2,
+      "photoUrl": "https://picsum.photos/400/200?random=4",
+      "ownerId": 0,
+      "Fav": [
+        0
+      ],
+      "comments": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "title": 1010,
+      "privacy": "private",
+      "description": "kk",
+      "tags": [
+        "ay7aga2"
+      ],
+      "peopleTags": [
+        {
+          "tagging": "string",
+          "tagged": [
+            "string"
+          ]
+        }
+      ],
+      "createdAt": "2021-05-30",
+      "UpdatedAt": "2021-05-30"
     },
     {
-      "photo_url": "blob:http://localhost:3000/877f5844-067e-4148-a8f1-ba2b075f2451",
-      "photo_owner_id": 0,
-      "num_favs": 30,
-      "num_views": 60,
-      "num_comments": 10,
-      "photo_owner_name": "Farah Mostafa",
-      "title": "First Photo Title",
-      "privacy": true,
-      "description": "First Photo description",
-      "createdAt": "2021-06-04",
-      "id": 33
+      "id": 3,
+      "photoUrl": "https://picsum.photos/400/200?random=5",
+      "ownerId": 0,
+      "Fav": [
+        0
+      ],
+      "comments": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "title": 1235,
+      "privacy": "private",
+      "description": "ay7aga",
+      "tags": [
+        "ay7aga2"
+      ],
+      "peopleTags": [
+        {
+          "tagging": "string",
+          "tagged": [
+            "string"
+          ]
+        }
+      ],
+      "createdAt": "2021-05-30",
+      "UpdatedAt": "2021-05-30"
+    },
+    {
+      "photoUrl": "blob:http://localhost:3000/b6ce38e4-74f8-47e3-8882-2d163796aec8",
+      "ownerId": 0,
+      "Fav": [
+        0
+      ],
+      "comments": [
+        0
+      ],
+      "title": 1235,
+      "privacy": "private",
+      "description": "cats",
+      "tags": [],
+      "peopleTags": [
+        {
+          "tagging": "string",
+          "tagged": []
+        }
+      ],
+      "createdAt": "2021-05-30",
+      "UpdatedAt": "2021-05-30",
+      "id": 4
+    }
+  ],
+  "comments":[
+    {
+      "photoId":"1", 
+      "comment": "YALLLAHHHWAIIII",
+      "id": "1",
+      "user": {
+        "Fname": "John",
+        "Lname": "Smith",
+        "_id": "123456"
+      },
+      "createdAt": "2020-5-23",
+      "updatedAt": "2021-4-2"
+    },
+    {
+      "photoId":"1",
+      "comment": "YALLLAHHHWAIIII",
+      "id": "2",
+      "user": {
+        "Fname": "John",
+        "Lname": "Smith",
+        "_id": "123456"
+      },
+      "createdAt": "2020-5-23",
+      "updatedAt": "2021-4-2"
     }
   ],
   "following": [
@@ -130,14 +237,15 @@
     {
       "id": "608c80ce54e3d74b34d9bb5a",
       "Photos": [],
+      "Members": [],
       "privacy": "public",
       "visibility": "public",
-      "name": "ABC",
-      "role": "member"
+      "name": "ABC"
     },
     {
       "id": "608c80ce54e3d74b34d9bb6a",
       "Photos": [],
+      "Members": [],
       "privacy": "public",
       "visibility": "public",
       "name": "ABC",

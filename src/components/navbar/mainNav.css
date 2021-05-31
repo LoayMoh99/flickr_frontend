@@ -255,6 +255,10 @@ a{
     left:0 !important;
 }
 
+#linkedParagraph{
+    color: black;
+}
+
 @media(max-width:1080px){
     .searchBox{
         display: none;

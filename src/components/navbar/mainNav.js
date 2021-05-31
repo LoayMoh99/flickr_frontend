@@ -38,7 +38,7 @@ export default function Header(){
                         <a href="#top">About</a>
                     </li>
                     <li>
-                        <Link  style={navStyle} to="/">Photostream</Link>
+                        <Link  style={navStyle} to="/"><p id="linkedParagraph">Photostream</p></Link>
                     </li>
                     <li>
                         <a href="#top">Albums</a>

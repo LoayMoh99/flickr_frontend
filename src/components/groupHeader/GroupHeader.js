@@ -18,13 +18,20 @@ const endpoint = 'http://localhost:3001/'
 export default function GroupHeader(props){
     const [groupInfo, setgroupInfo] = useState([]);
     const [isJoiningGroup,setJoiningGroup]=useState(false);
+    console.log("group id",props.groupId);
     useEffect(() => {
         const fetchData = async () => {
-        const {data,status} = await axios.get( endpoint+'groups?id'+props.groupID,);
-        console.log(status);
+        const {data,status} = await axios.get( endpoint+'groups?id='+props.groupId);
+        console.log("data",data);
         if (status === 200){
             setgroupInfo(data[0]);
             console.log("el group Fataaa7");
+            if(groupInfo.role){
+                setJoiningGroup(false);
+            }
+            else{
+                setJoiningGroup(true);
+            }
             //setJoiningGroup(groupInfo.join)//////API
         }
         console.log(groupInfo);
@@ -77,10 +84,9 @@ fetchData();
                                 </div>
                                 <div className="numbers">
                                     <div className="follwingFollowers">
-                                        <p>{props.username}</p>
                                         <ul className="NavbarAndheaderul"  id="groupAdj">
-                                            <li>Members</li>
-                                            <li> Photos</li>
+                                            <li>{groupInfo.Members.length} Members</li>
+                                            <li>{groupInfo.Photos.length} Photos</li>
                                         </ul>
                                     </div>
                                     <div className="joined">

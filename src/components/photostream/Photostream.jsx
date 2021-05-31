@@ -30,7 +30,6 @@ function Photostream(){
     
     
     const [isModalOpen, setModalIsOpen] = useState(false);
-    // const [isFull,setFull] = useState(false);
     const [isPhoto, setPhoto] = useState(false);
 
     function toggleModal(){
@@ -38,15 +37,13 @@ function Photostream(){
         console.log("l modal fata7")
 
     }
-    let strId;
     let isPhotoSelected;
     function showPhoto(id){
         console.log("PhotoStream",id);
         isPhotoSelected=id;
         setPhoto(true);
         console.log("after click",isPhotoSelected);
-        strId=isPhotoSelected.toString();
-        console.log("sent id str",strId);
+        
     }
     console.log("isPhoto",isPhoto);
     console.log("sent id",isPhotoSelected);
@@ -64,16 +61,14 @@ function Photostream(){
             <Link  style={navStyle} to={`/imagedetails/${photo.id}`}>
             <ImageGrid
             id = {photo.id}
-            url ={photo.photo_url} 
+            url ={photo.photoUrl} 
             title ={photo.title} 
             description = {photo.description}
             date = {photo.createdAt}
             privacy = {photo.privacy}
-            ownerName = {photo.photo_owner_name}
-            ownerId = {photo.photo_owner_id}
-            numberOfFavs = {photo.num_favs}
-            numberOfComments ={photo.num_comments}
-            numberOfViews={photo.num_views}
+            ownerId = {photo.ownerId}
+            numberOfFavs = {photo.Fav.length}
+            numberOfComments ={photo.comments.length}
             onOpenRequest={showPhoto}
             /></Link>
         ))}
@@ -83,11 +78,6 @@ function Photostream(){
         <main>
         {isModalOpen && <Slideshow onRequestClose={toggleModal} />}
         </main>
-
-        {/* {isPhoto && <ImageDetails photo_url={}/>} */}
-        {/* {isPhoto && <Link  style={navStyle} to="/imagedetails"><ImageDetails photo_id={isPhotoSelected}/></Link>} */}
-        
-        {/* {isPhoto &&  farahh</Link>} */}
         </div>
         </>
    ) 

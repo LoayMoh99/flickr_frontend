@@ -43,18 +43,28 @@ export default function Upload(props){
         console.log("yalahwaaaiii");
         console.log(image);
         const newImage = {
-            //photo_id: 33,
-            //change it to image
-            photo_url: image,
-            photo_owner_id: 0,
-            num_favs: 30,
-            num_views: 60,
-            num_comments:10,
-            photo_owner_name: "Farah Mostafa",
-            title: "First Photo Title",
-            privacy: true,
-            description: "First Photo description",
-            createdAt: "2021-06-04"
+            photoUrl:image,
+            ownerId: 0,
+            Fav: [
+                0
+            ],
+            comments: [
+                0
+            ],
+            title: 1235,
+            privacy: "private",
+            description: "cats",
+            tags: [
+            ],
+            peopleTags: [
+                {
+                tagging: "string",
+                tagged: [
+                ]
+                }
+            ],
+            createdAt: "2021-05-30",
+            UpdatedAt: "2021-05-30"
         };
         console.log("status1");
         const { status } = await axios.post(endpoint+"photos", newImage);
