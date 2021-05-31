@@ -10,8 +10,10 @@ import Blog from "./components/Blog/Blog"
 import Jobs from "./components/Job/Jobs"
 import Signup from "./components/Signup/signup"
 import Login from "./components/UserLogin/Login"
+import AddPhotos from "./components/GroupPhotos/AddPhotos"
 import React from 'react';
 import {BrowserRouter as Router, Switch , Route} from "react-router-dom";
+
 
 function App() {
 
@@ -33,6 +35,7 @@ function App() {
       <Route path="/CameraRoll" component={CameraRoll}/>
       <Route path="/FollwingFollowers" component={FollwingFollowers}/>
       <Route path="/Explore" component={TotExplore}/>
+      <Route path="/Add/:groupId" component={AddPhotos}/>
       </Switch>
       <Footer/> 
     </div>

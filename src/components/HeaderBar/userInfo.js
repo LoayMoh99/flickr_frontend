@@ -11,6 +11,8 @@ import {Link} from "react-router-dom";
 import Faves from '../Faves/Faves';
 import AlbumPreview from '../Album/AlbumPreview'
 import {GetUser} from "../../services/userServices"
+import GroupPhotos from "../GroupPhotos/GroupPhotos"
+
 /*componentDidMount(){
     axios.get('')
     .then
@@ -185,7 +187,7 @@ console.log('Anaaaa fl useeer',localStorage.token);
                 </div>
             </div>
             <div>
-                {isPhotoStream && <Photostream />}
+                {isPhotoStream && <GroupPhotos />}
                 {isCameraRoll && <CameraRoll/>}
                 {isFaves && <Faves/>}
                 {isAlbums && <AlbumPreview/>}
