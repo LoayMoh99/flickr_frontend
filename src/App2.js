@@ -9,7 +9,7 @@ function App2() {
     useEffect(() => {
         const fetchData = async () => {
         const {data,status} = await axios.get( endpoint+'user',);
-        console.log(status);
+        // console.log(status);
         if (status === 200){
             setUserInfo(data[0]);
         }
@@ -17,7 +17,7 @@ function App2() {
  
     fetchData();
   },[]);
-console.log(userInfo);
+// console.log(userInfo);
 
     return (
         <div>

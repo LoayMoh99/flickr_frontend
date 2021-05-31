@@ -1,4 +1,3 @@
-import { size } from 'lodash';
 import React,{useState} from 'react'
 function PhotosToAdd(props){
 
@@ -27,7 +26,6 @@ function PhotosToAdd(props){
             props.onRemove(props.id,props.url);
             setClicked(!isClicked);
         }
-
     }
 
     return(

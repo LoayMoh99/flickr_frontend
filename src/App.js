@@ -61,7 +61,7 @@ function App() {
       <Route path="/CameraRoll" component={CameraRoll}/>
       <Route path="/FollwingFollowers" component={FollwingFollowers}/>
       <Route path="/Explore" component={TotExplore}/>
-      <Route patth="/Add" component={AddPhotos}/>
+      <Route patth="/Add/:groupId" component={AddPhotos}/>
       </Switch>
       <Footer/> 
     </div>

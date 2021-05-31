@@ -1,32 +1,36 @@
-import React,{useState,useEffect} from 'react'
+import React,{useState,useEffect} from 'react';
+import { useLocation } from 'react-router-dom';
+import { useParams } from 'react-router-dom/cjs/react-router-dom.min'
 import './AddPhotos.css'
 import PhotosToAdd from "./PhotosToAdd"
-import axios from "axios"
-import { Link } from 'react-router-dom'
-const endpoint = 'http://localhost:3001/'
+// import { useParams } from "react-router-dom";
+import {GetUserPhotos,PostGroupPhotos} from "../../services/groupServices"
 
-function AddPhotos(){
-
-    //Get user photos
-    const [photos, setPhotos] = useState([]);
-    useEffect(() => {
-        const fetchData = async () => {
-        const {data,status} = await axios.get( endpoint+'photos',);
-        console.log(status);
-        if (status === 200){
-            setPhotos(data);
-        }
-    };
-    
-    fetchData();
-    },[]);
+function AddPhotos(props){
 
     const navStyle={
         color:'white'
     };
 
-    const [UrltoAdd ,setUrl] = useState([])
-    const [idToAdd ,setId] = useState([])
+    const path = props.location.pathname;
+    var index = path.split('/');
+    var id = index[2];
+    console.log(id);
+
+    const [UrltoAdd ,setUrl] = useState([]);
+    const [idToAdd ,setId] = useState([]);
+
+    //Get photos
+    const [userPhotos, setUserPhotos] = useState([]);
+    const [peoplePhotos, setPeoplePhotos] = useState([]);
+
+    //get request
+    useEffect( () =>{
+        //get user photos
+        GetUserPhotos().then( response => {
+            setUserPhotos(response.data);
+        })
+    },[])
 
     function addPhoto(id,url){
         setId(idToAdd => [...idToAdd,id]);
@@ -53,17 +57,30 @@ function AddPhotos(){
     }
 
     function addToPool(){
+        console.log(idToAdd);
         //Api
-
-        //link to group pool
-        // <Link style={navStyle} to="/"></Link>
+        //post user photos
+        const object={
+            "url": "https://picsum.photos/200/200?random=1",
+            "description": "post desciption",
+            "title": "post Title",
+            "Fav":[]
+        }
+        idToAdd.map(photo_id =>{
+            PostGroupPhotos(id,photo_id,object).then( response => {
+                console.log(response);
+                //link to group pool
+                // <Link style={navStyle} to="/"></Link>
+                //get group by id
+            })
+        })
     }
 
     function errorMessage(){
         alert('Darn! Flickr is only able to add 6 photos at a time to a group. After you add these, why not come back and add some more?')
     }
 
-    const size = photos.length;
+    const size = userPhotos.length;
     const sizeToDelete = idToAdd.length;
 
 
@@ -79,10 +96,10 @@ function AddPhotos(){
                     </div>
                     <div className="second">
                         <div className="img-grid">
-                        {photos.map(photo => (
+                        {userPhotos.map(photo => (
                             <PhotosToAdd 
-                                url = {photo.photo_url}
-                                id = {photo.photo_id}
+                                url = {photo.photoUrl}
+                                id = {photo.id}
                                 onAdd = {addPhoto}
                                 onRemove ={removePhoto}
                                 onError = {errorMessage}
@@ -108,7 +125,7 @@ function AddPhotos(){
                     {sizeToDelete === 0?
                         <button disabled={true}>ADD TO GROUP</button>
                         :
-                        <button onClick={addPhoto}>ADD TO GROUP</button>
+                        <button onClick={addToPool}>ADD TO GROUP</button>
                     }
                     </div>
                 </div>
