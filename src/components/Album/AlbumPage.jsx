@@ -53,7 +53,7 @@ console.log(album);
         />
         )}
         
-       <div className="grid">
+       <div className="grid" id="album">
         {album.map(album => album.photos.map(photo => (
             <ImageGrid
             id = {photo._id}
@@ -62,7 +62,7 @@ console.log(album);
             description = {photo.description}
             date = {photo.createdAt}
             privacy = {photo.privacy}
-            ownerName = {photo.ownerId.UserName}
+            ownerName = {album.ownerId.Fname}
             ownerId = {photo.ownerId._id}
             numberOfFavs = {photo.Fav.length}
             numberOfComments ={photo.comments.length}

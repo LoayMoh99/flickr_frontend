@@ -31,7 +31,7 @@
           "_id": "1",
           "title": "photo1",
           "description": "my photo",
-          "photoUrl":"https://picsum.photos/600/200?random=1",
+          "photoUrl": "https://picsum.photos/600/200?random=1",
           "Fav": [
             "60b222e537838723b02201fd"
           ],
@@ -73,7 +73,7 @@
         "_id": "60b222e537838723b02201fd",
         "title": "photo1",
         "description": "my photo",
-        "photoUrl":"https://picsum.photos/300/400?random=1",
+        "photoUrl": "https://picsum.photos/300/400?random=1",
         "Fav": [
           "60b222e537838723b02201fd"
         ],
@@ -112,6 +112,17 @@
       },
       "createdAt": "2021-05-29T11:17:57.326Z",
       "updatedAt": "2021-05-29T11:17:57.326Z"
+    },
+    {
+      "id": 19,
+      "title": "",
+      "description": "",
+      "createdAt": "2021-03-02",
+      "updatedAt": "2021-05-04",
+      "photos": [
+        1
+      ],
+      "coverPhoto": 1
     }
   ],
   "photos": [
