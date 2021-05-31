@@ -1,7 +1,7 @@
 import React,{useState,useEffect} from 'react';
 import './followingFollowers.css';
 import defaultProfile from '../../img/deefault.jpg';
-import Header from '../navbar/MainNav';
+import Header from '../navbar/mainNav';
 import Footer from '../navbar/footer'
 import axios from "axios"
 const endpoint = 'http://localhost:3001/'

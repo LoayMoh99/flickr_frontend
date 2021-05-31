@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react';
 import './userInfo.css';
 import '../../fonts/font/flaticon.css';
 import defaultProfile from '../../img/deefault.jpg';
-import Header from '../navbar/MainNav'
+import Header from '../navbar/mainNav'
 import Photostream from '../photostream/Photostream'
 import CameraRoll from '../CameraRoll/CamreRoll'
 import axios from 'axios'
