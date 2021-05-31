@@ -148,6 +148,11 @@ a{
     
 }
 
+.adjustedFoeSearch{
+    width: 223px;
+    margin-top: 30px;
+}
+
 .flaticon-search.hiddenIcon{
     display: none;
 }
@@ -253,6 +258,19 @@ a{
 
 .showNav{
     left:0 !important;
+}
+
+#linkedParagraph{
+    color: black;
+}
+
+.logOut{
+    border: none;
+    padding: 5px 10px;
+    color: white;
+    background-color: red;
+    margin-left: 15px;
+    border-radius: 5px;
 }
 
 @media(max-width:1080px){

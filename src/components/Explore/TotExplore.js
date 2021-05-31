@@ -1,4 +1,4 @@
-import Header from '../navbar/mainNav'
+import Header from '../navbar/MainNav'
 
 /*import Photostream from "./components/photostream/Photostream"
 import EditInfo from "./components/photostream/EditInfo"

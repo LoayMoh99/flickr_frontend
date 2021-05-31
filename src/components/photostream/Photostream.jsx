@@ -4,6 +4,11 @@ import NavBar from "./NavBar"
 import './ImageGrid.css'
 import {GetUserPhotos} from "../../services/userServices"
 import GetPeoplePhotos from "../../services/peopleServices"
+import ImageDetails from '../imageDetails/ImageDetails'
+import axios from "axios"
+import $ from 'jquery'; 
+import { Link , Route, useParams } from 'react-router-dom'
+const endpoint = 'http://localhost:3001/'
 
 function Photostream(props){
 
@@ -17,6 +22,15 @@ function Photostream(props){
     //Get photos
     const [userPhotos, setUserPhotos] = useState([]);
     const [peoplePhotos, setPeoplePhotos] = useState([]);
+    const [photos, setPhotos] = useState([]);
+    
+    const navStyle={
+    color:'white'
+    };
+    
+    
+    const [isModalOpen, setModalIsOpen] = useState(false);
+    const [isPhoto, setPhoto] = useState(false);
 
     //get request
     useEffect( () =>{
@@ -31,6 +45,19 @@ function Photostream(props){
         })
     // },[userPhotos,userId])
     },[userId])
+    
+    let isPhotoSelected;
+    function showPhoto(id){
+        console.log("PhotoStream",id);
+        isPhotoSelected=id;
+        setPhoto(true);
+        console.log("after click",isPhotoSelected);
+        //props.history.push('/imagedetails/id}');
+        
+    }
+    console.log("isPhoto",isPhoto);
+    console.log("sent id",isPhotoSelected);
+    
 
     return (
         <>
@@ -42,6 +69,7 @@ function Photostream(props){
             {isUser?
                 <>
                     {userPhotos.map(photo => (
+                    //<Link  style={navStyle} to={`/imagedetails/${photo.id}`}>
                     <ImageGrid
                     id = {photo.id}
                     url ={photo.photoUrl} 
@@ -54,12 +82,14 @@ function Photostream(props){
                     ownerName = "YOU!"
                     viewMode = {isUser}
                     favMode = {isFav}
-                    />
+                    onOpenRequest={showPhoto}
+                    />//</Link>
                 ))}
                 </>
                 :
                 <>
                     {peoplePhotos.map(photo => (
+                    //<Link  style={navStyle} to={`/imagedetails/${photo.id}`}>
                     <ImageGrid
                     id = {photo.id}
                     url ={photo.photoUrl} 
@@ -72,7 +102,8 @@ function Photostream(props){
                     ownerName ={photo.userName}
                     viewMode = {isUser}
                     favMode = {true}
-                    />
+                    onOpenRequest={showPhoto}
+                    />//</Link>
                 ))}
                 </>
             }
@@ -81,7 +112,7 @@ function Photostream(props){
             </div>
         </div>
         </>
-   ) 
+    ) 
 }
 
 export default Photostream;

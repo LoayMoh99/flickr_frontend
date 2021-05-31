@@ -1,16 +1,18 @@
 import React,{useState,useEffect} from 'react';
 import './userInfo.css';
 import '../../fonts/font/flaticon.css';
-import {showEdit} from './edit.js'
-import {closeEdit} from './edit'
 import defaultProfile from '../../img/deefault.jpg';
+import Header from '../navbar/MainNav'
 import Photostream from '../photostream/Photostream'
 import CameraRoll from '../CameraRoll/CamreRoll'
 import axios from 'axios'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import {Link} from "react-router-dom";
+import GetPeoplePhotos from "../../services/peopleServices"
 import Faves from '../Faves/Faves';
 import AlbumPreview from '../Album/AlbumPreview'
-import {GetUser} from "../../services/userServices"
+import {GetUser,GetUserPhotos} from "../../services/userServices"
 import GroupPhotos from "../GroupPhotos/GroupPhotos"
 
 /*componentDidMount(){
@@ -21,15 +23,25 @@ import GroupPhotos from "../GroupPhotos/GroupPhotos"
 
 export default function Userinfo(props){
 
+    const [userPhotos, setUserPhotos] = useState([]);
+    const [peoplePhotos, setPeoplePhotos] = useState([]);
+    const [userId , setUserId] = useState(0)
     const [userInfo, setUserInfo] = useState([]);
     //get request
     useEffect( () =>{
       //get user photos
-      GetUser().then( response => {
+        GetUser().then( response => {
         setUserInfo(response.data);
         console.log(response)
-      })
-
+        })
+    //get user photos
+    GetUserPhotos().then( response => {
+        setUserPhotos(response.data);
+    })
+    //get people photos by userId
+    GetPeoplePhotos(userId).then( response => {
+        setPeoplePhotos(response.data);
+    })
   },[])
 
 console.log('Anaaaa fl useeer',localStorage.token);
@@ -42,6 +54,129 @@ console.log('Anaaaa fl useeer',localStorage.token);
     const [isGallery,setGallery] = useState(false);
     const [isGroup,setGroup] = useState(false);
     const [isStats,setStats] = useState(false);
+    const [photos, setPhotos] = useState([]);
+    const [selectedPhoto, setSelectedPhoto] = useState([]);
+    const [avatarBackground, setAvatarBackground] = useState(0);
+    const [isModalOpen, setModalOpen] = useState(false);
+    const [userData, setUserData] = useState([]);
+    //Initially not following the other user
+    const [isFollowing,setFollowing]=useState(false);
+    const plusIcon = <FontAwesomeIcon icon={faPlus} color="DarkGrey" />;
+
+    
+    // useEffect(() => {
+    //     const fetchData = async () => {
+            //////////////////////////INTEGRATION///////////////////////////////////////
+            // if(props){
+            //     const response = await axios.get( endpoint+'user/check/peopleid?='+props);
+            //     if(response.status===200){
+            //         //////other user
+            //         if(response.data===false){
+            //             const response2 = await axios.get( endpoint+'photo/photos_id?='+props);
+            //             if(response2.status===200){
+            //                 setUserData(response2.data);
+            //                  if(response.data.Follow===true)
+            //                  {
+            //     setFollowing(true);
+            // }
+            // else{
+            //     setFollowing(false);
+            // }
+            //             }
+            //         }
+            //         else{
+            //             const response2 = await axios.get( endpoint+'user');
+            //             if (response2.status===200) {
+            //                 setUserData(response2.data);
+            //                 setFollowing(false);
+            //             }
+            //         }
+            //     }
+            // }
+            //////////////API////////////////////////////////////////
+            //const {data,status} = await axios.get( endpoint+'user/photos');
+    //         const {data,status} = await axios.get( endpoint+'photos');
+    //         console.log(status);
+    //         if (status === 200){
+    //             setPhotos(data);
+    //         }
+    // };
+    // fetchData();
+    // },[]);
+
+    function changeSelection(newimageUrl) {
+        //////////////////////////INTEGRATION///////////////////////////////////////
+        // setSelectedPhoto(newimageUrl);
+        // if(avatarBackground===1){
+        //     newUserInfo={
+        //         Fname: "Farah",
+        //         Lname: "Mostafa",
+        //         Following: 150,
+        //         Followers: 100,
+        //         views: 70,
+        //         Date_joined: "2021-05-30",
+        //         Email: "emal@gmail",
+        //         Photo: 0,
+        //         UserName: "FaraMostafa",
+        //         Avatar: "https://picsum.photos/500/300?random=1",
+        //         BackGround: newimageUrl,
+        //         About: {
+        //         Description: "string",
+        //         Hometown: "string",
+        //         Occupation: "string",
+        //         CurrentCity: "string"
+        //      }
+        //     }
+        //      const response = await axios.put(endpoint + "user/" , newUserInfo);/////////////User
+        //      if(response.status===200){
+        //         const response2 = await axios.get( endpoint+'user');//////User
+        //      }
+            
+        //}
+        // else{
+        //     newUserInfo={
+        //         Fname: "Farah",
+        //         Lname: "Mostafa",
+        //         Following: 150,
+        //         Followers: 100,
+        //         views: 70,
+        //         Date_joined: "2021-05-30",
+        //         Email: "emal@gmail",
+        //         Photo: 0,
+        //         UserName: "FaraMostafa",
+        //         Avatar: newimageUrl,
+        //         BackGround: ,
+        //         About: {
+        //         Description: "string",
+        //         Hometown: "string",
+        //         Occupation: "string",
+        //         CurrentCity: "string"
+        //      }
+        //     }
+        //      const response = await axios.put(endpoint + "user/" , newUserInfo);/////////////User
+        //      if(response.status===200){
+        //         const response2 = await axios.get( endpoint+'user');//////User
+        //      }
+        // }
+    }
+    function closeEdit(){
+        setModalOpen(false);
+
+    }
+    function showEdit(num){
+        setModalOpen(true);
+        console.log("isOpen",isModalOpen);
+        setAvatarBackground(num);
+        console.log("jj",num);
+        console.log("jj",avatarBackground);
+    }
+
+    function postFollowRequest() {
+        // const response = await axios.post( endpoint+'user',props);
+        // if(response.status===200){
+        //     const response2 = await axios.get( endpoint+'photo/photos_id?='+props);
+        // }
+    }
 
     function updateStat(){
         setPhotoStream(isPhotoStream && !isPhotoStream);
@@ -129,39 +264,30 @@ console.log('Anaaaa fl useeer',localStorage.token);
         setGroup(true);
         setStats(isStats && !isStats);
     }
-
-    /*const [data, setData] = useState();
-    useEffect(() => {
-        const fetchData = async () => {
-        const result = await axios(
-            'https://58003e7c-80ff-4927-a2f7-95afb9b9542b.mock.pstmn.io/getuserinfo',
-        );
-
-        setData(result);
-        };
-    
-        fetchData();
-    });
-    console.log(data);*/
     const navStyle={
         color:'white'
     };
+
+
     return(
+        
         <div>
+            <Header/>
             <div>
                 <div className="uName" style={{backgroundImage: `url(${userInfo.BackGround})`}}>
                     <div className="overlay1">
-                        <i className="flaticon-edit" onClick={()=>showEdit()}></i>
+                        <i className="flaticon-edit" onClick={()=>{showEdit(1)}}></i>
                         <div className="userInfo">
-                            <div className="profImg" style={{backgroundImage: `url(${userInfo.Avatar})`}}></div>
+                            <div className="profImg" onClick={()=>{showEdit(2)}} style={{backgroundImage: `url(${userInfo.Avatar})`}}></div>
                             <div className="nameAndInfo">
                                 <h1>{userInfo.Fname} {userInfo.Lname}</h1>
+                                {isFollowing &&<button className="followButton" onClick={postFollowRequest()}>{plusIcon} Follow</button>}
                                 <div className="numbers">
                                     <div className="follwingFollowers">
                                         <p>{userInfo.UserName}</p>
                                         <ul className="NavbarAndheaderul">
-                                            <li><a>{userInfo.Followers} followers</a></li>
-                                            <li><Link  style={navStyle} to="/FollwingFollowers"><a>{userInfo.Following} following</a></Link></li>
+                                            <li><Link  style={navStyle} to="/Followers">{userInfo.Followers} followers</Link></li>
+                                            <li><Link  style={navStyle} to="/FollwingFollowers">{userInfo.Following} following</Link></li>
                                         </ul>
                                     </div>
                                     <div className="joined">
@@ -187,12 +313,12 @@ console.log('Anaaaa fl useeer',localStorage.token);
                 </div>
             </div>
             <div>
-                {isPhotoStream && <GroupPhotos />}
+                {isPhotoStream && <Photostream />}
                 {isCameraRoll && <CameraRoll/>}
                 {isFaves && <Faves/>}
                 {isAlbums && <AlbumPreview/>}
             </div>
-        <div className="modal-container">
+        {isModalOpen && <div className="modal-container">
                 <div className="overlay2"></div>
                 <div className="modal-body">
                     <div className="navAndSearch">
@@ -208,15 +334,17 @@ console.log('Anaaaa fl useeer',localStorage.token);
                             </button>
                             <input type="text" placeholder="Photos, People or Groups   "/>
                         </div>
-                        <i className="flaticon-close" onClick={()=>closeEdit()}></i>
+                        <i className="flaticon-close" onClick={closeEdit}></i>
                         </div>
                     </div>
-                    <div className="showPicInItems"></div>
+                    <div className="showPicInItems">
+                    {userPhotos.map(photo=>(<img onClick={()=>{changeSelection(photo.photoUrl)}} src={photo.photoUrl}/>))}
+                    </div>
                     <div className="slctBtn">
                         <button>select</button>
                     </div>
                 </div>
-            </div>
+            </div>}
         </div>
     );
 }

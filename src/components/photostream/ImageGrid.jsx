@@ -28,7 +28,7 @@ function ImageGrid(props){
 
     function handleMouseOver() {
         setMouseOver(true);
-      }
+    }
     
     function handleMouseOut() {
         setMouseOver(false);
@@ -74,7 +74,7 @@ function ImageGrid(props){
 
     return(
         <>
-            <div className="item">
+            <div className="item"  onClick={()=>{props.onOpenRequest(props.id)}}>
                 <img 
                 src={props.url} 
                 onLoad={event => (
