@@ -15,7 +15,7 @@ function AlbumPage() {
 
   const [album,setAlbum] =useState([]);
   // const { album_id } = props;
-  const album_id=0;
+  const album_id=1;
 
   //This function is called whenever this album page is opened
   //It gets the details of the selected album and set the const album with these details 
@@ -46,6 +46,7 @@ console.log(album);
         coverPhoto = {album.coverPhoto}
         title = {album.title}
         description = {album.description}
+        photos = {album.photos}
         />
         )}
         

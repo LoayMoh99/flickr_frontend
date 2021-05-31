@@ -1,18 +1,64 @@
 import React,{useState} from 'react';
+import axios from "axios"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
+const endpoint = 'http://localhost:3001/'
+
 function AlbumCoverPhoto(props) {
 //const coverPhoto="https://picsum.photos/500/300?random=1";
+
+
+const { coverPhoto, title, description , photos } = props;
 const pen =  <FontAwesomeIcon icon={faPen} color="white" size="1x" />;
 const avatarUrl="https://picsum.photos/500/300?random=1";
-const countPhotos=30;
+const countPhotos=photos.length;
+
 const userName= "Khadija Swelam";
 
-const { coverPhoto, title, description } = props;
+  //new titles and description
+  const [inputTitle, setInputTitle] = useState(title);
+  const [inputDescription , setInputDescription] = useState(description);
+  const [isChanged, setIsChanged] = useState (false);
 
-   const [tag, setTag] = useState();
-    const addtag = e => setTag(e.target.value); 
-    console.log(tag);
+  function handleTitleChange(event) {
+    const newTitle = event.target.value;
+    setInputTitle(newTitle);
+    setIsChanged(true);
+    console.log(inputTitle);
+  }
+
+  function handleDescriptionChange(event) {
+    const newDescription  = event.target.value;
+    setInputDescription(newDescription);
+    setIsChanged(true);
+    console.log(inputDescription);
+  }
+  const albumUpdated ={
+    "title": inputTitle,
+    "description":inputDescription,
+  };
+
+    async function UpdateAlbum (id, object){
+    try{
+        // const response = await axios.put(endpoint+'album?album_id='+id, object)
+        const response = await axios.put(endpoint+'album/'+id , object)
+        //Success
+        return(response)
+    } catch (error){
+        if (error.response){
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request){
+          console.log(error.request);
+        } else {
+          console.log('Error', error.message);
+        }
+        console.log(error);
+    }
+};
+
+
 return (
     <>
    <div className="coverPhoto" style={{backgroundImage: `url(${coverPhoto})`}}>
@@ -22,33 +68,34 @@ return (
                         <a href="/#" className="editPen" >   
                                 {pen}
                         </a>
-                        {/* </span>  */}
-                    {/* <input className="inputTitleAlbum" value="Title" type="text" contentEditable="true"  onChange={addtag} ></input> */}
-
-
-                    <div contentEditable="true" >
-                        <div className="titleEditable" >
-                            <p onChange={addtag} >{title}</p>
+                     <div className="inputBarAlbumCover">
+                    <div id="inputFormatAlbum">
+                        <div class="form-group" >
+                            <input type="text" className="form-control"  onChange={handleTitleChange} value={inputTitle}></input> 
                         </div>
-                        <div className="descriptionEditable">
-                            {description}
+                        <div class="form-group">
+                            <textarea className="formControlTextarea" rows="3"  onChange={handleDescriptionChange}>{inputDescription}</textarea> 
                         </div>
+                    <button className="button" >Done</button>
                     </div>
+
+            </div>
+
                </div>
                <h5 className="countPhotos">
                 {countPhotos}
                {' '}
                 photos</h5>
-         <div className="spaceTop">
+         {/* <div className="spaceTop">
            <img className="img-responsive avatarPhoto"src={avatarUrl} alt="image_flickr" />
-        </div>
-        <a href="/#">
+        </div> */}
             <h5 className="userName"> 
-                By:
-                {' '}
-                {userName}
+                <a class="userName" href="/#">
+                        By:
+                        {' '}
+                        {userName}
+                </a>
             </h5>
-        </a>
         </div>
    </div>
     </>

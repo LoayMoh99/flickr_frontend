@@ -6,7 +6,7 @@
 /* eslint-disable linebreak-style */
 /* eslint-disable max-len */
 /* eslint-disable linebreak-style */
-import React from 'react';
+import React, {useState} from 'react';
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 // import { fa-tag } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -18,6 +18,35 @@ import DropdownPrivacy from './DropdownPrivacy';
 function EditModal(props) {
   const tag = <FontAwesomeIcon icon={faTag} color="DarkGrey" />;
   const people = <FontAwesomeIcon icon={faUserFriends} color="DarkGrey" />;
+  const [tagAdded,setTagAdded] = useState(false);
+  const [peopleAdded, setPeopleAdded]= useState(false);
+  const [inputTag, setInputTag] = useState("");
+  const [inputPeople , setInputPeople] = useState("");
+  
+  function handleTagChange(event){
+    setTagAdded(true);
+    const newTag = event.target.value;
+    setInputTag(newTag);
+    console.log(inputTag);
+    if(newTag==="")
+    {
+      setTagAdded(false);
+    }
+  }
+  function handlePeopleChange(event){
+    setPeopleAdded(true);
+    const newPeople = event.target.value;
+    setInputPeople(newPeople);
+    console.log(inputPeople);
+    if(newPeople==="")
+    {
+      setPeopleAdded(false);
+    }
+  }
+
+  
+
+
   return (
     <>
 
@@ -33,9 +62,9 @@ function EditModal(props) {
             {' '}
           </h3>
           <div className="title-desc-container">
-            <input className="edit-title" type="text" placeholder="Change title" />
+            <input className="edit-title" type="text" placeholder="Change title" onChange={handleTagChange}/>
             <hr />
-            <textarea className="edit-description" placeholder="Change description" />
+            <textarea className="edit-description" placeholder="Change description" onChange={handlePeopleChange}/>
 
           </div>
           <span className="privacy-label">Who can see this photo ?</span>

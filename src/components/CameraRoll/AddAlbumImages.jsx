@@ -53,6 +53,7 @@ function AddAlbumImages(props) {
              const response = await axios.post(endpoint+'album?album_id='+id, object);
            // const response = await axios.post(endpoint+'album/'+id , object);
             //Success
+            setPhotoCount(response.data.length);
             return(response)
         } catch (error){
             if (error.response){
