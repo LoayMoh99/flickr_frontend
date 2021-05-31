@@ -3,12 +3,12 @@ import '../../fonts/font/flaticon.css'
 import './imageDetails.css'
 import { Carousel } from 'react-responsive-carousel';
 import defaultProfile from '../../img/deefault.jpg';
-import Footer from '../navbar/footer'
+import Footer from '../navbar/Footer'
 import t1 from '../../img/img/dBackground.jpg';
 import t2 from '../../img/img/ddBackground.jpg'
 import ViewedImage from './ViewedImage'
 import ShownImageComments from './ShownImageComments'
-import Header from '../navbar/mainNav';
+import Header from '../navbar/MainNav';
 import axios from "axios"
 import { Link,useLocation } from 'react-router-dom'
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
@@ -90,8 +90,11 @@ export default function ImageDetails(props){
                 <h3>{titile}</h3>
                 <p>{discription}</p>
                 {comments.map(comnt=>(<ShownImageComments cmntText={comnt.comment} commentOwnerFname={comnt.user.Fname} commentOwnerLname={comnt.user.Lname}/>))} 
-                <input type="text" id="tag" name="text" onChange={addComment}/>
-                {newComment && <button onClick={postTnewMessage()}>comment</button>}
+                <div className="commentBoxImageDetails">
+                    <input type="text" id="tag" name="text" onChange={addComment}/>
+                    {newComment && <button onClick={postTnewMessage()}>comment</button>}
+                </div>
+                
             </div>
             <div className="photoInteractions">
                 <div>

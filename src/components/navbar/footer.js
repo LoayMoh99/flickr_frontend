@@ -14,16 +14,16 @@ export default function Footer(){
             
                 <ul className="rowAdj">
                 <Link style={navStyle} to="/About">
-                    <a className="nav-link" href="#">About</a>
+                    <p>About</p>
                     </Link>
                     <Link style={navStyle} to="/">
-                    <a className="nav-link" href="#">Home</a>
+                    <p>Home</p>
                     </Link>
                     <Link style={navStyle} to="/Jobs">
-                    <a className="nav-link" href="#">Jobs</a>
+                    <p>Jobs</p>
                     </Link>
                     <Link style={navStyle} to="/Blog">
-                    <a className="nav-link" href="#">Blog</a>
+                    <p>Blog</p>
                     </Link>
                     <a className="nav-link disabled" href="#" tabIndex="-1" aria-disabled="true">Developers</a>
                     <a className="nav-link disabled" href="#" tabIndex="-1" aria-disabled="true">Guidelines</a>

@@ -1,4 +1,5 @@
 import React from 'react';
+import './imageDetails.css'
 
 export default  function ShownImageComments(props){
     return(

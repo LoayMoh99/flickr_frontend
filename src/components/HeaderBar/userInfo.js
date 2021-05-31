@@ -2,7 +2,7 @@ import React,{useState,useEffect} from 'react';
 import './userInfo.css';
 import '../../fonts/font/flaticon.css';
 import defaultProfile from '../../img/deefault.jpg';
-import Header from '../navbar/mainNav'
+import Header from '../navbar/MainNav'
 import Photostream from '../photostream/Photostream'
 import CameraRoll from '../CameraRoll/CamreRoll'
 import axios from 'axios'
@@ -41,7 +41,7 @@ export default function Userinfo(props){
             //             const response2 = await axios.get( endpoint+'photo/photos_id?='+props);
             //             if(response2.status===200){
             //                 setUserData(response2.data);
-            //                  if(response.data.Relation===true)
+            //                  if(response.data.Follow===true)
             //                  {
             //     setFollowing(true);
             // }
@@ -249,7 +249,7 @@ export default function Userinfo(props){
                             <div className="profImg" onClick={()=>{showEdit(2)}} style={{backgroundImage: `url(${props.avatar_url})`}}></div>
                             <div className="nameAndInfo">
                                 <h1>{props.firstName} {props.lastName}</h1>
-                                {!isFollowing &&<button onClick={postFollowRequest()}>{plusIcon} Follow</button>}
+                                {isFollowing &&<button className="followButton" onClick={postFollowRequest()}>{plusIcon} Follow</button>}
                                 <div className="numbers">
                                     <div className="follwingFollowers">
                                         <p>{props.username}</p>

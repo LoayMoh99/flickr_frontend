@@ -3,7 +3,7 @@ import ImageGrid from "./ImageGrid"
 import NavBar from "./NavBar"
 import Slideshow from "./Slideshow"
 import './ImageGrid.css'
-import ImageDetails from '../imageDetails/imageDetails'
+import ImageDetails from '../imageDetails/ImageDetails'
 import axios from "axios"
 import $ from 'jquery'; 
 import { Link , Route, useParams } from 'react-router-dom'

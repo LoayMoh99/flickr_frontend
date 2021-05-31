@@ -231,6 +231,11 @@
     display: block;
 }
 
+.followButton{
+    border-radius: 5px;
+    border: none;
+}
+
 .extraPadding{
     padding: 0 135px;
 }

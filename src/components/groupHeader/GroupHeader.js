@@ -2,12 +2,10 @@ import React,{useState,useEffect} from 'react';
 import '../HeaderBar/userInfo.css';
 import '../../fonts/font/flaticon.css';
 import './extraGroupDesign.css'
-import {showEdit} from '../HeaderBar/edit'
-import {closeEdit} from '../HeaderBar/edit.js'
 import defaultProfile from '../../img/deefault.jpg';
 import groupBG from '../../img/groupBG.jpg'
 import groupimg from '../../img/images.png'
-import Header from '../navbar/mainNav'
+import Header from '../navbar/MainNav'
 import axios from 'axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';

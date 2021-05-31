@@ -1,3 +1,4 @@
+@import "../navbar/constants.css";
 .imagePreview{
     background-color: lightgray;
 }
@@ -57,9 +58,24 @@
     width: 100%;
 }
 
-.previewedPhotoComments{
+.commentBoxImageDetails input{
     height: 110px;
     width: 300px;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.commentBoxImageDetails{
+    display: flex;
+    flex-direction: column;
+}
+
+.commentBoxImageDetails button{
+    border: none;
+    border-radius: 5px;
+    width: fit-content;
+    color: white;
+    background-color: var(--edidHoverBlue);
 }
 
 .imagePreview .previewedPhotoComments:hover{

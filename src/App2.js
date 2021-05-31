@@ -1,4 +1,4 @@
-import Userinfo from './components/HeaderBar/userInfo'
+import Userinfo from './components/HeaderBar/UserInfo'
 import React,{useState,useEffect} from 'react';
 import axios from 'axios'
 const endpoint = 'http://localhost:3001/'
