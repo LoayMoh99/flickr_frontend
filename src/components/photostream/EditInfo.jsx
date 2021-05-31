@@ -5,7 +5,7 @@ import DeleteModal from "../DeleteModal/DeleteModal"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom/cjs/react-router-dom.min"
-import getUserPhotos from "../../services/userServices"
+import {GetUserPhotos} from "../../services/userServices"
 import DeletePhoto from "../../services/photoServices"
 
 function EditInfo(){
@@ -19,7 +19,7 @@ function EditInfo(){
     const [photos, setPhotos] = useState([]);
     //get request
     useEffect( () =>{
-        getUserPhotos().then( response => {
+        GetUserPhotos().then( response => {
             setPhotos(response.data);
         })
     // },[photos])
@@ -50,7 +50,7 @@ function EditInfo(){
         <>
         <div className="EditInfo-body">
             <ul id="nav-list">
-                <li id="nav-item"><Link  style={navStyle} to="/"><a href="#" id="a">{back } Back to photostream</a></Link></li>
+                <li id="nav-item"><Link  style={navStyle} to="/user"><a href="#" id="a">{back } Back to photostream</a></Link></li>
             <li id="right "><p id="a">Edit in <Link style={navStyle} to="/CameraRoll"><a id="a2" href="#" >Camera Roll</a></Link></p> </li>
             </ul>
 

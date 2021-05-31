@@ -10,7 +10,7 @@ import axios from 'axios'
 import {Link} from "react-router-dom";
 import Faves from '../Faves/Faves';
 import AlbumPreview from '../Album/AlbumPreview'
-
+import {GetUser} from "../../services/userServices"
 /*componentDidMount(){
     axios.get('')
     .then
@@ -18,6 +18,20 @@ import AlbumPreview from '../Album/AlbumPreview'
 }*/
 
 export default function Userinfo(props){
+
+    const [userInfo, setUserInfo] = useState([]);
+    //get request
+    useEffect( () =>{
+      //get user photos
+      GetUser().then( response => {
+        setUserInfo(response.data);
+        console.log(response)
+      })
+
+  },[])
+
+console.log('Anaaaa fl useeer',localStorage.token);
+
     const [isPhotoStream,setPhotoStream] = useState(true);
     const [isCameraRoll,setCameraRoll] = useState(false);
     const [isAbout,setAbout] = useState(false);
@@ -133,24 +147,24 @@ export default function Userinfo(props){
     return(
         <div>
             <div>
-                <div className="uName" style={{backgroundImage: `url(${props.background_url})`}}>
+                <div className="uName" style={{backgroundImage: `url(${userInfo.BackGround})`}}>
                     <div className="overlay1">
                         <i className="flaticon-edit" onClick={()=>showEdit()}></i>
                         <div className="userInfo">
-                            <div className="profImg" style={{backgroundImage: `url(${props.avatar_url})`}}></div>
+                            <div className="profImg" style={{backgroundImage: `url(${userInfo.Avatar})`}}></div>
                             <div className="nameAndInfo">
-                                <h1>{props.firstName} {props.lastName}</h1>
+                                <h1>{userInfo.Fname} {userInfo.Lname}</h1>
                                 <div className="numbers">
                                     <div className="follwingFollowers">
-                                        <p>{props.username}</p>
+                                        <p>{userInfo.UserName}</p>
                                         <ul className="NavbarAndheaderul">
-                                            <li><a>{props.num_followers} followers</a></li>
-                                            <li><Link  style={navStyle} to="/FollwingFollowers"><a>{props.num_following} following</a></Link></li>
+                                            <li><a>{userInfo.Followers} followers</a></li>
+                                            <li><Link  style={navStyle} to="/FollwingFollowers"><a>{userInfo.Following} following</a></Link></li>
                                         </ul>
                                     </div>
                                     <div className="joined">
-                                        <p>{props.num_public_photos} Photos</p>
-                                        <p>Joined {props.date_joined}</p>
+                                        <p>{userInfo.Photo} Photos</p>
+                                        <p>Joined {userInfo.Date_joined}</p>
                                     </div>
                                 </div>
                             </div>

@@ -33,6 +33,7 @@ function Card(props){
 
     function changeToPublic(){
         setPrivacy('public');
+        console.log(privacy);
           // const object = {photos:[props.id] , title:inputTitle , description:inputDescription , privacy:privacy}
         const object ={
             "photoUrl": props.url,
@@ -53,6 +54,7 @@ function Card(props){
 
     function changeToPrivate(){
         setPrivacy('private');
+        console.log(privacy);
         // const object = {photos:[props.id] , title:inputTitle , description:inputDescription , privacy:privacy}
       const object ={
           "photoUrl": props.url,

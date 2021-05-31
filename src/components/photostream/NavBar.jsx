@@ -14,7 +14,6 @@ function NavBar(props){
         color:'white'
     };
 
-
     return(
         <>
         <ul className="nav nav-tabs">

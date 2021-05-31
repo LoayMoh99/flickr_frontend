@@ -12,7 +12,57 @@ const SERVER_URL = configData.SERVER_URL ;
 //   {headers:{ 'Authorization': `Basic ${token}`}}
 
 //User
-export default async function GetUserPhotos (){
+export default async function UserLogin(id,object){
+  try{
+      // const response = await axios.post( SERVER_URL+'user/login',object);
+      const response = await axios.get( SERVER_URL+'user?id='+0);
+      //Success
+      return(response)
+  } catch (error){
+      if (error.response){
+      /*
+      * The request was made and the server responded with a
+      * status code that falls out of the range of 2xx
+      */
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request){
+        /*
+        * The request was made but no response was received, `error.request`
+        * is an instance of XMLHttpRequest in the browser and an instance
+        * of http.ClientRequest in Node.js
+        */
+        console.log(error.request);
+      } else {
+        // Something happened in setting up the request and triggered an Error
+        console.log('Error', error.message);
+      }
+      console.log(error);
+  }
+};
+
+export async function PostUser (object){
+  try{
+      const response = await axios.post( SERVER_URL+'user',object);
+      //Success
+      return(response)
+  } catch (error){
+      if (error.response){
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+        return(error.response);
+      } else if (error.request){
+        console.log(error.request);
+      } else {
+        console.log('Error', error.message);
+      }
+      console.log(error);
+  }
+};
+
+export async function GetUserPhotos (){
     try{
         // const response = await axios.get( SERVER_URL+'user/photos');
         const response = await axios.get( SERVER_URL+'photos');
@@ -20,28 +70,37 @@ export default async function GetUserPhotos (){
         return(response)
     } catch (error){
         if (error.response){
-        /*
-        * The request was made and the server responded with a
-        * status code that falls out of the range of 2xx
-        */
           console.log(error.response.data);
           console.log(error.response.status);
           console.log(error.response.headers);
         } else if (error.request){
-          /*
-          * The request was made but no response was received, `error.request`
-          * is an instance of XMLHttpRequest in the browser and an instance
-          * of http.ClientRequest in Node.js
-          */
           console.log(error.request);
         } else {
-          // Something happened in setting up the request and triggered an Error
           console.log('Error', error.message);
         }
         console.log(error);
     }
 };
 
+export async function GetUser(){
+  try{
+      // const response = await axios.get( SERVER_URL+'user');
+      const response = await axios.get( SERVER_URL+'user');
+      //Success
+      return(response)
+  } catch (error){
+      if (error.response){
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request){
+        console.log(error.request);
+      } else {
+        console.log('Error', error.message);
+      }
+      console.log(error);
+  }
+};
 
 // Favs
 export async function GetUserFavs(){
