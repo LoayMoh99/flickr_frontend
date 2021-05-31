@@ -13,7 +13,6 @@ function Faves(props){
     const [userId , setUserId] = useState(0);
     // const [userName , setUserName] = useState(props.userName)
     const [userName , setUserName] = useState('');
-    const [isFav , setIsFav] = useState(true);
  
     //Get Fav photos
     const [userFavs, setUserFavs] = useState([]);
@@ -30,7 +29,7 @@ function Faves(props){
         GetPeopleFavs(userName).then( response => {
             setPeopleFavs(response.data);
         })
-    },[userFavs,userId])
+    },[userFavs,peopleFavs])
 
 
 return (
@@ -54,7 +53,7 @@ return (
             numberOfFavs = {photo.Favs}
             numberOfComments ={photo.comments}
             viewMode ={isUser}
-            favMode = {isFav}
+            favMode = {true}
             />
         ))}
         </>
@@ -72,6 +71,7 @@ return (
             numberOfFavs = '1'
             numberOfComments ={photo.numberOfComments}
             viewMode ={isUser}
+            favMode ={true}
             />
         ))}
         </>

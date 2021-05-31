@@ -702,5 +702,305 @@
       "photoUrl": "https://picsum.photos/600/200?random=2",
       "numberOfComments": 7
     }
-  ]
+  ],
+  "userAlbums": [
+      {
+        "id": "0",
+        "title": "Album1",
+        "description": "my album",
+        "ownerId": "60b222e537838723b02201fd",
+        "photos": [
+          {
+            "id": "60b222e537838723b02201fd",
+            "title": "photo1",
+            "description": "my photo",
+            "photoUrl": "localhost:3000/photos\\2021-05-29T11-17-57.298ZFCFS.PNG",
+            "Fav": [
+              "60b222e537838723b02201fd"
+            ],
+            "privacy": "public",
+            "ownerId": "60b222e537838723b02201fd",
+            "tags": [
+              "Nature"
+            ],
+            "peopleTags": [
+              {
+                "tagging": "integer",
+                "tagged": [
+                  "60b222e537838723b02201fd"
+                ],
+                "createdAt": "2021-05-29T11:17:57.326Z",
+                "updatedAt": "2021-05-29T11:17:57.326Z"
+              }
+            ],
+            "comments": [
+              {
+                "comment": "this is a comment",
+                "user": "60b222e537838723b02201fd",
+                "createdAt": "2021-05-29T11:17:57.326Z",
+                "updatedAt": "2021-05-29T11:17:57.326Z"
+              }
+            ],
+            "createdAt": "2021-05-29T11:17:57.326Z",
+            "updatedAt": "2021-05-29T11:17:57.326Z"
+          }
+        ],
+        "coverPhoto": {
+          "id": "0",
+          "title": "photo1",
+          "description": "my photo",
+          "photoUrl": "https://picsum.photos/400/200?random=2",
+          "Fav": [
+            "60b222e537838723b02201fd"
+          ],
+          "privacy": "private",
+          "ownerId": "60b222e537838723b02201fd",
+          "tags": [
+            "Nature"
+          ],
+          "peopleTags": [
+            {
+              "tagging": "integer",
+              "tagged": [
+                "60b222e537838723b02201fd"
+              ],
+              "createdAt": "2021-05-29T11:17:57.326Z",
+              "updatedAt": "2021-05-29T11:17:57.326Z"
+            }
+          ],
+          "comments": [
+            0,
+            1
+          ],
+          "createdAt": "2021-05-29T11:17:57.326Z",
+          "updatedAt": "2021-05-29T11:17:57.326Z"
+        },
+        "createdAt": "2021-05-29T11:17:57.326Z",
+        "updatedAt": "2021-05-29T11:17:57.326Z"
+      },
+      {
+        "id": "1",
+        "title": "Album2",
+        "description": "my album",
+        "ownerId": "0",
+        "photos": [
+          {
+            "id": "60b222e537838723b02201fd",
+            "title": "photo1",
+            "description": "my photo",
+            "photoUrl": "localhost:3000/photos\\2021-05-29T11-17-57.298ZFCFS.PNG",
+            "Fav": [
+              "60b222e537838723b02201fd"
+            ],
+            "privacy": "public",
+            "ownerId": "60b222e537838723b02201fd",
+            "tags": [
+              "Nature"
+            ],
+            "peopleTags": [
+              {
+                "tagging": "integer",
+                "tagged": [
+                  "60b222e537838723b02201fd"
+                ],
+                "createdAt": "2021-05-29T11:17:57.326Z",
+                "updatedAt": "2021-05-29T11:17:57.326Z"
+              }
+            ],
+            "comments": [
+              {
+                "comment": "this is a comment",
+                "user": "60b222e537838723b02201fd",
+                "createdAt": "2021-05-29T11:17:57.326Z",
+                "updatedAt": "2021-05-29T11:17:57.326Z"
+              }
+            ],
+            "createdAt": "2021-05-29T11:17:57.326Z",
+            "updatedAt": "2021-05-29T11:17:57.326Z"
+          }
+        ],
+        "coverPhoto": {
+          "id": "1",
+          "title": "photo1",
+          "description": "my photo",
+          "photoUrl": "https://picsum.photos/200/200?random=1",
+          "Fav": [
+            "60b222e537838723b02201fd"
+          ],
+          "privacy": "private",
+          "ownerId": "60b222e537838723b02201fd",
+          "tags": [
+            "Nature"
+          ],
+          "peopleTags": [
+            {
+              "tagging": "integer",
+              "tagged": [
+                "60b222e537838723b02201fd"
+              ],
+              "createdAt": "2021-05-29T11:17:57.326Z",
+              "updatedAt": "2021-05-29T11:17:57.326Z"
+            }
+          ],
+          "comments": [
+            0,
+            1
+          ],
+          "createdAt": "2021-05-29T11:17:57.326Z",
+          "updatedAt": "2021-05-29T11:17:57.326Z"
+        },
+        "createdAt": "2021-05-29T11:17:57.326Z",
+        "updatedAt": "2021-05-29T11:17:57.326Z"
+      }
+    ],
+    "peopleAlbums": [
+      {
+        "id": "0",
+        "title": "people Album1",
+        "description": "my album",
+        "ownerId": "60b222e537838723b02201fd",
+        "photos": [
+          {
+            "id": "60b222e537838723b02201fd",
+            "title": "photo1",
+            "description": "my photo",
+            "photoUrl": "localhost:3000/photos\\2021-05-29T11-17-57.298ZFCFS.PNG",
+            "Fav": [
+              "60b222e537838723b02201fd"
+            ],
+            "privacy": "public",
+            "ownerId": "60b222e537838723b02201fd",
+            "tags": [
+              "Nature"
+            ],
+            "peopleTags": [
+              {
+                "tagging": "integer",
+                "tagged": [
+                  "60b222e537838723b02201fd"
+                ],
+                "createdAt": "2021-05-29T11:17:57.326Z",
+                "updatedAt": "2021-05-29T11:17:57.326Z"
+              }
+            ],
+            "comments": [
+              {
+                "comment": "this is a comment",
+                "user": "60b222e537838723b02201fd",
+                "createdAt": "2021-05-29T11:17:57.326Z",
+                "updatedAt": "2021-05-29T11:17:57.326Z"
+              }
+            ],
+            "createdAt": "2021-05-29T11:17:57.326Z",
+            "updatedAt": "2021-05-29T11:17:57.326Z"
+          }
+        ],
+        "coverPhoto": {
+          "id": "0",
+          "title": "photo1",
+          "description": "my photo",
+          "photoUrl": "https://picsum.photos/400/200?random=1",
+          "Fav": [
+            "60b222e537838723b02201fd"
+          ],
+          "privacy": "private",
+          "ownerId": "60b222e537838723b02201fd",
+          "tags": [
+            "Nature"
+          ],
+          "peopleTags": [
+            {
+              "tagging": "integer",
+              "tagged": [
+                "60b222e537838723b02201fd"
+              ],
+              "createdAt": "2021-05-29T11:17:57.326Z",
+              "updatedAt": "2021-05-29T11:17:57.326Z"
+            }
+          ],
+          "comments": [
+            0,
+            1
+          ],
+          "createdAt": "2021-05-29T11:17:57.326Z",
+          "updatedAt": "2021-05-29T11:17:57.326Z"
+        },
+        "createdAt": "2021-05-29T11:17:57.326Z",
+        "updatedAt": "2021-05-29T11:17:57.326Z"
+      },
+      {
+        "id": "1",
+        "title": "people Album2",
+        "description": "my album",
+        "ownerId": "0",
+        "photos": [
+          {
+            "id": "60b222e537838723b02201fd",
+            "title": "photo1",
+            "description": "my photo",
+            "photoUrl": "localhost:3000/photos\\2021-05-29T11-17-57.298ZFCFS.PNG",
+            "Fav": [
+              "60b222e537838723b02201fd"
+            ],
+            "privacy": "public",
+            "ownerId": "60b222e537838723b02201fd",
+            "tags": [
+              "Nature"
+            ],
+            "peopleTags": [
+              {
+                "tagging": "integer",
+                "tagged": [
+                  "60b222e537838723b02201fd"
+                ],
+                "createdAt": "2021-05-29T11:17:57.326Z",
+                "updatedAt": "2021-05-29T11:17:57.326Z"
+              }
+            ],
+            "comments": [
+              {
+                "comment": "this is a comment",
+                "user": "60b222e537838723b02201fd",
+                "createdAt": "2021-05-29T11:17:57.326Z",
+                "updatedAt": "2021-05-29T11:17:57.326Z"
+              }
+            ],
+            "createdAt": "2021-05-29T11:17:57.326Z",
+            "updatedAt": "2021-05-29T11:17:57.326Z"
+          }
+        ],
+        "coverPhoto": {
+          "id": "1",
+          "title": "photo1",
+          "description": "my photo",
+          "photoUrl": "https://picsum.photos/200/200?random=2",
+          "Fav": [
+            "60b222e537838723b02201fd"
+          ],
+          "privacy": "private",
+          "ownerId": "60b222e537838723b02201fd",
+          "tags": [
+            "Nature"
+          ],
+          "peopleTags": [
+            {
+              "tagging": "integer",
+              "tagged": [
+                "60b222e537838723b02201fd"
+              ],
+              "createdAt": "2021-05-29T11:17:57.326Z",
+              "updatedAt": "2021-05-29T11:17:57.326Z"
+            }
+          ],
+          "comments": [
+            0,
+            1
+          ],
+          "createdAt": "2021-05-29T11:17:57.326Z",
+          "updatedAt": "2021-05-29T11:17:57.326Z"
+        },
+        "createdAt": "2021-05-29T11:17:57.326Z",
+        "updatedAt": "2021-05-29T11:17:57.326Z"
+      }
+    ]
 }

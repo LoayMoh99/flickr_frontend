@@ -98,7 +98,10 @@ function ImageGrid(props){
                                 {isFav? <li onClick={deleteFav}>{fav} {props.numberOfFavs}</li>:<li> {fav} {props.numberOfFavs}</li>}
                                 </>
                             :
-                            <li onClick={addToFav}>{fav} {props.numberOfFavs}</li>}
+                                <> 
+                                {isFav?<li onClick={addToFav}>{fav} {props.numberOfFavs}</li>:<li> {fav} {props.numberOfFavs}</li>}
+                                </>
+                            }
                         </div>   
                     </ul>
                     {isComment && <CommentBox numberOfComments= {props.numberOfComments} photo_id={props.id} onClick={openCommentBox}/>}

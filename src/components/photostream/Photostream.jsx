@@ -10,9 +10,8 @@ function Photostream(props){
     //user/people boolean -> from userInfo token handling
     // const [isUser , setIsUser] = useState(props.isUser)
     const [isUser , setIsUser] = useState(true);
-    // const [userId , setUserId] = useState(props.userId)
+    // const [userId , setUserId] = useState(props.userId);
     const [userId , setUserId] = useState(0)
-
     const [isFav , setIsFav] = useState(false)
 
     //Get photos
@@ -30,7 +29,8 @@ function Photostream(props){
         GetPeoplePhotos(userId).then( response => {
             setPeoplePhotos(response.data);
         })
-    },[userPhotos,userId])
+    // },[userPhotos,userId])
+    },[userId])
 
     return (
         <>
@@ -71,6 +71,7 @@ function Photostream(props){
                     numberOfComments ={photo.numberOfComments}
                     ownerName ={photo.userName}
                     viewMode = {isUser}
+                    favMode = {true}
                     />
                 ))}
                 </>

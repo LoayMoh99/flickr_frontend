@@ -1,38 +1,73 @@
-import React, {useState}from 'react'
+import React, {useState,useEffect}from 'react'
 import AlbumCard from './AlbumCard'
-import NewAlbumModal from './NewAlbumModal'
 import './AlbumPreview.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faPlusSquare} from '@fortawesome/free-solid-svg-icons'
+import GetUserAlbums,{GetPeopleAlbums} from "../../services/albumServices"
 
 
-function AlbumPreview(){
+function AlbumPreview(props){
     const New = <FontAwesomeIcon icon={faPlusSquare} color="DarkGrey"/>
 
-    const [isModalOpen, setModalIsOpen] = useState(false);
+    //user/people boolean -> from userInfo token handling
+    // const [isUser , setIsUser] = useState(props.isUser)
+    const [isUser , setIsUser] = useState(true);
+    //get people by id from userInfo and send username
+    const [username , setUserName] = useState(props.userName)
 
-    function toggleModal(){
-        setModalIsOpen(!isModalOpen);
-    }
+    //Get user albums
+    const [userAlbums, setUserAlbums] = useState([]);
+    const [peopleAlbums, setPeopleAlbums] = useState([]);
 
-    function confirmCreate(title,description){
-        console.log(+title)
-        console.log((description));
-        //Create Album
-        toggleModal();
-    }
+    //get request
+    useEffect( () =>{
+        //get user photos
+        GetUserAlbums().then( response => {
+            setUserAlbums(response.data);
+        })
+
+        //get people photos by userId
+        // GetPeopleAlbums(username).then( response => {
+        GetPeopleAlbums().then( response => {
+            setPeopleAlbums(response.data);
+        })
+    },[])
 
     return(
         <>
         <div className="albumPreview">
-            <ul className="nav nav-tabs">
-                <li className="ml-auto" ><button onClick={toggleModal} id="new-album" title="New album">{New}   New album</button></li>
-            </ul>
             <div className="album-grid">
-                <AlbumCard />
+                {isUser?
+                    <>
+                    {userAlbums.map (album =>(
+                        <AlbumCard 
+                        id={album.id}
+                        coverUrl = {album.coverPhoto.photoUrl}
+                        title = {album.title}
+                        ownerId = {album.ownerId}
+                        numberOfPhotos = {album.photos.length}
+                        viewMode={false}
+                        favMode = {false}
+                        />
+                    ))}
+                    </>
+                : 
+                    <>
+                    {peopleAlbums.map (album =>(
+                        <AlbumCard 
+                        id={album.id}
+                        coverUrl = {album.coverPhoto.photoUrl}
+                        title = {album.title}
+                        ownerId = {album.ownerId}
+                        numberOfPhotos = {album.photos.length}
+                        viewMode={false}
+                        favMode = {true}
+                        />
+                    ))} 
+                    </>
+                }
             </div>
         </div>
-        {isModalOpen && <NewAlbumModal onRequestClose={toggleModal} onCreate={confirmCreate}/>}
         </>
         )
 }
