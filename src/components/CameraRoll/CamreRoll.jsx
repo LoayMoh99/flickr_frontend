@@ -56,8 +56,8 @@ function CamreRoll() {
       setImages(response.data);
     })
 
-    
-   },[images])
+  },[])
+  //  },[images])
 
   
   const sortedImagesUploaded = images.slice().sort((a, b) => b.createdAt - a.createdAt);

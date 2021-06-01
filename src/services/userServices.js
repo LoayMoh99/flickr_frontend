@@ -12,7 +12,7 @@ const SERVER_URL = configData.SERVER_URL ;
 //   {headers:{ 'Authorization': `Basic ${token}`}}
 
 //User
-export default async function UserLogin(id,object){
+export default async function UserLogin(object){
   try{
       // const response = await axios.post( SERVER_URL+'user/login',object);
       const response = await axios.get( SERVER_URL+'user?id='+0);
@@ -27,6 +27,7 @@ export default async function UserLogin(id,object){
         console.log(error.response.data);
         console.log(error.response.status);
         console.log(error.response.headers);
+      return(error.response.data)
       } else if (error.request){
         /*
         * The request was made but no response was received, `error.request`
@@ -42,6 +43,7 @@ export default async function UserLogin(id,object){
   }
 };
 
+//sign up
 export async function PostUser (object){
   try{
       const response = await axios.post( SERVER_URL+'user',object);
@@ -61,6 +63,27 @@ export async function PostUser (object){
       console.log(error);
   }
 };
+
+//check
+export async function checkUserByIdentifier(id){
+  try{
+      const response = await axios.get( SERVER_URL+'user/check?peopleid='+id);
+      //Success
+      return(response)
+  } catch (error){
+      if (error.response){
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request){
+        console.log(error.request);
+      } else {
+        console.log('Error', error.message);
+      }
+      console.log(error);
+  }
+};
+
 
 export async function GetUserPhotos (){
     try{

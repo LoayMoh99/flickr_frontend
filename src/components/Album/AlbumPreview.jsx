@@ -1,19 +1,14 @@
 import React, {useState,useEffect}from 'react'
 import AlbumCard from './AlbumCard'
 import './AlbumPreview.css'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faPlusSquare} from '@fortawesome/free-solid-svg-icons'
 import GetUserAlbums,{GetPeopleAlbums} from "../../services/albumServices"
-import AlbumPage from './AlbumPage'
 
 
 function AlbumPreview(props){
-    const New = <FontAwesomeIcon icon={faPlusSquare} color="DarkGrey"/>
 
     //user/people boolean -> from userInfo token handling
-    // const [isUser , setIsUser] = useState(props.isUser)
-    const [isUser , setIsUser] = useState(true);
-    //get people by id from userInfo and send username
+    const [isUser , setIsUser] = useState(props.isUser)
+    const [userId , setUserId] = useState(props.userId)
     const [username , setUserName] = useState(props.userName)
 
     //Get user albums
@@ -22,16 +17,18 @@ function AlbumPreview(props){
 
     //get request
     useEffect( () =>{
-        //get user photos
-        GetUserAlbums().then( response => {
-            setUserAlbums(response.data);
-        })
-
-        //get people photos by userId
-        // GetPeopleAlbums(username).then( response => {
-        GetPeopleAlbums().then( response => {
-            setPeopleAlbums(response.data);
-        })
+        if(isUser){
+            //get user photos
+            GetUserAlbums().then( response => {
+                setUserAlbums(response.data);
+            })
+        }else{
+            //get people photos by userId
+            // GetPeopleAlbums(username).then( response => {
+            GetPeopleAlbums().then( response => {
+                setPeopleAlbums(response.data);
+            })
+        }
     },[])
 
 
@@ -51,7 +48,8 @@ function AlbumPreview(props){
                         numberOfPhotos = {album.photos.length}
                         viewMode={false}
                         favMode = {false}
-                        
+                        isUser={isUser}
+                        userId={userId}
                         />
                         
                     ))}
@@ -67,7 +65,8 @@ function AlbumPreview(props){
                         numberOfPhotos = {album.photos.length}
                         viewMode={false}
                         favMode = {true}
-                        
+                        isUser={isUser}
+                        userId={userId}
                         />
                     ))} 
                     </>

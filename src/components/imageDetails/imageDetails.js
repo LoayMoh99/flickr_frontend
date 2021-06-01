@@ -9,14 +9,19 @@ import ViewedImage from './ViewedImage'
 import ShownImageComments from './ShownImageComments'
 import {GetUserPhotos} from "../../services/userServices"
 import GetPeoplePhotos from "../../services/peopleServices"
+import {GetPhotoById,GetComments,PostComments} from "../../services/photoServices"
 import Header from '../navbar/mainNav';
 import axios from "axios";
 import { Link,useLocation } from 'react-router-dom'
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
-const endpoint = 'http://localhost:3001/'
+
 export default function ImageDetails(props){
     const {id}=useParams();
-    console.log(id);
+    const {userId} = useParams();
+    const path = props.location.pathname;
+    // const index = path.split('/');
+    // const id = index[2];
+    console.log(id,"user",userId);
     const [images, setPhotos] = useState([]);
     const [image, setImage] = useState("");
     const [discription, setDiscription] = useState("");
@@ -28,19 +33,39 @@ export default function ImageDetails(props){
     const addComment = e => setNewComment(e.target.value);
     const [userPhotos, setUserPhotos] = useState([]);
     const [peoplePhotos, setPeoplePhotos] = useState([]);
-    const [userId , setUserId] = useState(0)
+    // const [userId , setUserId] = useState(0)
     const [userInfo, setUserInfo] = useState([]);
     //get request
     useEffect( () =>{
-    
-    //get user photos
-    GetUserPhotos().then( response => {
-        setUserPhotos(response.data);
+     if(userId){
+        //get user photos
+        GetUserPhotos().then( response => {
+            setUserPhotos(response.data);
+            console.log(response)
+        })
+     }else{
+        //get people photos by userId
+        GetPeoplePhotos(userId).then( response => {
+            setPeoplePhotos(response.data);
+        })
+     }
+
+
+    //get photo by id
+    GetPhotoById(id).then( response => {
+        setImage(response.data.photoUrl);
+        setDiscription(response.data.description);
+        setTitle(response.data.title);
+        // setNumOfFavs(response.data.Fav.length);
+        setNumOfFavs(response.data.num_favs);
+        setDatOfUpdate(response.data.UpdatedAt);
     })
-    //get people photos by userId
-    GetPeoplePhotos(userId).then( response => {
-        setPeoplePhotos(response.data);
+
+    //get comments
+    GetComments().then( response => {
+        setComments(response.data);
     })
+
   },[])
     // useEffect(() => {`
     //     const fetchData = async () => {
@@ -70,19 +95,18 @@ export default function ImageDetails(props){
     // },[]);
     /////////////////////////////////////////API///////////////////////////////
     function postTnewMessage(){
-        // const sentComment={
-        //     photoId:id, 
-        //     comment: newComment
-        // }
-        // const response= await axios.post( endpoint+'comments?id='+id,sentComment);
-        // if(response.status===200){
-        //     console.log("posted");
-        // }
+        const sentComment={ 
+            comment: newComment
+        }
+        PostComments(id,sentComment).then( response => {
+            console.log(response);
+        });
     }
+
     console.log(image);
     return(
         <div className="imagePreview">
-            <Header/>
+            <Header isLogged={true}/>
             <div className="showedImage">
             <div id="carouselExampleControls" className="carousel slide"  data-bs-interval="false">
             <div className="carousel-inner">
@@ -91,7 +115,7 @@ export default function ImageDetails(props){
                     <img src={image} alt=""></img>
                 </div>
             </div>
-            {images.map(photo=>(<ViewedImage url={photo.photoUrl}/>))} 
+            {userPhotos.map(photo=>(<ViewedImage url={photo.photoUrl}/>))} 
                 </div>
                 <button  className="carousel-control-prev adjustbutton" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                     <span className="carousel-control-prev-icon" aria-hidden="true"></span>

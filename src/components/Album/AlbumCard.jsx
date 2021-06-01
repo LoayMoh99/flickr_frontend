@@ -7,11 +7,13 @@ import $ from 'jquery'
 import {Link} from "react-router-dom";
 
 function AlbumCard(props){
-    const navStyle={
-        color:'white'
-    };
+    const navStyle={ color:'white'};
     const remove = <FontAwesomeIcon icon={faTrash} color="White" />
     const open = <FontAwesomeIcon icon={faFolderOpen} color="White" />
+
+    const [isUser , setIsUser] = useState([props.isUser])
+    const [userId , setUserId] = useState(props.userId)
+
     const [isModalOpen, setModalIsOpen] = useState(false);
     const [idToDelete,setID]=useState(0)
 
@@ -38,10 +40,7 @@ function AlbumCard(props){
                 <div className="album-info">
                     <h1>{props.title}</h1>
                     <p> {props.numberOfPhotos} photos</p>
-                    <button  
-                     onClick={ () =>{
-                         toggleModal(props.id);}}
-                         >{remove}</button>
+                   {isUser && <button  onClick={ () =>{ toggleModal(props.id);}}>{remove}</button>}
                 <Link  style={navStyle} to={`/AlbumPage/${props.id}`}>
                     <button id="open-button" >{open}</button>
                  </Link>

@@ -79,9 +79,6 @@ function Card(props){
 
 
     function confirmEdit(){
-        console.log(inputTitle);
-        console.log(inputDescription);
-        console.log(props.id)
         // const object = {photos:[props.id] , title:inputTitle , description:inputDescription , privacy:privacy}
         const object =       {
             "photoUrl": props.url,
@@ -95,6 +92,7 @@ function Card(props){
             "UpdatedAt": "2021-05-29"
         }
         //API
+        // PutPhoto(object).then( response => {
         PutPhoto(props.id,object).then( response => {
             console.log(response);
         });

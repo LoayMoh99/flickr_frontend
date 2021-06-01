@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button";
 import "./login.css";
 import useForm from "./useNewForm";
 import validateLogin from "./validateLogin";
+import Header from "../navbar/mainNav"
 
 
 export default function Login() {
@@ -16,11 +17,12 @@ export default function Login() {
   return (
     <div className="App">
       {/* Start Header */}
-      <div class="header">
+      {/* <div class="header">
           <div class="container">
               <p>flickr</p>
           </div>
-      </div>
+      </div> */}
+      <Header isLogged={false}/>
       {/* End Header */}
       {/* Start login */}
       <div class="card-container">

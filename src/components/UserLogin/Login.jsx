@@ -1,13 +1,17 @@
 import React, { useState } from "react";
 import "./Login.css";
 import useForm from "./UseNewForm";
+import Header from '../navbar/mainNav'
 import validateLogin from "./ValidateLogin";
 import UserLogin from "../../services/userServices"
+import {Link} from "react-router-dom";
 
 export default function Login(props) {
   
   const {handleChange, handleSubmit, values , errors} = useForm(submit, validateLogin);
   let accessToken = ''
+
+  const navStyle={color:'blue'};
 
   function submit () {
     const email = document.getElementById('email').value;
@@ -20,25 +24,30 @@ export default function Login(props) {
         'password':pass
     }
 
+    // UserLogin(object).then( response => {
     UserLogin(accessToken,object).then( response => {
-        accessToken = response.data.token;
-        localStorage.token = accessToken;
-        console.log(localStorage.token);
-        props.history.push('/user');
+        console.log(response.data.token);
+        if (response.data.token){
+            accessToken = response.data.token;
+            localStorage.token = accessToken;
+            console.log(localStorage.token);
+            props.history.push('/user');
 
-        // delete localStorage.token;
-        // props.history.push('/');
+        }else{
+            props.history.push('/sign-up')
+        }
     })
 
   }
   return (
     <div className="App">
       {/* Start Header */}
-      <div className="header">
+      {/* <div className="header">
           <div className="container">
               <p>flickr</p>
           </div>
-      </div>
+      </div> */}
+      <Header/>
       {/* End Header */}
       {/* Start login */}
       <div className="card-container">
@@ -93,7 +102,7 @@ export default function Login(props) {
                     <div className="all-info">
                         {/*  Start forget part  */}
                         <div className="forgot-part">
-                            <a href="#">Forgot Password?</a>
+                            <a>Forgot Password?</a>
                         </div>
                         {/* End agreement part  */}
                         {/* Start Seperator line part */}
@@ -102,7 +111,7 @@ export default function Login(props) {
                         </div>
                         {/* End Seperator line part  */}
                         {/* Start checking menber part  */}
-                        <p className="check-member">Not a Flickr member? <a href="#">Sign up here</a></p>
+                        <p className="check-member">Not a Flickr member? <Link style={navStyle} to="/sign-up">Sign up here</Link></p>
                         {/* End checking menber part  */}
                     </div>
                 </div>

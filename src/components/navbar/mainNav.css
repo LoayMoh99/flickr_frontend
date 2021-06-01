@@ -9,6 +9,10 @@
     height: 60px;
 }
 
+.none{
+    display: none;
+}
+
 .fix_nav{
     position: fixed !important;
     width: 100%;

@@ -33,6 +33,7 @@ function App() {
       {/* <Header/> */}
       <Switch>
       <Route path="/" exact component={Login}/>
+      <Route path="/sign-up" component={Signup}/>
       <Route path="/user" component={Userinfo}/>
       <Route path="/About" component={About}/>
       <Route path="/Blog" component={Blog}/>
@@ -45,7 +46,7 @@ function App() {
       <Route path="/Explore" component={TotExplore}/>
       <Route path="/Add/:groupId" component={AddPhotos}/>
       <Route path="/upload" component={Upload}/>
-      <Route path="/imagedetails/:id" component={ImageDetails}/>
+      <Route path="/imagedetails/:id/:userId" component={ImageDetails}/>
       <Route path="/AlbumPage/:idToOpen" component={AlbumPage}/>
       </Switch>
       {/* <ImageDetails

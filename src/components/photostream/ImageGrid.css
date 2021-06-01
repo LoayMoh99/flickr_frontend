@@ -120,3 +120,18 @@
   display: block;
   cursor: pointer;
 }
+
+.open-photo{
+  position: absolute;
+  z-index: 100;
+  top: 5px;
+  left: 5px;
+  width: 34px;
+  height: 39px;
+  background-color: transparent;
+  /* color:white; */
+  /* opacity: 1; */
+  border: none;
+  cursor: pointer;
+  font-size: 20px;
+}

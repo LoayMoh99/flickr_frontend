@@ -6,8 +6,8 @@ import {toggleNav} from './navBar.js'
 import {toogleMobileSearchBox} from './navBar.js'
 import {readjustHeader} from './navBar.js'
 import defaultProfile from '../../img/deefault.jpg';
-import { Link } from 'react-router-dom'
-export default function Header(){
+import { Link,Route } from 'react-router-dom'
+export default function Header(props){
     //
     const [searchText,setSearchText]=useState();
     const showDropDown = e => setSearchText(e.target.value);
@@ -19,6 +19,15 @@ export default function Header(){
     const navStyle={
         color:'white'
     };
+
+    const [isLogged, setLogged] = useState(props.isLogged)
+
+
+    function logOut(){
+        delete localStorage.token;
+        setLogged(false)
+
+    }
     
     window.addEventListener('resize',checkSize);
     return(
@@ -35,8 +44,9 @@ export default function Header(){
             <img src={flickrLogo} alt="flickrLogo"></img>
             <h3>flickr</h3>
             </div></Link>
+            {isLogged && <>
             <ul className="headSubMenu NavbarAndheaderul">
-                <li  className="mainHeaderTags youTag"><Link style={navStyle} to="/user">You</Link>
+                <li  className="mainHeaderTags youTag" ><Link style={navStyle} to="/user">You</Link>
                 <ul className="subMenuYouContent NavbarAndheaderul">
                     <li>
                         <a href="#top">About</a>
@@ -78,8 +88,9 @@ export default function Header(){
                     </li>
                 </ul>
                 </li>
-            </ul>
+            </ul></>}
             </div>
+            {isLogged && <>
             <div className="searchBox hiddenIconSearch biggerBox youTag">
                     <button className="searchBtn">
                         <i className="flaticon-search"></i>
@@ -119,11 +130,11 @@ export default function Header(){
                 </div>
                 <i className="flaticon-close hiddenIconSearch" onClick={()=>toogleMobileSearchBox()}></i>
                 <i className="flaticon-search coreSearch hiddenIcon" onClick={()=>toogleMobileSearchBox()}></i>
-                <button className="logOut">Logout</button>
-                <Link style={navStyle} to="/upload"><i className="flaticon-cloud-computing"></i></Link>
+                <Link style={navStyle} to="/"><button className="logOut" onClick={logOut}>Logout</button></Link>
+                <Route style={navStyle} to="/upload"><i className="flaticon-cloud-computing"></i></Route>
                 <i className="flaticon-bell"></i>
                 <img src={defaultProfile} alt="defaultProfilePicture" className="sideProfilePic"></img>
-            </div>
+            </div></>}
         </div>
     </nav>
     <div className="hiddenHeaderList">

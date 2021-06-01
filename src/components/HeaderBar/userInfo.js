@@ -9,30 +9,32 @@ import axios from 'axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Link , Route, useParams } from 'react-router-dom'
-import GetPeoplePhotos from "../../services/peopleServices"
+import GetPeoplePhotos,{GetPeopleByIdentefier} from "../../services/peopleServices"
 //import UpdateUser from "../../services/userServices"
 import Faves from '../Faves/Faves';
 import AlbumPreview from '../Album/AlbumPreview'
-import {GetUser,GetUserPhotos,UpdateUser} from "../../services/userServices"
+import {GetUser,GetUserPhotos,UpdateUser,checkUserByIdentifier} from "../../services/userServices"
 import GroupPhotos from "../GroupPhotos/GroupPhotos"
 
-/*componentDidMount(){
-    axios.get('')
-    .then
-
-}*/
 
 export default function Userinfo(props){
+
+    const path = props.location.pathname;
+    const index = path.split('/');
+    const id = index[2];
 
     const [userPhotos, setUserPhotos] = useState([]);
     const [peoplePhotos, setPeoplePhotos] = useState([]);
     const [userId , setUserId] = useState(0)
     const [userInfo, setUserInfo] = useState([]);
+    const [isUser , setIsUser] = useState(true);
+    const [userName , setUserName] = useState('');
+
     //get request
     useEffect( () =>{
 
-        //check if i am in the user or in people profile//////FOR INTEGRATION/////////////////////////
-        // GetPeopleByIdentefier().then(response=>{
+        // check if i am in the user or in people profile//////FOR INTEGRATION/////////////////////////
+        // checkUserByIdentifier().then(response=>{
         //     if(response.data===true){
         //         //get user
         //         GetUser().then( response => {
@@ -44,12 +46,14 @@ export default function Userinfo(props){
         //             setUserPhotos(response.data);
         //         })
         //         setFollowing(false);
+        //         setIsUser(true);
         //     }
         //     else{
-        //         ////ana m4 me7taga el get people photos hena 3a4an m4 h-update el people
-        //         setUserId(props);////dah 8alat
+        //         ////Not me!
+        //         setUserId(id);
         //         GetPeopleByIdentefier(userId).then(response=>{
         //             setUserInfo(response.data);
+        //             setUserName(response.UserName)
         //             if(response.Follow===true){
         //                 setFollowing(true);
         //             }
@@ -71,7 +75,8 @@ export default function Userinfo(props){
         GetPeoplePhotos(userId).then( response => {
             setPeoplePhotos(response.data);
         })
-    },[userInfo,userPhotos])
+    },[])
+    // },[userInfo,userPhotos])
 
 
     const [isPhotoStream,setPhotoStream] = useState(true);
@@ -206,16 +211,6 @@ export default function Userinfo(props){
         // }
     }
 
-    function updateStat(){
-        setPhotoStream(isPhotoStream && !isPhotoStream);
-        setCameraRoll(isCameraRoll && !isCameraRoll);
-        setAlbums(isAlbums && !isAlbums);
-        setAbout(isAbout && !isAbout);
-        setFaves(isFaves && !isFaves);
-        setGallery(isGallery && !isGallery);
-        setGroup(isGroup && !isGroup);
-        setStats(true);
-    }
     function updateStatAbout(){
         setPhotoStream(isPhotoStream && !isPhotoStream);
         setCameraRoll(isCameraRoll && !isCameraRoll);
@@ -271,17 +266,6 @@ export default function Userinfo(props){
         setStats(isStats && !isStats);
     }
 
-    function updateStatGallery(){
-        setPhotoStream(isPhotoStream && !isPhotoStream);
-        setCameraRoll(isCameraRoll && !isCameraRoll);
-        setAlbums(isAlbums && !isAlbums);
-        setAbout(isAbout && !isAbout);
-        setFaves(isFaves && !isFaves);
-        setGallery(true);
-        setGroup(isGroup && !isGroup);
-        setStats(isStats && !isStats);
-    }
-
     function updateStatGroup(){
         setPhotoStream(isPhotoStream && !isPhotoStream);
         setCameraRoll(isCameraRoll && !isCameraRoll);
@@ -300,11 +284,11 @@ export default function Userinfo(props){
     return(
         
         <div>
-            <Header/>
+            <Header isLogged={true}/>
             <div>
                 <div className="uName" style={{backgroundImage: `url(${userInfo.BackGround})`}}>
                     <div className="overlay1">
-                        <i className="flaticon-edit" onClick={()=>{showEdit(1)}}></i>
+                        {isUser && <i className="flaticon-edit" onClick={()=>{showEdit(1)}}></i>}
                         <div className="userInfo">
                             <div className="profImg" onClick={()=>{showEdit(2)}} style={{backgroundImage: `url(${userInfo.Avatar})`}}></div>
                             <div className="nameAndInfo">
@@ -334,18 +318,16 @@ export default function Userinfo(props){
                         <li className=" mainHeadeNavCoices " className={isPhotoStream && "defaultSelect"} onClick={updateStatPhotStream}>Photostream</li>
                         <li className=" mainHeadeNavCoices" className={isAlbums && "defaultSelect"}  onClick={updateStatAlbum}>Albums</li>
                         <li className=" mainHeadeNavCoices" className={isFaves && "defaultSelect"}  onClick={updateStatFaves}>Favs</li>
-                        <li className=" mainHeadeNavCoices" className={isGallery && "defaultSelect"}  onClick={updateStatGallery}>Galleries</li>
                         <li className=" mainHeadeNavCoices" className={isGroup && "defaultSelect"}  onClick={updateStatGroup}>Groups</li>
-                        <li className=" mainHeadeNavCoices" className={isStats && "defaultSelect"}  onClick={updateStat}>stats</li>
-                        <li className=" mainHeadeNavCoices" className={isCameraRoll && "defaultSelect"}  onClick={updateStatCameraRoll}>Camera Roll</li>
+                        {isUser && <li className=" mainHeadeNavCoices" className={isCameraRoll && "defaultSelect"}  onClick={updateStatCameraRoll}>Camera Roll</li>}
                     </ul>
                 </div>
             </div>
             <div>
-                {isPhotoStream && <Photostream />}
+                {isPhotoStream && <Photostream isUser={isUser} userId={id}/>}
                 {isCameraRoll && <CameraRoll/>}
-                {isFaves && <Faves/>}
-                {isAlbums && <AlbumPreview/>}
+                {isFaves && <Faves isUser={isUser} userId={id} userName={userName}/>}
+                {isAlbums && <AlbumPreview isUser={isUser} userId={id} userName={userName}/>}
             </div>
         {isModalOpen && <div className="modal-container">
                 <div className="overlay2"></div>

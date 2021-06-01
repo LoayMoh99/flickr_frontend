@@ -1,7 +1,8 @@
 import React,{useState} from "react"
 import CommentBox from "../Comments/CommentBox"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faStar,faPlusSquare,faComment} from '@fortawesome/free-solid-svg-icons'
+import {faStar,faPlusSquare,faComment,faFolderOpen} from '@fortawesome/free-solid-svg-icons'
+import {Link} from "react-router-dom";
 import {PostUserFavs,DeleteUserFavs} from '../../services/userServices'
 
 
@@ -10,7 +11,8 @@ function ImageGrid(props){
     const fav = <FontAwesomeIcon icon={faStar} color="white"/>
     const addTo = <FontAwesomeIcon icon={faPlusSquare} color="white"/>
     const comment = <FontAwesomeIcon icon={faComment} color="white"/>
-
+    const open = <FontAwesomeIcon icon={faFolderOpen} color="white" />
+    const navStyle={color:'white'};
     const [isUser, setIsUser] = useState(props.viewMode);
     const [isFav , setIsFav] = useState(props.favMode);
     // overlay
@@ -56,6 +58,7 @@ function ImageGrid(props){
             "Username": "username",
             "Name": "Samar Nabil"
         }
+        // PostUserFavs(props.id).then( response => {
         PostUserFavs(props.id,object).then( response => {
             console.log(response);
             if(response.status === 500){
@@ -74,7 +77,8 @@ function ImageGrid(props){
 
     return(
         <>
-            <div className="item"  onClick={()=>{props.onOpenRequest(props.id)}}>
+            <div className="item">
+           <Link to={`/imagedetails/${props.id}/${props.ownerId}`}> <button className="open-photo">{open}</button></Link>
                 <img 
                 src={props.url} 
                 onLoad={event => (
@@ -99,7 +103,8 @@ function ImageGrid(props){
                                 </>
                             :
                                 <> 
-                                {isFav?<li onClick={addToFav}>{fav} {props.numberOfFavs}</li>:<li> {fav} {props.numberOfFavs}</li>}
+                                {/* {isFav?<li onClick={addToFav}>{fav} {props.numberOfFavs}</li>:<li> {fav} {props.numberOfFavs}</li>} */}
+                                {isFav&&<li onClick={addToFav}>{fav} {props.numberOfFavs}</li>}
                                 </>
                             }
                         </div>   

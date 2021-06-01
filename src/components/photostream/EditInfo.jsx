@@ -5,6 +5,7 @@ import DeleteModal from "../DeleteModal/DeleteModal"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
 import { Link } from "react-router-dom/cjs/react-router-dom.min"
+import Header from "../navbar/mainNav"
 import {GetUserPhotos} from "../../services/userServices"
 import DeletePhoto from "../../services/photoServices"
 
@@ -23,7 +24,7 @@ function EditInfo(){
             setPhotos(response.data);
         })
     // },[photos])
-},[photos])
+},[])
 
     // Modal
     const [isModalOpen, setModalIsOpen] = useState(false);
@@ -37,8 +38,11 @@ function EditInfo(){
 
 
     function confirmDelete(){
-        const ids = [idToDelete];
-        DeletePhoto(ids).then( response => {
+        const ids = {
+            "photos":[idToDelete]
+        };
+        // DeletePhoto(ids).then( response => {
+        DeletePhoto(idToDelete).then( response => {
             console.log(response);
         });
         //close delete modal
@@ -48,6 +52,7 @@ function EditInfo(){
     
     return(
         <>
+        <Header isLogged={true}/>
         <div className="EditInfo-body">
             <ul id="nav-list">
                 <li id="nav-item"><Link  style={navStyle} to="/user"><a href="#" id="a">{back } Back to photostream</a></Link></li>

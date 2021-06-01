@@ -8,15 +8,13 @@ import ImageDetails from '../imageDetails/imageDetails'
 import axios from "axios"
 import $ from 'jquery'; 
 import { Link , Route, useParams } from 'react-router-dom'
-const endpoint = 'http://localhost:3001/'
+
 
 function Photostream(props){
 
     //user/people boolean -> from userInfo token handling
-    // const [isUser , setIsUser] = useState(props.isUser)
-    const [isUser , setIsUser] = useState(true);
-    // const [userId , setUserId] = useState(props.userId);
-    const [userId , setUserId] = useState(0)
+    const [isUser , setIsUser] = useState(props.isUser)
+    const [userId , setUserId] = useState(props.userId);
     const [isFav , setIsFav] = useState(false)
 
     //Get photos
@@ -34,28 +32,30 @@ function Photostream(props){
 
     //get request
     useEffect( () =>{
-        //get user photos
-        GetUserPhotos().then( response => {
-            setUserPhotos(response.data);
-        })
-
-        //get people photos by userId
-        GetPeoplePhotos(userId).then( response => {
-            setPeoplePhotos(response.data);
-        })
+        if (isUser){
+            //get user photos
+            GetUserPhotos().then( response => {
+                setUserPhotos(response.data);
+            })
+        }else{
+            //get people photos by userId
+            GetPeoplePhotos(userId).then( response => {
+                setPeoplePhotos(response.data);
+            })
+        }
     // },[userPhotos,userId])
-    },[userId])
+    // },[userId])
+},[])
     
-    let isPhotoSelected;
-    function showPhoto(id){
-        console.log("PhotoStream",id);
-        isPhotoSelected=id;
-        console.log("after click",isPhotoSelected);
-        //props.history.push('/imagedetails/id}');
+    // let isPhotoSelected;
+    // function showPhoto(id){
+    //     console.log("PhotoStream",id);
+    //     isPhotoSelected=id;
+    //     console.log("after click",isPhotoSelected);
+    //     props.history.push('/imagedetails/id}');
         
-    }
+    // }  
     
-
     return (
         <>
         <div className="photostream-body">
@@ -79,7 +79,7 @@ function Photostream(props){
                     ownerName = "YOU!"
                     viewMode = {isUser}
                     favMode = {isFav}
-                    onOpenRequest={showPhoto}
+                    // onOpenRequest={showPhoto}
                     />//</Link>
                 ))}
                 </>
@@ -99,7 +99,7 @@ function Photostream(props){
                     ownerName ={photo.userName}
                     viewMode = {isUser}
                     favMode = {true}
-                    onOpenRequest={showPhoto}
+                    // onOpenRequest={showPhoto}
                     />//</Link>
                 ))}
                 </>

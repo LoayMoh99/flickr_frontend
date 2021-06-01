@@ -7,10 +7,8 @@ import {GetPeopleFavs} from "../../services/peopleServices"
 function Faves(props){
 
     //user/people boolean -> from userInfo token handling
-    // const [isUser , setIsUser] = useState([props.isUser])
-    const [isUser , setIsUser] = useState(true);
-    // const [userId , setUserId] = useState(props.userId)
-    const [userId , setUserId] = useState(0);
+    const [isUser , setIsUser] = useState([props.isUser])
+    const [userId , setUserId] = useState(props.userId)
     // const [userName , setUserName] = useState(props.userName)
     const [userName , setUserName] = useState('');
  
@@ -20,16 +18,30 @@ function Faves(props){
 
     //get request
     useEffect( () =>{
-        // get user favs
-        GetUserFavs().then( response => {
-            setUserFavs(response.data);
-        })
+        if (isUser){
+            // get user favs
+            GetUserFavs().then( response => {
+                setUserFavs(response.data);
+            })
+        }else{
+            //get people favs by userName
+            GetPeopleFavs(userName).then( response => {
+                setPeopleFavs(response.data);
+            })
+        }
 
-        //get people favs by userName
-        GetPeopleFavs(userName).then( response => {
-            setPeopleFavs(response.data);
-        })
+
     },[userFavs,userName])
+    // },[])
+
+    let isPhotoSelected;
+    function showPhoto(id){
+        console.log("PhotoStream",id);
+        isPhotoSelected=id;
+        console.log("after click",isPhotoSelected);
+        //props.history.push('/imagedetails/id}');
+        
+    }
 
 
 return (
@@ -54,6 +66,7 @@ return (
             numberOfComments ={photo.comments}
             viewMode ={isUser}
             favMode = {true}
+            onOpenRequest={showPhoto}
             />
         ))}
         </>
@@ -72,6 +85,8 @@ return (
             numberOfComments ={photo.numberOfComments}
             viewMode ={isUser}
             favMode ={true}
+            onOpenRequest={showPhoto}
+
             />
         ))}
         </>

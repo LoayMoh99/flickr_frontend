@@ -40,6 +40,7 @@ function CommentBox(props){
             updatedAt: "2021-4-2"
         }
         //API
+        // PostComments(object).then( response => {
         PostComments(props.photo_id,object).then( response => {
             console.log(response);
         });

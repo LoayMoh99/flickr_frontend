@@ -45,7 +45,8 @@ function AlbumPage(props) {
           setUndefined(false);
         }
     }) 
- },[album])
+//  },[album])
+},[])
 
  let isPhotoSelected;
  function showPhoto(id){
