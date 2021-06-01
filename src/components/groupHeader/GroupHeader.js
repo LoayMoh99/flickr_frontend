@@ -5,7 +5,7 @@ import './extraGroupDesign.css'
 import defaultProfile from '../../img/deefault.jpg';
 import groupBG from '../../img/groupBG.jpg'
 import groupimg from '../../img/images.png'
-import Header from '../navbar/MainNav'
+import Header from '../navbar/mainNav'
 import axios from 'axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';

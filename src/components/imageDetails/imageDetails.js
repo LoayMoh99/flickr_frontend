@@ -10,7 +10,7 @@ import ShownImageComments from './ShownImageComments'
 import {GetUserPhotos} from "../../services/userServices"
 import GetPeoplePhotos from "../../services/peopleServices"
 import Header from '../navbar/mainNav';
-import axios from "axios"
+import axios from "axios";
 import { Link,useLocation } from 'react-router-dom'
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 const endpoint = 'http://localhost:3001/'
