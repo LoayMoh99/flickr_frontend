@@ -1,7 +1,6 @@
 import React,{useState,useEffect}  from 'react'
 import '../../fonts/font/flaticon.css'
 import './imageDetails.css'
-import { Carousel } from 'react-responsive-carousel';
 import defaultProfile from '../../img/deefault.jpg';
 import Footer from '../navbar/footer'
 import t1 from '../../img/img/dBackground.jpg';
@@ -10,7 +9,7 @@ import ViewedImage from './ViewedImage'
 import ShownImageComments from './ShownImageComments'
 import {GetUserPhotos} from "../../services/userServices"
 import GetPeoplePhotos from "../../services/peopleServices"
-import Header from '../navbar/MainNav';
+import Header from '../navbar/mainNav';
 import axios from "axios"
 import { Link,useLocation } from 'react-router-dom'
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
