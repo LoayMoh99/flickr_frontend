@@ -18,7 +18,8 @@ import Login from "./components/UserLogin/Login"
 import AddPhotos from "./components/GroupPhotos/AddPhotos"
 import React from 'react';
 import {BrowserRouter as Router, Switch , Route} from "react-router-dom";
-
+import AlbumPage from './components/Album/AlbumPage'
+const endpoint = 'http://localhost:3001/'
 
 function App() {
 
@@ -45,6 +46,7 @@ function App() {
       <Route path="/Add/:groupId" component={AddPhotos}/>
       <Route path="/upload" component={Upload}/>
       <Route path="/imagedetails/:id" component={ImageDetails}/>
+      <Route path="/AlbumPage/:idToOpen" component={AlbumPage}/>
       </Switch>
       {/* <ImageDetails
       image_url= {dd}

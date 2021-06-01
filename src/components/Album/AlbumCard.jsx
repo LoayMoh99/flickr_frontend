@@ -1,13 +1,20 @@
 import React, {useState}from 'react'
 import DeleteModal from '../DeleteModal/DeleteModal'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faTrash} from '@fortawesome/free-solid-svg-icons'
+import {faTrash, faFolderOpen} from '@fortawesome/free-solid-svg-icons'
 import {DeleteAlbum} from '../../services/albumServices' 
+import $ from 'jquery'
+import {Link} from "react-router-dom";
 
 function AlbumCard(props){
+    const navStyle={
+        color:'white'
+    };
     const remove = <FontAwesomeIcon icon={faTrash} color="White" />
+    const open = <FontAwesomeIcon icon={faFolderOpen} color="White" />
     const [isModalOpen, setModalIsOpen] = useState(false);
     const [idToDelete,setID]=useState(0)
+
 
     function toggleModal(id){
         setModalIsOpen(!isModalOpen);
@@ -23,17 +30,22 @@ function AlbumCard(props){
         setModalIsOpen(!isModalOpen);
     }
 
+
     return(
         <>
-            <div className="album-overview">
+            <div className="album-overview" >
                 <img src={props.coverUrl} alt="album cover"/>
                 <div className="album-info">
                     <h1>{props.title}</h1>
                     <p> {props.numberOfPhotos} photos</p>
                     <button  
                      onClick={ () =>{
-                    toggleModal(props.id);}}
-                    >{remove}</button>
+                         toggleModal(props.id);}}
+                         >{remove}</button>
+                <Link  style={navStyle} to={`/AlbumPage/${props.id}`}>
+                    <button id="open-button" >{open}</button>
+                 </Link>
+
                 </div>
             </div>
         {isModalOpen && <DeleteModal 

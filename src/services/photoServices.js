@@ -52,6 +52,26 @@ export async function PutPhoto (id, object){
     }
 };
 
+export async function UpdatePhotos (object){
+  try{
+      // const response = await axios.put(SERVER_URL+'photo', object)
+      const response = await axios.put(SERVER_URL+'photos/', object)
+      //Success
+      return(response)
+  } catch (error){
+      if (error.response){
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request){
+        console.log(error.request);
+      } else {
+        console.log('Error', error.message);
+      }
+      console.log(error);
+  }
+};
+
 export async function GetComments (id){
     try{
         // const response = await axios.get(SERVER_URL+'photo_id='+id+'comments')
@@ -111,3 +131,44 @@ export async function PostComments (id,object){
         console.log(error);
     }
   };
+
+  export async function addPeopleTag (object)
+{
+          try{
+       const response = await axios.post(SERVER_URL+'photo/peopletag', object);
+
+      
+      return(response)
+  } catch (error){
+      if (error.response){
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request){
+        console.log(error.request);
+      } else {
+        console.log('Error', error.message);
+      }
+      console.log(error);
+  }
+};
+
+export async function addTag (object)
+{
+          try{
+       const response = await axios.post(SERVER_URL+'photo/tag', object);
+    
+      return(response)
+  } catch (error){
+      if (error.response){
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request){
+        console.log(error.request);
+      } else {
+        console.log('Error', error.message);
+      }
+      console.log(error);
+  }
+};

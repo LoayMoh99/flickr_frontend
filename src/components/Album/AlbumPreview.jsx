@@ -4,6 +4,7 @@ import './AlbumPreview.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faPlusSquare} from '@fortawesome/free-solid-svg-icons'
 import GetUserAlbums,{GetPeopleAlbums} from "../../services/albumServices"
+import AlbumPage from './AlbumPage'
 
 
 function AlbumPreview(props){
@@ -33,6 +34,8 @@ function AlbumPreview(props){
         })
     },[])
 
+
+
     return(
         <>
         <div className="albumPreview">
@@ -48,7 +51,9 @@ function AlbumPreview(props){
                         numberOfPhotos = {album.photos.length}
                         viewMode={false}
                         favMode = {false}
+                        
                         />
+                        
                     ))}
                     </>
                 : 
@@ -62,12 +67,14 @@ function AlbumPreview(props){
                         numberOfPhotos = {album.photos.length}
                         viewMode={false}
                         favMode = {true}
+                        
                         />
                     ))} 
                     </>
                 }
             </div>
         </div>
+        
         </>
         )
 }

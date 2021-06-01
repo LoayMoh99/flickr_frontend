@@ -25,11 +25,13 @@ import EditModal from './EditModal';
 import AddModal from './AddModal';
 import SideNavBar from './SideNavBar';
 import DeleteModal from '../DeleteModal/DeleteModal'
+import {GetUserPhotos} from "../../services/userServices"
 import './CamreRoll.css';
 import './EditModal.css';
 import './AddModal.css';
 // import { mockComponent } from 'react-dom/test-utils';
 import axios from "axios"
+import CreateNewAlbumModal from './CreateNewAlbumModal';
 const endpoint = 'http://localhost:3001/'
 
 function CamreRoll() {
@@ -37,31 +39,45 @@ function CamreRoll() {
   
   //Get photos
   const [images, setImages] = useState([]);
-  useEffect(() => {
-      const fetchData = async () => {
-      const {data,status} = await axios.get( endpoint+'photos',);
-      console.log(status);
-      if (status === 200){
-          setImages(data);
-      }
-  };
+  // useEffect(() => {
+  //     const fetchData = async () => {
+  //     const {data,status} = await axios.get( endpoint+'photos',);
+  //     console.log(status);
+  //     if (status === 200){
+  //         setImages(data);  
+  //     }
+  // };
   
-    fetchData();
-  },[]);
+  //   fetchData();
+  // },[]);
+  useEffect( () =>{
+    //get user photos
+    GetUserPhotos().then( response => {
+      setImages(response.data);
+    })
+
+    
+   },[images])
+
   
-  const sortedimagesuploaded = images.slice().sort((a, b) => b.createdAt - a.createdAt);
+  const sortedImagesUploaded = images.slice().sort((a, b) => b.createdAt - a.createdAt);
   const [isModalOpen, setModalIsOpen] = useState(false);
   const [count, setCount] = useState(0);
   const [toEdit, setToEdit] = useState([]);
   const [isEditModalOpen, setEditModalOpen] = useState(false);
   const [isAddModalOpen, setAddModalOpen] = useState(false);
   const [isDeleteOpen, setDeleteOpen] = useState(false);
+  const [isCreateAlbumOpen , setCreateAlbumOpen] = useState(false);
   const [idToDelete,setID]=useState(0);
+  const [imgDated, setimgDated] = useState([]);
+  const [toEditIds, setToEditIds] = useState([]);
 
-
-
+  
   const toggleAddModal = () => {
     setAddModalOpen(!isAddModalOpen);
+  };
+  const toggleCreateAlbum = () => {
+    setCreateAlbumOpen(!isCreateAlbumOpen);
   };
 
   const toggleDelete = (id) => {
@@ -79,20 +95,13 @@ function CamreRoll() {
     // should alse clear the count and clear the to Edit array
   };
 
-  function confirmDelete(){
-    if (idToDelete ===0){
-        console.log("hamsa7 carddddddd 1");
-    }else if (idToDelete===1){
-        console.log("hamsa7 carddddddd 2");
-    } 
 
-    toggleDelete(); 
-}
 
   const monthName = (item) => moment(item.createdAt, 'YYYY-MM-DD').format('DD MMMM YYYY');
   // function to check if this image was already selected or a newly selected one
   function containsObject(obj, list) {
-    return list.some((elem) => elem.photo_id === obj.photo_id);
+    // return list.some((elem) => elem._id === obj._id);
+    return list.some((elem) => elem.id === obj.id);
   }
   // to delete the element if unselected
   function handleDelete(obj, list) {
@@ -101,6 +110,7 @@ function CamreRoll() {
     // Edit
     return listClone.splice(index, 1);
   }
+
   function handleIncrement(c) {
     return c + 1;
   }
@@ -114,13 +124,18 @@ function CamreRoll() {
     let countCopy = count;
     console.log(countCopy);
     if (!countCopy) {
+
       setToEdit([]);
+      setToEditIds([]);
+
       if (!isModalOpen) {
-        // setModalIsOpen(true);
+
         setModalIsOpen(!isModalOpen);
+
         setToEdit((prevItems) => [...prevItems, imgObj]);
-        // setToEdit(() => toEdit.push(imgObj));
-        // setCount(count + 1);
+        //setToEditIds((prevItems)=>[...prevItems,imgObj._id]);
+        setToEditIds((prevItems)=>[...prevItems,imgObj.id]);
+
         countCopy = handleIncrement(countCopy);
         setCount(countCopy);
         console.log(countCopy);
@@ -132,21 +147,24 @@ function CamreRoll() {
       }
     } else {
       const isHere = containsObject(imgObj, toEdit);
-      // const isHere = toEdit.includes(imgObj);
+      
       console.log(isHere);
       if (!isHere) {
+
         setToEdit((prevItems) => [...prevItems, imgObj]);
-        // setToEdit(() => toEdit.push(imgObj));
-        // setCount(count + 1);
-        // setCount(handleIncrement(count));
+               //setToEditIds((prevItems)=>[...prevItems,imgObj._id]);
+               setToEditIds((prevItems)=>[...prevItems,imgObj.id]);
+
         countCopy = handleIncrement(countCopy);
         setCount(countCopy);
       }
       console.log(count);
       if (isHere) {
+
         setToEdit(handleDelete(imgObj, toEdit));
-        // setCount(count - 1);
-        // setCount(handleDecrement(count));
+       // setToEditIds(handleDelete(imgObj._id, toEditIds));
+       setToEditIds(handleDelete(imgObj.id, toEditIds));
+
         countCopy = handleDecrement(countCopy);
         setCount(countCopy);
       }
@@ -154,36 +172,59 @@ function CamreRoll() {
       // we now checked if the image was already selected .. unselect it.. count --
       // if no image left close modal
       console.log(toEdit);
+      console.log(toEditIds);
+
       if (!countCopy) {
-        // setModalIsOpen(false);
+     
         setToEdit([]);
+        setToEditIds([]);
+
         setModalIsOpen(!isModalOpen);
       }
     }
-    // const grouped = _.groupBy(sortedimagesuploaded, 'dateuploaded');
-    // const keys = Object.keys(grouped);
-    // const values = Object.values(grouped);
-    // const [imgDated, setimgDated] = useState([]);
 
-    // for (let i = 0; i < keys.length; i += 1)
-    // {
-    //   const imgCorresponding = values[i];
-    //   setimgDated(imgDated.push(<h5>{keys[i]}</h5>));
-    //   setimgDated(imgDated.push(
-    //     imgCorresponding.map((image) => (
-    //       <ImagesCR
-    //         key={image.id}
-    //         Url={image.Url}
-    //         image={image}
-    //         onEdit={toggleModal}
-    //         id={0}
-    //       />
-    //     )),
-    //   ));
-    // }
-  };
+        };
 
+        const grouped = _.groupBy(sortedImagesUploaded, 'createdAt');
+        const keys = Object.keys(grouped);
+        const values = Object.values(grouped);
+        const tempImgDated = [];
+
+        useState(() => { for (let i = 0; i < keys.length; i += 1)
+    {
+      const imgCorresponding = values[i];
+      // dateFormat("2019-04-30T08:59:00.000Z", "mmmm dS, yyyy")
+      // tempImgDated.push(<div><h6>{monthName(keys[i])}</h6></div>);
+      tempImgDated.push(<div><h6>{keys[i]}</h6></div>);
+      tempImgDated.push(
+        imgCorresponding.map((image) => (
+            <ImagesCR
+              key={image.id}
+              Url={image.Url}
+              image={image}
+              onEdit={toggleModal}
+              id={0}
+            />
+        )),
+      );
+      tempImgDated.push(<br />);
+      setimgDated([...imgDated, ...tempImgDated]);
+    } });
   // setModalIsOpen(true);
+
+  
+const photoIdsDelete = {
+  "photos": toEditIds,
+}
+
+  function confirmDelete(){
+    DeletePhoto(photoIdsDelete).then( response => {
+        console.log(response);
+    });
+    //close delete modal
+    toggleModal(idToDelete); 
+}
+
 
   return (
 
@@ -203,37 +244,24 @@ function CamreRoll() {
     <div className="sidephoto">
         <SideNavBar />
         <div className="row">
-          {/* <div className="col"> */}
-          {/* <nav className="nav flex-column">
-            <a className="nav-link active " aria-current="page" href="/#">2021</a>
-            <a className="nav-link " href="/#">- April</a>
-            <a className="nav-link text-secondary" href="/#">- January</a>
-          </nav> */}
-          {/* </div> */}
-          {/* <div className="col-11"> */}
           <div className=" container_body">
 
             {/* {grouped.map((arr) => <h5>{arr[0]}</h5>)} */}
             {/* {map((arr) => ({ dateuploaded: arr[0], image: arr.slice(1) }))} */}
-            { sortedimagesuploaded.map((image) => (
+            { sortedImagesUploaded.map((image) => (
               <ImagesCR
-                key={image.photo_id}
-                url={image.photo_url}
+               // key={image._id}
+                key={image.id}
+                url={image.photoUrl}
                 image={image}
                 onEdit={toggleModal}
               />
 
             )) }
+      {/* <div> */}
+        {/* {imgDated} */}
+      {/* </div> */}
       </div>
-          {/* {keys.map((key) => (
-            <h5>
-              {key}
-            </h5>
-
-          ))} */}
-          {/* <div>
-            {imgDated}
-          </div> */}
 
         </div>
 
@@ -262,6 +290,7 @@ function CamreRoll() {
         <EditModal
           onRequestEditClose={toggleEditModal}
           imgEdit={toEdit}
+          imgEditIds= {toEditIds}
           countEdit={count}
         />
         )}
@@ -270,9 +299,11 @@ function CamreRoll() {
         {isAddModalOpen && (
         <AddModal
           onRequestAddClose={toggleAddModal}
+          onRequestCreate={toggleCreateAlbum}
           imgAdd={toEdit}
+          imgAddIds= {toEditIds}
           countAdd={count}
-
+            
         />
         )}
       </main>
@@ -281,6 +312,20 @@ function CamreRoll() {
         <DeleteModal
           onRequestClose={toggleDelete}
           onDelete={confirmDelete}
+          title = "Delete photos ?"
+          message = "You cannot reverse this action. Are you sure you want to permanently delete this photo?"
+        />
+        )}
+      </main>
+
+
+
+      <main>
+        {isCreateAlbumOpen && (
+        <CreateNewAlbumModal
+          onRequestCreateClose={toggleCreateAlbum}
+          imgIdsCreateAlbum={toEditIds}
+          
         />
         )}
       </main>
