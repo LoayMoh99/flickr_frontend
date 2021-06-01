@@ -29,7 +29,7 @@ function Faves(props){
         GetPeopleFavs(userName).then( response => {
             setPeopleFavs(response.data);
         })
-    },[userFavs,peopleFavs])
+    },[userFavs,userName])
 
 
 return (

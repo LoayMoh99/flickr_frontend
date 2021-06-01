@@ -565,21 +565,6 @@
       "Favs": 60,
       "Username": "username",
       "Name": "Samar Nabil"
-    },
-    {
-      "id": 4,
-      "photoUrl": "https://picsum.photos/300/400?random=2",
-      "title": "titttlleee",
-      "descript": "description",
-      "Fav": [],
-      "privacy": "public",
-      "tags": [],
-      "ownerId": 0,
-      "peopleTags": [],
-      "comments": 78,
-      "Favs": 60,
-      "Username": "username",
-      "Name": "Samar Nabil"
     }
   ],
   "peopleFollowing":[
