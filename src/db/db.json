@@ -1,18 +1,16 @@
 {
   "user": {
-    "id": 0,
-    "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c",
-    "Fname": "Farah",
-    "Lname": "Mostafa",
-    "Following": 20,
-    "Followers": 10,
-    "views": 0,
-    "Date_joined": "2021-05-31",
-    "Email": "farah@gmail.com",
-    "UserName": "farahmostafa",
-    "Photo": 60,
+    "Fname": "ay7aga",
+    "Lname": "ay7aga",
+    "Following": 150,
+    "Followers": 100,
+    "views": 70,
+    "Date_joined": "2021-05-30",
+    "Email": "emal@gmail",
+    "Photo": 0,
+    "UserName": "FaraMostafa",
     "Avatar": "https://picsum.photos/500/300?random=1",
-    "BackGround": "https://picsum.photos/500/300?random=1",
+    "BackGround": "https://picsum.photos/400/400?random=2",
     "About": {
       "Description": "string",
       "Hometown": "string",
@@ -315,6 +313,29 @@
       "description": "descriptionnn",
       "createdAt": "2021-05-29",
       "UpdatedAt": "2021-05-29"
+    },
+    {
+      "photoUrl": "blob:http://localhost:3000/856f1433-f77b-4b42-996d-15b5516577b3",
+      "ownerId": 0,
+      "Fav": [
+        0
+      ],
+      "comments": [
+        0
+      ],
+      "title": 1235,
+      "privacy": "private",
+      "description": "cats",
+      "tags": [],
+      "peopleTags": [
+        {
+          "tagging": "string",
+          "tagged": []
+        }
+      ],
+      "createdAt": "2021-05-30",
+      "UpdatedAt": "2021-05-30",
+      "id": 16
     }
   ],
   "comments": [

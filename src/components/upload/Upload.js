@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import '../../fonts/font/flaticon.css'
 import './Upload.css'
 import flickrPhoto from '../../img/flickr.jpg'
+import {PostPhoto} from '../../services/photoServices'
 import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
@@ -11,11 +12,7 @@ const endpoint = 'http://localhost:3001/'
 export default function Upload(props){
 
     
-    //const [data, setData] = useState([]);
 
-    // useEffect(() => {
-    //     fetchData();
-    // }, []);
     const navStyle={
         color:'black'
     };
@@ -67,10 +64,9 @@ export default function Upload(props){
             UpdatedAt: "2021-05-30"
         };
         console.log("status1");
-        const { data,status } = await axios.post(endpoint+"photos", newImage);
-        // console.log("info of photo added",data);
-        console.log("status");
-        console.log(status);
+        PostPhoto(newImage).then(response=>{
+            console.log(response.data);
+        })
         ///////////////////////////////////////////////////////API//////////////////////////////////////////////
         /*if (status === 200) {
            newtag={
@@ -87,16 +83,12 @@ export default function Upload(props){
         ////////////////////////////////////////////////////////////////////////////////////////////////////////
     };
 
-    ///////////////////////////////////////////////////////////////////////////////////////////
-
-    
-
     return(
         <div className="uploadNavbar">
             <nav className="navbar fix_nav">
             <div className="container-fluid">
             <div className="logoPlusNav">
-            <Link className="uploadLink" style={navStyle} to="/">
+            <Link className="uploadLink" style={navStyle} to="/user">
                 <a className="flickLogoName" href="#top">
                     <img src={flickrPhoto} alt="flickrLogo"></img>
                 </a>
@@ -104,7 +96,7 @@ export default function Upload(props){
             <Link  style={navStyle} to="/">
                 <span>Your Photostream</span>
             </Link>
-            {image && <button className="postPhoto" onClick={addImageToCameraroll}>{plus}Add</button>}
+            {image && <Link style={navStyle} to="/user"><button className="postPhoto" onClick={addImageToCameraroll}>{plus}Add</button></Link>}
             </div>
             </div>
             </nav>

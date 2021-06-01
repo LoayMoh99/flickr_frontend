@@ -10,9 +10,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Link , Route, useParams } from 'react-router-dom'
 import GetPeoplePhotos from "../../services/peopleServices"
+//import UpdateUser from "../../services/userServices"
 import Faves from '../Faves/Faves';
 import AlbumPreview from '../Album/AlbumPreview'
-import {GetUser,GetUserPhotos} from "../../services/userServices"
+import {GetUser,GetUserPhotos,UpdateUser} from "../../services/userServices"
 import GroupPhotos from "../GroupPhotos/GroupPhotos"
 
 /*componentDidMount(){
@@ -29,22 +30,49 @@ export default function Userinfo(props){
     const [userInfo, setUserInfo] = useState([]);
     //get request
     useEffect( () =>{
-      //get user photos
-        GetUser().then( response => {
-        setUserInfo(response.data);
-        console.log(response)
-        })
-    //get user photos
-    GetUserPhotos().then( response => {
-        setUserPhotos(response.data);
-    })
-    //get people photos by userId
-    GetPeoplePhotos(userId).then( response => {
-        setPeoplePhotos(response.data);
-    })
-  },[])
 
-console.log('Anaaaa fl useeer',localStorage.token);
+        //check if i am in the user or in people profile//////FOR INTEGRATION/////////////////////////
+        // GetPeopleByIdentefier().then(response=>{
+        //     if(response.data===true){
+        //         //get user
+        //         GetUser().then( response => {
+        //             setUserInfo(response.data);
+        //         console.log(response)
+        //         })
+        //         //get user photos
+        //         GetUserPhotos().then( response => {
+        //             setUserPhotos(response.data);
+        //         })
+        //         setFollowing(false);
+        //     }
+        //     else{
+        //         ////ana m4 me7taga el get people photos hena 3a4an m4 h-update el people
+        //         setUserId(props);////dah 8alat
+        //         GetPeopleByIdentefier(userId).then(response=>{
+        //             setUserInfo(response.data);
+        //             if(response.Follow===true){
+        //                 setFollowing(true);
+        //             }
+        //             else{
+        //                 setFollowing(false);
+        //             }
+        //         })
+        //     }
+        // })
+        //get user
+        GetUser().then( response => {
+            setUserInfo(response.data);
+        })
+        //get user photos
+        GetUserPhotos().then( response => {
+            setUserPhotos(response.data);
+        })
+        //get people photos by userId
+        GetPeoplePhotos(userId).then( response => {
+            setPeoplePhotos(response.data);
+        })
+    },[userInfo,userPhotos])
+
 
     const [isPhotoStream,setPhotoStream] = useState(true);
     const [isCameraRoll,setCameraRoll] = useState(false);
@@ -63,7 +91,7 @@ console.log('Anaaaa fl useeer',localStorage.token);
     const [isFollowing,setFollowing]=useState(false);
     const plusIcon = <FontAwesomeIcon icon={faPlus} color="DarkGrey" />;
 
-    
+    //yetmese7 sa3et el integration
     // useEffect(() => {
     //     const fetchData = async () => {
             //////////////////////////INTEGRATION///////////////////////////////////////
@@ -105,70 +133,70 @@ console.log('Anaaaa fl useeer',localStorage.token);
     // },[]);
 
     function changeSelection(newimageUrl) {
-        //////////////////////////INTEGRATION///////////////////////////////////////
-        // setSelectedPhoto(newimageUrl);
-        // if(avatarBackground===1){
-        //     newUserInfo={
-        //         Fname: "Farah",
-        //         Lname: "Mostafa",
-        //         Following: 150,
-        //         Followers: 100,
-        //         views: 70,
-        //         Date_joined: "2021-05-30",
-        //         Email: "emal@gmail",
-        //         Photo: 0,
-        //         UserName: "FaraMostafa",
-        //         Avatar: "https://picsum.photos/500/300?random=1",
-        //         BackGround: newimageUrl,
-        //         About: {
-        //         Description: "string",
-        //         Hometown: "string",
-        //         Occupation: "string",
-        //         CurrentCity: "string"
-        //      }
-        //     }
-        //      const response = await axios.put(endpoint + "user/" , newUserInfo);/////////////User
-        //      if(response.status===200){
-        //         const response2 = await axios.get( endpoint+'user');//////User
-        //      }
-            
-        //}
-        // else{
-        //     newUserInfo={
-        //         Fname: "Farah",
-        //         Lname: "Mostafa",
-        //         Following: 150,
-        //         Followers: 100,
-        //         views: 70,
-        //         Date_joined: "2021-05-30",
-        //         Email: "emal@gmail",
-        //         Photo: 0,
-        //         UserName: "FaraMostafa",
-        //         Avatar: newimageUrl,
-        //         BackGround: ,
-        //         About: {
-        //         Description: "string",
-        //         Hometown: "string",
-        //         Occupation: "string",
-        //         CurrentCity: "string"
-        //      }
-        //     }
-        //      const response = await axios.put(endpoint + "user/" , newUserInfo);/////////////User
-        //      if(response.status===200){
-        //         const response2 = await axios.get( endpoint+'user');//////User
-        //      }
-        // }
+        setSelectedPhoto(newimageUrl);
+        console.log("ana fe el changeSelection");
+        if(avatarBackground===1){
+            const newUserInfo={
+                Fname: "ay7aga",
+                Lname: "ay7aga",
+                Following: 150,
+                Followers: 100,
+                views: 70,
+                Date_joined: "2021-05-30",
+                Email: "emal@gmail",
+                Photo: 0,
+                UserName: "FaraMostafa",
+                Avatar: "https://picsum.photos/500/300?random=1",
+                BackGround: newimageUrl,
+                About: {
+                Description: "string",
+                Hometown: "string",
+                Occupation: "string",
+                CurrentCity: "string"
+                }
+            }
+            UpdateUser(newUserInfo).then(response=>{
+                console.log("response.data",response.data);
+                GetUser();
+            })
+        }
+        else{
+            const newUserInfo={
+                Fname: "string",
+                Lname: "string",
+                Following: 150,
+                Followers: 100,
+                views: 70,
+                Date_joined: "2021-05-30",
+                Email: "emal@gmail",
+                Photo: 0,
+                UserName: "FaraMostafa",
+                Avatar: newimageUrl,
+                BackGround: "https://picsum.photos/500/300?random=1",
+                About: {
+                Description: "string",
+                Hometown: "string",
+                Occupation: "string",
+                CurrentCity: "string"
+                }
+            }
+            UpdateUser(newUserInfo).then(response=>{
+                console.log(response.data);
+                GetUser();
+            })
+        }
     }
+
     function closeEdit(){
         setModalOpen(false);
 
     }
     function showEdit(num){
         setModalOpen(true);
-        console.log("isOpen",isModalOpen);
+        // console.log("isOpen",isModalOpen);
         setAvatarBackground(num);
-        console.log("jj",num);
-        console.log("jj",avatarBackground);
+        // console.log("jj",num);
+        // console.log("jj",avatarBackground);
     }
 
     function postFollowRequest() {
@@ -339,10 +367,10 @@ console.log('Anaaaa fl useeer',localStorage.token);
                         </div>
                     </div>
                     <div className="showPicInItems">
-                    {userPhotos.map(photo=>(<img onClick={()=>{changeSelection(photo.photoUrl)}} src={photo.photoUrl}/>))}
+                    {userPhotos.map(photo=>(<img onClick={()=>{setSelectedPhoto(photo.photoUrl)}} src={photo.photoUrl}/>))}
                     </div>
                     <div className="slctBtn">
-                        <button>select</button>
+                        <button onClick={()=>changeSelection(selectedPhoto)}>select</button>
                     </div>
                 </div>
             </div>}

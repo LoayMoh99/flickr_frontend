@@ -208,3 +208,48 @@ export async function GetUserFollowers(){
       console.log(error);
   }
 };
+
+//check user
+
+export async function GetUserCheck(id){
+  try{
+      //const response = await axios.get( endpoint+'user/check/peopleid?='+props);
+      const response = await axios.get( SERVER_URL+'user?id=',id);
+      //Success
+      return(response)
+      
+  } catch (error){
+      if (error.response){
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request){
+        console.log(error.request);
+      } else {
+        console.log('Error', error.message);
+      }
+      console.log(error);
+  }
+};
+
+//Update User
+export async function UpdateUser(data){
+  try{
+      //const response = await axios.put(endpoint + "user" , data);
+      const response = await axios.put( SERVER_URL+'user',data);
+      //Success
+      return(response)
+      
+  } catch (error){
+      if (error.response){
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request){
+        console.log(error.request);
+      } else {
+        console.log('Error', error.message);
+      }
+      console.log(error);
+  }
+};

@@ -50,13 +50,10 @@ function Photostream(props){
     function showPhoto(id){
         console.log("PhotoStream",id);
         isPhotoSelected=id;
-        setPhoto(true);
         console.log("after click",isPhotoSelected);
         //props.history.push('/imagedetails/id}');
         
     }
-    console.log("isPhoto",isPhoto);
-    console.log("sent id",isPhotoSelected);
     
 
     return (

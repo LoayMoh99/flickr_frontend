@@ -172,3 +172,22 @@ export async function addTag (object)
       console.log(error);
   }
 };
+
+export async function PostPhoto (object){
+  try{
+      const response = await axios.post(SERVER_URL+'photos/',object)
+      //Success
+      return(response)
+  } catch (error){
+      if (error.response){
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request){
+        console.log(error.request);
+      } else {
+        console.log('Error', error.message);
+      }
+      console.log(error);
+  }
+};
