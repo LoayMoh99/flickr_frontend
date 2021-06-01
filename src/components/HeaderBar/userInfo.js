@@ -8,7 +8,7 @@ import CameraRoll from '../CameraRoll/CamreRoll'
 import axios from 'axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
-import {Link} from "react-router-dom";
+import { Link , Route, useParams } from 'react-router-dom'
 import GetPeoplePhotos from "../../services/peopleServices"
 import Faves from '../Faves/Faves';
 import AlbumPreview from '../Album/AlbumPreview'
@@ -288,6 +288,7 @@ console.log('Anaaaa fl useeer',localStorage.token);
                                         <ul className="NavbarAndheaderul">
                                             <li><Link  style={navStyle} to="/Followers">{userInfo.Followers} followers</Link></li>
                                             <li><Link  style={navStyle} to="/FollwingFollowers">{userInfo.Following} following</Link></li>
+                                            {/* <li><Link  style={navStyle} to={`/FollwingFollowers/${props}/${id}`}>{userInfo.Following} following</Link></li> */}
                                         </ul>
                                     </div>
                                     <div className="joined">

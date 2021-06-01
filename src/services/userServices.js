@@ -162,3 +162,49 @@ export async function DeleteUserFavs(id){
       console.log(error);
   }
 };
+
+//Following
+
+export async function GetUserFollowing(){
+  try{
+      // const response = await axios.get( SERVER_URL+'user/following');
+      const response = await axios.get( SERVER_URL+'following');
+      //Success
+      return(response)
+      
+  } catch (error){
+      if (error.response){
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request){
+        console.log(error.request);
+      } else {
+        console.log('Error', error.message);
+      }
+      console.log(error);
+  }
+};
+
+//Following
+
+export async function GetUserFollowers(){
+  try{
+      // const response = await axios.get( SERVER_URL+'user/following');
+      const response = await axios.get( SERVER_URL+'followers');
+      //Success
+      return(response)
+      
+  } catch (error){
+      if (error.response){
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request){
+        console.log(error.request);
+      } else {
+        console.log('Error', error.message);
+      }
+      console.log(error);
+  }
+};

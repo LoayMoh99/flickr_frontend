@@ -31,18 +31,18 @@ export default function Header(){
                 <span className="line2 hiddenIconbars"></span>
                 <span className="line3 hiddenIconbars"></span>
             </span>
-            <a className="flickLogoName" href="#top">
+            <Link style={navStyle} to="/user"><div className="flickLogoName" href="#top">
             <img src={flickrLogo} alt="flickrLogo"></img>
             <h3>flickr</h3>
-            </a>
+            </div></Link>
             <ul className="headSubMenu NavbarAndheaderul">
-                <li  className="mainHeaderTags youTag"><Link style={navStyle} to="/">You</Link>
+                <li  className="mainHeaderTags youTag"><Link style={navStyle} to="/user">You</Link>
                 <ul className="subMenuYouContent NavbarAndheaderul">
                     <li>
                         <a href="#top">About</a>
                     </li>
                     <li>
-                        <Link  style={navStyle} to="/"><p id="linkedParagraph">Photostream</p></Link>
+                        <Link  style={navStyle} to="/user"><p id="linkedParagraph">Photostream</p></Link>
                     </li>
                     <li>
                         <a href="#top">Albums</a>

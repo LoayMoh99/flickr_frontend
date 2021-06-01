@@ -43,7 +43,7 @@ export default function ImageDetails(props){
         setPeoplePhotos(response.data);
     })
   },[])
-    // useEffect(() => {
+    // useEffect(() => {`
     //     const fetchData = async () => {
     //     const {data,status} = await axios.get( endpoint+'photos');
     //     if (status === 200){

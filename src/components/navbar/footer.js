@@ -11,7 +11,6 @@ export default function Footer(){
         <div className="footerMain">
             <div className="container">
             <div className="navbar navbarAdj">
-            
                 <ul className="rowAdj">
                 <Link style={navStyle} to="/About">
                     <p>About</p>

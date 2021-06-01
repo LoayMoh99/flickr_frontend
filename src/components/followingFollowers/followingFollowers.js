@@ -3,26 +3,33 @@ import './followingFollowers.css';
 import defaultProfile from '../../img/deefault.jpg';
 import Header from '../navbar/MainNav';
 import Footer from '../navbar/footer'
+import {GetUserFollowing} from "../../services/userServices"
+import {GetPeopleFavs, GetPeopleFollowing} from "../../services/peopleServices"
+import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import axios from "axios"
 import {Link} from "react-router-dom";
 const endpoint = 'http://localhost:3001/'
 
 export default function FollwingFollowers(props){
-
-     //Get photos
-        const [following, setFollowing] = useState([]);
-
+        const [allfollowing, setFollowing] = useState([]);
+        const {id}=useParams();
         useEffect(() => {
-            const fetchData = async () => {
-            const {data,status} = await axios.get( endpoint+'following',);
-            console.log(status);
-            if (status === 200){
-                setFollowing(data);
+            /*if(props===true){
+                GetUserFollowing().then( response => {
+                    setFollowing(response.data);
+                })
             }
-        };
-    
-        fetchData();
-    },[]);
+            else{
+                GetPeopleFollowing(id).then( response => {
+                    setFollowing(response.data);
+                })
+            }*/
+
+            ////remove on integration replace it with the prev comment
+            GetUserFollowing().then( response => {
+                setFollowing(response.data);
+            })
+        },[]);
     const navStyle={
         color:'black'
         };
@@ -62,18 +69,18 @@ export default function FollwingFollowers(props){
                 <tr>
                 <th scope="col">Name</th>
                 <th scope="col">public Photos</th>
-                <th scope="col">Last Upload</th>
-                <th scope="col">You list them as</th>
+                <th scope="col">User name</th>
+                <th scope="col">Email</th>
                 </tr>
             </thead>
             <tbody>
-            {following.map(user => (
+            {allfollowing.map(user => (
                 <tr>
-                <th scope="row"><img src={defaultProfile}></img> {user.Fname} {user.Lname}</th>
-                <td>{user.num_photos}</td>
+                <th scope="row"><img src={user.avatar}></img> {user.Fname} {user.Lname}</th>
+                <td>{user.Photos}</td>
                 {/* <td>200</td> */}
-                <td>{user.last_upload}</td>
-                <td>Following(<a>Edit</a>)</td>
+                <td>{user.UserName}</td>
+                <td>user.Email</td>
                 </tr>
             ))}
             </tbody>

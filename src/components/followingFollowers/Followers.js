@@ -3,25 +3,20 @@ import './followingFollowers.css';
 import defaultProfile from '../../img/deefault.jpg';
 import Header from '../navbar/MainNav';
 import Footer from '../navbar/footer'
+import {GetUserFollowers} from '../../services/userServices'
 import axios from "axios"
 const endpoint = 'http://localhost:3001/'
 
 export default function Followers(props){
 
      //Get photos
-     const [following, setFollowing] = useState([]);
+        const [followers, setFollowers] = useState([]);
 
-     useEffect(() => {
-         const fetchData = async () => {
-         const {data,status} = await axios.get( endpoint+'followers',);
-         console.log(status);
-         if (status === 200){
-             setFollowing(data);
-         }
-     };
-  
-     fetchData();
-   },[]);
+        useEffect(() => {
+            GetUserFollowers().then( response => {
+            setFollowers(response.data);
+        })
+    },[]);
 
     return(
         <div>
@@ -30,7 +25,7 @@ export default function Followers(props){
             <div className="picAndSelect">
                 <div className="imgg"></div>
                 <div className="listAndTitle">
-                    <h3>People you follow</h3>
+                    <h3>People following you</h3>
                     <ul className="NavbarAndheaderul">
                         <li><a>photos from</a></li>
                         <li><a>photos of</a></li>
@@ -63,13 +58,13 @@ export default function Followers(props){
                 </tr>
             </thead>
             <tbody>
-            {following.map(user => (
+            {followers.map(user => (
                 <tr>
-                <th scope="row"><img src={defaultProfile}></img> {user.Fname} {user.Lname}</th>
-                <td>{user.num_photos}</td>
+                <th scope="row"><img src={user.avatar}></img> {user.Fname} {user.Lname}</th>
+                <td>{user.Photos}</td>
                 {/* <td>200</td> */}
-                <td>{user.last_upload}</td>
-                <td>Following(<a>Edit</a>)</td>
+                <td>{user.UserName}</td>
+                <td>user.Email</td>
                 </tr>
             ))}
             </tbody>
