@@ -1,55 +1,85 @@
 import React,{useState,useEffect} from "react"
 import axios from "axios"
 import ExploreGrid from "./Explore_grid"
-const endpoint = 'http://localhost:3001/'
-const filenames = [
-  
-];
+import Explorenav from "./Explorenav"
+import Exploresub_nav from "./Exploresub_nav"
+import Exploreslideshow from "./Exploreslideshow"
+import {getExplorePhotos} from "../../services/photoServices"
+import configData from "../../config/development.json"
+import GetUserPhotos from "../../services/userServices"
+import Header from "../navbar/mainNav"
+import { Link , Route, useParams } from 'react-router-dom'
+const SERVER_URL = configData.SERVER_URL ;
+
 
 
  
 
 export default function Pictures() {
   
-      const [photos, setPhotos] = useState([]);
-      useEffect(() => {
-          const fetchData = async () => {
-          const {data,status} = await axios.get( endpoint+'photos2',);
-          console.log(status);
-          if (status === 200){
-              setPhotos(data);
-          }
-      };
-   
-      fetchData();
-    },[]);
+      const [photos2, setPhotos] = useState([]);
+      useEffect( () =>{
+        
+        getExplorePhotos().then( response => {
+
+            setPhotos(response.data);
+        })
+      },[photos2])
       
-   
-   
+    const [isModalOpen, setModalIsOpen] = useState(false);
+ 
+    const navStyle={
+      color:'white'
+  };
+    const [isPhoto, setPhoto] = useState(false);
+
+    function toggleModal(){
+        setModalIsOpen(!isModalOpen);
+        console.log("l modal fata7")
+
+    }
+    let strId;
+    let isPhotoSelected;
+    function showPhoto(id){
+        console.log("PhotoStream",id);
+        isPhotoSelected=id;
+        setPhoto(true);
+        console.log("after click",isPhotoSelected);
+        strId=isPhotoSelected.toString();
+        console.log("sent id str",strId);
+    }
     return (
       <>
+      <Header isLogged={true}/>
       <div className="Explore-body">
       
+      <Explorenav 
+            onSlideshow={toggleModal}
+           viewMode = {false}
+        />
+        <Exploresub_nav/>
 
       <div className="grid">
-      {photos.map(photo => (
+      {photos2.map(photo => (
+       // <Link  style={navStyle} to={`/imagedetails/${photo.id}`}>
           <ExploreGrid
-          id = {photo.photo_id}
-          url ={photo.photo_url} 
+          id = {photo._id}
+          url ={photo.photoUrl} 
+          
           title ={photo.title} 
-          description = {photo.description}
-          date = {photo.createdAt}
-          privacy = {photo.privacy}
-          ownerName = {photo.photo_owner_name}
-          ownerId = {photo.photo_owner_id}
-          numberOfFavs = {photo.num_favs}
-          numberOfComments ={photo.num_comments}
-          numberOfViews={photo.num_views}
+          username={photo.ownerId.UserName}
+          numberOfFavs = {photo.Fav.length}
+         numberOfComments ={photo.comments.length}
+         comments={photo.comments}
+           onOpenRequest={showPhoto}
+           // /></Link>
           />
       ))}
       <div className="placeholder"></div>
       </div>
-
+      <main>
+        {isModalOpen && <Exploreslideshow onRequestClose={toggleModal} />}
+        </main>
       </div>
       </>
  ) 

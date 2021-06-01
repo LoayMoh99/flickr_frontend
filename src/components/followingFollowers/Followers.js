@@ -20,7 +20,7 @@ export default function Followers(props){
 
     return(
         <div>
-            <Header/>
+            <Header isLogged={true}/>
             <div className="flwAndFlowing">
             <div className="picAndSelect">
                 <div className="imgg"></div>

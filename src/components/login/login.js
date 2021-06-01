@@ -25,9 +25,9 @@ export default function Login() {
       <Header isLogged={false}/>
       {/* End Header */}
       {/* Start login */}
-      <div class="card-container">
+        <div class="card-container">
         <div class="card">
-          <div class="content-container">
+            <div class="content-container">
             {/*  start logo  */}
             <div class="logo">
                 <span class="blue-circle"></span>

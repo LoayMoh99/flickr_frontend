@@ -64,6 +64,7 @@ export default function ImageDetails(props){
     //get comments
     GetComments().then( response => {
         setComments(response.data);
+        console.log(response.data);
     })
 
   },[])

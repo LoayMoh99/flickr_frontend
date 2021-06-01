@@ -15,10 +15,10 @@ function TotExplore() {
   return (
     <div>
       
-     
+      
       <Pictures/>
-      <Explorenav/>
-      <Exploresub_nav/>
+     
+      
     </div>
   );
   

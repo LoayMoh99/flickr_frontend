@@ -76,7 +76,7 @@ fetchData();
         
         <div>
             <div>
-            <Header/>
+            <Header isLogged={true}/>
             </div>
             <div>
                 <div className="uName" style={{backgroundImage: `url(${groupBG})`}}>

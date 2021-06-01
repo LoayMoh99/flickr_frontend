@@ -4,10 +4,12 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faStar} from '@fortawesome/free-solid-svg-icons'
 import {faComment} from '@fortawesome/free-solid-svg-icons'
 import {faPlusSquare} from '@fortawesome/free-solid-svg-icons'
+import Comments from "./Comments"
+import Favs from "./Favs"
 
 function Explore_Grid(props){
 
-    // const images =["https://picsum.photos/300/200?random=1","https://picsum.photos/500/200?random=1","https://picsum.photos/600/200?random=1","https://picsum.photos/200/400?random=1","https://picsum.photos/300/400?random=1","https://picsum.photos/400/400?random=1","https://picsum.photos/500/400?random=1","https://picsum.photos/600/400?random=1","https://picsum.photos/200/500?random=1","https://picsum.photos/300/500?random=1","https://picsum.photos/400/500?random=1","https://picsum.photos/500/500?random=1","https://picsum.photos/600/500?random=1","https://picsum.photos/200/300?random=2","https://picsum.photos/300/300?random=2","https://picsum.photos/400/300?random=2","https://picsum.photos/500/300?random=2","https://picsum.photos/600/300?random=2","https://picsum.photos/200/200?random=2","https://picsum.photos/300/200?random=2","https://picsum.photos/400/200?random=2","https://picsum.photos/500/200?random=2","https://picsum.photos/600/200?random=2","https://picsum.photos/200/400?random=2","https://picsum.photos/300/400?random=2","https://picsum.photos/400/400?random=2","https://picsum.photos/500/300?random=3","https://picsum.photos/600/300?random=3","https://picsum.photos/200/200?random=3","https://picsum.photos/300/200?random=3","https://picsum.photos/400/200?random=3","https://picsum.photos/500/200?random=3"]
+    
     const fav = <FontAwesomeIcon icon={faStar} color="white"/>
     const comment = <FontAwesomeIcon icon={faComment} color="white"/>
     const addTo = <FontAwesomeIcon icon={faPlusSquare} color="white"/>
@@ -34,12 +36,28 @@ function Explore_Grid(props){
     }
 
     console.log(props.title)
+//Comment Box
+const [isComment, setIsComment] = useState(false);
+const [isfav, setIsFav] = useState(false);
+
+function openFavBox(){
+    setIsFav(!isfav);
+     //alert(isComment);
+}
+function openCommentBox(){
+    setIsComment(!isComment);
+     //alert(isComment);
+}
+function addToFav(){
+    console.log(props.id);
+    //api
+}
 
 
     return(
         <>
             
-            <div className="item ">
+            <div className="item " >
             <img 
             src={props.url} 
             onLoad={event => (
@@ -47,24 +65,28 @@ function Explore_Grid(props){
             )}
             alt={props.title}
             onMouseOver={handleMouseOver}
-            onMouseOut={handleMouseOut}
-            />
-            {isMousedOver &&
-            <> 
-                <div className="shadow-overlay">
+                onMouseOut={handleMouseOut}
+                
+                />
+                <div className="shadow-overlay" style={{display: isMousedOver || isComment || isfav?"block":"none"}}
+                    onMouseOver={handleMouseOver} 
+                    onMouseOut={handleMouseOut}>
                     <h1>{props.title}</h1>
                     <ul  className="tools">
-                    <li><a href="#" id="para">by {props.ownerName}</a></li>
-                    <div id="info">
-                        <li>{addTo}</li>
-                        <li > {comment} {props.numberOfComments}</li>
-                        <li > {fav} {props.numberOfFavs}</li>
-                    </div>
+                        <li><a href="#" id="para">by {props.username}</a></li>
+                        <div id="info">
+                            <li>{addTo}</li>
+                            <li  onClick={openCommentBox}> {comment} {props.numberOfComments}</li>
+                            {/* <li onClick={addToFav} > {fav} {props.numberOfFavs}</li>  */}
+                            <li onClick={openFavBox} > {fav} {props.numberOfFavs}</li> 
+                           
+                    </div> 
+                  
                     </ul>
-
+                    {isComment && <Comments numberOfComments= {props.numberOfComments} onClick={openCommentBox}/>}
+                        {isfav && <Favs numberOfFavs= {props.numberOfFavs}  onClick={openFavBox}/>} 
                 </div>
-            </>}
-            </div>
+            </div> 
 
         </>
 

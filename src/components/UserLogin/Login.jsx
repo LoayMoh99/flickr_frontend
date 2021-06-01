@@ -32,9 +32,8 @@ export default function Login(props) {
             localStorage.token = accessToken;
             console.log(localStorage.token);
             props.history.push('/user');
-
         }else{
-            props.history.push('/sign-up')
+            props.history.push('/sign-up');
         }
     })
 
@@ -47,7 +46,7 @@ export default function Login(props) {
               <p>flickr</p>
           </div>
       </div> */}
-      <Header/>
+      <Header isLogged={false}/>
       {/* End Header */}
       {/* Start login */}
       <div className="card-container">

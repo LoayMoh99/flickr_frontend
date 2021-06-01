@@ -66,7 +66,7 @@ function AlbumPage(props) {
   const back = <FontAwesomeIcon icon={faArrowLeft} color="black"/>
   return (
       <>
-      <Header/>
+      <Header isLogged={true}/>
       <div className="AlbumPage-body">
 
       <Link to='/user' style={navStyle} >

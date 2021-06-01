@@ -133,25 +133,25 @@ export async function PostComments (id,object){
   };
 
   export async function addPeopleTag (object)
-{
-          try{
-       const response = await axios.post(SERVER_URL+'photo/peopletag', object);
+  {
+            try{
+        const response = await axios.post(SERVER_URL+'photo/peopletag', object);
 
-      
-      return(response)
-  } catch (error){
-      if (error.response){
-        console.log(error.response.data);
-        console.log(error.response.status);
-        console.log(error.response.headers);
-      } else if (error.request){
-        console.log(error.request);
-      } else {
-        console.log('Error', error.message);
-      }
-      console.log(error);
-  }
-};
+        
+        return(response)
+    } catch (error){
+        if (error.response){
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+        } else if (error.request){
+          console.log(error.request);
+        } else {
+          console.log('Error', error.message);
+        }
+        console.log(error);
+    }
+  };
 
 export async function addTag (object)
 {
@@ -178,6 +178,26 @@ export async function PostPhoto (object){
       const response = await axios.post(SERVER_URL+'photos/',object)
       //Success
       return(response)
+  } catch (error){
+      if (error.response){
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request){
+        console.log(error.request);
+      } else {
+        console.log('Error', error.message);
+      }
+      console.log(error);
+  }
+};
+
+export async function getExplorePhotos (){
+  try{
+    // const response = await axios.get( SERVER_URL+'user/photos');
+    const response = await axios.get( SERVER_URL+'photos2');
+    //Success
+    return(response)
   } catch (error){
       if (error.response){
         console.log(error.response.data);
