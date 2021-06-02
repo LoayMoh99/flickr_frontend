@@ -41,7 +41,7 @@ function AlbumCard(props){
                     <h1>{props.title}</h1>
                     <p> {props.numberOfPhotos} photos</p>
                    {isUser && <button  onClick={ () =>{ toggleModal(props.id);}}>{remove}</button>}
-                <Link  style={navStyle} to={`/AlbumPage/${props.id}`}>
+                <Link  style={navStyle} to={`/AlbumPage/${props.id}/${isUser}`}>
                     <button id="open-button" >{open}</button>
                  </Link>
 

@@ -29,7 +29,7 @@ export default function Userinfo(props){
     const [peoplePhotos, setPeoplePhotos] = useState([]);
     const [userId , setUserId] = useState(0)
     const [userInfo, setUserInfo] = useState([]);
-    const [isUser , setIsUser] = useState(true);
+    const [isUser , setIsUser] = useState(false);
     const [userName , setUserName] = useState('');
 
     //get request

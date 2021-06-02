@@ -19,8 +19,8 @@ function AlbumPage(props) {
     const path = props.location.pathname;
     var index = path.split('/');
     const album_id= index[2];
-    //const album_id = 0;
-    console.log(album_id);
+    const isUser=index[3];
+    console.log(album_id,"albumpage",isUser);
     
      const [album,setAlbum] =useState();
      const [isUndefined, setUndefined] = useState(true);
@@ -45,8 +45,8 @@ function AlbumPage(props) {
           setUndefined(false);
         }
     }) 
-//  },[album])
-},[])
+ },[album])
+// },[])
 
  let isPhotoSelected;
  function showPhoto(id){
@@ -83,6 +83,7 @@ function AlbumPage(props) {
         ownerFname ={album.ownerId.Fname}
         ownerLname ={album.ownerId.Lname}
         album_id = {album_id}
+        isUser = {isUser}
         />
        }
         {/* )} */}
@@ -103,8 +104,8 @@ function AlbumPage(props) {
             ownerId = {photo.ownerId._id}
             numberOfFavs = {photo.Fav.length}
             numberOfComments ={photo.comments.length}
-            // viewMode = {isUser}
-            // favMode = {isFav}
+            viewMode = {false}
+            favMode = {true}
              onOpenRequest={showPhoto}
             />
 
