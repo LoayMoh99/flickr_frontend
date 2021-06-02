@@ -8,8 +8,6 @@ import { faThLarge } from '@fortawesome/free-solid-svg-icons'
 import { faShare } from '@fortawesome/free-solid-svg-icons'
 import {Link} from "react-router-dom";
 
-// import EditInfo from "./EditInfo"
-
 
 function Explorenav(props){
 
@@ -38,7 +36,3 @@ function Explorenav(props){
 
 
 export default Explorenav;
-//<h3 className="Explore-par">Explore</h3>
-/*<li id="icon-space"><button title="Toggle slideshow" onClick={ () =>{
-  props.onSlideshow();}}>{secondlayout}</button></li>
-*/

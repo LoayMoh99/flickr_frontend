@@ -43,18 +43,8 @@ function Photostream(props){
                 setPeoplePhotos(response.data);
             })
         }
-    // },[userPhotos,userId])
-    // },[userId])
-},[])
-    
-    // let isPhotoSelected;
-    // function showPhoto(id){
-    //     console.log("PhotoStream",id);
-    //     isPhotoSelected=id;
-    //     console.log("after click",isPhotoSelected);
-    //     props.history.push('/imagedetails/id}');
-        
-    // }  
+    },[userPhotos,userId])
+
     
     return (
         <>
@@ -66,9 +56,8 @@ function Photostream(props){
             {isUser?
                 <>
                     {userPhotos.map(photo => (
-                    //<Link  style={navStyle} to={`/imagedetails/${photo.id}`}>
                     <ImageGrid
-                    id = {photo._id}
+                    id = {photo.id}
                     url ={photo.photoUrl} 
                     title ={photo.title} 
                     description = {photo.description}
@@ -79,8 +68,7 @@ function Photostream(props){
                     ownerName = "YOU!"
                     viewMode = {isUser}
                     favMode = {isFav}
-                    // onOpenRequest={showPhoto}
-                    />//</Link>
+                    />
                 ))}
                 </>
                 :
@@ -99,8 +87,7 @@ function Photostream(props){
                     ownerName ={photo.userName}
                     viewMode = {isUser}
                     favMode = {true}
-                    // onOpenRequest={showPhoto}
-                    />//</Link>
+                    />
                 ))}
                 </>
             }

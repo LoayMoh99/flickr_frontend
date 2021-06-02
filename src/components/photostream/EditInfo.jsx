@@ -23,8 +23,7 @@ function EditInfo(){
         GetUserPhotos().then( response => {
             setPhotos(response.data);
         })
-    // },[photos])
-},[])
+    },[photos])
 
     // Modal
     const [isModalOpen, setModalIsOpen] = useState(false);
@@ -41,8 +40,7 @@ function EditInfo(){
         const ids = {
             "photos":[idToDelete]
         };
-        DeletePhoto(ids).then( response => {
-        // DeletePhoto(idToDelete).then( response => {
+        DeletePhoto(idToDelete).then( response => {
             console.log(response);
         });
         //close delete modal
@@ -58,12 +56,10 @@ function EditInfo(){
                 <li id="nav-item"><Link  style={navStyle} to="/user"><a href="#" id="a">{back } Back to photostream</a></Link></li>
             <li id="right "><p id="a">Edit in <Link style={navStyle} to="/CameraRoll"><a id="a2" href="#" >Camera Roll</a></Link></p> </li>
             </ul>
-
-            {/* cards */}
             <div className="card-grid">
             {photos.map(photo =>(
                 <Card 
-                    id = {photo._id}
+                    id = {photo.id}
                     url ={photo.photoUrl} 
                     title ={photo.title} 
                     description = {photo.description}

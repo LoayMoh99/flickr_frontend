@@ -24,8 +24,7 @@ function AlbumPreview(props){
             })
         }else{
             //get people photos by userId
-            GetPeopleAlbums(username).then( response => {
-            // GetPeopleAlbums().then( response => {
+            GetPeopleAlbums().then( response => {
                 setPeopleAlbums(response.data);
             })
         }
@@ -41,7 +40,7 @@ function AlbumPreview(props){
                     <>
                     {userAlbums.map (album =>(
                         <AlbumCard 
-                        id={album._id}
+                        id={album.id}
                         coverUrl = {album.coverPhoto.photoUrl}
                         title = {album.title}
                         ownerId = {album.ownerId}

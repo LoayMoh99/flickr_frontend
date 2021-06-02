@@ -1,4 +1,4 @@
 {
-    "SERVER_URL": "https://cors-anywhere.herokuapp.com/http://dropoids.me/api/v1/",
+    "SERVER_URL": "http://localhost:3001/",
     "NODE_ENV": "development"
 }

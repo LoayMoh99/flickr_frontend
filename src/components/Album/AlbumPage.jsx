@@ -14,14 +14,13 @@ import { Link } from 'react-router-dom';
 
 function AlbumPage(props) {
 
+
     const path = props.location.pathname;
     var index = path.split('/');
     const album_id= index[2];
-    const isUser=index[3];
-    console.log(album_id,"albumpage",isUser);
-    
-     const [album,setAlbum] =useState();
-     const [isUndefined, setUndefined] = useState(true);
+    const isUser = index[3];
+    const [album,setAlbum] =useState();
+    const [isUndefined, setUndefined] = useState(true);
 
   //This function is called whenever this album page is opened
   //It gets the details of the selected album and set the const album with these details 
@@ -36,32 +35,26 @@ function AlbumPage(props) {
         console.log(isUndefined);
         if(album == undefined)
         {
-          setUndefined(true);
-          
+          setUndefined(true);   
         }
         else{
           setUndefined(false);
         }
     }) 
  },[album])
-// },[])
+
 
  let isPhotoSelected;
  function showPhoto(id){
      console.log("PhotoStream",id);
      isPhotoSelected=id;
-    //  setPhoto(true);
-     console.log("after click",isPhotoSelected);
-     //props.history.push('/imagedetails/id}');
-     
+     console.log("after click",isPhotoSelected);  
  }
 
 
- const navStyle={
-  color:'black'
-};
-
+ const navStyle={color:'black'};
   const back = <FontAwesomeIcon icon={faArrowLeft} color="black"/>
+
   return (
       <>
       <Header isLogged={true}/>
@@ -81,7 +74,7 @@ function AlbumPage(props) {
         ownerFname ={album.ownerId.Fname}
         ownerLname ={album.ownerId.Lname}
         album_id = {album_id}
-        isUser = {isUser}
+        isUser={isUser}
         />
        }
         {/* )} */}
@@ -91,8 +84,7 @@ function AlbumPage(props) {
         {/* {album.map(album =>  */}
         { album.photos.map(photo => (
             <ImageGrid
-            id = {photo._id}
-            // id = {photo.id}
+            id = {photo.id}
             url ={photo.photoUrl} 
             title ={photo.title} 
             description = {photo.description}

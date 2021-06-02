@@ -1,7 +1,6 @@
 import React,{useState} from 'react'
 function PhotosToAdd(props){
 
-    // const [count,setCount] = useState(0);
     const [isHovered,setHover] = useState(false);
     const [isClicked,setClicked] = useState(false);
 

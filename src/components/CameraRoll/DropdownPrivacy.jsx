@@ -1,4 +1,3 @@
-/* eslint-disable linebreak-style */
 import React, {useState} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSortDown } from '@fortawesome/free-solid-svg-icons';
@@ -7,7 +6,6 @@ import './DropdownPrivacy.css';
 
 function DropdownPrivacy(props) {
   const {imgEditIds} = props;
-  //console.log(imgEditIds);
   const arrow = <FontAwesomeIcon icon={faSortDown} color="DarkGrey" />;
   const [privacy,setPrivacy] = useState("private");
 

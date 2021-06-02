@@ -10,7 +10,6 @@ function Card(props){
     const remove = <FontAwesomeIcon icon={faTrash} color="White" />
     const lock = <FontAwesomeIcon icon={faLock} color="DarkGrey"/>
     const unlock = <FontAwesomeIcon icon={faUnlock} color="DarkGrey"/>
-    // const views = <FontAwesomeIcon icon={faEye} color="DarkGrey"/>
     const fav = <FontAwesomeIcon icon={faStar} color="DarkGrey"/>
     const comment = <FontAwesomeIcon icon={faComment} color="DarkGrey"/>
 
@@ -34,7 +33,6 @@ function Card(props){
     function changeToPublic(){
         setPrivacy('public');
         console.log(privacy);
-          // const object = {photos:[props.id] , title:inputTitle , description:inputDescription , privacy:privacy}
         const object ={
             "photoUrl": props.url,
             "ownerId": props.ownerId,
@@ -54,8 +52,6 @@ function Card(props){
 
     function changeToPrivate(){
         setPrivacy('private');
-        console.log(privacy);
-        // const object = {photos:[props.id] , title:inputTitle , description:inputDescription , privacy:privacy}
       const object ={
           "photoUrl": props.url,
           "ownerId": props.ownerId,
@@ -79,21 +75,19 @@ function Card(props){
 
 
     function confirmEdit(){
-        const object = {photos:[props.id] , title:inputTitle , description:inputDescription , privacy:privacy}
-        // const object =       {
-        //     "photoUrl": props.url,
-        //     "ownerId": props.ownerId,
-        //     "num_favs": props.numberOfFavs,
-        //     "comments": [0,1,2,3],
-        //     "title": inputTitle,
-        //     "privacy": privacy,
-        //     "description": inputDescription,
-        //     "createdAt": "2021-05-29",
-        //     "UpdatedAt": "2021-05-29"
-        // }
+        const object =       {
+            "photoUrl": props.url,
+            "ownerId": props.ownerId,
+            "num_favs": props.numberOfFavs,
+            "comments": [0,1,2,3],
+            "title": inputTitle,
+            "privacy": privacy,
+            "description": inputDescription,
+            "createdAt": "2021-05-29",
+            "UpdatedAt": "2021-05-29"
+        }
         //API
-        PutPhoto(object).then( response => {
-        // PutPhoto(props.id,object).then( response => {
+        PutPhoto(props.id,object).then( response => {
             console.log(response);
         });
         changeLayout();
@@ -131,7 +125,6 @@ function Card(props){
                     <div id="info">
                         <li > {comment} {props.numberOfComments}</li>
                         <li > {fav} {props.numberOfFavs}</li>
-                        {/* <li > <div>{views} {props.numberOfViews}</div></li> */}
                     </div>
                 </ul>
             </>

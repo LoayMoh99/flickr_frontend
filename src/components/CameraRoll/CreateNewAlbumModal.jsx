@@ -1,9 +1,7 @@
 import React,{useState , useEffect } from 'react';
-import axios from "axios"
 import './EditModal.css';
 import './CreateNewAlbumModal.css';
 import { createAlbum} from '../../services/albumServices'
-const endpoint = 'http://localhost:3001/'
 
 function CreateNewAlbumModal(props) {
 
@@ -34,22 +32,19 @@ function CreateNewAlbumModal(props) {
     console.log(inputDescription);
   }
 
+//     const album = {
+//       "title": inputTitle,
+//       "description":inputDescription,
+//       "photos":imgIdsCreateAlbum,
+//       "coverPhoto":coverPhotoId
+//        }
 
-
-    const album = {
-      "title": inputTitle,
-      "description":inputDescription,
-      "photos":imgIdsCreateAlbum,
-      "coverPhoto":coverPhotoId
-       }
-
-
-    // const album = { 
-    //     "id" : 29,
-    //     "title": inputTitle,
-    //     "description":inputDescription,
-    //     "createdAt": "2021-03-02",
-    //     "updatedAt": "2021-05-04",
+    const album = { 
+        "id" : 29,
+        "title": inputTitle,
+        "description":inputDescription,
+        "createdAt": "2021-03-02",
+        "updatedAt": "2021-05-04",
         // "photos" : [
         //   {
         //       "photo_id" : 0,
@@ -65,11 +60,11 @@ function CreateNewAlbumModal(props) {
         //       "createdAt" : "2021-05-04"
         //   }
         // ],
-        // "photos":imgIdsCreateAlbum,
+        "photos":imgIdsCreateAlbum,
         //coverPhoto:"https://picsum.photos/300/200?random=1"
-        // coverPhoto:coverPhotoId
+        coverPhoto:coverPhotoId
           
-    // };
+    };
 
 
     function create (){
@@ -92,14 +87,10 @@ function CreateNewAlbumModal(props) {
           <h3 className="modal__title_edit">
             Create a new album
           </h3>
-          {/* <div className="title-desc-container"> */}
          
             <input className="createTitle" type="text" placeholder="Album name" onChange={handleTitleChange} required/>
-            {/* <hr /> */}
             <textarea className="createDescription" placeholder="Description (optional)" onChange={handleDescriptionChange} />
-           
-         
-          
+
           <div className="createFooter">
             <button
               id="save_edit"

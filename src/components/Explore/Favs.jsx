@@ -5,7 +5,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faComment} from '@fortawesome/free-solid-svg-icons'
 import {GetComments,PostComments} from "../../services/photoServices"
 import GetPeopleFavs from "../../services/peopleServices"
-//import {GetExploreFavs} from "../../services/Exploreserv"
 function Comments(props){
     const [photos2 , setComments ] = useState([]);
     const [newComment, setNewComment] = useState('');
@@ -24,25 +23,6 @@ function Comments(props){
         setNewComment(toComment);
     }
 
-    // function postComment(){
-    //     setText("Add a comment about this photo");
-    //     console.log(props.photo_id)
-       
-    //     const object ={
-    //         comment: newComment,
-    //         user: "60b222e537838723b02201fd",
-    //         createdAt: "2021-05-29T11:17:57.326Z",
-    //         updatedAt: "2021-05-29T11:17:57.326Z"
-    //     }
-    //     //API
-    //     PostExploreComments(props.photo_id,object).then( response => {
-    //         console.log(response);
-          
-    //     });
-    //     document.getElementById('com').value = '';
-        
-    // }
-
     return(
         <>
             <div className="fav-box">
@@ -51,9 +31,6 @@ function Comments(props){
                     <ShowFavs
                         Fname = {photo.UserName}
                         Pic={photo.Avatar}
-                        //Lname = {comment.user.Lname}
-                        // body = {comment.comment[0].comment}
-                        
                     />
                 )))}
                 </div>

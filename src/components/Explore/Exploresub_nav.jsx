@@ -14,8 +14,6 @@ export default function Exploresub_nav()
             <li class="explore">
             <Link style={navStyle} to="/Explore"><a className="exp" href="#top">Explore</a></Link>
             </li>
-           
-            
           </ul>
         </div>
       </div>

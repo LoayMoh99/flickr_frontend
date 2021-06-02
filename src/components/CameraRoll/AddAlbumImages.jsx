@@ -78,7 +78,6 @@ function AddAlbumImages(props) {
 
             <div className="userAlbumAdd" onClick={toggleChecked}>
               <div className="userAlbumCover">
-                {/* <div className="row"> */}
                   <img className="img-responsive" id="contentAdd" src={albumCover} alt="image_flickr" />
                   <div className="albumAddInfo" >
                     <h5 className="albumTitleAdd">{albumTitle}</h5>
@@ -88,17 +87,14 @@ function AddAlbumImages(props) {
                     items
                     </h5>
                   </div>
-                  {/* <div> */}
                   {isChecked&&
                   (
                   <div className="checkIcon">
                     {check}
                   </div>
                   )}
-                  {/* </div> */}
-                {/* </div> */}
             </div>
-            </div>
+          </div>
 
       </>
      );

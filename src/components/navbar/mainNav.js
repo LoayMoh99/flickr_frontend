@@ -11,16 +11,13 @@ export default function Header(props){
     //
     const [searchText,setSearchText]=useState();
     const showDropDown = e => setSearchText(e.target.value);
-    // function checkSize(){
-    //     if(window.innerWidth>1080){
-    //         readjustHeader();
-    //     }
-    // }
+    function checkSize(){
+        if(window.innerWidth>1080){
+            readjustHeader();
+        }
+    }
     const navStyle={
         color:'white'
-    };
-    const navStyle2={
-        color:'black'
     };
 
     const [isLogged, setLogged] = useState(props.isLogged)
@@ -32,7 +29,7 @@ export default function Header(props){
 
     }
     
-    // window.addEventListener('resize',checkSize);
+    window.addEventListener('resize',checkSize);
     return(
             <div>
         <nav className="navbar fix_nav">
@@ -104,7 +101,6 @@ export default function Header(props){
                         <a href="#top">Search photos</a>
                     </li>
                     <li>
-                        {/* <Link  style={navStyle} to="/"><p id="linkedParagraph">Photostream</p></Link> */}
                         <a>Search people</a>
                     </li>
                     <li>
@@ -120,10 +116,13 @@ export default function Header(props){
                     <input onChange={showDropDown} type="text" placeholder="Photos, People or Groups   "/>
                     {searchText && <ul className="subMenuYouContent adjustedFoeSearch" >
                     <li>
-                        <Link style={navStyle2} to={`/searchPeople/${searchText}`}>Search people</Link>
+                        <a href="#top">Search photos</a>
                     </li>
                     <li>
-                        <Link style={navStyle2} to={`/searchGroup/${searchText}`}>Search Group</Link>
+                        <a>Search people</a>
+                    </li>
+                    <li>
+                        <a href="#top">Search group</a>
                     </li>
                 </ul>}
                 </div>

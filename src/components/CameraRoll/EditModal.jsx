@@ -1,11 +1,3 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable react/prop-types */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable linebreak-style */
-/* eslint-disable max-len */
-/* eslint-disable linebreak-style */
 import React, {useState} from 'react';
 import axios from "axios"
 import {addTag, addPeopleTag ,UpdatePhotos} from '../../services/photoServices';
@@ -14,12 +6,10 @@ import { faTag } from '@fortawesome/free-solid-svg-icons';
 import { faUserFriends } from '@fortawesome/free-solid-svg-icons';
 import './EditModal.css';
 import DropdownPrivacy from './DropdownPrivacy'; 
-const endpoint = 'http://localhost:3001/'
+
 function EditModal(props) {
 
-  const {imgEditIds} =props; // array of selected photos to edit to pass them to the API
-  //console.log(imgEditIds); 
-
+  const {imgEditIds} =props; // array of selected photos to edit to pass them to the API 
 
   const tag = <FontAwesomeIcon icon={faTag} color="DarkGrey" />;
   const people = <FontAwesomeIcon icon={faUserFriends} color="DarkGrey" />;

@@ -2,9 +2,8 @@ import React,{useState,useEffect} from "react"
 import Commentstyles from "./Commentstyles.css"
 import ExploreGrid from "./Explore_grid"
 import axios from "axios"
-
 import Comments from "./Comments"
-const endpoint = 'http://localhost:3001/'
+
 
 function ShowFavs(props){
    const  defaultProfile= "https://picsum.photos/2";

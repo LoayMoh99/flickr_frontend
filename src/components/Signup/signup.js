@@ -2,7 +2,6 @@ import React , {useState} from 'react';
 import './signup.css';
 import useForm from "./userForm";
 import validateSignup from "./validateSignUp";
-//import arrowlogo from '../../img/dBackground.jpg';
 import PostUser from "../../services/userServices"
 import {Link} from "react-router-dom";
 import Header from "../navbar/mainNav"
@@ -26,33 +25,33 @@ export default function Signup(props) {
         console.log(lname);
         console.log(age);
     
-        const object={
-            "firstName": fname,
-            "lastName": lname,
-            "email": email,
-            "password": pass,
-            "age": age
-        }
-
         // const object={
-        //     "Fname": "Samar",
-        //     "Lname": "Nabil",
-        //     "Following": 20,
-        //     "Followers": 10,
-        //     "views": 0,
-        //     "Date_joined": "2021-05-31",
-        //     "Email": "farah@gmail.com",
-        //     "UserName": "farahmostafa",
-        //     "Photo": 60,
-        //     "Avatar": "https://picsum.photos/500/300?random=1",
-        //     "BackGround": "https://picsum.photos/500/300?random=1",
-        //     "About": {
-        //       "Description": "string",
-        //       "Hometown": "string",
-        //       "Occupation": "string",
-        //       "CurrentCity": "string"
-        //     }
+        //     "firstName": fname,
+        //     "lastName": lname,
+        //     "email": email,
+        //     "password": pass,
+        //     "age": age
         // }
+
+        const object={
+            "Fname": fname,
+            "Lname": lname,
+            "Following": 20,
+            "Followers": 10,
+            "views": 0,
+            "Date_joined": "2021-05-31",
+            "Email": email,
+            "UserName": "farahmostafa",
+            "Photo": 60,
+            "Avatar": "https://picsum.photos/500/300?random=1",
+            "BackGround": "https://picsum.photos/500/300?random=1",
+            "About": {
+              "Description": "string",
+              "Hometown": "string",
+              "Occupation": "string",
+              "CurrentCity": "string"
+            }
+        }
 
         //sign up
         PostUser(object).then( response => {

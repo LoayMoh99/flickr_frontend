@@ -56,16 +56,8 @@
 .previewedPhotoComments{
     padding: 10px 0;
     width: 100%;
-    display: flex;
-    border:1px  #006dac solid ;
-    border-radius: 10px;
-    margin-bottom: 10px;
-    padding: 5px;
 }
 
-.previewedPhotoComments span{
-    color: #006dac;
-}
 .commentBoxImageDetails input{
     height: 110px;
     width: 300px;

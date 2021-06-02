@@ -62,7 +62,6 @@ export default function Followers(props){
                 <tr>
                 <th scope="row"><img src={user.avatar}></img> {user.Fname} {user.Lname}</th>
                 <td>{user.Photos}</td>
-                {/* <td>200</td> */}
                 <td>{user.UserName}</td>
                 <td>user.Email</td>
                 </tr>

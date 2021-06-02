@@ -24,10 +24,9 @@ function AlbumCard(props){
     }
 
     function confirmDelete(){
-        console.log("id to delete album: ",idToDelete);
         //get user photos
         DeleteAlbum(idToDelete).then( response => {
-            console.log(response)
+            console.log(response);
         });
         setModalIsOpen(!isModalOpen);
     }

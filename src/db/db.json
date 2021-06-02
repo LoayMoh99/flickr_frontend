@@ -144,7 +144,6 @@
       "UpdatedAt": "2021-05-29"
     },
     {
-      "id": 6,
       "photoUrl": "https://picsum.photos/500/400?random=1",
       "ownerId": 0,
       "num_favs": 56,
@@ -154,11 +153,12 @@
         2,
         3
       ],
-      "title": "titttlleee",
+      "title": "Hello",
       "privacy": "public",
-      "description": "descriptionnn",
+      "description": "Good night",
       "createdAt": "2021-05-29",
-      "UpdatedAt": "2021-05-29"
+      "UpdatedAt": "2021-05-29",
+      "id": 6
     },
     {
       "id": 7,
@@ -416,17 +416,6 @@
       "createdAt": "2020-5-23",
       "updatedAt": "2021-4-2",
       "id": "qQjcBH_"
-    },
-    {
-      "comment": "oh",
-      "user": {
-        "Fname": "John",
-        "Lname": "Smith",
-        "id": "100"
-      },
-      "createdAt": "2020-5-23",
-      "updatedAt": "2021-4-2",
-      "id": "dpjf0sS"
     }
   ],
   "following": [
@@ -559,21 +548,6 @@
       "Username": "username",
       "Name": "Samar Nabil",
       "id": 4
-    },
-    {
-      "photoUrl": "https://picsum.photos/200/200?random=2",
-      "title": "added Fav",
-      "descript": "description",
-      "Fav": [],
-      "privacy": "public",
-      "tags": [],
-      "ownerId": 0,
-      "peopleTags": [],
-      "comments": 78,
-      "Favs": 60,
-      "Username": "username",
-      "Name": "Samar Nabil",
-      "id": 5
     }
   ],
   "peopleFollowing": [
@@ -811,87 +785,6 @@
         "title": "photo1",
         "description": "my photo",
         "photoUrl": "https://picsum.photos/200/200?random=1",
-        "Fav": [
-          "60b222e537838723b02201fd"
-        ],
-        "privacy": "private",
-        "ownerId": "60b222e537838723b02201fd",
-        "tags": [
-          "Nature"
-        ],
-        "peopleTags": [
-          {
-            "tagging": "integer",
-            "tagged": [
-              "60b222e537838723b02201fd"
-            ],
-            "createdAt": "2021-05-29T11:17:57.326Z",
-            "updatedAt": "2021-05-29T11:17:57.326Z"
-          }
-        ],
-        "comments": [
-          0,
-          1
-        ],
-        "createdAt": "2021-05-29T11:17:57.326Z",
-        "updatedAt": "2021-05-29T11:17:57.326Z"
-      },
-      "createdAt": "2021-05-29T11:17:57.326Z",
-      "updatedAt": "2021-05-29T11:17:57.326Z"
-    },
-    {
-      "id": "1",
-      "title": "Album2 album",
-      "description": "my album",
-      "ownerId": {
-        "_id": "609dd9ac9a52002aa498befe",
-        "Fname": "Mostafa",
-        "Lname": "Ashraf",
-        "UserName": "Mostafa123",
-        "Email": "test@test.com",
-        "Avatar": "609dd9ac9a52002aa498befe"
-      },
-      "photos": [
-        {
-          "id": "60b222e537838723b02201fd",
-          "title": "photo1",
-          "description": "my photo",
-          "photoUrl": "https://picsum.photos/200/100?random=2",
-          "Fav": [
-            "60b222e537838723b02201fd"
-          ],
-          "privacy": "public",
-          "ownerId": "60b222e537838723b02201fd",
-          "tags": [
-            "Nature"
-          ],
-          "peopleTags": [
-            {
-              "tagging": "integer",
-              "tagged": [
-                "60b222e537838723b02201fd"
-              ],
-              "createdAt": "2021-05-29T11:17:57.326Z",
-              "updatedAt": "2021-05-29T11:17:57.326Z"
-            }
-          ],
-          "comments": [
-            {
-              "comment": "this is a comment",
-              "user": "60b222e537838723b02201fd",
-              "createdAt": "2021-05-29T11:17:57.326Z",
-              "updatedAt": "2021-05-29T11:17:57.326Z"
-            }
-          ],
-          "createdAt": "2021-05-29T11:17:57.326Z",
-          "updatedAt": "2021-05-29T11:17:57.326Z"
-        }
-      ],
-      "coverPhoto": {
-        "id": "1",
-        "title": "photo1",
-        "description": "my photo",
-        "photoUrl": "https://picsum.photos/200/200?random=5",
         "Fav": [
           "60b222e537838723b02201fd"
         ],
@@ -1483,210 +1376,6 @@
       ],
       "createdAt": "2021-05-29T11:17:57.326Z",
       "updatedAt": "2021-05-29T11:17:57.326Z"
-    }
-  ],
-  "people": [
-    {
-      "_id": 0,
-      "avatarUrl": "https://combo.staticflickr.com/pw/images/buddyicon00_m.png#22501572@N05",
-      "Fname": "Samar",
-      "Lname": "Nabil",
-      "UserName": "samar_nabil",
-      "numberOfFollowers": 3.3,
-      "numberOfPublicPhotos": 129,
-      "Date_joined": "april 2015",
-      "isFollowed": true
-    },
-    {
-      "_id": 1,
-      "avatarUrl": "https://combo.staticflickr.com/pw/images/buddyicon00_m.png#22501572@N05",
-      "Fname": "Samar",
-      "Lname": "Nabil",
-      "UserName": "samar_nabil",
-      "numberOfFollowers": 3.3,
-      "numberOfPublicPhotos": 129,
-      "Date_joined": "april 2015",
-      "isFollowed": true
-    },
-    {
-      "_id": 2,
-      "avatarUrl": "https://combo.staticflickr.com/pw/images/buddyicon00_m.png#22501572@N05",
-      "Fname": "Samar",
-      "Lname": "Nabil",
-      "UserName": "samar_nabil",
-      "numberOfFollowers": 3.3,
-      "numberOfPublicPhotos": 129,
-      "Date_joined": "april 2015",
-      "isFollowed": true
-    },
-    {
-      "_id": 3,
-      "avatarUrl": "https://combo.staticflickr.com/pw/images/buddyicon00_m.png#22501572@N05",
-      "Fname": "Samar",
-      "Lname": "Nabil",
-      "UserName": "samar_nabil",
-      "numberOfFollowers": 3.3,
-      "numberOfPublicPhotos": 129,
-      "Date_joined": "april 2015",
-      "isFollowed": true
-    },
-    {
-      "_id": 4,
-      "avatarUrl": "https://combo.staticflickr.com/pw/images/buddyicon00_m.png#22501572@N05",
-      "Fname": "Samar",
-      "Lname": "Nabil",
-      "UserName": "samar_nabil",
-      "numberOfFollowers": 3.3,
-      "numberOfPublicPhotos": 129,
-      "Date_joined": "april 2015",
-      "isFollowed": true
-    },
-    {
-      "_id": 5,
-      "avatarUrl": "https://combo.staticflickr.com/pw/images/buddyicon00_m.png#22501572@N05",
-      "Fname": "Samar",
-      "Lname": "Nabil",
-      "UserName": "samar_nabil",
-      "numberOfFollowers": 3.3,
-      "numberOfPublicPhotos": 129,
-      "Date_joined": "april 2015",
-      "isFollowed": true
-    },
-    {
-      "_id": 6,
-      "avatarUrl": "https://combo.staticflickr.com/pw/images/buddyicon00_m.png#22501572@N05",
-      "Fname": "Samar",
-      "Lname": "Nabil",
-      "UserName": "samar_nabil",
-      "numberOfFollowers": 3.3,
-      "numberOfPublicPhotos": 129,
-      "Date_joined": "april 2015",
-      "isFollowed": true
-    },
-    {
-      "_id": 7,
-      "avatarUrl": "https://combo.staticflickr.com/pw/images/buddyicon00_m.png#22501572@N05",
-      "Fname": "Samar",
-      "Lname": "Nabil",
-      "UserName": "samar_nabil",
-      "numberOfFollowers": 3.3,
-      "numberOfPublicPhotos": 129,
-      "Date_joined": "april 2015",
-      "isFollowed": true
-    },
-    {
-      "_id": 8,
-      "avatarUrl": "https://combo.staticflickr.com/pw/images/buddyicon00_m.png#22501572@N05",
-      "Fname": "Samar",
-      "Lname": "Nabil",
-      "UserName": "samar_nabil",
-      "numberOfFollowers": 3.3,
-      "numberOfPublicPhotos": 129,
-      "Date_joined": "april 2015",
-      "isFollowed": true
-    },
-    {
-      "_id": 9,
-      "avatarUrl": "https://combo.staticflickr.com/pw/images/buddyicon00_m.png#22501572@N05",
-      "Fname": "Samar",
-      "Lname": "Nabil",
-      "UserName": "samar_nabil",
-      "numberOfFollowers": 3.3,
-      "numberOfPublicPhotos": 129,
-      "Date_joined": "april 2015",
-      "isFollowed": false
-    }
-  ],
-  "group": [
-    {
-      "id": 0,
-      "url": "https://live.staticflickr.com/7698/buddyicons/132622657@N06_r.jpg?1429140120#132622657@N06",
-      "name": "Samar Nabil",
-      "num_members": "3.3k",
-      "num_photos": "129",
-      "role": "member",
-      "createdAt": "2015-2-1"
-    },
-    {
-      "id": 1,
-      "url": "https://live.staticflickr.com/7698/buddyicons/132622657@N06_r.jpg?1429140120#132622657@N06",
-      "name": "Samar Nabil",
-      "num_members": "3.3k",
-      "role": "",
-      "num_photos": "129",
-      "createdAt": "2015-2-1"
-    },
-    {
-      "id": 2,
-      "url": "https://picsum.photos/600/200?random=1",
-      "name": "Samar Nabil",
-      "num_members": "3.3k",
-      "role": "member",
-      "num_photos": "129",
-      "createdAt": "2015-2-1"
-    },
-    {
-      "id": 3,
-      "url": "https://picsum.photos/400/400?random=3",
-      "name": "Samar Nabil",
-      "num_members": "3.3k",
-      "role": "",
-      "num_photos": "129",
-      "createdAt": "2015-2-1"
-    },
-    {
-      "id": 4,
-      "url": "https://picsum.photos/300/400?random=1",
-      "name": "Samar Nabil",
-      "num_members": "3.3k",
-      "role": "",
-      "num_photos": "129",
-      "createdAt": "2015-2-1"
-    },
-    {
-      "id": 5,
-      "url": "https://picsum.photos/400/400?random=1",
-      "name": "Samar Nabil",
-      "num_members": "3.3k",
-      "role": "member",
-      "num_photos": "129",
-      "createdAt": "2015-2-1"
-    },
-    {
-      "id": 6,
-      "url": "https://picsum.photos/500/200?random=1",
-      "name": "Samar Nabil",
-      "num_members": "3.3k",
-      "role": "member",
-      "num_photos": "129",
-      "createdAt": "2015-2-1"
-    },
-    {
-      "id": 7,
-      "url": "https://picsum.photos/500/200?random=1",
-      "name": "Samar Nabil",
-      "num_members": "3.3k",
-      "role": "member",
-      "num_photos": "129",
-      "createdAt": "2015-2-1"
-    },
-    {
-      "id": 8,
-      "url": "https://picsum.photos/500/200?random=1",
-      "name": "Samar Nabil",
-      "num_members": "3.3k",
-      "role": "member",
-      "num_photos": "129",
-      "createdAt": "2015-2-1"
-    },
-    {
-      "id": 9,
-      "url": "https://picsum.photos/500/200?random=1",
-      "name": "Samar Nabil",
-      "num_members": "3.3k",
-      "role": "member",
-      "num_photos": "129",
-      "createdAt": "2015-2-1"
     }
   ]
 }

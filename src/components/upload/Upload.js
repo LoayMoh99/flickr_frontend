@@ -19,14 +19,6 @@ export default function Upload(props){
 
     //////////////////////////post now////////////////////////////////////////////////
 
-    // const fetchData = async () => {
-    //     const { photoos, status } = await axios.get(endpoint + "photos",);
-    //     console.log(status);
-    //     if (status === 200) {
-    //         setData(photoos);
-    //     }
-    // };
-
     const [image, setImage] = useState("");
     const onchange = e => setImage(URL.createObjectURL(e.target.files[0]));
 
@@ -40,30 +32,33 @@ export default function Upload(props){
         console.log("yalahwaaaiii");
         console.log(image);
         const newImage = {
-            title: "title",
-            description: "",
-            file: image,
-            privacy: "public",
-            tags: [tag]
-          }
+            photoUrl:image,
+            ownerId: 0,
+            Fav: [
+                0
+            ],
+            comments: [
+                0
+            ],
+            title: 1235,
+            privacy: "private",
+            description: "cats",
+            tags: [
+            ],
+            peopleTags: [
+                {
+                tagging: "string",
+                tagged: [
+                ]
+                }
+            ],
+            createdAt: "2021-05-30",
+            UpdatedAt: "2021-05-30"
+        };
         console.log("status1");
         PostPhoto(newImage).then(response=>{
             console.log(response.data);
         })
-        ///////////////////////////////////////////////////////API//////////////////////////////////////////////
-        /*if (status === 200) {
-           newtag={
-               "photos": [
-                    data.id
-                ],
-                tag: "Nature"
-           }
-           const response = await axios.post(endpoint+"tag", newtag);
-           if(resonse.statuse===200){
-               console.log("tag is added");
-           }
-        }*/
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////
     };
 
     return(

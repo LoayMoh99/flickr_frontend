@@ -9,8 +9,7 @@ import axios from 'axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Link , Route, useParams } from 'react-router-dom'
-import {GetPeopleByIdentefier} from "../../services/peopleServices"
-//import UpdateUser from "../../services/userServices"
+import GetPeoplePhotos,{GetPeopleByIdentefier} from "../../services/peopleServices"
 import Faves from '../Faves/Faves';
 import AlbumPreview from '../Album/AlbumPreview'
 import {GetUser,GetUserPhotos,UpdateUser,checkUserByIdentifier} from "../../services/userServices"
@@ -18,69 +17,34 @@ import GroupPhotos from "../GroupPhotos/GroupPhotos"
 
 
 export default function Userinfo(props){
-    
-    localStorage.token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYjYwMDYwMzZiYzIzMDAxOWE3NGI4OCIsImlhdCI6MTYyMjU0MDQ0NCwiZXhwIjoxNzIyNTQ3NjQ0fQ.ng54v98xXSr-1BCpfZcThPAMOMwSl3H595xN36P6hbE"
 
     const path = props.location.pathname;
     const index = path.split('/');
     const id = index[2];
-    // console.log(id);
 
     const [userPhotos, setUserPhotos] = useState([]);
     const [peoplePhotos, setPeoplePhotos] = useState([]);
-    const [userId , setUserId] = useState(0);
+    const [userId , setUserId] = useState(0)
     const [userInfo, setUserInfo] = useState([]);
     const [isUser , setIsUser] = useState(true);
     const [userName , setUserName] = useState('');
 
     //get request
     useEffect( () =>{
-        // // check if i am in the user or in people profile//////FOR INTEGRATION/////////////////////////
-        // checkUserByIdentifier(id).then(response=>{
-        //     if(response.data===true){
-        //         //get user
-        //         GetUser().then( response => {
-        //             setUserInfo(response.data);
-        //         console.log(response)
-        //         })
-        //         //get user photos
-        //         GetUserPhotos().then( response => {
-        //             setUserPhotos(response.data);
-        //         })
-        //         setFollowing(false);
-        //         setIsUser(true);
-        //     }
-        //     else{
-        //         ////Not me!
-        //         setIsUser(false);
-        //         setUserId(id);
-        //         GetPeopleByIdentefier(userId).then(response=>{
-        //             setUserInfo(response.data);
-        //             setUserName(response.UserName)
-        //             if(response.Follow===true){
-        //                 setFollowing(true);
-        //             }
-        //             else{
-        //                 setFollowing(false);
-        //             }
-        //         })
-        //     }
-        // })
         //get user
         GetUser().then( response => {
             setUserInfo(response.data);
-            console.log(response);
         })
         //get user photos
-        // GetUserPhotos().then( response => {
-        //     setUserPhotos(response.data);
-        // })
-        // //get people photos by userId
-        // GetPeoplePhotos(userId).then( response => {
-        //     setPeoplePhotos(response.data);
-        // })
-    // },[])
-    },[userInfo,userPhotos])
+        GetUserPhotos().then( response => {
+            setUserPhotos(response.data);
+        })
+        //get people photos by userId
+        GetPeoplePhotos(userId).then( response => {
+            setPeoplePhotos(response.data);
+        })
+    },[])
+    // },[userInfo,userPhotos])
 
 
     const [isPhotoStream,setPhotoStream] = useState(true);
@@ -100,62 +64,28 @@ export default function Userinfo(props){
     const [isFollowing,setFollowing]=useState(false);
     const plusIcon = <FontAwesomeIcon icon={faPlus} color="DarkGrey" />;
 
-    //yetmese7 sa3et el integration
-    // useEffect(() => {
-    //     const fetchData = async () => {
-            //////////////////////////INTEGRATION///////////////////////////////////////
-            // if(props){
-            //     const response = await axios.get( endpoint+'user/check/peopleid?='+props);
-            //     if(response.status===200){
-            //         //////other user
-            //         if(response.data===false){
-            //             const response2 = await axios.get( endpoint+'photo/photos_id?='+props);
-            //             if(response2.status===200){
-            //                 setUserData(response2.data);
-            //                  if(response.data.Follow===true)
-            //                  {
-            //     setFollowing(true);
-            // }
-            // else{
-            //     setFollowing(false);
-            // }
-            //             }
-            //         }
-            //         else{
-            //             const response2 = await axios.get( endpoint+'user');
-            //             if (response2.status===200) {
-            //                 setUserData(response2.data);
-            //                 setFollowing(false);
-            //             }
-            //         }
-            //     }
-            // }
-            //////////////API////////////////////////////////////////
-            //const {data,status} = await axios.get( endpoint+'user/photos');
-    //         const {data,status} = await axios.get( endpoint+'photos');
-    //         console.log(status);
-    //         if (status === 200){
-    //             setPhotos(data);
-    //         }
-    // };
-    // fetchData();
-    // },[]);
 
     function changeSelection(newimageUrl) {
         setSelectedPhoto(newimageUrl);
         console.log("ana fe el changeSelection");
         if(avatarBackground===1){
             const newUserInfo={
-                Fname: userInfo.Fname,
-                Lname: userInfo.Lname,
-                Password: userInfo.Password,
-                Avatar: userInfo.Avatar,
+                Fname: "ay7aga",
+                Lname: "ay7aga",
+                Following: 150,
+                Followers: 100,
+                views: 70,
+                Date_joined: "2021-05-30",
+                Email: "emal@gmail",
+                Photo: 0,
+                UserName: "FaraMostafa",
+                Avatar: "https://picsum.photos/500/300?random=1",
                 BackGround: newimageUrl,
                 About: {
-                Description: userInfo.About.Description,
-                Hometown: userInfo.About.Hometown,
-                Occupation: userInfo.About.Occupation,
-                CurrentCity: userInfo.About.CurrentCity
+                Description: "string",
+                Hometown: "string",
+                Occupation: "string",
+                CurrentCity: "string"
                 }
             }
             UpdateUser(newUserInfo).then(response=>{
@@ -165,16 +95,22 @@ export default function Userinfo(props){
         }
         else{
             const newUserInfo={
-                Fname: userInfo.Fname,
-                Lname: userInfo.Lname,
-                Password: userInfo.Password,
+                Fname: "string",
+                Lname: "string",
+                Following: 150,
+                Followers: 100,
+                views: 70,
+                Date_joined: "2021-05-30",
+                Email: "emal@gmail",
+                Photo: 0,
+                UserName: "FaraMostafa",
                 Avatar: newimageUrl,
-                BackGround: userInfo.BackGround,
+                BackGround: "https://picsum.photos/500/300?random=1",
                 About: {
-                Description: userInfo.About.Description,
-                Hometown: userInfo.About.Hometown,
-                Occupation: userInfo.About.Occupation,
-                CurrentCity: userInfo.About.CurrentCity
+                Description: "string",
+                Hometown: "string",
+                Occupation: "string",
+                CurrentCity: "string"
                 }
             }
             UpdateUser(newUserInfo).then(response=>{
@@ -190,10 +126,8 @@ export default function Userinfo(props){
     }
     function showEdit(num){
         setModalOpen(true);
-        // console.log("isOpen",isModalOpen);
         setAvatarBackground(num);
-        // console.log("jj",num);
-        // console.log("jj",avatarBackground);
+
     }
 
     function postFollowRequest() {
@@ -285,17 +219,14 @@ export default function Userinfo(props){
                             <div className="profImg" onClick={()=>{showEdit(2)}} style={{backgroundImage: `url(${userInfo.Avatar})`}}></div>
                             <div className="nameAndInfo">
                                 <h1>{userInfo.Fname} {userInfo.Lname}</h1>
-                                {!isUser &&
-                                <div>
                                 {isFollowing &&<button className="followButton" onClick={postFollowRequest()}>{plusIcon} Follow</button>}
-                                </div>}
                                 <div className="numbers">
                                     <div className="follwingFollowers">
                                         <p>{userInfo.UserName}</p>
                                         <ul className="NavbarAndheaderul">
                                             <li><Link  style={navStyle} to="/Followers">{userInfo.Followers} followers</Link></li>
-                                            {/* <li><Link  style={navStyle} to="/FollwingFollowers">{userInfo.Following} following</Link></li> */}
-                                            <li><Link  style={navStyle} to={`/FollwingFollowers/${isUser}/${id}`}>{userInfo.Following} following</Link></li>
+                                            <li><Link  style={navStyle} to="/FollwingFollowers">{userInfo.Following} following</Link></li>
+                                            {/* <li><Link  style={navStyle} to={`/FollwingFollowers/${props}/${id}`}>{userInfo.Following} following</Link></li> */}
                                         </ul>
                                     </div>
                                     <div className="joined">

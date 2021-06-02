@@ -1,5 +1,6 @@
 import React,{useState,useEffect} from 'react'
 import ImageGrid from "../photostream/ImageGrid"
+import Header from "../navbar/mainNav"
 import './GroupPhotos.css'
 import $ from 'jquery'
 import {Link} from "react-router-dom";
@@ -11,9 +12,7 @@ function GroupPhotos(props){
         color:'white'
     };
 
-    // const [groupId , setgroupId] = useState(props.id);
-    const [groupId , setgroupId] = useState(1110);
-    // const [isMember , setIsMember] = useState(props.isMember);
+    const [groupId , setgroupId] = useState(111);
     const [isMember , setIsMember] = useState(true);
 
     //Get photos
@@ -30,6 +29,7 @@ function GroupPhotos(props){
 
     return(
         <>
+        <Header isLogged={true}/>
         <div className="group-photos-body">
             <ul className="groupNav">
                 <h2>Group Pool</h2>

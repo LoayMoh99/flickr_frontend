@@ -9,7 +9,6 @@ function Faves(props){
     //user/people boolean -> from userInfo token handling
     const [isUser , setIsUser] = useState([props.isUser])
     const [userId , setUserId] = useState(props.userId)
-    // const [userName , setUserName] = useState(props.userName)
     const [userName , setUserName] = useState('');
  
     //Get Fav photos
@@ -32,15 +31,12 @@ function Faves(props){
 
 
     },[userFavs,userName])
-    // },[])
 
     let isPhotoSelected;
     function showPhoto(id){
         console.log("PhotoStream",id);
         isPhotoSelected=id;
-        console.log("after click",isPhotoSelected);
-        //props.history.push('/imagedetails/id}');
-        
+        console.log("after click",isPhotoSelected);        
     }
 
 
@@ -55,7 +51,7 @@ return (
         <>
         {userFavs.map(photo => (
             <ImageGrid
-            id = {photo._id}
+            id = {photo.id}
             url ={photo.photoUrl} 
             title ={photo.title} 
             description = ''

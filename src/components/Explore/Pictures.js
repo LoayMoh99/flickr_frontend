@@ -11,10 +11,6 @@ import Header from "../navbar/mainNav"
 import { Link , Route, useParams } from 'react-router-dom'
 const SERVER_URL = configData.SERVER_URL ;
 
-
-
- 
-
 export default function Pictures() {
   
       const [photos2, setPhotos] = useState([]);
@@ -61,18 +57,15 @@ export default function Pictures() {
 
       <div className="grid">
       {photos2.map(photo => (
-       // <Link  style={navStyle} to={`/imagedetails/${photo.id}`}>
           <ExploreGrid
           id = {photo._id}
           url ={photo.photoUrl} 
-          
           title ={photo.title} 
           username={photo.ownerId.UserName}
           numberOfFavs = {photo.Fav.length}
          numberOfComments ={photo.comments.length}
          comments={photo.comments}
            onOpenRequest={showPhoto}
-           // /></Link>
           />
       ))}
       <div className="placeholder"></div>

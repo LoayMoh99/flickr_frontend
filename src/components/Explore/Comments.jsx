@@ -4,7 +4,6 @@ import './Commentstyles.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faComment} from '@fortawesome/free-solid-svg-icons'
 import {GetComments,PostComments} from "../../services/photoServices"
-//import {GetExploreComments,PostExploreComments} from "../../services/Exploreserv"
 import defaultProfile from '../../img/deefault.jpg';
 import axios from "axios"
 function Comments(props){
@@ -29,30 +28,27 @@ function Comments(props){
     function PostExploreComment(){
         setText("Add a comment about this photo");
         console.log(props.photo_id)
-        // const object ={
-        //     comment:newComment
-        // }
-        // const object ={
-        //     comment:newComment
-        // }
         const object ={
             comment: newComment,
+            id: "0",
             user: {
-              "Fname": "John",
-              "Lname": "Smith",
-              "id":"100"
-            },
-            createdAt: "2020-5-23",
-            updatedAt: "2021-4-2"
-        }
+                  "Fname": "John",
+                  "Lname": "Smith",
+                  "id": "100"
+                },
+                createdAt: "2020-5-23",
+                updatedAt: "2021-4-2"
+        
+    
+    }
+                    
+          
         //API
-        // PostComments(object).then( response => {
-        PostComments(props.photo_id,object).then( response => {
+        PostComments(props._id,object).then( response => {
             console.log(response);
         });
         document.getElementById('com').value = '';
     }
-
 
     return(
         <>

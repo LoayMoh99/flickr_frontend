@@ -30,7 +30,6 @@ export default function GroupHeader(props){
             else{
                 setJoiningGroup(true);
             }
-            //setJoiningGroup(groupInfo.join)//////API
         }
         console.log(groupInfo);
 };

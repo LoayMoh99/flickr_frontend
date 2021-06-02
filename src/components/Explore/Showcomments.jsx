@@ -6,7 +6,6 @@ import defaultProfile from '../../img/deefault.jpg';
 import Comments from "./Comments"
 import '../navbar/mainNav.css'
 import '../../fonts/font/flaticon.css'
-const endpoint = 'http://localhost:3001/'
 
 function Showcomments(props){
    const  defaultProfile= "https://picsum.photos/2";
@@ -14,8 +13,6 @@ function Showcomments(props){
         <div className="users-comments">
        
 		
-      
-	
        <div class="right-hold">
     
     <a href="#" ><span className="image"><img   alt = "Avatar" src={props.Pic}/></span>

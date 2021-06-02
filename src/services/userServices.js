@@ -2,43 +2,20 @@ import axios from "axios"
 import configData from "../config/development.json"
 const SERVER_URL = configData.SERVER_URL ;
 
-localStorage.token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYjYwMDYwMzZiYzIzMDAxOWE3NGI4OCIsImlhdCI6MTYyMjU0MDQ0NCwiZXhwIjoxNzIyNTQ3NjQ0fQ.ng54v98xXSr-1BCpfZcThPAMOMwSl3H595xN36P6hbE"
-
-
-// axios.defaults.headers.common['token'] = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c" // for all requests
-// axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*'
-
-// let instance = axios.create({
-//   headers: {
-//     post: {        // can be common or any other method
-//       'Access-Control-Allow-Origin': '*'
-//     }
-//   }
-// })
-
+// axios.defaults.headers.common['header1'] = 'value' // for all requests
 // const token = '..your token..'
 // let config = {
 //     headers: {
 //       token: 'value',
 //     }
 //   }
-
-// {headers:{'Access-Control-Allow-Origin':'*'}}
-
-// const header = new Headers ();
-// header = {'Token':localStorage.token}
-
-// var config = {
-//   headers: {'Access-Control-Allow-Origin': '*'}
-// };
-
+//   {headers:{ 'Authorization': `Basic ${token}`}}
 
 //User
 export default async function UserLogin(object){
-  console.log(object);
   try{
-      const response = await axios.post( SERVER_URL+'user/login',object,{crossDomain:true});
-      // const response = await axios.get( SERVER_URL+'user?id='+0);
+      // const response = await axios.post( SERVER_URL+'user/login',object);
+      const response = await axios.get( SERVER_URL+'user?id='+0);
       //Success
       return(response)
   } catch (error){
@@ -68,9 +45,8 @@ export default async function UserLogin(object){
 
 //sign up
 export async function PostUser (object){
-  console.log(object);
   try{
-      const response = await axios.post( SERVER_URL+'user',object,{crossDomain:true});
+      const response = await axios.post( SERVER_URL+'user',object);
       //Success
       return(response)
   } catch (error){
@@ -91,7 +67,7 @@ export async function PostUser (object){
 //check
 export async function checkUserByIdentifier(id){
   try{
-      const response = await axios.get( SERVER_URL+'user/check/'+id);
+      const response = await axios.get( SERVER_URL+'user/check?peopleid='+id);
       //Success
       return(response)
   } catch (error){
@@ -111,10 +87,10 @@ export async function checkUserByIdentifier(id){
 
 export async function GetUserPhotos (){
     try{
-        // const response = await axios.get( SERVER_URL+'user/photos',{headers:{Token:localStorage.token}});
-        // const response = await axios.get( SERVER_URL+'photos');
+        // const response = await axios.get( SERVER_URL+'user/photos');
+        const response = await axios.get( SERVER_URL+'photos');
         //Success
-        // return(response)
+        return(response)
     } catch (error){
         if (error.response){
           console.log(error.response.data);
@@ -131,8 +107,8 @@ export async function GetUserPhotos (){
 
 export async function GetUser(){
   try{
-      const response = await axios.get( SERVER_URL+'user',{headers:{Token:localStorage.token}},{crossDomain:true});
       // const response = await axios.get( SERVER_URL+'user');
+      const response = await axios.get( SERVER_URL+'user');
       //Success
       return(response)
   } catch (error){
@@ -152,8 +128,8 @@ export async function GetUser(){
 // Favs
 export async function GetUserFavs(){
   try{
-      const response = await axios.get( SERVER_URL+'user/fav');
-      // const response = await axios.get( SERVER_URL+'userFav');
+      // const response = await axios.get( SERVER_URL+'user/fav');
+      const response = await axios.get( SERVER_URL+'userFav');
       //Success
       return(response)
   } catch (error){
@@ -172,8 +148,8 @@ export async function GetUserFavs(){
 
 export async function PostUserFavs(id,object){
   try{
-      const response = await axios.post( SERVER_URL+'favs',object);
-      // const response = await axios.post( SERVER_URL+'userFav',object);
+      // const response = await axios.post( SERVER_URL+'favs',id);
+      const response = await axios.post( SERVER_URL+'userFav',object);
       //Success
       return(response)
   } catch (error){
@@ -192,8 +168,8 @@ export async function PostUserFavs(id,object){
 
 export async function DeleteUserFavs(id){
   try{
-      const response = await axios.delete( SERVER_URL+'favs?photo_id='+id);
-      // const response = await axios.delete( SERVER_URL+'userFav/'+id);
+      // const response = await axios.delete( SERVER_URL+'favs?photo_id='+id);
+      const response = await axios.delete( SERVER_URL+'userFav/'+id);
       //Success
       return(response)
   } catch (error){
@@ -214,8 +190,8 @@ export async function DeleteUserFavs(id){
 
 export async function GetUserFollowing(){
   try{
-      const response = await axios.get( SERVER_URL+'user/following');
-      // const response = await axios.get( SERVER_URL+'following');
+      // const response = await axios.get( SERVER_URL+'user/following');
+      const response = await axios.get( SERVER_URL+'following');
       //Success
       return(response)
       
@@ -237,8 +213,8 @@ export async function GetUserFollowing(){
 
 export async function GetUserFollowers(){
   try{
-      const response = await axios.get( SERVER_URL+'user/following');
-      // const response = await axios.get( SERVER_URL+'followers');
+      // const response = await axios.get( SERVER_URL+'user/following');
+      const response = await axios.get( SERVER_URL+'followers');
       //Success
       return(response)
       
@@ -260,8 +236,8 @@ export async function GetUserFollowers(){
 
 export async function GetUserCheck(id){
   try{
-      const response = await axios.get( SERVER_URL+'user/check/peopleid?='+id);
-      // const response = await axios.get( SERVER_URL+'user?id=',id);
+      //const response = await axios.get( endpoint+'user/check/peopleid?='+props);
+      const response = await axios.get( SERVER_URL+'user?id=',id);
       //Success
       return(response)
       
@@ -282,92 +258,8 @@ export async function GetUserCheck(id){
 //Update User
 export async function UpdateUser(data){
   try{
-      const response = await axios.put(SERVER_URL + "user" , data);
-      // const response = await axios.put( SERVER_URL+'user',data);
-      //Success
-      return(response)
-      
-  } catch (error){
-      if (error.response){
-        console.log(error.response.data);
-        console.log(error.response.status);
-        console.log(error.response.headers);
-      } else if (error.request){
-        console.log(error.request);
-      } else {
-        console.log('Error', error.message);
-      }
-      console.log(error);
-  }
-};
-
-//const { status } = await axios.post('/user/follow',userFollow);
-export async function FollowPeople(id){
-  try{
-      const response = await axios.post(SERVER_URL+'/user/follow',id);
-      //Success
-      return(response)
-      
-  } catch (error){
-      if (error.response){
-        console.log(error.response.data);
-        console.log(error.response.status);
-        console.log(error.response.headers);
-      } else if (error.request){
-        console.log(error.request);
-      } else {
-        console.log('Error', error.message);
-      }
-      console.log(error);
-  }
-};
-
-//const { status } = await axios.delete('/user/unfollow/'+id);
-
-export async function UnFollowPeople(id){
-  try{
-      const response = await axios.delete(SERVER_URL+'/user/unfollow/'+id);
-      //Success
-      return(response)
-      
-  } catch (error){
-      if (error.response){
-        console.log(error.response.data);
-        console.log(error.response.status);
-        console.log(error.response.headers);
-      } else if (error.request){
-        console.log(error.request);
-      } else {
-        console.log('Error', error.message);
-      }
-      console.log(error);
-  }
-};
-//const { status } = await axios.delete('/group/'+group_id+'/leave',);
-export async function UnJoinGroup(id){
-  try{
-      const response = await axios.delete(SERVER_URL+'/group/'+id+'/leave',);
-      //Success
-      return(response)
-      
-  } catch (error){
-      if (error.response){
-        console.log(error.response.data);
-        console.log(error.response.status);
-        console.log(error.response.headers);
-      } else if (error.request){
-        console.log(error.request);
-      } else {
-        console.log('Error', error.message);
-      }
-      console.log(error);
-  }
-};
-// const { status } = await axios.post('/group/'+group_id+'/join',);
-export async function JoinPeople(id){
-  try{
-      // const response = await axios.put(endpoint + "user" , data);
-      const response = await axios.post(SERVER_URL+'/group/'+id+'/join',);
+      //const response = await axios.put(endpoint + "user" , data);
+      const response = await axios.put( SERVER_URL+'user',data);
       //Success
       return(response)
       

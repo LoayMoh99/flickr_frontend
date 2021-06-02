@@ -44,27 +44,21 @@ function ImageGrid(props){
     function addToFav(){
         console.log(props.id);
         //api
-        // const object={
-        //     "photoUrl": "https://picsum.photos/200/200?random=2",
-        //     "title": "added Fav",
-        //     "descript": "description",
-        //     "Fav": [],
-        //     "privacy": "public",
-        //     "tags": [],
-        //     "ownerId": 0,
-        //     "peopleTags": [],
-        //     "comments": 78,
-        //     "Favs": 60,
-        //     "Username": "username",
-        //     "Name": "Samar Nabil"
-        // }
-
         const object={
-            "photo_id":props.id
+            "photoUrl": "https://picsum.photos/200/200?random=2",
+            "title": "added Fav",
+            "descript": "description",
+            "Fav": [],
+            "privacy": "public",
+            "tags": [],
+            "ownerId": 0,
+            "peopleTags": [],
+            "comments": 78,
+            "Favs": 60,
+            "Username": "username",
+            "Name": "Samar Nabil"
         }
-
-        PostUserFavs(object).then( response => {
-        // PostUserFavs(props.id,object).then( response => {
+        PostUserFavs(props.id,object).then( response => {
             console.log(response);
             if(response.status === 500){
                 DeleteUserFavs(props.id).then( response => {
@@ -108,7 +102,6 @@ function ImageGrid(props){
                                 </>
                             :
                                 <> 
-                                {/* {isFav?<li onClick={addToFav}>{fav} {props.numberOfFavs}</li>:<li> {fav} {props.numberOfFavs}</li>} */}
                                 {isFav&&<li onClick={addToFav}>{fav} {props.numberOfFavs}</li>}
                                 </>
                             }

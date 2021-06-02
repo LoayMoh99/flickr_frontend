@@ -1,22 +1,13 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable react/prop-types */
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable linebreak-style */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState , useEffect } from 'react';
-import axios from "axios"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import GetUserAlbums,{GetPeopleAlbums} from "../../services/albumServices"
-
 import AddAlbumImages from './AddAlbumImages';
 import './AddModal.css';
-const endpoint = 'http://localhost:3001/'
 
 function AddModal(props) {
 
+  const plus = <FontAwesomeIcon icon={faPlus} color="DarkGrey" />;
   const [album,setAlbum] =useState([]);
   const  { imgAddIds }= props;
 
@@ -32,11 +23,6 @@ function AddModal(props) {
       })
   },[])
 
-  // const albumCover='https://picsum.photos/id/237/200/300';
-  //const search = <FontAwesomeIcon icon={faSearch} color="DarkGrey" />;
-  const plus = <FontAwesomeIcon icon={faPlus} color="DarkGrey" />;
-
-
 
   return (
     <>
@@ -46,7 +32,6 @@ function AddModal(props) {
           <span className="closeAdd" onClick={props.onRequestAddClose}>&times;</span>
           <div className="row">
             <h3 className="modal__title_edit list-label">Add to: </h3>
-            {/* <span className="space-add" /> */}
             <h3 className="modalAdd">Album </h3>
           </div>
           <hr id="hrSearch"/>
@@ -57,8 +42,8 @@ function AddModal(props) {
             albumCover = {album.coverPhoto.photoUrl}
             albumTitle = {album.title}
             //photoCount = {album.photos.length}
-           albumId ={album._id}
-          //  albumId ={album.id}
+           // albumId ={album._id}
+           albumId ={album.id}
             albumPhotos = {album.photos}
             imgAddIds = {imgAddIds}
            />)

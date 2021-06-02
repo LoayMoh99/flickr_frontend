@@ -1,9 +1,7 @@
 import React,{useState} from 'react';
-import axios from "axios"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import {UpdateAlbum} from '../../services/albumServices';
-const endpoint = 'http://localhost:3001/'
 
 function AlbumCoverPhoto(props) {
 
@@ -11,8 +9,6 @@ const { coverPhoto, title, description , photos , album_id , ownerFname ,ownerLn
 const pen =  <FontAwesomeIcon icon={faPen} color="white" size="1x" />;
 
 const countPhotos=photos.length;
-
-
 
   //new titles and description
   const [inputTitle, setInputTitle] = useState(title);
@@ -41,8 +37,6 @@ const countPhotos=photos.length;
     "description":inputDescription,
   };
 
-
-
     function Update(){
 
       UpdateAlbum (album_id, albumUpdated).then( response => {
@@ -57,11 +51,7 @@ return (
    <div className="coverPhoto" style={{backgroundImage: `url(${coverPhoto})`}}>
        <div className="overlayAlbum">
                 <div className="spaceAlbumHeader">
-                   
-                       {/* {isUser&& <a href="#" className="editPen" >   
-                                {pen}
-                        </a>} */}
-                    {isUser?<div className="inputBarAlbumCover">
+                    {isUser&&<div className="inputBarAlbumCover">
                         <div id="inputFormatAlbum">
                             <div class="form-group" >
                                 <input type="text" className="form-control"  onChange={handleTitleChange} value={inputTitle}></input> 
@@ -71,15 +61,14 @@ return (
                             </div>
                         </div>
 
-                    </div>
-                    : <div className="inputBarAlbumCover">
+                    </div>}
+                    {!isUser&&<div className="inputBarAlbumCover">
                         <div id="inputFormatAlbum">
                             <div class="form-group" >
-                            <input type="text" className="form-control"  value={inputTitle} disabled></input> 
-                            {/* <h3>{inputTitle}</h3> */}
+                                <input type="text" className="form-control"  value={inputTitle} disabled></input> 
                             </div>
                             <div class="form-group">
-                                <textarea className="formControlTextarea" rows="3" disabled >{inputDescription}</textarea> 
+                                <textarea className="formControlTextarea" rows="3"disabled >{inputDescription}</textarea> 
                             </div>
                         </div>
 
@@ -93,9 +82,6 @@ return (
                 {countPhotos}
                {' '}
                 photos</h5>
-         {/* <div className="spaceTop">
-           <img className="img-responsive avatarPhoto"src={avatarUrl} alt="image_flickr" />
-        </div> */}
             <h5 className="userName"> 
                 <a class="userName" href="/#">
                         By:

@@ -19,9 +19,6 @@ export default function ImageDetails(props){
     const {id}=useParams();
     const {userId} = useParams();
     const path = props.location.pathname;
-    // const index = path.split('/');
-    // const id = index[2];
-    console.log(id,"user",userId);
     const [images, setPhotos] = useState([]);
     const [image, setImage] = useState("");
     const [discription, setDiscription] = useState("");
@@ -33,8 +30,8 @@ export default function ImageDetails(props){
     const addComment = e => setNewComment(e.target.value);
     const [userPhotos, setUserPhotos] = useState([]);
     const [peoplePhotos, setPeoplePhotos] = useState([]);
-    // const [userId , setUserId] = useState(0)
     const [userInfo, setUserInfo] = useState([]);
+
     //get request
     useEffect( () =>{
      if(userId){
@@ -68,32 +65,7 @@ export default function ImageDetails(props){
     })
 
   },[])
-    // useEffect(() => {`
-    //     const fetchData = async () => {
-    //     const {data,status} = await axios.get( endpoint+'photos');
-    //     if (status === 200){
-    //         setPhotos(data);
-    //     }
-    //     const response = await axios.get( endpoint+'photos?id='+id);
-    //     // console.log("resonse",response);
-    //     // setWholeData(response.data);
-    //     if (response.status === 200){
-    //         setImage(response.data[0].photoUrl);
-    //         setDiscription(response.data[0].description);
-    //         setTitle(response.data[0].title);
-    //         setNumOfFavs(response.data[0].Fav.length);
-    //         setDatOfUpdate(response.data[0].UpdatedAt);
-    //         const response2 = await axios.get( endpoint+'comments?id='+id);
-    //         if(response2.status===200){
-    //             console.log("comments Status",response2.status);
-    //             setComments(response2.data);
-    //             console.log("comments",response2.data);
-    //         }
-    //     }
-    // };
-    
-    //     fetchData();
-    // },[]);
+
     /////////////////////////////////////////API///////////////////////////////
     function postTnewMessage(){
         const sentComment={ 

@@ -3,9 +3,9 @@ import { useLocation } from 'react-router-dom';
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min'
 import './AddPhotos.css'
 import PhotosToAdd from "./PhotosToAdd"
-// import { useParams } from "react-router-dom";
-import {PostGroupPhotos} from "../../services/groupServices"
-import {GetUserPhotos} from "../../services/userServices"
+import Header from "../navbar/mainNav"
+import {GetUserPhotos,PostGroupPhotos} from "../../services/groupServices"
+
 function AddPhotos(props){
 
     const navStyle={
@@ -15,7 +15,6 @@ function AddPhotos(props){
     const path = props.location.pathname;
     var index = path.split('/');
     var id = index[2];
-    console.log(id);
 
     const [UrltoAdd ,setUrl] = useState([]);
     const [idToAdd ,setId] = useState([]);
@@ -38,7 +37,6 @@ function AddPhotos(props){
     }  
 
     function removePhoto(id,url){
-        console.log('id=',id);
         setId(prevItem => {
             return prevItem.filter(
                 (item,index) =>{
@@ -85,6 +83,7 @@ function AddPhotos(props){
 
     return(
         <>
+        <Header isLogged={true}/>
         <div className="AddPhotos-body">
             <h1>Add photos</h1>
             <h3>Select items to add to group</h3>

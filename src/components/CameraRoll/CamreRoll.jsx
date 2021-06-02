@@ -1,21 +1,3 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable no-undef */
-/* eslint-disable linebreak-style */
-/* eslint-disable max-len */
-/* eslint-disable react/jsx-indent */
-/* eslint-disable linebreak-style */
-/* eslint-disable no-use-before-define */
-/* eslint-disable linebreak-style */
-/* eslint-disable brace-style */
-/* eslint-disable linebreak-style */
-/* eslint-disable no-console */
-/* eslint-disable linebreak-style */
-/* eslint-disable react/no-this-in-sfc */
-/* eslint-disable linebreak-style */
-/* eslint-disable no-unused-vars */
-/* eslint-disable linebreak-style */
-/* eslint-disable react/style-prop-object */
-/* eslint-disable linebreak-style */
 import React, { useState , useEffect } from 'react';
 import _, { filter, map, set } from 'lodash';
 import moment from 'moment';
@@ -26,30 +8,17 @@ import AddModal from './AddModal';
 import SideNavBar from './SideNavBar';
 import DeleteModal from '../DeleteModal/DeleteModal'
 import {GetUserPhotos} from "../../services/userServices"
+import DeletePhoto from "../../services/photoServices"
 import './CamreRoll.css';
 import './EditModal.css';
 import './AddModal.css';
-// import { mockComponent } from 'react-dom/test-utils';
-import axios from "axios"
 import CreateNewAlbumModal from './CreateNewAlbumModal';
-const endpoint = 'http://localhost:3001/'
 
 function CamreRoll() {
-  // const images = [{ photo_url: 'https://picsum.photos/id/237/200/300', createdAt: new Date('2019-05-28'), photo_id: '1' }, { photo_url: 'https://picsum.photos/200', createdAt: new Date('2019-06-10'), photo_id: '2' }, { photo_url: 'https://picsum.photos/seed/picsum/200/300', createdAt: new Date('2019-06-11'), photo_id: '3' }, { photo_url: 'https://picsum.photos/200/300?grayscale', createdAt: new Date('2019-06-10'), photo_id: '4' }, { photo_url: 'https://picsum.photos/seed/picsum/200/300', createdAt: new Date('2019-06-10'), photo_id: '5' }, { photo_url: 'https://picsum.photos/seed/picsum/200/300', createdAt: new Date('2019-06-10'), photo_id: '6' }];
   
   //Get photos
   const [images, setImages] = useState([]);
-  // useEffect(() => {
-  //     const fetchData = async () => {
-  //     const {data,status} = await axios.get( endpoint+'photos',);
-  //     console.log(status);
-  //     if (status === 200){
-  //         setImages(data);  
-  //     }
-  // };
-  
-  //   fetchData();
-  // },[]);
+
   useEffect( () =>{
     //get user photos
     GetUserPhotos().then( response => {
@@ -100,8 +69,8 @@ function CamreRoll() {
   const monthName = (item) => moment(item.createdAt, 'YYYY-MM-DD').format('DD MMMM YYYY');
   // function to check if this image was already selected or a newly selected one
   function containsObject(obj, list) {
-    return list.some((elem) => elem._id === obj._id);
-    // return list.some((elem) => elem.id === obj.id);
+    // return list.some((elem) => elem._id === obj._id);
+    return list.some((elem) => elem.id === obj.id);
   }
   // to delete the element if unselected
   function handleDelete(obj, list) {
@@ -133,8 +102,8 @@ function CamreRoll() {
         setModalIsOpen(!isModalOpen);
 
         setToEdit((prevItems) => [...prevItems, imgObj]);
-        setToEditIds((prevItems)=>[...prevItems,imgObj._id]);
-        // setToEditIds((prevItems)=>[...prevItems,imgObj.id]);
+        //setToEditIds((prevItems)=>[...prevItems,imgObj._id]);
+        setToEditIds((prevItems)=>[...prevItems,imgObj.id]);
 
         countCopy = handleIncrement(countCopy);
         setCount(countCopy);
@@ -152,8 +121,8 @@ function CamreRoll() {
       if (!isHere) {
 
         setToEdit((prevItems) => [...prevItems, imgObj]);
-               setToEditIds((prevItems)=>[...prevItems,imgObj._id]);
-              //  setToEditIds((prevItems)=>[...prevItems,imgObj.id]);
+               //setToEditIds((prevItems)=>[...prevItems,imgObj._id]);
+               setToEditIds((prevItems)=>[...prevItems,imgObj.id]);
 
         countCopy = handleIncrement(countCopy);
         setCount(countCopy);
@@ -162,8 +131,8 @@ function CamreRoll() {
       if (isHere) {
 
         setToEdit(handleDelete(imgObj, toEdit));
-       setToEditIds(handleDelete(imgObj._id, toEditIds));
-      //  setToEditIds(handleDelete(imgObj.id, toEditIds));
+       // setToEditIds(handleDelete(imgObj._id, toEditIds));
+       setToEditIds(handleDelete(imgObj.id, toEditIds));
 
         countCopy = handleDecrement(countCopy);
         setCount(countCopy);
@@ -193,8 +162,6 @@ function CamreRoll() {
         useState(() => { for (let i = 0; i < keys.length; i += 1)
     {
       const imgCorresponding = values[i];
-      // dateFormat("2019-04-30T08:59:00.000Z", "mmmm dS, yyyy")
-      // tempImgDated.push(<div><h6>{monthName(keys[i])}</h6></div>);
       tempImgDated.push(<div><h6>{keys[i]}</h6></div>);
       tempImgDated.push(
         imgCorresponding.map((image) => (
@@ -210,7 +177,6 @@ function CamreRoll() {
       tempImgDated.push(<br />);
       setimgDated([...imgDated, ...tempImgDated]);
     } });
-  // setModalIsOpen(true);
 
   
 const photoIdsDelete = {
@@ -246,8 +212,6 @@ const photoIdsDelete = {
         <div className="row">
           <div className=" container_body">
 
-            {/* {grouped.map((arr) => <h5>{arr[0]}</h5>)} */}
-            {/* {map((arr) => ({ dateuploaded: arr[0], image: arr.slice(1) }))} */}
             { sortedImagesUploaded.map((image) => (
               <ImagesCR
                // key={image._id}
@@ -279,11 +243,6 @@ const photoIdsDelete = {
             />
             )}
           </main>
-      {/* </div> */}
-      {/* <div className="container_body"> */}
-
-      {/* </div> */}
-      {/* <Modal /> */}
 
       <main className="main_edit">
         {isEditModalOpen && (
