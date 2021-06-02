@@ -13,26 +13,19 @@ function Follow(props) {
       };
       //////////////////////////////toggle function to handle pressing on follow or unfollow action/////////////////////////
      async function toggleFollow(){
-        // if(isFollowing===false){
-        //    const { status } = await axios.post('/user/follow',userFollow);
-        // if(status=== 200){
-               console.log("presseddddd")
-        setToggleFollow(!isFollowing);
-    //        }
-    //        else{
-    //            alert("UnAuthorized request or User not found");
-    //        }
-    //     }
-    //     else{
-    //        const { status } = await axios.delete('/user/unfollow/'+id);
-    //          if(status=== 200){
-               
-    //            setToggleFollow(!isFollowing);
-    //               }
-    //               else{
-    //                   alert("UnAuthorized request or User not found");
-    //               }
-    //     }
+       //      async function toggleFollow(){
+//          if(isFollowing===false){
+//             FollowPeople(userFollow).then( response => {
+//                  setToggleFollow(!isFollowing);
+//         
+//         })
+
+//          else{
+//             UnFollowPeople(id).then( response => {
+                  setToggleFollow(!isFollowing);
+//         
+//              })
+//      }
 
         
      }

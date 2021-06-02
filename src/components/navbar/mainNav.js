@@ -19,6 +19,9 @@ export default function Header(props){
     const navStyle={
         color:'white'
     };
+    const navStyle2={
+        color:'black'
+    };
 
     const [isLogged, setLogged] = useState(props.isLogged)
 
@@ -117,14 +120,10 @@ export default function Header(props){
                     <input onChange={showDropDown} type="text" placeholder="Photos, People or Groups   "/>
                     {searchText && <ul className="subMenuYouContent adjustedFoeSearch" >
                     <li>
-                        <a href="#top">Search photos</a>
+                        <Link style={navStyle2} to={`/searchPeople/${searchText}`}>Search people</Link>
                     </li>
                     <li>
-                        {/* <Link  style={navStyle} to="/"><p id="linkedParagraph">Photostream</p></Link> */}
-                        <a>Search people</a>
-                    </li>
-                    <li>
-                        <a href="#top">Search group</a>
+                        <Link style={navStyle2} to={`/searchGroup/${searchText}`}>Search Group</Link>
                     </li>
                 </ul>}
                 </div>

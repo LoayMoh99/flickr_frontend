@@ -1,18 +1,18 @@
 import React,{useState} from "react"
 import './Exploregrid.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import {faStar} from '@fortawesome/free-solid-svg-icons'
-import {faComment} from '@fortawesome/free-solid-svg-icons'
-import {faPlusSquare} from '@fortawesome/free-solid-svg-icons'
+import {faStar,faPlusSquare,faComment,faFolderOpen} from '@fortawesome/free-solid-svg-icons'
 import Comments from "./Comments"
-import Favs from "./Favs"
 
+import {Link} from "react-router-dom";
+import {PostUserFavs,DeleteUserFavs} from '../../services/userServices'
 function Explore_Grid(props){
 
     
     const fav = <FontAwesomeIcon icon={faStar} color="white"/>
     const comment = <FontAwesomeIcon icon={faComment} color="white"/>
     const addTo = <FontAwesomeIcon icon={faPlusSquare} color="white"/>
+    const open = <FontAwesomeIcon icon={faFolderOpen} color="white" />
 
     function setItemRatio() {
         this.parentNode.style.setProperty('--ratio', this.naturalHeight / this.naturalWidth);
@@ -25,7 +25,7 @@ function Explore_Grid(props){
 
     // overlay
     const [isMousedOver, setMouseOver] = useState(false);
-
+    const [isFav , setIsFav] = useState(props.favMode);
     function handleMouseOver() {
         console.log(props.ownerName)
         setMouseOver(true);
@@ -38,12 +38,9 @@ function Explore_Grid(props){
     console.log(props.title)
 //Comment Box
 const [isComment, setIsComment] = useState(false);
-const [isfav, setIsFav] = useState(false);
 
-function openFavBox(){
-    setIsFav(!isfav);
-     //alert(isComment);
-}
+const [isUser, setIsUser] = useState(props.viewMode);
+
 function openCommentBox(){
     setIsComment(!isComment);
      //alert(isComment);
@@ -51,6 +48,35 @@ function openCommentBox(){
 function addToFav(){
     console.log(props.id);
     //api
+    const object={
+        "photoUrl": "https://picsum.photos/200/200?random=2",
+        "title": "added Fav",
+        "descript": "description",
+        "Fav": [],
+        "privacy": "public",
+        "tags": [],
+        "ownerId": 0,
+        "peopleTags": [],
+        "comments": 78,
+        "Favs": 60,
+        "Username": "username",
+        "Name": "Samar Nabil"
+    }
+    // PostUserFavs(props.id).then( response => {
+    PostUserFavs(props.id,object).then( response => {
+        console.log(response);
+        if(response.status === 500){
+            DeleteUserFavs(props.id).then( response => {
+                console.log(response);
+            })
+        }
+    })
+}
+
+function deleteFav(){
+    DeleteUserFavs(props.id).then( response => {
+        console.log(response);
+    })
 }
 
 
@@ -58,6 +84,7 @@ function addToFav(){
         <>
             
             <div className="item " >
+            <Link to={`/imagedetails/${props.id}/${props.ownerId}`}> <button className="open-photo">{open}</button></Link>
             <img 
             src={props.url} 
             onLoad={event => (
@@ -68,7 +95,7 @@ function addToFav(){
                 onMouseOut={handleMouseOut}
                 
                 />
-                <div className="shadow-overlay" style={{display: isMousedOver || isComment || isfav?"block":"none"}}
+                <div className="shadow-overlay" style={{display: isMousedOver || isComment?"block":"none"}}
                     onMouseOver={handleMouseOver} 
                     onMouseOut={handleMouseOut}>
                     <h1>{props.title}</h1>
@@ -77,14 +104,22 @@ function addToFav(){
                         <div id="info">
                             <li>{addTo}</li>
                             <li  onClick={openCommentBox}> {comment} {props.numberOfComments}</li>
-                            {/* <li onClick={addToFav} > {fav} {props.numberOfFavs}</li>  */}
-                            <li onClick={openFavBox} > {fav} {props.numberOfFavs}</li> 
+                            {!isUser?
+                                <>
+                                {isFav? <li onClick={deleteFav}>{fav} {props.numberOfFavs}</li>:<li> {fav} {props.numberOfFavs}</li>}
+                                </>
+                            :
+                                <> 
+                               
+                                {isFav&&<li onClick={addToFav}>{fav} {props.numberOfFavs}</li>}
+                                </>
+                            }
                            
                     </div> 
                   
                     </ul>
                     {isComment && <Comments numberOfComments= {props.numberOfComments} onClick={openCommentBox}/>}
-                        {isfav && <Favs numberOfFavs= {props.numberOfFavs}  onClick={openFavBox}/>} 
+                       
                 </div>
             </div> 
 

@@ -15,26 +15,18 @@ function Join(props) {
     }},[]);
 //////////////////////////////toggle function to handle pressing on join or leave action/////////////////////////
         async function toggleJoin(){
-            // if(isJoined===false){
-            // const { status } = await axios.post('/group/'+group_id+'/join',);
-            // if(status=== 200){
-                
-            //     setToggleJoin(!isJoined);
-            // }
-            // else{
-            //     alert("UnAuthorized request or User not found");
-            // }
-            // }
-            // else{
-            // const { status } = await axios.delete('/group/'+group_id+'/leave',);
-            //     if(status=== 200){
-                
+           //      async function toggleFollow(){
+//          if(isJoined===false){
+//             JoinGroup(group_id).then( response => {
+//                  setToggleJoin(!isJoined);
+//         
+//         })
+
+//          else{
+//             UnJoinGroup(group_id).then( response => {
                 setToggleJoin(!isJoined);
-            //        }
-            //         else{
-            //             alert("UnAuthorized request or User not found");
-            //         }
-            // }
+//              })
+//      }
 
             
         }

@@ -276,3 +276,88 @@ export async function UpdateUser(data){
       console.log(error);
   }
 };
+
+//const { status } = await axios.post('/user/follow',userFollow);
+export async function FollowPeople(id){
+  try{
+      //const response = await axios.put(endpoint + "user" , data);
+      const response = await axios.post(SERVER_URL+'/user/follow',id);
+      //Success
+      return(response)
+      
+  } catch (error){
+      if (error.response){
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request){
+        console.log(error.request);
+      } else {
+        console.log('Error', error.message);
+      }
+      console.log(error);
+  }
+};
+
+//const { status } = await axios.delete('/user/unfollow/'+id);
+
+export async function UnFollowPeople(id){
+  try{
+      const response = await axios.delete(SERVER_URL+'/user/unfollow/'+id);
+      //Success
+      return(response)
+      
+  } catch (error){
+      if (error.response){
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request){
+        console.log(error.request);
+      } else {
+        console.log('Error', error.message);
+      }
+      console.log(error);
+  }
+};
+//const { status } = await axios.delete('/group/'+group_id+'/leave',);
+export async function UnJoinGroup(id){
+  try{
+      const response = await axios.delete(SERVER_URL+'/group/'+id+'/leave',);
+      //Success
+      return(response)
+      
+  } catch (error){
+      if (error.response){
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request){
+        console.log(error.request);
+      } else {
+        console.log('Error', error.message);
+      }
+      console.log(error);
+  }
+};
+// const { status } = await axios.post('/group/'+group_id+'/join',);
+export async function JoinPeople(id){
+  try{
+      //const response = await axios.put(endpoint + "user" , data);
+      const response = await axios.post(SERVER_URL+'/group/'+id+'/join',);
+      //Success
+      return(response)
+      
+  } catch (error){
+      if (error.response){
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request){
+        console.log(error.request);
+      } else {
+        console.log('Error', error.message);
+      }
+      console.log(error);
+  }
+};

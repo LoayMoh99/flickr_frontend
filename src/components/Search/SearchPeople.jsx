@@ -6,7 +6,7 @@ import './SearchPeople.css'
 import Header from "../navbar/mainNav"
 import { useParams } from 'react-router'
 import {Link} from "react-router-dom";
-const endPoint = 'http://localhost:3001/'
+import {GetPeopleBySearch} from "../../services/peopleServices"
 const endPointt = '/people/search/'
 function SearchPeople() {
     const {text}= useParams();
@@ -18,19 +18,18 @@ function SearchPeople() {
     const [people, setPeople] = useState([]);
 ////////////////////Fetching data using Search text//////////////////////////////////////////////
   useEffect(() => {
-      const fetchData = async () => {
-      const {data,status} = await axios.get( endPoint+textt,);
-      console.log(status);
-      if (status === 200){
-        setPeople(data);
-      }
-      else{
-        setPeople(data);
-          error=true; //////////error fetching data
-      }
-  };
-  
-    fetchData();
+      GetPeopleBySearch(textt).then( response => {
+        console.log(response.data);
+        setPeople(response.data);
+      })
+      // console.log(status);
+      // if (status === 200){
+      //   setPeople(data);
+      // }
+      // else{
+      //   setPeople(data);
+      //     error=true; //////////error fetching data
+      // }
   },[]);
 ////////////////////////////////////////////////////////////////////////////////////////////////////
     return (

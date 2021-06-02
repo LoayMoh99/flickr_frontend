@@ -21,6 +21,7 @@ import AlbumPage from './components/Album/AlbumPage'
 import  SearchPeople from "./components/Search/SearchPeople"
 import SearchGroup from "./components/Search/SearchGroup"
  import {BrowserRouter as Router, Switch , Route} from "react-router-dom";
+import GroupCard from './components/Search/GroupCard'
 
 function App() {
 
@@ -35,6 +36,10 @@ function App() {
       <Route path="/" exact component={Login}/>
       <Route path="/sign-up" component={Signup}/>
       <Route path="/user" component={Userinfo}/>
+      <Route path="/UserInfo/:id"  component={Userinfo}/>
+      <Route path="/GroupInfo/:groupid" component={GroupCard} />
+      {/* <Route path="/Group/:group_id/photos" component={GroupCard}/> */}
+      {/* <Route path="/Group/:group_id/members" component={GroupCard}/> */}
       <Route path="/About" component={About}/>
       <Route path="/Blog" component={Blog}/>
       <Route path="/Jobs" component={Jobs}/>
@@ -48,11 +53,14 @@ function App() {
       <Route path="/upload" component={Upload}/>
       <Route path="/imagedetails/:id/:userId" component={ImageDetails}/>
       <Route path="/AlbumPage/:idToOpen" component={AlbumPage}/>
+      <Route path="/searchPeople/:text" component={SearchPeople}/>
+      <Route path="/searchGroup/:text" component={SearchGroup}/>
       </Switch>
     </div>
       {/* <Switch>
       <Route path="/" exact component={SearchGroup}/>
       <Route path="/UserInfo/:id"  component={About}/>
+      //searchPeople
       <Route path="/Group/:id/members"  component={About}/>
       <Route path="/Group/:id/photos"  component={Blog}/>
       </Switch> */}

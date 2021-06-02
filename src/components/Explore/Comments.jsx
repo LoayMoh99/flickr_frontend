@@ -37,26 +37,22 @@ function Comments(props){
         // }
         const object ={
             comment: newComment,
-            id: "0",
             user: {
-                  "Fname": "John",
-                  "Lname": "Smith",
-                  "id": "100"
-                },
-                createdAt: "2020-5-23",
-                updatedAt: "2021-4-2"
-        
-    
-    }
-              
-          
-          
+              "Fname": "John",
+              "Lname": "Smith",
+              "id":"100"
+            },
+            createdAt: "2020-5-23",
+            updatedAt: "2021-4-2"
+        }
         //API
-        PostComments(props._id,object).then( response => {
+        // PostComments(object).then( response => {
+        PostComments(props.photo_id,object).then( response => {
             console.log(response);
         });
         document.getElementById('com').value = '';
     }
+
 
     return(
         <>

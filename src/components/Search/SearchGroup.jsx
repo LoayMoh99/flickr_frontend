@@ -1,9 +1,11 @@
 import React,{useState,useEffect} from 'react'
 import axios from 'axios'
 import {Link} from "react-router-dom";
+import { useParams } from 'react-router'
 import GroupCard  from './GroupCard'
 import Join from './Join'
 import Header from "../navbar/mainNav"
+import {GetGroupBySearch} from "../../services/groupServices"
 import './SearchPeople.css'
 import { get } from 'jquery'
 const endpoint = 'http://localhost:3001/'
@@ -11,7 +13,8 @@ const end= '/group/'
 const point= '/search'
 
 function SearchGroup() {
-    //const {text}= useParams();
+    const {text}= useParams();
+    const textt='group'
     const navStyle={
         color:'white'
     };
@@ -19,18 +22,19 @@ function SearchGroup() {
     const [groups, setGroup] = useState([]);
 ////////////////////Fetching data using Search text//////////////////////////////////////////////
     useEffect(() => {
-        const fetchData = async () => {
-        const {data,status} = await axios.get( endpoint+'group',);
-        console.log(status);
-        if (status === 200){
-            setGroup(data);
-        }else{
-            setGroup(data);
-              error=true; //////////error fetching data
-          }
-    };
+      GetGroupBySearch(textt).then( response => {
+        console.log(response.data);
+        setGroup(response.data);
+      })
+    //     if (status === 200){
+    //         setGroup(data);
+    //     }else{
+    //         setGroup(data);
+    //           error=true; //////////error fetching data
+    //       }
+    // };
   
-    fetchData();
+    // fetchData();
   },[]);
 /////////////////////////////////////////////////////////////////////////////////////////////////
     return (

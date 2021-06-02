@@ -5,6 +5,7 @@ import { faUsers } from '@fortawesome/free-solid-svg-icons';
 import { faImage } from '@fortawesome/free-solid-svg-icons';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import {UnFollowPeople,FollowPeople} from "../../services/userServices";
 import './PeopleCard.css'
 import { render } from '@testing-library/react';
 const endpoint = 'http://localhost:3001/'
@@ -13,38 +14,26 @@ const staticAvatar= 'https://combo.staticflickr.com/pw/images/buddyicon00_m.png#
 function PeopleCard(props) {
     const {id, url, Lname,Fname,subtitle,followers, noofimages,date,followed } = props;
      //const [data, setData] = useState({});
-    //  const [isFollowing, setToggleFollow] = useState(followed);
-    //  const userFollow={
-    //     "peopleid": id
-    //   };
+    const [isFollowing, setToggleFollow] = useState(followed);
+    const userFollow={
+        "peopleid": id
+    };
 // //////////////////////////////toggle function to handle pressing on follow or unfollow action/////////////////////////
 //      async function toggleFollow(){
 //          if(isFollowing===false){
-//             const { status } = await axios.post('/user/follow',userFollow);
-//          if(status=== 200){
-                
-//          setToggleFollow(!isFollowing);
-//             }
-//             else{
-//                 alert("UnAuthorized request or User not found");
-//             }
-//          }
-//          else{
-//             const { status } = await axios.delete('/user/unfollow/'+id);
-//               if(status=== 200){
-                
-//                 setToggleFollow(!isFollowing);
-//                    }
-//                    else{
-//                        alert("UnAuthorized request or User not found");
-//                    }
-//          }
+//             FollowPeople(userFollow).then( response => {
+//                  setToggleFollow(!isFollowing);
+//         
+//         })
 
-         
+//          else{
+//             UnFollowPeople(id).then( response => {
+//                  setToggleFollow(!isFollowing);
+//         
+//              })
 //      }
 // //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-    // onClick={getProfile}
     return (
         <div className="cardPeople"  >
             <div className="peopleAvatar">
