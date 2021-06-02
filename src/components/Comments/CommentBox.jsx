@@ -23,25 +23,23 @@ function CommentBox(props){
     function postComment(){
         setText("Add a comment about this photo");
         console.log(props.photo_id)
-        // const object ={
-        //     comment:newComment
-        // }
-        // const object ={
-        //     comment:newComment
-        // }
+
         const object ={
-            comment: newComment,
-            user: {
-              "Fname": "John",
-              "Lname": "Smith",
-              "id":"100"
-            },
-            createdAt: "2020-5-23",
-            updatedAt: "2021-4-2"
+            comment:newComment
         }
+        // const object ={
+        //     comment: newComment,
+        //     user: {
+        //       "Fname": "John",
+        //       "Lname": "Smith",
+        //       "id":"100"
+        //     },
+        //     createdAt: "2020-5-23",
+        //     updatedAt: "2021-4-2"
+        // }
         //API
-        // PostComments(object).then( response => {
-        PostComments(props.photo_id,object).then( response => {
+        PostComments(object).then( response => {
+        // PostComments(props.photo_id,object).then( response => {
             console.log(response);
         });
         document.getElementById('com').value = '';

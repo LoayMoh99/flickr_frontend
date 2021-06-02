@@ -5,29 +5,33 @@ import Header from '../navbar/mainNav'
 import validateLogin from "./ValidateLogin";
 import UserLogin from "../../services/userServices"
 import {Link} from "react-router-dom";
+import { set } from "lodash";
 
 export default function Login(props) {
   
   const {handleChange, handleSubmit, values , errors} = useForm(submit, validateLogin);
   let accessToken = ''
 
+  const [isSuccess,setIsSuccess] = useState(false);
+
   const navStyle={color:'blue'};
 
   function submit () {
     const email = document.getElementById('email').value;
     const pass = document.getElementById('password').value;
-    // console.log(email);
-    // console.log(pass);
 
     const object={
         'email':email,
         'password':pass
     }
 
+    console.log(object)
+
     // UserLogin(object).then( response => {
-    UserLogin(accessToken,object).then( response => {
+    UserLogin(object).then( response => {
         console.log(response.data.token);
         if (response.data.token){
+            setIsSuccess(true);
             accessToken = response.data.token;
             localStorage.token = accessToken;
             console.log(localStorage.token);
@@ -49,6 +53,7 @@ export default function Login(props) {
       <Header isLogged={false}/>
       {/* End Header */}
       {/* Start login */}
+      <>
       <div className="card-container">
         <div className="login-card">
           <div className="content-container">
@@ -117,7 +122,7 @@ export default function Login(props) {
                 {/* End Data   */}
           </div>
         </div>
-      </div>
+      </div> </>
       {/* End login */}
     </div>
   );

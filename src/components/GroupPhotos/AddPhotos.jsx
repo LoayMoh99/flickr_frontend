@@ -4,8 +4,8 @@ import { useParams } from 'react-router-dom/cjs/react-router-dom.min'
 import './AddPhotos.css'
 import PhotosToAdd from "./PhotosToAdd"
 // import { useParams } from "react-router-dom";
-import {GetUserPhotos,PostGroupPhotos} from "../../services/groupServices"
-
+import {PostGroupPhotos} from "../../services/groupServices"
+import {GetUserPhotos} from "../../services/userServices"
 function AddPhotos(props){
 
     const navStyle={

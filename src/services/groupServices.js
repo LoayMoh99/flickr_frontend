@@ -4,8 +4,8 @@ const SERVER_URL = configData.SERVER_URL ;
 
 export default async function GetGroupPhotos (id){
     try{
-        // const response = await axios.get( SERVER_URL+'group/photos?group_id='+id);
-        const response = await axios.get( SERVER_URL+'groupPhotos');
+        const response = await axios.get( SERVER_URL+'group/photos/'+id,{headers:{token:localStorage.token}});
+        // const response = await axios.get( SERVER_URL+'groupPhotos');
         //Success
         return(response)
     } catch (error){
@@ -34,8 +34,11 @@ export default async function GetGroupPhotos (id){
 
 export async function PostGroupPhotos (groupId,photoId,object){
     try{
-        // const response = await axios.get( SERVER_URL+'group/photo',groupId,photoId);
-        const response = await axios.post( SERVER_URL+'groupPhotos',object);
+        const response = await axios.post( SERVER_URL+'group/photo',{
+          group_id: groupId,
+          photo_id: photoId
+        },{headers:{token:localStorage.token}});
+        // const response = await axios.post( SERVER_URL+'groupPhotos',object);
         //Success
         return(response)
     } catch (error){
@@ -54,32 +57,12 @@ export async function PostGroupPhotos (groupId,photoId,object){
 };
 
 
-//user
-export async function GetUserPhotos (){
-    try{
-        // const response = await axios.get( SERVER_URL+'user/photos');
-        const response = await axios.get( SERVER_URL+'photos');
-        //Success
-        return(response)
-    } catch (error){
-        if (error.response){
-          console.log(error.response.data);
-          console.log(error.response.status);
-          console.log(error.response.headers);
-        } else if (error.request){
-          console.log(error.request);
-        } else {
-          // Something happened in setting up the request and triggered an Error
-          console.log('Error', error.message);
-        }
-        console.log(error);
-    }
-};
 //const {data,status} = await axios.get( endpoint+'group',);
 export async function GetGroupBySearch (text){
   try{
-    const response = await axios.get(SERVER_URL+text);
+    const response = await axios.get(SERVER_URL+'group/'+text+'/search',{headers:{token: localStorage.token}});
       //Success
+      console.log(response)
       return(response)
   } catch (error){
       if (error.response){

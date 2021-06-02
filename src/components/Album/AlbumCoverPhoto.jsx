@@ -7,10 +7,7 @@ const endpoint = 'http://localhost:3001/'
 
 function AlbumCoverPhoto(props) {
 
-// const {isUser}= props; // from props
-const isUser =true;
-
-const { coverPhoto, title, description , photos , album_id , ownerFname ,ownerLname } = props;
+const { coverPhoto, title, description , photos , album_id , ownerFname ,ownerLname, isUser } = props;
 const pen =  <FontAwesomeIcon icon={faPen} color="white" size="1x" />;
 
 const countPhotos=photos.length;
@@ -64,7 +61,7 @@ return (
                        {/* {isUser&& <a href="#" className="editPen" >   
                                 {pen}
                         </a>} */}
-                    {isUser&&<div className="inputBarAlbumCover">
+                    {isUser?<div className="inputBarAlbumCover">
                         <div id="inputFormatAlbum">
                             <div class="form-group" >
                                 <input type="text" className="form-control"  onChange={handleTitleChange} value={inputTitle}></input> 
@@ -74,14 +71,15 @@ return (
                             </div>
                         </div>
 
-                    </div>}
-                    {!isUser&&<div className="inputBarAlbumCover">
+                    </div>
+                    : <div className="inputBarAlbumCover">
                         <div id="inputFormatAlbum">
                             <div class="form-group" >
-                                <input type="text" className="form-control"  value={inputTitle} disabled></input> 
+                            <input type="text" className="form-control"  value={inputTitle} disabled></input> 
+                            {/* <h3>{inputTitle}</h3> */}
                             </div>
                             <div class="form-group">
-                                <textarea className="formControlTextarea" rows="3"disabled >{inputDescription}</textarea> 
+                                <textarea className="formControlTextarea" rows="3" disabled >{inputDescription}</textarea> 
                             </div>
                         </div>
 

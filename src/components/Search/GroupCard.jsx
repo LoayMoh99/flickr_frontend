@@ -6,47 +6,51 @@ import { faImage } from '@fortawesome/free-solid-svg-icons';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faComment} from '@fortawesome/free-solid-svg-icons';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
-import {Link} from "react-router-dom";
+import configData from "../../config/development.json"
+
 import './GroupCard.css'
-const endpoint = 'http://localhost:3001/'
+import {Link} from "react-router-dom";
+const SERVER_URL = configData.SERVER_URL ;
+const endpoint = 'http://dropoids.me/api/v1/'
 const staticAvatar= 'https://combo.staticflickr.com/pw/images/buddyicon00_m.png#22501572@N05'
 function GroupCard(props) {
-    const {group_id, groupname,followers, noofimages,role,date } = props;
-     //const [data, setData] = useState({});
+    console.log(props)
+    const { group_id, groupname,followers, noofimages,role,date } = props;
+     const [data, setData] = useState({});
      const [isJoined, setToggleJoin] = useState(false);
      const navStyle={
         color:'white'
     };
-     //let isJoined=false;
-    //  useEffect(() => {if(role === "member"){
-    //     setToggleJoin(true);
-    //     console.log({group_id});
-    // }},[]);
+     useEffect(() => {if(role === "member"){
+        setToggleJoin(true);
+        console.log(group_id);
+        console.log(data)
+    }},[]);
 //////////////////////////////toggle function to handle pressing on join or leave action/////////////////////////
-        // async function toggleJoin(){
-        //     if(isJoined===false){
-        //     const { status } = await axios.post('/group/'+group_id+'/join',);
-        //     if(status=== 200){
+        async function toggleJoin(){
+            if(isJoined===false){
+            const { status } = await axios.post(endpoint+'/group/'+group_id+'/join',);
+            if(status=== 200){
                 
-        //         setToggleJoin(!isJoined);
-        //     }
-        //     else{
-        //         alert("UnAuthorized request or User not found");
-        //     }
-        //     }
-        //     else{
-        //     const { status } = await axios.delete('/group/'+group_id+'/leave',);
-        //         if(status=== 200){
+                setToggleJoin(!isJoined);
+            }
+            else{
+                alert("UnAuthorized request or User not found");
+            }
+            }
+            else{
+            const { status } = await axios.delete(endpoint+'/group/'+group_id+'/leave',);
+                if(status=== 200){
                 
-        //         setToggleJoin(!isJoined);
-        //            }
-        //             else{
-        //                 alert("UnAuthorized request or User not found");
-        //             }
-        //     }
+                setToggleJoin(!isJoined);
+                   }
+                    else{
+                        alert("UnAuthorized request or User not found");
+                    }
+            }
 
             
-        // }
+        }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
     return (
@@ -58,7 +62,7 @@ function GroupCard(props) {
                 <div className="titleAndjoin">
                     <div>
                         <h6>{groupname}</h6>
-                        <span >Since {date.substring(0,4)}</span>
+                        <span >Since {date}</span>
                     </div>
                     {/* <div>   
                     {!isJoined && <button className="buttonJoined" onClick={toggleJoin}><FontAwesomeIcon className="hover" icon={faPlus} color="DarkGrey" /> Join</button>}

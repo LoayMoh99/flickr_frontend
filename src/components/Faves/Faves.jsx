@@ -55,7 +55,7 @@ return (
         <>
         {userFavs.map(photo => (
             <ImageGrid
-            id = {photo.id}
+            id = {photo._id}
             url ={photo.photoUrl} 
             title ={photo.title} 
             description = ''

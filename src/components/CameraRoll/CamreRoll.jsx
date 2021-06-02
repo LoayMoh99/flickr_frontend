@@ -100,8 +100,8 @@ function CamreRoll() {
   const monthName = (item) => moment(item.createdAt, 'YYYY-MM-DD').format('DD MMMM YYYY');
   // function to check if this image was already selected or a newly selected one
   function containsObject(obj, list) {
-    // return list.some((elem) => elem._id === obj._id);
-    return list.some((elem) => elem.id === obj.id);
+    return list.some((elem) => elem._id === obj._id);
+    // return list.some((elem) => elem.id === obj.id);
   }
   // to delete the element if unselected
   function handleDelete(obj, list) {
@@ -133,8 +133,8 @@ function CamreRoll() {
         setModalIsOpen(!isModalOpen);
 
         setToEdit((prevItems) => [...prevItems, imgObj]);
-        //setToEditIds((prevItems)=>[...prevItems,imgObj._id]);
-        setToEditIds((prevItems)=>[...prevItems,imgObj.id]);
+        setToEditIds((prevItems)=>[...prevItems,imgObj._id]);
+        // setToEditIds((prevItems)=>[...prevItems,imgObj.id]);
 
         countCopy = handleIncrement(countCopy);
         setCount(countCopy);
@@ -152,8 +152,8 @@ function CamreRoll() {
       if (!isHere) {
 
         setToEdit((prevItems) => [...prevItems, imgObj]);
-               //setToEditIds((prevItems)=>[...prevItems,imgObj._id]);
-               setToEditIds((prevItems)=>[...prevItems,imgObj.id]);
+               setToEditIds((prevItems)=>[...prevItems,imgObj._id]);
+              //  setToEditIds((prevItems)=>[...prevItems,imgObj.id]);
 
         countCopy = handleIncrement(countCopy);
         setCount(countCopy);
@@ -162,8 +162,8 @@ function CamreRoll() {
       if (isHere) {
 
         setToEdit(handleDelete(imgObj, toEdit));
-       // setToEditIds(handleDelete(imgObj._id, toEditIds));
-       setToEditIds(handleDelete(imgObj.id, toEditIds));
+       setToEditIds(handleDelete(imgObj._id, toEditIds));
+      //  setToEditIds(handleDelete(imgObj.id, toEditIds));
 
         countCopy = handleDecrement(countCopy);
         setCount(countCopy);

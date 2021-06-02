@@ -4,31 +4,40 @@ import defaultProfile from '../../img/deefault.jpg';
 import Header from '../navbar/mainNav';
 import Footer from '../navbar/footer'
 import {GetUserFollowing} from "../../services/userServices"
-import {GetPeopleFavs, GetPeopleFollowing} from "../../services/peopleServices"
+import {GetPeopleFollowing} from "../../services/peopleServices"
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import axios from "axios"
 import {Link} from "react-router-dom";
-const endpoint = 'http://localhost:3001/'
 
 export default function FollwingFollowers(props){
         const [allfollowing, setFollowing] = useState([]);
         const {id}=useParams();
+        const {isUser}=useParams();
+        const [isUndefinedfollowers, setisUndefinedfollowers] = useState(true);
+        const [isUndefinedfollowing, setisUndefinedfollowing] = useState(true);
         useEffect(() => {
-            /*if(props===true){
+            if(isUser===true){
                 GetUserFollowing().then( response => {
-                    setFollowing(response.data);
+                    if(response!=undefined){
+                        setisUndefinedfollowers(false);
+                        setFollowing(response.data);
+                    }
+                    else{
+                        setisUndefinedfollowers(true);
+                    }
                 })
             }
             else{
                 GetPeopleFollowing(id).then( response => {
-                    setFollowing(response.data);
+                    if(response!=undefined){
+                        setisUndefinedfollowing(false);
+                        setFollowing(response.data);
+                    }
+                    else{
+                        setisUndefinedfollowing(true);
+                    }
                 })
-            }*/
-
-            ////remove on integration replace it with the prev comment
-            GetUserFollowing().then( response => {
-                setFollowing(response.data);
-            })
+            }
         },[]);
     const navStyle={
         color:'black'
@@ -74,7 +83,7 @@ export default function FollwingFollowers(props){
                 </tr>
             </thead>
             <tbody>
-            {allfollowing.map(user => (
+            {(!isUndefinedfollowers ||!isUndefinedfollowing)&& allfollowing.map(user => (
                 <tr>
                 <th scope="row"><img src={user.avatar}></img> {user.Fname} {user.Lname}</th>
                 <td>{user.Photos}</td>

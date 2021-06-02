@@ -33,20 +33,35 @@ export default function ImageDetails(props){
     const addComment = e => setNewComment(e.target.value);
     const [userPhotos, setUserPhotos] = useState([]);
     const [peoplePhotos, setPeoplePhotos] = useState([]);
+    const [isUndefinedpeoplePhotos, setisUndefinedPeoplePhotos] = useState(true);
+    const [isUndefineduserPhotos, setisUndefineduserPhotos] = useState(true);
+    const [isUndefinedcomments, setisUndefinedcomments] = useState(true);
     // const [userId , setUserId] = useState(0)
+
     const [userInfo, setUserInfo] = useState([]);
     //get request
     useEffect( () =>{
      if(userId){
         //get user photos
         GetUserPhotos().then( response => {
-            setUserPhotos(response.data);
-            console.log(response)
+            if(response!=undefined){
+                setisUndefineduserPhotos(false);
+                setUserPhotos(response.data);
+                console.log(response)
+            }
+            else{
+                setisUndefineduserPhotos(true);
+            }
         })
      }else{
         //get people photos by userId
         GetPeoplePhotos(userId).then( response => {
-            setPeoplePhotos(response.data);
+            if(response!=undefined){
+                setisUndefinedPeoplePhotos(false);
+                setPeoplePhotos(response.data);
+            }else{
+                setisUndefinedPeoplePhotos(true);
+            }
         })
      }
 
@@ -63,38 +78,15 @@ export default function ImageDetails(props){
 
     //get comments
     GetComments().then( response => {
-        setComments(response.data);
-        console.log(response.data);
+        if(response!=undefined){
+            setisUndefinedcomments(false);
+            setComments(response.data);
+        }else{
+            setisUndefinedcomments(true);
+        }
     })
 
   },[])
-    // useEffect(() => {`
-    //     const fetchData = async () => {
-    //     const {data,status} = await axios.get( endpoint+'photos');
-    //     if (status === 200){
-    //         setPhotos(data);
-    //     }
-    //     const response = await axios.get( endpoint+'photos?id='+id);
-    //     // console.log("resonse",response);
-    //     // setWholeData(response.data);
-    //     if (response.status === 200){
-    //         setImage(response.data[0].photoUrl);
-    //         setDiscription(response.data[0].description);
-    //         setTitle(response.data[0].title);
-    //         setNumOfFavs(response.data[0].Fav.length);
-    //         setDatOfUpdate(response.data[0].UpdatedAt);
-    //         const response2 = await axios.get( endpoint+'comments?id='+id);
-    //         if(response2.status===200){
-    //             console.log("comments Status",response2.status);
-    //             setComments(response2.data);
-    //             console.log("comments",response2.data);
-    //         }
-    //     }
-    // };
-    
-    //     fetchData();
-    // },[]);
-    /////////////////////////////////////////API///////////////////////////////
     function postTnewMessage(){
         const sentComment={ 
             comment: newComment
@@ -116,7 +108,7 @@ export default function ImageDetails(props){
                     <img src={image} alt=""></img>
                 </div>
             </div>
-            {userPhotos.map(photo=>(<ViewedImage url={photo.photoUrl}/>))} 
+            {!isUndefineduserPhotos && userPhotos.map(photo=>(<ViewedImage url={photo.photoUrl}/>))} 
                 </div>
                 <button  className="carousel-control-prev adjustbutton" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
                     <span className="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -130,7 +122,7 @@ export default function ImageDetails(props){
             <div className="discriptionAndComments">
                 <h3>{titile}</h3>
                 <p>{discription}</p>
-                {comments.map(comnt=>(<ShownImageComments cmntText={comnt.comment} commentOwnerFname={comnt.user.Fname} commentOwnerLname={comnt.user.Lname}/>))} 
+                {!isUndefinedcomments && comments.map(comnt=>(<ShownImageComments cmntText={comnt.comment} commentOwnerFname={comnt.user.Fname} commentOwnerLname={comnt.user.Lname}/>))} 
                 <div className="commentBoxImageDetails">
                     <input type="text" id="tag" name="text" onChange={addComment}/>
                     {newComment && <button onClick={postTnewMessage()}>comment</button>}

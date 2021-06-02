@@ -4,8 +4,8 @@ const SERVER_URL = configData.SERVER_URL ;
 
 export default async function DeletePhoto (ids){
     try{
-        // const response = await axios.delete( SERVER_URL+'photo/',ids);
-        const response = await axios.delete(SERVER_URL+'photos/'+ids[0])
+        const response = await axios.delete( SERVER_URL+'photo/',ids,{headers:{token:localStorage.token}});
+        // const response = await axios.delete(SERVER_URL+'photos/'+ids[0])
         //Success
         return(response)
     } catch (error){
@@ -34,8 +34,8 @@ export default async function DeletePhoto (ids){
 
 export async function PutPhoto (id, object){
     try{
-        // const response = await axios.put(SERVER_URL+'photo', object)
-        const response = await axios.put(SERVER_URL+'photos/'+id , object)
+        const response = await axios.put(SERVER_URL+'photo', object,{headers:{token:localStorage.token}})
+        // const response = await axios.put(SERVER_URL+'photos/'+id , object)
         //Success
         return(response)
     } catch (error){
@@ -54,8 +54,8 @@ export async function PutPhoto (id, object){
 
 export async function UpdatePhotos (object){
   try{
-      // const response = await axios.put(SERVER_URL+'photo', object)
-      const response = await axios.put(SERVER_URL+'photos/', object)
+      const response = await axios.put(SERVER_URL+'photo', object,{headers:{token:localStorage.token}})
+      // const response = await axios.put(SERVER_URL+'photos/', object)
       //Success
       return(response)
   } catch (error){
@@ -74,8 +74,8 @@ export async function UpdatePhotos (object){
 
 export async function GetComments (id){
     try{
-        // const response = await axios.get(SERVER_URL+'photo_id='+id+'comments')
-        const response = await axios.get(SERVER_URL+'comments')
+        const response = await axios.get(SERVER_URL+'photo_id='+id+'comments',{headers:{token:localStorage.token}})
+        // const response = await axios.get(SERVER_URL+'comments')
         //Success
         return(response)
     } catch (error){
@@ -94,8 +94,8 @@ export async function GetComments (id){
 
 export async function GetPhotoById (id){
   try{
-      // const response = await axios.get(SERVER_URL+'photo?photo_id='+id)
-      const response = await axios.get(SERVER_URL+'photos/'+id)
+      const response = await axios.get(SERVER_URL+'photo?photo_id='+id,{headers:{token:localStorage.token}})
+      // const response = await axios.get(SERVER_URL+'photos/'+id)
       //Success
       return(response)
   } catch (error){
@@ -114,8 +114,8 @@ export async function GetPhotoById (id){
 
 export async function PostComments (id,object){
     try{
-        // const response = await axios.post(SERVER_URL+'photo_id='+id+'comments',object)
-        const response = await axios.post(SERVER_URL+'comments',object)
+        const response = await axios.post(SERVER_URL+'photo_id='+id+'comments',object,{headers:{token:localStorage.token}})
+        // const response = await axios.post(SERVER_URL+'comments',object)
         //Success
         return(response)
     } catch (error){
@@ -135,7 +135,7 @@ export async function PostComments (id,object){
   export async function addPeopleTag (object)
   {
             try{
-        const response = await axios.post(SERVER_URL+'photo/peopletag', object);
+        const response = await axios.post(SERVER_URL+'photo/peopletag', object,{headers:{token:localStorage.token}});
 
         
         return(response)
@@ -156,7 +156,7 @@ export async function PostComments (id,object){
 export async function addTag (object)
 {
           try{
-       const response = await axios.post(SERVER_URL+'photo/tag', object);
+       const response = await axios.post(SERVER_URL+'photo/tag', object,{headers:{token:localStorage.token}});
     
       return(response)
   } catch (error){
@@ -174,8 +174,10 @@ export async function addTag (object)
 };
 
 export async function PostPhoto (object){
+  console.log(object);
   try{
-      const response = await axios.post(SERVER_URL+'photos/',object)
+      const response = await axios.post(SERVER_URL+'photos',object,{headers:{token:localStorage.token}})
+      console.log("ana fe el photossss service",response);
       //Success
       return(response)
   } catch (error){
@@ -194,8 +196,8 @@ export async function PostPhoto (object){
 
 export async function getExplorePhotos (){
   try{
-    // const response = await axios.get( SERVER_URL+'user/photos');
-    const response = await axios.get( SERVER_URL+'photos2');
+    const response = await axios.get( SERVER_URL+'/photo/explore',{headers:{token:localStorage.token}});
+    // const response = await axios.get( SERVER_URL+'photos2');
     //Success
     return(response)
   } catch (error){

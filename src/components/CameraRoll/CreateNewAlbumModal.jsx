@@ -36,20 +36,20 @@ function CreateNewAlbumModal(props) {
 
 
 
-//     const album = {
-//       "title": inputTitle,
-//       "description":inputDescription,
-//       "photos":imgIdsCreateAlbum,
-//       "coverPhoto":coverPhotoId
-//        }
+    const album = {
+      "title": inputTitle,
+      "description":inputDescription,
+      "photos":imgIdsCreateAlbum,
+      "coverPhoto":coverPhotoId
+       }
 
 
-    const album = { 
-        "id" : 29,
-        "title": inputTitle,
-        "description":inputDescription,
-        "createdAt": "2021-03-02",
-        "updatedAt": "2021-05-04",
+    // const album = { 
+    //     "id" : 29,
+    //     "title": inputTitle,
+    //     "description":inputDescription,
+    //     "createdAt": "2021-03-02",
+    //     "updatedAt": "2021-05-04",
         // "photos" : [
         //   {
         //       "photo_id" : 0,
@@ -65,11 +65,11 @@ function CreateNewAlbumModal(props) {
         //       "createdAt" : "2021-05-04"
         //   }
         // ],
-        "photos":imgIdsCreateAlbum,
+        // "photos":imgIdsCreateAlbum,
         //coverPhoto:"https://picsum.photos/300/200?random=1"
-        coverPhoto:coverPhotoId
+        // coverPhoto:coverPhotoId
           
-    };
+    // };
 
 
     function create (){

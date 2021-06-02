@@ -40,7 +40,7 @@ function Photostream(props){
         }else{
             //get people photos by userId
             GetPeoplePhotos(userId).then( response => {
-                setPeoplePhotos(response.data);
+                setPeoplePhotos(response.data.photos);
             })
         }
     // },[userPhotos,userId])
@@ -68,7 +68,7 @@ function Photostream(props){
                     {userPhotos.map(photo => (
                     //<Link  style={navStyle} to={`/imagedetails/${photo.id}`}>
                     <ImageGrid
-                    id = {photo.id}
+                    id = {photo._id}
                     url ={photo.photoUrl} 
                     title ={photo.title} 
                     description = {photo.description}

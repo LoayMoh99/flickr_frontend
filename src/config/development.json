@@ -1,4 +1,4 @@
 {
-    "SERVER_URL": "http://localhost:3001/",
+    "SERVER_URL": "https://thingproxy.freeboard.io/fetch/http://dropoids.me/api/v1/",
     "NODE_ENV": "development"
 }
