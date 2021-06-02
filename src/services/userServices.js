@@ -2,7 +2,10 @@ import axios from "axios"
 import configData from "../config/development.json"
 const SERVER_URL = configData.SERVER_URL ;
 
-// axios.defaults.headers.common['Access-Control-Allow-Origin'] = "" // for all requests
+localStorage.token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYjYwMDYwMzZiYzIzMDAxOWE3NGI4OCIsImlhdCI6MTYyMjU0MDQ0NCwiZXhwIjoxNzIyNTQ3NjQ0fQ.ng54v98xXSr-1BCpfZcThPAMOMwSl3H595xN36P6hbE"
+
+
+// axios.defaults.headers.common['token'] = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4gRG9lIiwiaWF0IjoxNTE2MjM5MDIyfQ.SflKxwRJSMeKKF2QT4fwpMeJf36POk6yJV_adQssw5c" // for all requests
 // axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*'
 
 // let instance = axios.create({
@@ -34,7 +37,7 @@ const SERVER_URL = configData.SERVER_URL ;
 export default async function UserLogin(object){
   console.log(object);
   try{
-      const response = await axios.post( SERVER_URL+'user/login',object,{withCredentials:true});
+      const response = await axios.post( SERVER_URL+'user/login',object,{crossDomain:true});
       // const response = await axios.get( SERVER_URL+'user?id='+0);
       //Success
       return(response)
@@ -67,7 +70,7 @@ export default async function UserLogin(object){
 export async function PostUser (object){
   console.log(object);
   try{
-      const response = await axios.post( SERVER_URL+'user',object);
+      const response = await axios.post( SERVER_URL+'user',object,{crossDomain:true});
       //Success
       return(response)
   } catch (error){
@@ -108,10 +111,10 @@ export async function checkUserByIdentifier(id){
 
 export async function GetUserPhotos (){
     try{
-        const response = await axios.get( SERVER_URL+'user/photos');
+        // const response = await axios.get( SERVER_URL+'user/photos',{headers:{Token:localStorage.token}});
         // const response = await axios.get( SERVER_URL+'photos');
         //Success
-        return(response)
+        // return(response)
     } catch (error){
         if (error.response){
           console.log(error.response.data);
@@ -128,7 +131,7 @@ export async function GetUserPhotos (){
 
 export async function GetUser(){
   try{
-      const response = await axios.get( SERVER_URL+'user');
+      const response = await axios.get( SERVER_URL+'user',{headers:{Token:localStorage.token}},{crossDomain:true});
       // const response = await axios.get( SERVER_URL+'user');
       //Success
       return(response)

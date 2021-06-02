@@ -19,57 +19,59 @@ import GroupPhotos from "../GroupPhotos/GroupPhotos"
 
 export default function Userinfo(props){
     
+    localStorage.token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYjYwMDYwMzZiYzIzMDAxOWE3NGI4OCIsImlhdCI6MTYyMjU0MDQ0NCwiZXhwIjoxNzIyNTQ3NjQ0fQ.ng54v98xXSr-1BCpfZcThPAMOMwSl3H595xN36P6hbE"
 
     const path = props.location.pathname;
     const index = path.split('/');
     const id = index[2];
-    console.log(id);
+    // console.log(id);
 
     const [userPhotos, setUserPhotos] = useState([]);
     const [peoplePhotos, setPeoplePhotos] = useState([]);
     const [userId , setUserId] = useState(0);
     const [userInfo, setUserInfo] = useState([]);
-    const [isUser , setIsUser] = useState(false);
+    const [isUser , setIsUser] = useState(true);
     const [userName , setUserName] = useState('');
 
     //get request
     useEffect( () =>{
-        // check if i am in the user or in people profile//////FOR INTEGRATION/////////////////////////
-        checkUserByIdentifier(id).then(response=>{
-            if(response.data===true){
-                //get user
-                GetUser().then( response => {
-                    setUserInfo(response.data);
-                console.log(response)
-                })
-                //get user photos
-                GetUserPhotos().then( response => {
-                    setUserPhotos(response.data);
-                })
-                setFollowing(false);
-                setIsUser(true);
-            }
-            else{
-                ////Not me!
-                setIsUser(false);
-                setUserId(id);
-                GetPeopleByIdentefier(userId).then(response=>{
-                    setUserInfo(response.data);
-                    setUserName(response.UserName)
-                    if(response.Follow===true){
-                        setFollowing(true);
-                    }
-                    else{
-                        setFollowing(false);
-                    }
-                })
-            }
-        })
-        // //get user
-        // GetUser().then( response => {
-        //     setUserInfo(response.data);
+        // // check if i am in the user or in people profile//////FOR INTEGRATION/////////////////////////
+        // checkUserByIdentifier(id).then(response=>{
+        //     if(response.data===true){
+        //         //get user
+        //         GetUser().then( response => {
+        //             setUserInfo(response.data);
+        //         console.log(response)
+        //         })
+        //         //get user photos
+        //         GetUserPhotos().then( response => {
+        //             setUserPhotos(response.data);
+        //         })
+        //         setFollowing(false);
+        //         setIsUser(true);
+        //     }
+        //     else{
+        //         ////Not me!
+        //         setIsUser(false);
+        //         setUserId(id);
+        //         GetPeopleByIdentefier(userId).then(response=>{
+        //             setUserInfo(response.data);
+        //             setUserName(response.UserName)
+        //             if(response.Follow===true){
+        //                 setFollowing(true);
+        //             }
+        //             else{
+        //                 setFollowing(false);
+        //             }
+        //         })
+        //     }
         // })
-        // //get user photos
+        //get user
+        GetUser().then( response => {
+            setUserInfo(response.data);
+            console.log(response);
+        })
+        //get user photos
         // GetUserPhotos().then( response => {
         //     setUserPhotos(response.data);
         // })
