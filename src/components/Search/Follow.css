@@ -1,0 +1,40 @@
+.Handle{
+    z-index: 100;
+    position: absolute;
+    right: 25px;
+    top: 25px;
+}
+.Handle button,.Handle button svg{
+    color: #fff;
+    background-color: #2a81ea;
+    border: none;
+    border-radius: 3px;
+    padding: 6px 12px;
+    cursor: pointer;
+    z-index: 2;
+}
+.Handle button.Handle svg{
+    background-color: transparent;
+}
+.Handle button:hover{
+    background-color: #3295ff;
+}
+.Handle button svg{
+    padding: 0;
+}
+.Handle button.buttonFollowing{
+    
+    color: #2a81ea;
+    background-color: #fff;
+    border:2px solid #2a81ea;
+    border-radius: 3px;
+    padding: 6px 12px;
+    cursor: pointer;
+    z-index: 100;
+}
+.Handle button.buttonFollowing svg{
+    width:10px;
+    height: 10px;
+    color: #2a81ea;
+background-color: transparent;
+}

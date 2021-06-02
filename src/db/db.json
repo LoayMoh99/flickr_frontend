@@ -1458,5 +1458,207 @@
       "createdAt": "2021-05-29T11:17:57.326Z",
       "updatedAt": "2021-05-29T11:17:57.326Z"
     }
-  ]
+  ],"people":[
+        { 
+            "_id": 0,
+            "avatarUrl": "https://combo.staticflickr.com/pw/images/buddyicon00_m.png#22501572@N05",
+            "Fname": "Samar",
+            "Lname":"Nabil",
+            "UserName": "samar_nabil",
+            "numberOfFollowers":3.3,
+            "numberOfPublicPhotos": 129,
+            "Date_joined": "april 2015",
+            "isFollowed" :true
+        },
+        {
+            "_id": 1,
+            "avatarUrl": "https://combo.staticflickr.com/pw/images/buddyicon00_m.png#22501572@N05",
+            "Fname": "Samar",
+            "Lname":"Nabil",
+            "UserName": "samar_nabil",
+            "numberOfFollowers":3.3,
+            "numberOfPublicPhotos": 129,
+            "Date_joined": "april 2015",
+            "isFollowed" :true
+        },
+        {
+            "_id": 2,
+            "avatarUrl": "https://combo.staticflickr.com/pw/images/buddyicon00_m.png#22501572@N05",
+            "Fname": "Samar",
+            "Lname":"Nabil",
+            "UserName": "samar_nabil",
+            "numberOfFollowers":3.3,
+            "numberOfPublicPhotos": 129,
+            "Date_joined": "april 2015",
+            "isFollowed" :true
+        },
+        {
+            "_id": 3,
+            "avatarUrl": "https://combo.staticflickr.com/pw/images/buddyicon00_m.png#22501572@N05",
+            "Fname": "Samar",
+            "Lname":"Nabil",
+            "UserName": "samar_nabil",
+            "numberOfFollowers":3.3,
+            "numberOfPublicPhotos": 129,
+            "Date_joined": "april 2015",
+            "isFollowed" :true
+        },
+        {
+            "_id": 4,
+            "avatarUrl": "https://combo.staticflickr.com/pw/images/buddyicon00_m.png#22501572@N05",
+            "Fname": "Samar",
+            "Lname":"Nabil",
+            "UserName": "samar_nabil",
+            "numberOfFollowers":3.3,
+            "numberOfPublicPhotos": 129,
+            "Date_joined": "april 2015",
+            "isFollowed" :true
+        },
+        {
+            "_id": 5,
+            "avatarUrl": "https://combo.staticflickr.com/pw/images/buddyicon00_m.png#22501572@N05",
+            "Fname": "Samar",
+            "Lname":"Nabil",
+            "UserName": "samar_nabil",
+            "numberOfFollowers":3.3,
+            "numberOfPublicPhotos": 129,
+            "Date_joined": "april 2015",
+            "isFollowed" :true
+        },
+        {
+            "_id": 6,
+            "avatarUrl": "https://combo.staticflickr.com/pw/images/buddyicon00_m.png#22501572@N05",
+            "Fname": "Samar",
+            "Lname":"Nabil",
+            "UserName": "samar_nabil",
+            "numberOfFollowers":3.3,
+            "numberOfPublicPhotos": 129,
+            "Date_joined": "april 2015",
+            "isFollowed" :true
+        },{
+            "_id": 7,
+            "avatarUrl": "https://combo.staticflickr.com/pw/images/buddyicon00_m.png#22501572@N05",
+            "Fname": "Samar",
+            "Lname":"Nabil",
+            "UserName": "samar_nabil",
+            "numberOfFollowers":3.3,
+            "numberOfPublicPhotos": 129,
+            "Date_joined": "april 2015",
+            "isFollowed" :true
+        },
+        {
+            "_id": 8,
+            "avatarUrl": "https://combo.staticflickr.com/pw/images/buddyicon00_m.png#22501572@N05",
+            "Fname": "Samar",
+            "Lname":"Nabil",
+            "UserName": "samar_nabil",
+            "numberOfFollowers":3.3,
+            "numberOfPublicPhotos": 129,
+            "Date_joined": "april 2015",
+            "isFollowed" :true
+        },{
+            "_id": 9,
+            "avatarUrl": "https://combo.staticflickr.com/pw/images/buddyicon00_m.png#22501572@N05",
+            "Fname": "Samar",
+            "Lname":"Nabil",
+            "UserName": "samar_nabil",
+            "numberOfFollowers":3.3,
+            "numberOfPublicPhotos": 129,
+            "Date_joined": "april 2015",
+            "isFollowed" :false
+        }
+       
+        
+    ],"group":[
+        { 
+            "id": 0,
+            "url": "https://live.staticflickr.com/7698/buddyicons/132622657@N06_r.jpg?1429140120#132622657@N06",
+            "name": "Samar Nabil",
+            "num_members":"3.3k",
+            "num_photos": "129",
+            "role":"member",
+            "createdAt": "2015-2-1"
+        },
+        {
+            "id": 1,
+            "url": "https://live.staticflickr.com/7698/buddyicons/132622657@N06_r.jpg?1429140120#132622657@N06",
+            "name": "Samar Nabil",
+            "num_members":"3.3k",
+            "role":"",
+            "num_photos": "129",
+            "createdAt": "2015-2-1"
+        },
+        {
+            "id": 2,
+            "url": "https://picsum.photos/600/200?random=1",
+            "name": "Samar Nabil",
+            "num_members":"3.3k",
+            "role":"member",
+            "num_photos": "129",
+            "createdAt": "2015-2-1"
+        },
+        {
+            "id": 3,
+            "url": "https://picsum.photos/400/400?random=3",
+            "name": "Samar Nabil",
+            "num_members":"3.3k",
+            "role":"",
+            "num_photos": "129",
+            "createdAt": "2015-2-1"
+        },
+        {
+            "id": 4,
+            "url": "https://picsum.photos/300/400?random=1",
+            "name": "Samar Nabil",
+            "num_members":"3.3k",
+            "role":"",
+            "num_photos": "129",
+            "createdAt": "2015-2-1"
+        },
+        {
+            "id": 5,
+            "url": "https://picsum.photos/400/400?random=1",
+            "name": "Samar Nabil",
+            "num_members":"3.3k",
+            "role":"member",
+            "num_photos": "129",
+            "createdAt": "2015-2-1"
+        },
+        {
+            "id": 6,
+            "url": "https://picsum.photos/500/200?random=1",
+            "name": "Samar Nabil",
+            "num_members":"3.3k",
+            "role":"member",
+            "num_photos": "129",
+            "createdAt": "2015-2-1"
+        },{
+            "id": 7,
+            "url": "https://picsum.photos/500/200?random=1",
+            "name": "Samar Nabil",
+            "num_members":"3.3k",
+            "role":"member",
+            "num_photos": "129",
+            "createdAt": "2015-2-1"
+        },
+        {
+            "id": 8,
+            "url": "https://picsum.photos/500/200?random=1",
+            "name": "Samar Nabil",
+            "num_members":"3.3k",
+            "role":"member",
+            "num_photos": "129",
+            "createdAt": "2015-2-1"
+        },{
+            "id": 9,
+            "url": "https://picsum.photos/500/200?random=1",
+            "name": "Samar Nabil",
+            "num_members":"3.3k",
+            "role":"member",
+            "num_photos": "129",
+            "createdAt": "2015-2-1"
+        }
+       
+    ]
+
 }

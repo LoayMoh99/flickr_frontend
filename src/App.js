@@ -9,17 +9,18 @@ import Photostream from "./components/photostream/Photostream"
 import EditInfo from "./components/photostream/EditInfo"
 import TotExplore from "./components/Explore/TotExplore"
 import CameraRoll from "./components/CameraRoll/CamreRoll"
-import About from "./components/About/About"
-import Blog from "./components/Blog/Blog"
 import GroupHeader from "./components/groupHeader/GroupHeader"
 import Jobs from "./components/Job/Jobs"
 import Signup from "./components/Signup/signup"
 import Login from "./components/UserLogin/Login"
 import AddPhotos from "./components/GroupPhotos/AddPhotos"
 import React from 'react';
-import {BrowserRouter as Router, Switch , Route} from "react-router-dom";
 import AlbumPage from './components/Album/AlbumPage'
-const endpoint = 'http://localhost:3001/'
+ import About from "./components/About/About"
+ import Blog from "./components/Blog/Blog"
+import  SearchPeople from "./components/Search/SearchPeople"
+import SearchGroup from "./components/Search/SearchGroup"
+ import {BrowserRouter as Router, Switch , Route} from "react-router-dom";
 
 function App() {
 
@@ -30,7 +31,6 @@ function App() {
   return (
     <Router>
     <div className="App">
-      {/* <Header/> */}
       <Switch>
       <Route path="/" exact component={Login}/>
       <Route path="/sign-up" component={Signup}/>
@@ -49,16 +49,15 @@ function App() {
       <Route path="/imagedetails/:id/:userId" component={ImageDetails}/>
       <Route path="/AlbumPage/:idToOpen" component={AlbumPage}/>
       </Switch>
-      {/* <ImageDetails
-      image_url= {dd}
-      /> */}
-      {/* <GroupHeader groupId="608c80ce54e3d74b34d9bb5a"/> */}
-      {/* <Footer/>  */}
     </div>
+      {/* <Switch>
+      <Route path="/" exact component={SearchGroup}/>
+      <Route path="/UserInfo/:id"  component={About}/>
+      <Route path="/Group/:id/members"  component={About}/>
+      <Route path="/Group/:id/photos"  component={Blog}/>
+      </Switch> */}
     </Router>
-    // <div className="App">
-    //   <Signup/>
-    // </div>
+    
 
 
   );

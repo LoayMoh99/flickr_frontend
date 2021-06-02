@@ -1,0 +1,52 @@
+.cardPeople{
+    background-color: white;
+    padding: 10px;
+    display: flex;
+    /* width: 35%; */
+    color: #212529;
+    height: 120px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 2%;
+    margin-right: 2%;
+    cursor: pointer;
+}
+.peopleAvatar{
+    flex-basis: 25%;
+}
+.peopleAvatar img{
+    width: 80%;
+    border-radius: 50%;
+    padding: 5px;
+}
+.titleAndfollow{
+    display: flex;
+    justify-content: space-between;
+}
+
+.peopleInfo{
+    display: flex;
+    flex-direction: column;
+    
+    flex-basis: 75%;
+    justify-content: space-between;
+}
+.cardLinks{
+    width: 100%;
+}
+.cardLinks span{
+    margin-right: 10px;
+}
+.cardLinks span,.cardLinks a{
+    color: darkgrey;
+}
+.cardLinks a svg{
+    margin-right: 5px;
+}
+.cardLinks a:hover{
+    color: darkgrey;
+}
+.last{
+    float: right;
+    margin-right: 0;
+}
