@@ -1,0 +1,49 @@
+.HandleJoin{
+    z-index: 100;
+    position: absolute;
+    right: 25px;
+    top: 25px;
+}
+.HandleJoin button,.HandleJoin button svg{
+    color: #fff;
+    background-color: #2a81ea;
+    border: none;
+    border-radius: 3px;
+    padding: 6px 24px;
+    cursor: pointer;
+    z-index: 2;
+}
+.HandleJoin button.buttonJoined svg{
+    background-color: transparent;
+}
+.HandleJoin button:hover{
+    background-color: #3295ff;
+}
+/* .titleAndjoin button:after{
+    content: 'Join';
+}
+.titleAndjoin button:hover:after{
+    content: 'ADD';
+} */
+.HandleJoin button svg{
+    padding: 0;
+}
+.HandleJoin button.buttonJoining{
+    color: #2a81ea;
+    background-color: #fff;
+    border:2px solid #2a81ea;
+    border-radius: 3px;
+    padding: 6px 12px;
+    cursor: pointer;
+    z-index: 2;
+}
+.HandleJoin button.buttonJoining svg{
+    color: #2a81ea;
+background-color: transparent;
+}
+.HandleJoin button.buttonJoining:after{
+    content: 'Joined';
+}
+.HandleJoin button.buttonJoining:hover:after{
+    content: 'Leave';
+}
