@@ -45,14 +45,14 @@ function App() {
       <Route path="/Jobs" component={Jobs}/>
       <Route path="/EditInfo" component={EditInfo}/>
       <Route path="/CameraRoll" component={CameraRoll}/>
-      {/* <Route path="/FollwingFollowers/:me/:id" component={FollwingFollowers}/> */}
+      <Route path="/FollwingFollowers/:isUser/:id" component={FollwingFollowers}/>
       <Route path="/FollwingFollowers" component={FollwingFollowers}/>
       <Route path="/Followers" component={Followers}/>
       <Route path="/Explore" component={TotExplore}/>
       <Route path="/Add/:groupId" component={AddPhotos}/>
       <Route path="/upload" component={Upload}/>
       <Route path="/imagedetails/:id/:userId" component={ImageDetails}/>
-      <Route path="/AlbumPage/:idToOpen" component={AlbumPage}/>
+      <Route path="/AlbumPage/:idToOpen/:isUser" component={AlbumPage}/>
       <Route path="/searchPeople/:text" component={SearchPeople}/>
       <Route path="/searchGroup/:text" component={SearchGroup}/>
       </Switch>

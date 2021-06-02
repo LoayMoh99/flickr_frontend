@@ -4,17 +4,17 @@ import defaultProfile from '../../img/deefault.jpg';
 import Header from '../navbar/mainNav';
 import Footer from '../navbar/footer'
 import {GetUserFollowing} from "../../services/userServices"
-import {GetPeopleFavs, GetPeopleFollowing} from "../../services/peopleServices"
+import {GetPeopleFollowing} from "../../services/peopleServices"
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import axios from "axios"
 import {Link} from "react-router-dom";
-const endpoint = 'http://localhost:3001/'
 
 export default function FollwingFollowers(props){
         const [allfollowing, setFollowing] = useState([]);
         const {id}=useParams();
+        const {isUser}=useParams();
         useEffect(() => {
-            /*if(props===true){
+            if(isUser===true){
                 GetUserFollowing().then( response => {
                     setFollowing(response.data);
                 })
@@ -23,12 +23,12 @@ export default function FollwingFollowers(props){
                 GetPeopleFollowing(id).then( response => {
                     setFollowing(response.data);
                 })
-            }*/
+            }
 
             ////remove on integration replace it with the prev comment
-            GetUserFollowing().then( response => {
-                setFollowing(response.data);
-            })
+            // GetUserFollowing().then( response => {
+            //     setFollowing(response.data);
+            // })
         },[]);
     const navStyle={
         color:'black'

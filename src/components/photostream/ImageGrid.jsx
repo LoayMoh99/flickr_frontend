@@ -44,22 +44,27 @@ function ImageGrid(props){
     function addToFav(){
         console.log(props.id);
         //api
+        // const object={
+        //     "photoUrl": "https://picsum.photos/200/200?random=2",
+        //     "title": "added Fav",
+        //     "descript": "description",
+        //     "Fav": [],
+        //     "privacy": "public",
+        //     "tags": [],
+        //     "ownerId": 0,
+        //     "peopleTags": [],
+        //     "comments": 78,
+        //     "Favs": 60,
+        //     "Username": "username",
+        //     "Name": "Samar Nabil"
+        // }
+
         const object={
-            "photoUrl": "https://picsum.photos/200/200?random=2",
-            "title": "added Fav",
-            "descript": "description",
-            "Fav": [],
-            "privacy": "public",
-            "tags": [],
-            "ownerId": 0,
-            "peopleTags": [],
-            "comments": 78,
-            "Favs": 60,
-            "Username": "username",
-            "Name": "Samar Nabil"
+            "photo_id":props.id
         }
-        // PostUserFavs(props.id).then( response => {
-        PostUserFavs(props.id,object).then( response => {
+
+        PostUserFavs(object).then( response => {
+        // PostUserFavs(props.id,object).then( response => {
             console.log(response);
             if(response.status === 500){
                 DeleteUserFavs(props.id).then( response => {

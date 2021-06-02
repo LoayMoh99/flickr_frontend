@@ -68,7 +68,7 @@ function Photostream(props){
                     {userPhotos.map(photo => (
                     //<Link  style={navStyle} to={`/imagedetails/${photo.id}`}>
                     <ImageGrid
-                    id = {photo.id}
+                    id = {photo._id}
                     url ={photo.photoUrl} 
                     title ={photo.title} 
                     description = {photo.description}

@@ -11,10 +11,8 @@ import AlbumCoverPhoto from './AlbumCoverPhoto';
 import Header from '../navbar/mainNav'
 import {GetAlbumById} from '../../services/albumServices'
 import { Link } from 'react-router-dom';
-const endpoint = 'http://localhost:3001/'
 
 function AlbumPage(props) {
-
 
     const path = props.location.pathname;
     var index = path.split('/');
@@ -93,8 +91,8 @@ function AlbumPage(props) {
         {/* {album.map(album =>  */}
         { album.photos.map(photo => (
             <ImageGrid
-            //id = {photo._id}
-            id = {photo.id}
+            id = {photo._id}
+            // id = {photo.id}
             url ={photo.photoUrl} 
             title ={photo.title} 
             description = {photo.description}

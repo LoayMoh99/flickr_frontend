@@ -57,8 +57,8 @@ function AddModal(props) {
             albumCover = {album.coverPhoto.photoUrl}
             albumTitle = {album.title}
             //photoCount = {album.photos.length}
-           // albumId ={album._id}
-           albumId ={album.id}
+           albumId ={album._id}
+          //  albumId ={album.id}
             albumPhotos = {album.photos}
             imgAddIds = {imgAddIds}
            />)

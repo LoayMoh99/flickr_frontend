@@ -11,11 +11,11 @@ export default function Header(props){
     //
     const [searchText,setSearchText]=useState();
     const showDropDown = e => setSearchText(e.target.value);
-    function checkSize(){
-        if(window.innerWidth>1080){
-            readjustHeader();
-        }
-    }
+    // function checkSize(){
+    //     if(window.innerWidth>1080){
+    //         readjustHeader();
+    //     }
+    // }
     const navStyle={
         color:'white'
     };
@@ -32,7 +32,7 @@ export default function Header(props){
 
     }
     
-    window.addEventListener('resize',checkSize);
+    // window.addEventListener('resize',checkSize);
     return(
             <div>
         <nav className="navbar fix_nav">

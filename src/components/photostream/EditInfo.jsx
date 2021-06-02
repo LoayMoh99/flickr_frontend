@@ -41,8 +41,8 @@ function EditInfo(){
         const ids = {
             "photos":[idToDelete]
         };
-        // DeletePhoto(ids).then( response => {
-        DeletePhoto(idToDelete).then( response => {
+        DeletePhoto(ids).then( response => {
+        // DeletePhoto(idToDelete).then( response => {
             console.log(response);
         });
         //close delete modal
@@ -63,7 +63,7 @@ function EditInfo(){
             <div className="card-grid">
             {photos.map(photo =>(
                 <Card 
-                    id = {photo.id}
+                    id = {photo._id}
                     url ={photo.photoUrl} 
                     title ={photo.title} 
                     description = {photo.description}

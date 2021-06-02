@@ -9,7 +9,7 @@ import axios from 'axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Link , Route, useParams } from 'react-router-dom'
-import GetPeoplePhotos,{GetPeopleByIdentefier} from "../../services/peopleServices"
+import {GetPeopleByIdentefier} from "../../services/peopleServices"
 //import UpdateUser from "../../services/userServices"
 import Faves from '../Faves/Faves';
 import AlbumPreview from '../Album/AlbumPreview'
@@ -27,58 +27,58 @@ export default function Userinfo(props){
 
     const [userPhotos, setUserPhotos] = useState([]);
     const [peoplePhotos, setPeoplePhotos] = useState([]);
-    const [userId , setUserId] = useState(0)
+    const [userId , setUserId] = useState(0);
     const [userInfo, setUserInfo] = useState([]);
     const [isUser , setIsUser] = useState(false);
     const [userName , setUserName] = useState('');
 
     //get request
     useEffect( () =>{
-
         // check if i am in the user or in people profile//////FOR INTEGRATION/////////////////////////
-        // checkUserByIdentifier().then(response=>{
-        //     if(response.data===true){
-        //         //get user
-        //         GetUser().then( response => {
-        //             setUserInfo(response.data);
-        //         console.log(response)
-        //         })
-        //         //get user photos
-        //         GetUserPhotos().then( response => {
-        //             setUserPhotos(response.data);
-        //         })
-        //         setFollowing(false);
-        //         setIsUser(true);
-        //     }
-        //     else{
-        //         ////Not me!
-        //         setUserId(id);
-        //         GetPeopleByIdentefier(userId).then(response=>{
-        //             setUserInfo(response.data);
-        //             setUserName(response.UserName)
-        //             if(response.Follow===true){
-        //                 setFollowing(true);
-        //             }
-        //             else{
-        //                 setFollowing(false);
-        //             }
-        //         })
-        //     }
+        checkUserByIdentifier(id).then(response=>{
+            if(response.data===true){
+                //get user
+                GetUser().then( response => {
+                    setUserInfo(response.data);
+                console.log(response)
+                })
+                //get user photos
+                GetUserPhotos().then( response => {
+                    setUserPhotos(response.data);
+                })
+                setFollowing(false);
+                setIsUser(true);
+            }
+            else{
+                ////Not me!
+                setIsUser(false);
+                setUserId(id);
+                GetPeopleByIdentefier(userId).then(response=>{
+                    setUserInfo(response.data);
+                    setUserName(response.UserName)
+                    if(response.Follow===true){
+                        setFollowing(true);
+                    }
+                    else{
+                        setFollowing(false);
+                    }
+                })
+            }
+        })
+        // //get user
+        // GetUser().then( response => {
+        //     setUserInfo(response.data);
         // })
-        //get user
-        GetUser().then( response => {
-            setUserInfo(response.data);
-        })
-        //get user photos
-        GetUserPhotos().then( response => {
-            setUserPhotos(response.data);
-        })
-        //get people photos by userId
-        GetPeoplePhotos(userId).then( response => {
-            setPeoplePhotos(response.data);
-        })
-    },[])
-    // },[userInfo,userPhotos])
+        // //get user photos
+        // GetUserPhotos().then( response => {
+        //     setUserPhotos(response.data);
+        // })
+        // //get people photos by userId
+        // GetPeoplePhotos(userId).then( response => {
+        //     setPeoplePhotos(response.data);
+        // })
+    // },[])
+    },[userInfo,userPhotos])
 
 
     const [isPhotoStream,setPhotoStream] = useState(true);
@@ -144,22 +144,16 @@ export default function Userinfo(props){
         console.log("ana fe el changeSelection");
         if(avatarBackground===1){
             const newUserInfo={
-                Fname: "ay7aga",
-                Lname: "ay7aga",
-                Following: 150,
-                Followers: 100,
-                views: 70,
-                Date_joined: "2021-05-30",
-                Email: "emal@gmail",
-                Photo: 0,
-                UserName: "FaraMostafa",
-                Avatar: "https://picsum.photos/500/300?random=1",
+                Fname: userInfo.Fname,
+                Lname: userInfo.Lname,
+                Password: userInfo.Password,
+                Avatar: userInfo.Avatar,
                 BackGround: newimageUrl,
                 About: {
-                Description: "string",
-                Hometown: "string",
-                Occupation: "string",
-                CurrentCity: "string"
+                Description: userInfo.About.Description,
+                Hometown: userInfo.About.Hometown,
+                Occupation: userInfo.About.Occupation,
+                CurrentCity: userInfo.About.CurrentCity
                 }
             }
             UpdateUser(newUserInfo).then(response=>{
@@ -169,22 +163,16 @@ export default function Userinfo(props){
         }
         else{
             const newUserInfo={
-                Fname: "string",
-                Lname: "string",
-                Following: 150,
-                Followers: 100,
-                views: 70,
-                Date_joined: "2021-05-30",
-                Email: "emal@gmail",
-                Photo: 0,
-                UserName: "FaraMostafa",
+                Fname: userInfo.Fname,
+                Lname: userInfo.Lname,
+                Password: userInfo.Password,
                 Avatar: newimageUrl,
-                BackGround: "https://picsum.photos/500/300?random=1",
+                BackGround: userInfo.BackGround,
                 About: {
-                Description: "string",
-                Hometown: "string",
-                Occupation: "string",
-                CurrentCity: "string"
+                Description: userInfo.About.Description,
+                Hometown: userInfo.About.Hometown,
+                Occupation: userInfo.About.Occupation,
+                CurrentCity: userInfo.About.CurrentCity
                 }
             }
             UpdateUser(newUserInfo).then(response=>{
@@ -295,14 +283,17 @@ export default function Userinfo(props){
                             <div className="profImg" onClick={()=>{showEdit(2)}} style={{backgroundImage: `url(${userInfo.Avatar})`}}></div>
                             <div className="nameAndInfo">
                                 <h1>{userInfo.Fname} {userInfo.Lname}</h1>
+                                {!isUser &&
+                                <div>
                                 {isFollowing &&<button className="followButton" onClick={postFollowRequest()}>{plusIcon} Follow</button>}
+                                </div>}
                                 <div className="numbers">
                                     <div className="follwingFollowers">
                                         <p>{userInfo.UserName}</p>
                                         <ul className="NavbarAndheaderul">
                                             <li><Link  style={navStyle} to="/Followers">{userInfo.Followers} followers</Link></li>
-                                            <li><Link  style={navStyle} to="/FollwingFollowers">{userInfo.Following} following</Link></li>
-                                            {/* <li><Link  style={navStyle} to={`/FollwingFollowers/${props}/${id}`}>{userInfo.Following} following</Link></li> */}
+                                            {/* <li><Link  style={navStyle} to="/FollwingFollowers">{userInfo.Following} following</Link></li> */}
+                                            <li><Link  style={navStyle} to={`/FollwingFollowers/${isUser}/${id}`}>{userInfo.Following} following</Link></li>
                                         </ul>
                                     </div>
                                     <div className="joined">
