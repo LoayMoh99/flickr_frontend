@@ -109,7 +109,7 @@ export async function checkUserByIdentifier(id){
 
 export async function GetUserPhotos (){
     try{
-        const response = await axios.get( SERVER_URL+'user/photos');
+        const response = await axios.get( SERVER_URL+'user/photos',{headers:{token:localStorage.token}});
         // const response = await axios.get( SERVER_URL+'photos');
         //Success
         return(response)
@@ -170,7 +170,7 @@ export async function GetUserFavs(){
 
 export async function PostUserFavs(id,object){
   try{
-      const response = await axios.post( SERVER_URL+'favs',object);
+      const response = await axios.post( SERVER_URL+'favs/'+id,object);
       // const response = await axios.post( SERVER_URL+'userFav',object);
       //Success
       return(response)
@@ -190,7 +190,7 @@ export async function PostUserFavs(id,object){
 
 export async function DeleteUserFavs(id){
   try{
-      const response = await axios.delete( SERVER_URL+'favs?photo_id='+id);
+      const response = await axios.delete( SERVER_URL+'favs/'+id);
       // const response = await axios.delete( SERVER_URL+'userFav/'+id);
       //Success
       return(response)

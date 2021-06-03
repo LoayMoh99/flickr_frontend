@@ -7,7 +7,8 @@ import { Link } from 'react-router-dom'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import axios from "axios"
-
+const formdata=require('form-data');
+//import fs  from  'fs';
 export default function Upload(props){
 
     const navStyle={
@@ -15,9 +16,14 @@ export default function Upload(props){
     };
 
     const [image, setImage] = useState("");
-    const onchange = e => setImage(URL.createObjectURL(e.target.files[0]));
+    const onchange = e =>{  
+        console.log(e);
+        //e.target.value
+       setImage(e.target.files[0])
+    };
+   
 
-    const [tag, setTag] = useState();
+    const [tag, setTag] = useState([]);
     const addtag = e => setTag(e.target.value);
     console.log(tag);
 
@@ -25,6 +31,7 @@ export default function Upload(props){
 
     const addImageToCameraroll = async () => {
         console.log("yalahwaaaiii");
+        //fs.createReadStream(image.name);
         console.log(image);
         const newImage = {
             title: "title",
@@ -66,7 +73,7 @@ export default function Upload(props){
             <Link  style={navStyle} to="/">
                 <span>Your Photostream</span>
             </Link>
-            {image && <Link style={navStyle} to="/user"><button className="postPhoto" onClick={addImageToCameraroll}>{plus}Add</button></Link>}
+            {image && <Link style={navStyle} to="/user"><button className="postPhoto" onClick={addImageToCameraroll} type='submit'>{plus}Add</button></Link>}
             </div>
             </div>
             </nav>
@@ -75,7 +82,7 @@ export default function Upload(props){
                 <p>Drag & drop photos here</p>
                 <p>or</p></div>}
                 <div>
-                <p><input type="file"  accept="image/*" name="image" id="file"  onChange={onchange} /></p>
+                <p><form enctype="multipart/form-data"><input type="file"  accept="image/*" name="image" id="file"  onChange={onchange} /></form></p>
                 <p><label for="file" >Upload Image</label></p>
                 <p><img id="output" width="200" /></p>
                 {image && <img src={image} alt="The current file" id="selectedImg" />}

@@ -1,7 +1,7 @@
 import axios from "axios"
 import configData from "../config/development.json"
 const SERVER_URL = configData.SERVER_URL ;
-
+const fs=require('fs');
 export default async function DeletePhoto (ids){
     try{
         const response = await axios.delete( SERVER_URL+'photo/',ids,{headers:{token:localStorage.token}});
@@ -74,7 +74,7 @@ export async function UpdatePhotos (object){
 
 export async function GetComments (id){
     try{
-        const response = await axios.get(SERVER_URL+'photo_id='+id+'comments',{headers:{token:localStorage.token}})
+        const response = await axios.get(SERVER_URL+'photo/'+id+'/comments',{headers:{token:localStorage.token}})
         // const response = await axios.get(SERVER_URL+'comments')
         //Success
         return(response)
@@ -94,7 +94,7 @@ export async function GetComments (id){
 
 export async function GetPhotoById (id){
   try{
-      const response = await axios.get(SERVER_URL+'photo?photo_id='+id,{headers:{token:localStorage.token}})
+      const response = await axios.get(SERVER_URL+'photo/'+id,{headers:{token:localStorage.token}})
       // const response = await axios.get(SERVER_URL+'photos/'+id)
       //Success
       return(response)
@@ -114,7 +114,7 @@ export async function GetPhotoById (id){
 
 export async function PostComments (id,object){
     try{
-        const response = await axios.post(SERVER_URL+'photo_id='+id+'comments',object,{headers:{token:localStorage.token}})
+        const response = await axios.post(SERVER_URL+'photo/'+id+'/comments',object,{headers:{token:localStorage.token}})
         // const response = await axios.post(SERVER_URL+'comments',object)
         //Success
         return(response)
@@ -176,6 +176,7 @@ export async function addTag (object)
 export async function PostPhoto (object){
   console.log(object);
   try{
+    const buffer=fs.createReadStream(object.file.name);
       const response = await axios.post(SERVER_URL+'photos',object,{headers:{token:localStorage.token}})
       console.log("ana fe el photossss service",response);
       //Success

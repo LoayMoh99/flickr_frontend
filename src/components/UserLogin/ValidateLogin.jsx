@@ -11,8 +11,8 @@ export default function validateLogin(values) {
     //more than 12 characters
     if (!values.password) {
         errors.password = " password is required";
-    }else if (values.password.length < 12) {
-        errors.password = "password needs to be more than 12 characters";
+    }else if (values.password.length < 3) {
+        errors.password = "password needs to be more than 3 characters";
     }
     return errors;
 }

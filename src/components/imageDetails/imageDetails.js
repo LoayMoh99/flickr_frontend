@@ -41,29 +41,29 @@ export default function ImageDetails(props){
     const [userInfo, setUserInfo] = useState([]);
     //get request
     useEffect( () =>{
-     if(userId){
+    // if(userId){
         //get user photos
-        GetUserPhotos().then( response => {
-            if(response!=undefined){
-                setisUndefineduserPhotos(false);
-                setUserPhotos(response.data);
-                console.log(response)
-            }
-            else{
-                setisUndefineduserPhotos(true);
-            }
-        })
-     }else{
-        //get people photos by userId
-        GetPeoplePhotos(userId).then( response => {
-            if(response!=undefined){
-                setisUndefinedPeoplePhotos(false);
-                setPeoplePhotos(response.data);
-            }else{
-                setisUndefinedPeoplePhotos(true);
-            }
-        })
-     }
+        // GetUserPhotos().then( response => {
+        //     if(response!=undefined){
+        //         setisUndefineduserPhotos(false);
+        //         setUserPhotos(response.data);
+        //         console.log(response)
+        //     }
+        //     else{
+        //         setisUndefineduserPhotos(true);
+        //     }
+        // })
+    //  }else{
+    //     //get people photos by userId
+    //     GetPeoplePhotos(userId).then( response => {
+    //         if(response!=undefined){
+    //             setisUndefinedPeoplePhotos(false);
+    //             setPeoplePhotos(response.data);
+    //         }else{
+    //             setisUndefinedPeoplePhotos(true);
+    //         }
+    //     })
+    //  }
 
 
     //get photo by id
@@ -72,12 +72,12 @@ export default function ImageDetails(props){
         setDiscription(response.data.description);
         setTitle(response.data.title);
         // setNumOfFavs(response.data.Fav.length);
-        setNumOfFavs(response.data.num_favs);
-        setDatOfUpdate(response.data.UpdatedAt);
+        setNumOfFavs(response.data.Fav.length);
+        setDatOfUpdate(response.data.updatedAt);
     })
 
     //get comments
-    GetComments().then( response => {
+    GetComments(id).then( response => {
         if(response!=undefined){
             setisUndefinedcomments(false);
             setComments(response.data);

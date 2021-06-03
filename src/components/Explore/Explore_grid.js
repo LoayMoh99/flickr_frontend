@@ -3,6 +3,7 @@ import './Exploregrid.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faStar,faPlusSquare,faComment,faFolderOpen} from '@fortawesome/free-solid-svg-icons'
 import Comments from "./Comments"
+import fav from "./Favs"
 
 import {Link} from "react-router-dom";
 import {PostUserFavs,DeleteUserFavs} from '../../services/userServices'
@@ -25,7 +26,7 @@ function Explore_Grid(props){
 
     // overlay
     const [isMousedOver, setMouseOver] = useState(false);
-    const [isFav , setIsFav] = useState(props.favMode);
+    const [isFav , setIsFav] = useState(true);
     function handleMouseOver() {
         console.log(props.ownerName)
         setMouseOver(true);
@@ -84,7 +85,7 @@ function deleteFav(){
         <>
             
             <div className="item " >
-            <Link to={`/imagedetails/${props.id}/${props.ownerId}`}> <button className="open-photo">{open}</button></Link>
+            <Link to={`/imagedetails/${props.id}`}> <button className="open-photo">{open}</button></Link>
             <img 
             src={props.url} 
             onLoad={event => (
@@ -111,14 +112,14 @@ function deleteFav(){
                             :
                                 <> 
                                
-                                {isFav&&<li onClick={addToFav}>{fav} {props.numberOfFavs}</li>}
+                                {isFav&&<li onClick={addToFav}>{fav} {props.id}</li>}
                                 </>
                             }
                            
                     </div> 
                   
                     </ul>
-                    {isComment && <Comments numberOfComments= {props.numberOfComments} onClick={openCommentBox}/>}
+                    {isComment && <Comments id= {props.id}  onClick={openCommentBox}/>}
                        
                 </div>
             </div> 

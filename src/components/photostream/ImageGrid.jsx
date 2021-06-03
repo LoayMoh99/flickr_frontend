@@ -83,7 +83,7 @@ function ImageGrid(props){
     return(
         <>
             <div className="item">
-           <Link to={`/imagedetails/${props.id}/${props.ownerId}`}> <button className="open-photo">{open}</button></Link>
+           <Link to={`/imagedetails/${props.id}`}> <button className="open-photo">{open}</button></Link>
                 <img 
                 src={props.url} 
                 onLoad={event => (
@@ -114,7 +114,7 @@ function ImageGrid(props){
                             }
                         </div>   
                     </ul>
-                    {isComment && <CommentBox numberOfComments= {props.numberOfComments} photo_id={props.id} onClick={openCommentBox}/>}
+                    {isComment && <CommentBox numberOfComments= {props.id} photo_id={props.id} onClick={openCommentBox}/>}
                 </div>
             </div> 
         </>

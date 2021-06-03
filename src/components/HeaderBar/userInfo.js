@@ -29,7 +29,8 @@ export default function Userinfo(props){
     const [peoplePhotos, setPeoplePhotos] = useState([]);
     const [userId , setUserId] = useState(0);
     const [userInfo, setUserInfo] = useState([]);
-    const [isUser , setIsUser] = useState(false);
+    const [isUser , setIsUser] = useState(true);
+    const [IsUserinfo , setIsUserInfo] = useState(false);
     const [userName , setUserName] = useState('');
 
     //get request
@@ -40,6 +41,7 @@ export default function Userinfo(props){
         //         //get user
                 GetUser().then( response => {
                     setUserInfo(response.data);
+                    setIsUserInfo(true);
                 console.log(response)
                 })
         //         //get user photos
@@ -154,7 +156,9 @@ export default function Userinfo(props){
                 Hometown: userInfo.About.Hometown,
                 Occupation: userInfo.About.Occupation,
                 CurrentCity: userInfo.About.CurrentCity
-                }
+                },
+                Following:userInfo.Following.length,
+                Following:userInfo.Followers.length
             }
             UpdateUser(newUserInfo).then(response=>{
                 console.log("response.data",response.data);
@@ -173,7 +177,9 @@ export default function Userinfo(props){
                 Hometown: userInfo.About.Hometown,
                 Occupation: userInfo.About.Occupation,
                 CurrentCity: userInfo.About.CurrentCity
-                }
+                },
+                Following:userInfo.Following.length,
+                Following:userInfo.Followers.length
             }
             UpdateUser(newUserInfo).then(response=>{
                 console.log(response.data);
@@ -290,10 +296,10 @@ export default function Userinfo(props){
                                 <div className="numbers">
                                     <div className="follwingFollowers">
                                         <p>{userInfo.UserName}</p>
-                                        <ul className="NavbarAndheaderul">
-                                            <li><Link  style={navStyle} to="/Followers">{userInfo.Followers} followers</Link></li>
+                                        <ul className={IsUserinfo&&"NavbarAndheaderul"}>
+                                            <li><Link  style={navStyle} to='/FollwingFollowers/${isUser}/${id}'>{IsUserinfo&& userInfo.Followers.length} followers</Link></li>
                                             {/* <li><Link  style={navStyle} to="/FollwingFollowers">{userInfo.Following} following</Link></li> */}
-                                            <li><Link  style={navStyle} to={`/FollwingFollowers/${isUser}/${id}`}>{userInfo.Following} following</Link></li>
+                                            <li><Link  style={navStyle} to={`/FollwingFollowers/${isUser}/${id}`}>{IsUserinfo&& userInfo.Following.length} following</Link></li>
                                         </ul>
                                     </div>
                                     <div className="joined">

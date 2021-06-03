@@ -4,7 +4,7 @@ const SERVER_URL = configData.SERVER_URL ;
 
 export default async function GetPeoplePhotos (id){
     try{
-        const response = await axios.get( SERVER_URL+'user/photos',{headers:{token:localStorage.token}});
+        const response = await axios.get( SERVER_URL+'user/fav',{headers:{token:localStorage.token}});
         // const response = await axios.get( SERVER_URL+'peoplePhotos');
         //Success
         return(response)

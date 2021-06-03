@@ -51,7 +51,7 @@ function App() {
       <Route path="/Explore" component={TotExplore}/>
       <Route path="/Add/:groupId" component={AddPhotos}/>
       <Route path="/upload" component={Upload}/>
-      <Route path="/imagedetails/:id/:userId" component={ImageDetails}/>
+      <Route path="/imagedetails/:id" component={ImageDetails}/>
       <Route path="/AlbumPage/:idToOpen/:isUser" component={AlbumPage}/>
       <Route path="/searchPeople/:text" component={SearchPeople}/>
       <Route path="/searchGroup/:text" component={SearchGroup}/>

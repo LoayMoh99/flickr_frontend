@@ -12,22 +12,23 @@ import {Link} from "react-router-dom";
 export default function FollwingFollowers(props){
         const [allfollowing, setFollowing] = useState([]);
         const {id}=useParams();
-        const {isUser}=useParams();
+        const isUser=true;  //useParams();
         const [isUndefinedfollowers, setisUndefinedfollowers] = useState(true);
         const [isUndefinedfollowing, setisUndefinedfollowing] = useState(true);
         useEffect(() => {
-            if(isUser===true){
+            if(isUser!=undefined&& isUser===true){
+                var r;
                 GetUserFollowing().then( response => {
                     if(response!=undefined){
                         setisUndefinedfollowers(false);
-                        setFollowing(response.data);
+                        setFollowing(response.data.FollowingList);
                     }
                     else{
                         setisUndefinedfollowers(true);
                     }
                 })
             }
-            else{
+            else if(isUser!=undefined&&isUser==false){
                 GetPeopleFollowing(id).then( response => {
                     if(response!=undefined){
                         setisUndefinedfollowing(false);
@@ -85,11 +86,11 @@ export default function FollwingFollowers(props){
             <tbody>
             {(!isUndefinedfollowers ||!isUndefinedfollowing)&& allfollowing.map(user => (
                 <tr>
-                <th scope="row"><img src={user.avatar}></img> {user.Fname} {user.Lname}</th>
+                <th scope="row"><img src={user.Avatar}></img> {user.Fname} {user.Lname}</th>
                 <td>{user.Photos}</td>
                 {/* <td>200</td> */}
                 <td>{user.UserName}</td>
-                <td>user.Email</td>
+                <td>{user.Email}</td>
                 </tr>
             ))}
             </tbody>
