@@ -9,7 +9,7 @@ function AddAlbumImages(props) {
     const check = <FontAwesomeIcon icon={faCheckCircle} color="cornflowerblue" size="1x"/>;
     const  { albumCover , albumTitle , albumPhotos , imgAddIds , albumId }= props;
     const [photoCount,setPhotoCount]= useState(albumPhotos.length);
-    const [isChecked,setIsChecked]= useState(false);
+    const [isChecked,setIsChecked]= useState(true);
 
     // console.log(imgAddIds);
     console.log(isChecked);
@@ -72,7 +72,7 @@ function AddAlbumImages(props) {
   
     useEffect(() => {
         isPhotoPresent()
-    },[isChecked]);
+    },[]);
 
 
     return (
