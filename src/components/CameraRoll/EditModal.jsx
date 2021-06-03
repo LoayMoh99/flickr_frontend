@@ -101,7 +101,7 @@ const updatedPhotoPeopleTag ={
 // To addPeopleTag
 const updatedPhotoTag ={
   "photos":imgEditIds,
-  "tag":[inputTag]
+  "tag":inputTag
 };
 
 //to add title
@@ -126,7 +126,7 @@ function confirmEdit()
 {
   if(tagAdded) // call addTag handler
   {
-    
+    console.log(updatedPhotoTag);
     addTag(updatedPhotoTag).then( response => {
       console.log(response.status);
   }) 
@@ -134,7 +134,7 @@ function confirmEdit()
   }
   if(peopleAdded) // call addPeople handler
   {
-    
+    console.log(updatedPhotoPeopleTag);
     addPeopleTag(updatedPhotoPeopleTag).then( response => {
       console.log(response.status);
     }) 

@@ -156,6 +156,7 @@ export async function PostComments (id,object){
 export async function addTag (object)
 {
           try{
+            console.log(object);
        const response = await axios.post(SERVER_URL+'photo/tag', object,{headers:{token:localStorage.token}});
     
       return(response)

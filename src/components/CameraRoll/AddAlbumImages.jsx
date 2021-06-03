@@ -70,7 +70,7 @@ function AddAlbumImages(props) {
   
     useEffect(() => {
         isPhotoPresent()
-    },[]);
+    },[isChecked]);
 
 
     return (
@@ -89,12 +89,12 @@ function AddAlbumImages(props) {
                     </h5>
                   </div>
                   {/* <div> */}
-                  {isChecked&&
-                  (
+                  {isChecked &&
+                  
                   <div className="checkIcon">
                     {check}
                   </div>
-                  )}
+                  }
                   {/* </div> */}
                 {/* </div> */}
             </div>

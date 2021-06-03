@@ -43,8 +43,8 @@ function AlbumPage(props) {
           setUndefined(false);
         }
     }) 
- },[album])
-// },[])
+//  },[album])
+},[])
 
  let isPhotoSelected;
  function showPhoto(id){
@@ -73,7 +73,7 @@ function AlbumPage(props) {
 
       {/* { album.map(album=>  */}
       {/* to validate API response */}
-       { !isUndefined && <AlbumCoverPhoto 
+       { album !=undefined && <AlbumCoverPhoto 
         coverPhoto = {album.coverPhoto.photoUrl}
         title = {album.title}
         description = {album.description}
@@ -87,7 +87,7 @@ function AlbumPage(props) {
         {/* )} */}
         
          {/* to validate API response */}
-       { !isUndefined &&<div className="grid" id="album">
+       { album!=undefined &&<div className="grid" id="album">
         {/* {album.map(album =>  */}
         { album.photos.map(photo => (
             <ImageGrid
