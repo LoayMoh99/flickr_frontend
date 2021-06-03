@@ -87,7 +87,7 @@ function Modal(props) {
               Download
             </h3> */}
             <a href="#" onClick={ () =>{
-                    props.onDeleteRequest(props.key);}}>
+                    props.onDeleteRequest(props.imgSelected);}}>
               <h3 className="modal__title_main" id="delete_option">
                 {deleteit}
                 {' '}

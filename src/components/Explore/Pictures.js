@@ -22,6 +22,7 @@ export default function Pictures() {
         
         getExplorePhotos().then( response => {
 
+          if(response.data!=undefined)
             setPhotos(response.data);
         })
       },[photos2])
@@ -62,6 +63,7 @@ export default function Pictures() {
       <div className="grid">
       {photos2.map(photo => (
        // <Link  style={navStyle} to={`/imagedetails/${photo.id}`}>
+       // <Link  style={navStyle} to={`/imagedetails/${photo._id}` }>
           <ExploreGrid
           id = {photo._id}
           url ={photo.photoUrl} 
@@ -72,8 +74,8 @@ export default function Pictures() {
          numberOfComments ={photo.comments.length}
          comments={photo.comments}
            onOpenRequest={showPhoto}
-           // /></Link>
-          />
+           />//</Link>
+          //>
       ))}
       <div className="placeholder"></div>
       </div>

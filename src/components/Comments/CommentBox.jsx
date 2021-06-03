@@ -10,7 +10,7 @@ function CommentBox(props){
 
     //get request
     useEffect( () =>{
-        GetComments().then( response => {
+        GetComments(props.photo_id).then( response => {
             setComments(response.data);
         })
     },[comments])
@@ -27,18 +27,8 @@ function CommentBox(props){
         const object ={
             comment:newComment
         }
-        // const object ={
-        //     comment: newComment,
-        //     user: {
-        //       "Fname": "John",
-        //       "Lname": "Smith",
-        //       "id":"100"
-        //     },
-        //     createdAt: "2020-5-23",
-        //     updatedAt: "2021-4-2"
-        // }
-        //API
-        PostComments(object).then( response => {
+        
+        PostComments(props.photo_id,object).then( response => {
         // PostComments(props.photo_id,object).then( response => {
             console.log(response);
         });

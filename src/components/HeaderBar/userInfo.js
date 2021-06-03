@@ -15,7 +15,7 @@ import Faves from '../Faves/Faves';
 import AlbumPreview from '../Album/AlbumPreview'
 import {GetUser,GetUserPhotos,UpdateUser,checkUserByIdentifier} from "../../services/userServices"
 import GroupPhotos from "../GroupPhotos/GroupPhotos"
-
+// localStorage.token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYjYwMDYwMzZiYzIzMDAxOWE3NGI4OCIsImlhdCI6MTYyMjU0MDQ0NCwiZXhwIjoxNzIyNTQ3NjQ0fQ.ng54v98xXSr-1BCpfZcThPAMOMwSl3H595xN36P6hbE"
 
 export default function Userinfo(props){
     
@@ -29,22 +29,25 @@ export default function Userinfo(props){
     const [peoplePhotos, setPeoplePhotos] = useState([]);
     const [userId , setUserId] = useState(0);
     const [userInfo, setUserInfo] = useState([]);
-    const [isUser , setIsUser] = useState(false);
+    const [isUser , setIsUser] = useState(true);
+    const [IsUserinfo , setIsUserInfo] = useState(false);
     const [userName , setUserName] = useState('');
 
     //get request
     useEffect( () =>{
         // check if i am in the user or in people profile//////FOR INTEGRATION/////////////////////////
-        checkUserByIdentifier(id).then(response=>{
-            if(response.data===true){
-                //get user
+        checkUserByIdentifier().then(response=>{
+            if(response.data.boolean === 0){
+        //         //get user
                 GetUser().then( response => {
                     setUserInfo(response.data);
-                console.log(response)
+                    setIsUserInfo(true);
+                console.log(response.data)
                 })
                 //get user photos
                 GetUserPhotos().then( response => {
-                    setUserPhotos(response.data);
+                    setUserPhotos(response.data.photos);
+                    console.log(response)
                 })
                 setFollowing(false);
                 setIsUser(true);
@@ -78,7 +81,7 @@ export default function Userinfo(props){
         //     setPeoplePhotos(response.data);
         // })
     // },[])
-    },[userInfo,userPhotos])
+    },[id])
 
 
     const [isPhotoStream,setPhotoStream] = useState(true);
@@ -144,16 +147,16 @@ export default function Userinfo(props){
         console.log("ana fe el changeSelection");
         if(avatarBackground===1){
             const newUserInfo={
-                Fname: userInfo.Fname,
-                Lname: userInfo.Lname,
-                Password: userInfo.Password,
-                Avatar: userInfo.Avatar,
-                BackGround: newimageUrl,
-                About: {
-                Description: userInfo.About.Description,
-                Hometown: userInfo.About.Hometown,
-                Occupation: userInfo.About.Occupation,
-                CurrentCity: userInfo.About.CurrentCity
+                "Fname": userInfo.Fname,
+                "Lname": userInfo.Lname,
+                "Password": userInfo.Password,
+                "Avatar": userInfo.Avatar,
+                "BackGround": newimageUrl,
+                "About": {
+                "Description": userInfo.About.Description,
+                "Hometown": userInfo.About.Hometown,
+                "Occupation": userInfo.About.Occupation,
+                "CurrentCity": userInfo.About.CurrentCity
                 }
             }
             UpdateUser(newUserInfo).then(response=>{
@@ -163,16 +166,16 @@ export default function Userinfo(props){
         }
         else{
             const newUserInfo={
-                Fname: userInfo.Fname,
-                Lname: userInfo.Lname,
-                Password: userInfo.Password,
-                Avatar: newimageUrl,
-                BackGround: userInfo.BackGround,
-                About: {
-                Description: userInfo.About.Description,
-                Hometown: userInfo.About.Hometown,
-                Occupation: userInfo.About.Occupation,
-                CurrentCity: userInfo.About.CurrentCity
+                "Fname": userInfo.Fname,
+                "Lname": userInfo.Lname,
+                "Password": userInfo.Password,
+                "Avatar": newimageUrl,
+                "BackGround": userInfo.BackGround,
+                "About": {
+                "Description": userInfo.About.Description,
+                "Hometown": userInfo.About.Hometown,
+                "Occupation": userInfo.About.Occupation,
+                "CurrentCity": userInfo.About.CurrentCity
                 }
             }
             UpdateUser(newUserInfo).then(response=>{
@@ -290,10 +293,10 @@ export default function Userinfo(props){
                                 <div className="numbers">
                                     <div className="follwingFollowers">
                                         <p>{userInfo.UserName}</p>
-                                        <ul className="NavbarAndheaderul">
-                                            <li><Link  style={navStyle} to="/Followers">{userInfo.Followers} followers</Link></li>
+                                        <ul className={IsUserinfo&&"NavbarAndheaderul"}>
+                                            <li><Link  style={navStyle} to='/FollwingFollowers/${isUser}/${id}'>{IsUserinfo&& userInfo.Followers.length} followers</Link></li>
                                             {/* <li><Link  style={navStyle} to="/FollwingFollowers">{userInfo.Following} following</Link></li> */}
-                                            <li><Link  style={navStyle} to={`/FollwingFollowers/${isUser}/${id}`}>{userInfo.Following} following</Link></li>
+                                            <li><Link  style={navStyle} to={`/FollwingFollowers/${isUser}/${id}`}>{IsUserinfo&& userInfo.Following.length} following</Link></li>
                                         </ul>
                                     </div>
                                     <div className="joined">

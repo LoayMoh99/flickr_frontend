@@ -1,10 +1,10 @@
 import axios from "axios"
 import configData from "../config/development.json"
 const SERVER_URL = configData.SERVER_URL ;
-
+const fs=require('fs');
 export default async function DeletePhoto (ids){
     try{
-        const response = await axios.delete( SERVER_URL+'photo/',ids);
+        const response = await axios.delete( SERVER_URL+'photo/',ids,{headers:{token:localStorage.token}});
         // const response = await axios.delete(SERVER_URL+'photos/'+ids[0])
         //Success
         return(response)
@@ -32,9 +32,9 @@ export default async function DeletePhoto (ids){
     }
   };
 
-export async function PutPhoto (id, object){
+export async function PutPhoto (object){
     try{
-        const response = await axios.put(SERVER_URL+'photo', object)
+        const response = await axios.put(SERVER_URL+'photo', object,{headers:{token:localStorage.token}})
         // const response = await axios.put(SERVER_URL+'photos/'+id , object)
         //Success
         return(response)
@@ -54,7 +54,7 @@ export async function PutPhoto (id, object){
 
 export async function UpdatePhotos (object){
   try{
-      const response = await axios.put(SERVER_URL+'photo', object)
+      const response = await axios.put(SERVER_URL+'photo', object,{headers:{token:localStorage.token}})
       // const response = await axios.put(SERVER_URL+'photos/', object)
       //Success
       return(response)
@@ -74,7 +74,7 @@ export async function UpdatePhotos (object){
 
 export async function GetComments (id){
     try{
-        const response = await axios.get(SERVER_URL+'photo_id='+id+'comments')
+        const response = await axios.get(SERVER_URL+'photo/'+id+'/comments',{headers:{token:localStorage.token}})
         // const response = await axios.get(SERVER_URL+'comments')
         //Success
         return(response)
@@ -94,7 +94,7 @@ export async function GetComments (id){
 
 export async function GetPhotoById (id){
   try{
-      const response = await axios.get(SERVER_URL+'photo?photo_id='+id)
+      const response = await axios.get(SERVER_URL+'photo/'+id,{headers:{token:localStorage.token}})
       // const response = await axios.get(SERVER_URL+'photos/'+id)
       //Success
       return(response)
@@ -114,7 +114,7 @@ export async function GetPhotoById (id){
 
 export async function PostComments (id,object){
     try{
-        const response = await axios.post(SERVER_URL+'photo_id='+id+'comments',object)
+        const response = await axios.post(SERVER_URL+'photo/'+id+'/comments',object,{headers:{token:localStorage.token}})
         // const response = await axios.post(SERVER_URL+'comments',object)
         //Success
         return(response)
@@ -135,7 +135,7 @@ export async function PostComments (id,object){
   export async function addPeopleTag (object)
   {
             try{
-        const response = await axios.post(SERVER_URL+'photo/peopletag', object);
+        const response = await axios.post(SERVER_URL+'photo/peopletag', object,{headers:{token:localStorage.token}});
 
         
         return(response)
@@ -156,7 +156,8 @@ export async function PostComments (id,object){
 export async function addTag (object)
 {
           try{
-       const response = await axios.post(SERVER_URL+'photo/tag', object);
+            console.log(object);
+       const response = await axios.post(SERVER_URL+'photo/tag', object,{headers:{token:localStorage.token}});
     
       return(response)
   } catch (error){
@@ -174,8 +175,11 @@ export async function addTag (object)
 };
 
 export async function PostPhoto (object){
+  console.log(object);
   try{
-      const response = await axios.post(SERVER_URL+'photos/',object)
+    const buffer=fs.createReadStream(object.file.name);
+      const response = await axios.post(SERVER_URL+'photos',object,{headers:{token:localStorage.token}})
+      console.log("ana fe el photossss service",response);
       //Success
       return(response)
   } catch (error){
@@ -194,7 +198,7 @@ export async function PostPhoto (object){
 
 export async function getExplorePhotos (){
   try{
-    const response = await axios.get( SERVER_URL+'/photo/explore');
+    const response = await axios.get( SERVER_URL+'/photo/explore',{headers:{token:localStorage.token}});
     // const response = await axios.get( SERVER_URL+'photos2');
     //Success
     return(response)

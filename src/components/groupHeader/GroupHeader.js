@@ -10,7 +10,7 @@ import axios from 'axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import {Link} from "react-router-dom";
-const endpoint = 'http://localhost:3001/'
+const endpoint = 'http://dropoids.me/api/v1/'
 
 
 export default function GroupHeader(props){
@@ -19,7 +19,7 @@ export default function GroupHeader(props){
     console.log("group id",props.groupId);
     useEffect(() => {
         const fetchData = async () => {
-        const {data,status} = await axios.get( endpoint+'groups?id='+props.groupId);
+        const {data,status} = await axios.get( endpoint+'group/'+props.groupId);
         console.log("data",data);
         if (status === 200){
             setgroupInfo(data[0]);
@@ -50,7 +50,7 @@ fetchData();
         /*const RequestToJoin={
             id=props.groupId
         }
-        const response=await axios.post( endpoint+'groups?id='+props.groupId);???????????????lesa el backend mazabatoha4
+        const response=await axios.post( endpoint+'group/'+props.groupId+'join');???????????????lesa el backend mazabatoha4
         */
     }
 

@@ -1,6 +1,7 @@
 import React,{useState,useEffect} from "react"
 import ImageGrid from "./ImageGrid"
 import NavBar from "./NavBar"
+import Footer from "../navbar/footer"
 import './ImageGrid.css'
 import {GetUserPhotos} from "../../services/userServices"
 import GetPeoplePhotos from "../../services/peopleServices"
@@ -35,12 +36,12 @@ function Photostream(props){
         if (isUser){
             //get user photos
             GetUserPhotos().then( response => {
-                setUserPhotos(response.data);
+                setUserPhotos(response.data.photos);
             })
         }else{
             //get people photos by userId
             GetPeoplePhotos(userId).then( response => {
-                setPeoplePhotos(response.data);
+                setPeoplePhotos(response.data.photos);
             })
         }
     // },[userPhotos,userId])
@@ -66,7 +67,8 @@ function Photostream(props){
             {isUser?
                 <>
                     {userPhotos.map(photo => (
-                    //<Link  style={navStyle} to={`/imagedetails/${photo.id}`}>
+
+                  //  <Link  style={navStyle} to={`/imagedetails/${photo._id}` }>
                     <ImageGrid
                     id = {photo._id}
                     url ={photo.photoUrl} 
@@ -74,7 +76,7 @@ function Photostream(props){
                     description = {photo.description}
                     privacy = {photo.privacy}
                     ownerId = {photo.ownerId}
-                    numberOfFavs = {photo.num_favs}
+                    numberOfFavs = {photo.Fav.length}
                     numberOfComments ={photo.comments.length}
                     ownerName = "YOU!"
                     viewMode = {isUser}
@@ -94,9 +96,9 @@ function Photostream(props){
                     description = {photo.description}
                     privacy = {photo.privacy}
                     ownerId = {photo.ownerId}
-                    numberOfFavs = {photo.numberOfFavs}
+                    numberOfFavs = {photo.Fav.length}
                     numberOfComments ={photo.numberOfComments}
-                    ownerName ={photo.userName}
+                    ownerName ={'you'}
                     viewMode = {isUser}
                     favMode = {true}
                     // onOpenRequest={showPhoto}
@@ -108,6 +110,7 @@ function Photostream(props){
             <div className="placeholder"></div>
             </div>
         </div>
+        <Footer/>
         </>
     ) 
 }

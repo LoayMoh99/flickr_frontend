@@ -59,8 +59,10 @@ function CamreRoll() {
   },[])
   //  },[images])
 
-  
-  const sortedImagesUploaded = images.slice().sort((a, b) => b.createdAt - a.createdAt);
+  //images=images.toObject();
+  var sortedImagesUploaded = images.photos//  .slice().sort((a, b) => b.createdAt - a.createdAt);
+  if(sortedImagesUploaded!=undefined)
+  sortedImagesUploaded= sortedImagesUploaded.slice().sort((a, b) => b.createdAt - a.createdAt);
   const [isModalOpen, setModalIsOpen] = useState(false);
   const [count, setCount] = useState(0);
   const [toEdit, setToEdit] = useState([]);
@@ -248,7 +250,7 @@ const photoIdsDelete = {
 
             {/* {grouped.map((arr) => <h5>{arr[0]}</h5>)} */}
             {/* {map((arr) => ({ dateuploaded: arr[0], image: arr.slice(1) }))} */}
-            { sortedImagesUploaded.map((image) => (
+            { sortedImagesUploaded!=undefined&&sortedImagesUploaded.map((image) => (
               <ImagesCR
                // key={image._id}
                 key={image.id}

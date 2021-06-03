@@ -4,7 +4,7 @@ const SERVER_URL = configData.SERVER_URL ;
 
 export default async function GetPeoplePhotos (id){
     try{
-        const response = await axios.get( SERVER_URL+'people/photos?user_id='+id);
+        const response = await axios.get( SERVER_URL+'user/fav',{headers:{token:localStorage.token}});
         // const response = await axios.get( SERVER_URL+'peoplePhotos');
         //Success
         return(response)
@@ -24,7 +24,7 @@ export default async function GetPeoplePhotos (id){
 
 export async function GetPeopleFavs (userName){
     try{
-        const response = await axios.get( SERVER_URL+'people/fav?username='+userName);
+        const response = await axios.get( SERVER_URL+'people/fav?username='+userName,{headers:{token:localStorage.token}});
         // const response = await axios.get( SERVER_URL+'peopleFav');
         //Success
         return(response)
@@ -44,7 +44,7 @@ export async function GetPeopleFavs (userName){
 
 export async function GetPeopleFollowing (id){
   try{
-      const response = await axios.get( SERVER_URL+'people/following?user_id='+id);
+      const response = await axios.get( SERVER_URL+'people/following?user_id='+id,{headers:{token:localStorage.token}});
       // const response = await axios.get( SERVER_URL+'peopleFollowing');
       //Success
       return(response)
@@ -66,7 +66,7 @@ export async function GetPeopleFollowing (id){
 
 export async function GetPeopleByIdentefier (id){
   try{
-      const response = await axios.get( SERVER_URL+'people?identifier='+id);
+      const response = await axios.get( SERVER_URL+'people/'+id);
       // const response = await axios.get( SERVER_URL+'user');
       //Success
       return(response)
@@ -88,7 +88,7 @@ export async function GetPeopleByIdentefier (id){
 
 export async function GetPeopleBySearch (text){
   try{
-    const response = await axios.get(SERVER_URL+text);
+    const response = await axios.get(SERVER_URL+'people/search/'+text,{headers:{token: localStorage.token}});
       //Success
       return(response)
   } catch (error){

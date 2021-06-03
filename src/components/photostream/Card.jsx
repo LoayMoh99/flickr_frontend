@@ -33,21 +33,9 @@ function Card(props){
 
     function changeToPublic(){
         setPrivacy('public');
-        console.log(privacy);
-          // const object = {photos:[props.id] , title:inputTitle , description:inputDescription , privacy:privacy}
-        const object ={
-            "photoUrl": props.url,
-            "ownerId": props.ownerId,
-            "num_favs": props.numberOfFavs,
-            "comments": [0,1,2,3],
-            "title": inputTitle,
-            "privacy": privacy,
-            "description": inputDescription,
-            "createdAt": "2021-05-29",
-            "UpdatedAt": "2021-05-29"
-        }
+        const object = {"photos":[props.id] , "title":inputTitle , "description":inputDescription , "privacy":privacy}
         //API
-        PutPhoto(props.id,object).then( response => {
+        PutPhoto(object).then( response => {
             console.log(response);
         });
     }
@@ -55,20 +43,9 @@ function Card(props){
     function changeToPrivate(){
         setPrivacy('private');
         console.log(privacy);
-        // const object = {photos:[props.id] , title:inputTitle , description:inputDescription , privacy:privacy}
-      const object ={
-          "photoUrl": props.url,
-          "ownerId": props.ownerId,
-          "num_favs": props.numberOfFavs,
-          "comments": [0,1,2,3],
-          "title": inputTitle,
-          "privacy": privacy,
-          "description": inputDescription,
-          "createdAt": "2021-05-29",
-          "UpdatedAt": "2021-05-29"
-      }
+        const object = {"photos":[props.id] , "title":inputTitle , "description":inputDescription , "privacy":privacy}
       //API
-      PutPhoto(props.id,object).then( response => {
+      PutPhoto(object).then( response => {
           console.log(response);
       });
     }

@@ -130,7 +130,7 @@ export default function Header(props){
                 <i className="flaticon-close hiddenIconSearch" onClick={()=>toogleMobileSearchBox()}></i>
                 <i className="flaticon-search coreSearch hiddenIcon" onClick={()=>toogleMobileSearchBox()}></i>
                 <Link style={navStyle} to="/"><button className="logOut" onClick={logOut}>Logout</button></Link>
-                <Route style={navStyle} to="/upload"><i className="flaticon-cloud-computing"></i></Route>
+                <Link style={navStyle} to="/upload"><i className="flaticon-cloud-computing"></i></Link>
                 <i className="flaticon-bell"></i>
                 <img src={defaultProfile} alt="defaultProfilePicture" className="sideProfilePic"></img>
             </div></>}

@@ -4,7 +4,7 @@ const SERVER_URL = configData.SERVER_URL ;
 
 export default async function GetUserAlbums(){
     try{
-        const response = await axios.get( SERVER_URL+'/album');
+        const response = await axios.get( SERVER_URL+'/album',{headers:{token:localStorage.token}});
         // const response = await axios.get( SERVER_URL+'userAlbums');
         //Success
         return(response)
@@ -24,7 +24,7 @@ export default async function GetUserAlbums(){
 
 export async function GetPeopleAlbums(userName){
     try{
-        const response = await axios.get( SERVER_URL+'/album/user?username='+userName);
+        const response = await axios.get( SERVER_URL+'/album/user/'+userName,{headers:{token:localStorage.token}});
         // const response = await axios.get( SERVER_URL+'peopleAlbums');
        
         //Success
@@ -45,8 +45,7 @@ export async function GetPeopleAlbums(userName){
 
 export async function DeleteAlbum(id){
     try{
-        const response = await axios.delete( SERVER_URL+'album?album_id='+id);
-        // const response = await axios.delete( SERVER_URL+'userAlbums/'+id);
+        const response = await axios.delete( SERVER_URL+'album/'+id,{headers:{token:localStorage.token}});
         //Success
         return(response)
     } catch (error){
@@ -66,9 +65,7 @@ export async function DeleteAlbum(id){
 export async function addPhotoToAlbum (id, object)
 {
           try{
-       //const response = await axios.post(endpoint+'album?album_id='+id, object);
-      const response = await axios.post(SERVER_URL+'album/'+id , object);
-      // const response = await axios.post(SERVER_URL+'userAlbums/'+id , object);
+      const response = await axios.post(SERVER_URL+'album/'+id , object,{headers:{token:localStorage.token}});
       //Success
       
       return(response)
@@ -89,8 +86,7 @@ export async function addPhotoToAlbum (id, object)
 export async function deletePhotoFromAlbum (id,imgIdsToDelete)
 {
     try{
-       // const response = await axios.delete(endpoint+'album/photos?album_id='+id, imgIdsToDelete) ;
-        const response = await axios.delete(SERVER_URL+'album/photos/'+id, imgIdsToDelete) ;
+        const response = await axios.delete(SERVER_URL+'album/photos/'+id, imgIdsToDelete,{headers:{token:localStorage.token}}) ;
         
         return(response)
     } catch (error){
@@ -121,7 +117,7 @@ export async function createAlbum (album){
   console.log(album);
   try{
 
-      const response = await axios.post(SERVER_URL + 'album', album);
+      const response = await axios.post(SERVER_URL + 'album', album,{headers:{token:localStorage.token}});
       
       return(response)
   }catch (error){
@@ -141,8 +137,7 @@ export async function createAlbum (album){
 export async function GetAlbumById (album_id){
   
   try{ 
-    const response = await axios.get(SERVER_URL+'album?_id='+album_id,);
-    // const response = await axios.get(SERVER_URL+'userAlbums/'+album_id);
+    const response = await axios.get(SERVER_URL+'album/'+album_id,{headers:{token:localStorage.token}});
     return(response)
   }catch (error){
       if (error.response){
@@ -160,9 +155,7 @@ export async function GetAlbumById (album_id){
 
 export async function UpdateAlbum (id, object){
   try{
-      // const response = await axios.put(endpoint+'album?album_id='+id, object)
-      const response = await axios.put(SERVER_URL+'album/'+id , object)
-      // const response = await axios.put(SERVER_URL+'userAlbums/'+id , object);
+      const response = await axios.put(SERVER_URL+'album/'+id , object,{headers:{token:localStorage.token}})
       //Success
       return(response)
   } catch (error){

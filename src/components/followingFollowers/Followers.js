@@ -5,16 +5,22 @@ import Header from '../navbar/mainNav';
 import Footer from '../navbar/footer'
 import {GetUserFollowers} from '../../services/userServices'
 import axios from "axios"
-const endpoint = 'http://localhost:3001/'
 
 export default function Followers(props){
 
      //Get photos
         const [followers, setFollowers] = useState([]);
+        const [isUndefinedfollowers, setisUndefinedfollowers] = useState(true);
 
         useEffect(() => {
             GetUserFollowers().then( response => {
-            setFollowers(response.data);
+                if(response!=undefined){
+                    setisUndefinedfollowers(false);
+                    setFollowers(response.data);
+                }else{
+                    setisUndefinedfollowers(true);
+                }
+            
         })
     },[]);
 
@@ -58,7 +64,7 @@ export default function Followers(props){
                 </tr>
             </thead>
             <tbody>
-            {followers.map(user => (
+            {!isUndefinedfollowers && followers.map(user => (
                 <tr>
                 <th scope="row"><img src={user.avatar}></img> {user.Fname} {user.Lname}</th>
                 <td>{user.Photos}</td>

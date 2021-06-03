@@ -29,7 +29,7 @@ function AlbumPreview(props){
                 setPeopleAlbums(response.data);
             })
         }
-    },[])
+    },[userAlbums])
 
 
 

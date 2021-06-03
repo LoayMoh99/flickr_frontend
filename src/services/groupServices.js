@@ -4,7 +4,7 @@ const SERVER_URL = configData.SERVER_URL ;
 
 export default async function GetGroupPhotos (id){
     try{
-        const response = await axios.get( SERVER_URL+'group/photos?group_id='+id);
+        const response = await axios.get( SERVER_URL+'group/photos/'+id,{headers:{token:localStorage.token}});
         // const response = await axios.get( SERVER_URL+'groupPhotos');
         //Success
         return(response)
@@ -34,7 +34,10 @@ export default async function GetGroupPhotos (id){
 
 export async function PostGroupPhotos (groupId,photoId,object){
     try{
-        const response = await axios.get( SERVER_URL+'group/photo',groupId,photoId);
+        const response = await axios.post( SERVER_URL+'group/photo',{
+          group_id: groupId,
+          photo_id: photoId
+        },{headers:{token:localStorage.token}});
         // const response = await axios.post( SERVER_URL+'groupPhotos',object);
         //Success
         return(response)
@@ -57,8 +60,9 @@ export async function PostGroupPhotos (groupId,photoId,object){
 //const {data,status} = await axios.get( endpoint+'group',);
 export async function GetGroupBySearch (text){
   try{
-    const response = await axios.get(SERVER_URL+text);
+    const response = await axios.get(SERVER_URL+'group/'+text+'/search',{headers:{token: localStorage.token}});
       //Success
+      console.log(response)
       return(response)
   } catch (error){
       if (error.response){

@@ -18,9 +18,9 @@ function SearchPeople() {
     const [people, setPeople] = useState([]);
 ////////////////////Fetching data using Search text//////////////////////////////////////////////
   useEffect(() => {
-      GetPeopleBySearch(textt).then( response => {
+      GetPeopleBySearch(text).then( response => {
         console.log(response.data);
-        setPeople(response.data);
+        setPeople([response.data]);
       })
       // console.log(status);
       // if (status === 200){

@@ -22,7 +22,7 @@ function SearchGroup() {
     const [groups, setGroup] = useState([]);
 ////////////////////Fetching data using Search text//////////////////////////////////////////////
     useEffect(() => {
-      GetGroupBySearch(textt).then( response => {
+      GetGroupBySearch(text).then( response => {
         console.log(response.data);
         setGroup(response.data);
       })
