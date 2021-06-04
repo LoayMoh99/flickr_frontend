@@ -1,7 +1,7 @@
 import axios from "axios"
 import configData from "../config/development.json"
 const SERVER_URL = configData.SERVER_URL ;
-const fs=require('fs');
+//const fs=require('fs');
 export default async function DeletePhoto (ids){
     try{
         const response = await axios.delete( SERVER_URL+'photo/',ids,{headers:{token:localStorage.token}});
@@ -176,8 +176,8 @@ export async function addTag (object)
 export async function PostPhoto (object){
   console.log(object);
   try{
-    const buffer=fs.createReadStream(object.file.name);
-      const response = await axios.post(SERVER_URL+'photos',object,{headers:{token:localStorage.token}})
+    //const buffer=fs.createReadStream(object.file.name);
+      const response = await axios.post(SERVER_URL+'photo',object,{headers:{token:localStorage.token}})
       console.log("ana fe el photossss service",response);
       //Success
       return(response)

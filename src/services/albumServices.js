@@ -141,7 +141,7 @@ export async function createAlbum (album){
 export async function GetAlbumById (album_id){
   
   try{ 
-    const response = await axios.get(SERVER_URL+'album?_id='+album_id,{headers:{token:localStorage.token}});
+    const response = await axios.get(SERVER_URL+'album/'+album_id,{headers:{token:localStorage.token}});
     // const response = await axios.get(SERVER_URL+'userAlbums/'+album_id);
     return(response)
   }catch (error){

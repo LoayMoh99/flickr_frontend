@@ -8,6 +8,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
 import axios from "axios"
 const formdata=require('form-data');
+const fileToArrayBuffer = require('file-to-array-buffer')
+var arrayBufferToBuffer = require('arraybuffer-to-buffer');
 //import fs  from  'fs';
 export default function Upload(props){
 
@@ -31,18 +33,34 @@ export default function Upload(props){
 
     const addImageToCameraroll = async () => {
         console.log("yalahwaaaiii");
-        //fs.createReadStream(image.name);
-        console.log(image);
+       
+        var d;var buffer;
+       
+       await fileToArrayBuffer(image).then(data=>{
+        d=data;  
+
+        console.log(data)})
+
+        .catch(err=>console.log(err));
+        
+        const bufferarray =new arrayBufferToBuffer(d);
+        var mybuffer=[]
+
+        for(var i=0;i<bufferarray.length;i++)
+
+        mybuffer.push(bufferarray[i]);
+        
+     
         const newImage = {
-            title: "title",
+            title: "yoyo",
             description: "",
-            file: image,
+            file: mybuffer,
             privacy: "public",
             tags: tag
         }
         console.log("status1");
         PostPhoto(newImage).then(response=>{
-            //console.log(response.data);
+            console.log(response.data);
         })
         ///////////////////////////////////////////////////////API//////////////////////////////////////////////
         /*if (status === 200) {

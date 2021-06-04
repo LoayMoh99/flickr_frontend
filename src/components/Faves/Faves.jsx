@@ -80,9 +80,9 @@ return (
             title ={photo.title} 
             description = ''
             privacy = 'public'
-            ownerName = {photo.userName}
+            ownerName = {photo.UserName}
             numberOfFavs = '1'
-            numberOfComments ={photo.numberOfComments}
+            numberOfComments ={photo.comment.length}
             viewMode ={isUser}
             favMode ={true}
             onOpenRequest={showPhoto}

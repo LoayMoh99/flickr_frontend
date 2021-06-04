@@ -150,7 +150,7 @@ export async function GetUser(){
 // Favs
 export async function GetUserFavs(){
   try{
-      const response = await axios.get( SERVER_URL+'user/fav');
+      const response = await axios.get( SERVER_URL+'user/fav',{headers:{token:localStorage.token}});
       // const response = await axios.get( SERVER_URL+'userFav');
       //Success
       return(response)
@@ -168,14 +168,17 @@ export async function GetUserFavs(){
   }
 };
 
-export async function PostUserFavs(id,object){
+export async function PostUserFavs(object){
   try{
-      const response = await axios.post( SERVER_URL+'favs/'+id,object);
+      const response = await axios.post( SERVER_URL+'favs',object,{headers:{token:localStorage.token}});
       // const response = await axios.post( SERVER_URL+'userFav',object);
       //Success
       return(response)
   } catch (error){
       if (error.response){
+        if(error.response.data.message=='Photo is already in favorites'){
+          DeleteUserFavs(object.photo_id);
+        }
         console.log(error.response.data);
         console.log(error.response.status);
         console.log(error.response.headers);
@@ -190,7 +193,7 @@ export async function PostUserFavs(id,object){
 
 export async function DeleteUserFavs(id){
   try{
-      const response = await axios.delete( SERVER_URL+'favs/'+id);
+      const response = await axios.delete( SERVER_URL+'favs/'+id,{headers:{token:localStorage.token}});
       // const response = await axios.delete( SERVER_URL+'userFav/'+id);
       //Success
       return(response)

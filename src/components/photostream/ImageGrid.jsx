@@ -14,7 +14,7 @@ function ImageGrid(props){
     const open = <FontAwesomeIcon icon={faFolderOpen} color="white" />
     const navStyle={color:'white'};
     const [isUser, setIsUser] = useState(props.viewMode);
-    const [isFav , setIsFav] = useState(props.favMode);
+    const [isFav , setIsFav] = useState(true);
     // overlay
     const [isMousedOver, setMouseOver] = useState(false);
     //Comment Box
@@ -60,18 +60,20 @@ function ImageGrid(props){
         // }
 
         const object={
-            "photo_id":props.id
+            photo_id:props.id
         }
 
         PostUserFavs(object).then( response => {
         // PostUserFavs(props.id,object).then( response => {
-            console.log(response);
-            if(response.status === 500){
+            console.log(response);  })
+            .catch( err=>{ 
+            if(err.status === 500){
                 DeleteUserFavs(props.id).then( response => {
                     console.log(response);
                 })
-            }
-        })
+            }});
+            
+      
     }
 
     function deleteFav(){
@@ -102,18 +104,19 @@ function ImageGrid(props){
                         <div id="info">
                             <li>{addTo}</li>
                             <li  onClick={openCommentBox}> {comment} {props.numberOfComments}</li>
-                            {isUser?
+                            
                                 <>
-                                {isFav? <li onClick={deleteFav}>{fav} {props.numberOfFavs}</li>:<li> {fav} {props.numberOfFavs}</li>}
+                                {/*isFav? <li onClick={deleteFav}>{fav} {props.numberOfFavs}</li>:<li> {fav} {props.numberOfFavs}</li>*/}
                                 </>
                             :
                                 <> 
-                                {/* {isFav?<li onClick={addToFav}>{fav} {props.numberOfFavs}</li>:<li> {fav} {props.numberOfFavs}</li>} */}
-                                {isFav&&<li onClick={addToFav}>{fav} {props.numberOfFavs}</li>}
+                                {isFav?<li onClick={addToFav}>{fav} {props.numberOfFavs}</li>:<li> {fav} {props.numberOfFavs}</li>}
+                               
                                 </>
-                            }
+                           
                         </div>   
                     </ul>
+                    
                     {isComment && <CommentBox numberOfComments= {props.id} photo_id={props.id} onClick={openCommentBox}/>}
                 </div>
             </div> 

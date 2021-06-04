@@ -29,6 +29,7 @@ import {GetUserPhotos} from "../../services/userServices"
 import './CamreRoll.css';
 import './EditModal.css';
 import './AddModal.css';
+import DeletePhoto from '../../services/photoServices'
 // import { mockComponent } from 'react-dom/test-utils';
 import axios from "axios"
 import CreateNewAlbumModal from './CreateNewAlbumModal';

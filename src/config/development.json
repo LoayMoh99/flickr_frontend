@@ -1,4 +1,4 @@
 {
-    "SERVER_URL": "http://dropoids.me/api/v1/",
+    "SERVER_URL": "http://localhost:4000/api/v1/",
     "NODE_ENV": "development"
 }

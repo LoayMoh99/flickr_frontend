@@ -1,7 +1,6 @@
 import React,{useState,useEffect} from "react"
 import ImageGrid from "./ImageGrid"
 import NavBar from "./NavBar"
-import Footer from "../navbar/footer"
 import './ImageGrid.css'
 import {GetUserPhotos} from "../../services/userServices"
 import GetPeoplePhotos from "../../services/peopleServices"
@@ -110,7 +109,6 @@ function Photostream(props){
             <div className="placeholder"></div>
             </div>
         </div>
-        <Footer/>
         </>
     ) 
 }

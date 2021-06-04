@@ -64,13 +64,10 @@ function addToFav(){
         "Name": "Samar Nabil"
     }
     // PostUserFavs(props.id).then( response => {
-    PostUserFavs(props.id,object).then( response => {
+    PostUserFavs({photo_id:props.id}).then( response => {
         console.log(response);
-        if(response.status === 500){
-            DeleteUserFavs(props.id).then( response => {
-                console.log(response);
-            })
-        }
+        
+        
     })
 }
 
@@ -105,16 +102,16 @@ function deleteFav(){
                         <div id="info">
                             <li>{addTo}</li>
                             <li  onClick={openCommentBox}> {comment} {props.numberOfComments}</li>
-                            {!isUser?
+                           
                                 <>
-                                {isFav? <li onClick={deleteFav}>{fav} {props.numberOfFavs}</li>:<li> {fav} {props.numberOfFavs}</li>}
+                                {!isFav&& <li onClick={deleteFav}>{fav} {props.numberOfFavs}</li>}
                                 </>
                             :
                                 <> 
                                
-                                {isFav&&<li onClick={addToFav}>{fav} {props.id}</li>}
+                                {isFav&&<li onClick={addToFav}>{fav} {props.numberOfFavs}</li>}
                                 </>
-                            }
+                            
                            
                     </div> 
                   
