@@ -7,7 +7,10 @@ import Join from './Join'
 import Header from "../navbar/mainNav"
 import {GetGroupBySearch} from "../../services/groupServices"
 import './SearchPeople.css'
+import configData from "../../config/development.json"
+
 import { get } from 'jquery'
+const SERVER_URL = configData.SERVER_URL ;
 const endpoint = 'http://localhost:3001/'
 const end= '/group/'
 const point= '/search'
@@ -20,12 +23,26 @@ function SearchGroup() {
     };
     let error=false;
     const [groups, setGroup] = useState([]);
+    
+useEffect(() => {
+  (async function() {
+    let response = await GetGroupBySearch(text)
+    for(var i=0;i<response.data.length;i++){
+      let x = await axios.get(SERVER_URL+'group/members/'+response.data[i]._id,{headers:{token:localStorage.token}})
+      if(x.data[i]&&x.data[i].role){
+        response.data[i].role =x.data[i].role
+      } 
+    }
+        if (response.status === 200){
+            setGroup(response.data);
+      }
+  })();
+}, []);
 ////////////////////Fetching data using Search text//////////////////////////////////////////////
-    useEffect(() => {
-      GetGroupBySearch(text).then( response => {
-        console.log(response.data);
-        setGroup(response.data);
-      })
+    // useEffect( async() => {
+    //   const response = await GetGroupBySearch(text)
+    //     const map1 = response.map(x => await axios.get('http://dropoids.me/api/v1/group/'+x._id));
+    //     console.log(map1)
     //     if (status === 200){
     //         setGroup(data);
     //     }else{
@@ -35,7 +52,7 @@ function SearchGroup() {
     // };
   
     // fetchData();
-  },[]);
+  // },[]);
 /////////////////////////////////////////////////////////////////////////////////////////////////
     return (
         <div className="SearchPeople">

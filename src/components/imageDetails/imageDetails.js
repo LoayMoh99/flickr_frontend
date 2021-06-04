@@ -19,8 +19,6 @@ export default function ImageDetails(props){
     const {id}=useParams();
     const {userId} = useParams();
     const path = props.location.pathname;
-    // const index = path.split('/');
-    // const id = index[2];
     console.log(id,"user",userId);
     const [images, setPhotos] = useState([]);
     const [image, setImage] = useState("");
@@ -29,41 +27,17 @@ export default function ImageDetails(props){
     const [comments, setComments] = useState([]);
     const [numOfFavs, setNumOfFavs] = useState([]);
     const [datOfUpdate, setDatOfUpdate] = useState([]);
-    const [newComment, setNewComment] = useState();
+    const [newComment, setNewComment] = useState('');
     const addComment = e => setNewComment(e.target.value);
     const [userPhotos, setUserPhotos] = useState([]);
     const [peoplePhotos, setPeoplePhotos] = useState([]);
     const [isUndefinedpeoplePhotos, setisUndefinedPeoplePhotos] = useState(true);
     const [isUndefineduserPhotos, setisUndefineduserPhotos] = useState(true);
     const [isUndefinedcomments, setisUndefinedcomments] = useState(true);
-    // const [userId , setUserId] = useState(0)
 
     const [userInfo, setUserInfo] = useState([]);
     //get request
     useEffect( () =>{
-    // if(userId){
-        //get user photos
-        // GetUserPhotos().then( response => {
-        //     if(response!=undefined){
-        //         setisUndefineduserPhotos(false);
-        //         setUserPhotos(response.data);
-        //         console.log(response)
-        //     }
-        //     else{
-        //         setisUndefineduserPhotos(true);
-        //     }
-        // })
-    //  }else{
-    //     //get people photos by userId
-    //     GetPeoplePhotos(userId).then( response => {
-    //         if(response!=undefined){
-    //             setisUndefinedPeoplePhotos(false);
-    //             setPeoplePhotos(response.data);
-    //         }else{
-    //             setisUndefinedPeoplePhotos(true);
-    //         }
-    //     })
-    //  }
 
 
     //get photo by id
@@ -71,7 +45,6 @@ export default function ImageDetails(props){
         setImage(response.data.photoUrl);
         setDiscription(response.data.description);
         setTitle(response.data.title);
-        // setNumOfFavs(response.data.Fav.length);
         setNumOfFavs(response.data.Fav.length);
         setDatOfUpdate(response.data.updatedAt);
     })
@@ -86,10 +59,10 @@ export default function ImageDetails(props){
         }
     })
 
-  },[])
+},[comments])
     function postTnewMessage(){
         const sentComment={ 
-            comment: newComment
+            "comment": newComment
         }
         PostComments(id,sentComment).then( response => {
             console.log(response);
@@ -125,9 +98,8 @@ export default function ImageDetails(props){
                 {!isUndefinedcomments && comments.map(comnt=>(<ShownImageComments cmntText={comnt.comment} commentOwnerFname={comnt.user.Fname} commentOwnerLname={comnt.user.Lname}/>))} 
                 <div className="commentBoxImageDetails">
                     <input type="text" id="tag" name="text" onChange={addComment}/>
-                    {newComment && <button onClick={postTnewMessage()}>comment</button>}
+                    {newComment && <button onClick={postTnewMessage}>comment</button>}
                 </div>
-                
             </div>
             <div className="photoInteractions">
                 <div>

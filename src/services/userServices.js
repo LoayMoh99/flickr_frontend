@@ -281,7 +281,7 @@ export async function UpdateUser(data){
 //const { status } = await axios.post('/user/follow',userFollow);
 export async function FollowPeople(id){
   try{
-      const response = await axios.post(SERVER_URL+'/user/follow',id);
+      const response = await axios.post(SERVER_URL+'user/follow',id,{headers:{token:localStorage.token}});
       //Success
       return(response)
       
@@ -303,7 +303,7 @@ export async function FollowPeople(id){
 
 export async function UnFollowPeople(id){
   try{
-      const response = await axios.delete(SERVER_URL+'/user/unfollow/'+id);
+      const response = await axios.delete(SERVER_URL+'user/unfollow/'+id,{headers:{token:localStorage.token}});
       //Success
       return(response)
       

@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import './Follow.css'
+import {FollowPeople,UnFollowPeople} from '../../services/userServices'
 const endpoint = 'http://localhost:3001/'
 function Follow(props) {
     const {id,followed}=props
@@ -12,20 +13,19 @@ function Follow(props) {
         "peopleid": id
       };
       //////////////////////////////toggle function to handle pressing on follow or unfollow action/////////////////////////
-     async function toggleFollow(){
-       //      async function toggleFollow(){
-//          if(isFollowing===false){
-//             FollowPeople(userFollow).then( response => {
-//                  setToggleFollow(!isFollowing);
-//         
-//         })
-
-//          else{
-//             UnFollowPeople(id).then( response => {
+            async function toggleFollow(){
+         if(isFollowing===false){
+            FollowPeople(userFollow).then( response => {
+                 setToggleFollow(!isFollowing);
+        
+        })
+    }
+         else{
+            UnFollowPeople(id).then( response => {
                   setToggleFollow(!isFollowing);
-//         
-//              })
-//      }
+        
+             })
+     }
 
         
      }
