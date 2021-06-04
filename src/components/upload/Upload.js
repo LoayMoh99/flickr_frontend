@@ -62,20 +62,6 @@ export default function Upload(props){
         PostPhoto(newImage).then(response=>{
             console.log(response.data);
         })
-        ///////////////////////////////////////////////////////API//////////////////////////////////////////////
-        /*if (status === 200) {
-           newtag={
-               "photos": [
-                    data.id
-                ],
-                tag: "Nature"
-           }
-           const response = await axios.post(endpoint+"tag", newtag);
-           if(resonse.statuse===200){
-               console.log("tag is added");
-           }
-        }*/
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////
     };
 
     return(
@@ -88,7 +74,7 @@ export default function Upload(props){
                     <img src={flickrPhoto} alt="flickrLogo"></img>
                 </a>
             </Link>
-            <Link  style={navStyle} to="/">
+            <Link  style={navStyle} to="/user">
                 <span>Your Photostream</span>
             </Link>
             {image && <Link style={navStyle} to="/user"><button className="postPhoto" onClick={addImageToCameraroll} type='submit'>{plus}Add</button></Link>}

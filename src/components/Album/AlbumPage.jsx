@@ -17,9 +17,7 @@ function AlbumPage(props) {
     const path = props.location.pathname;
     var index = path.split('/');
     const album_id= index[2];
-    const isUser=index[3];
-    console.log(album_id,"albumpage",isUser);
-    
+    const isUser=index[3];    
      const [album,setAlbum] =useState();
      const [isUndefined, setUndefined] = useState(true);
 
@@ -31,9 +29,7 @@ function AlbumPage(props) {
     //get user photos
     GetAlbumById(album_id).then( response => {
         setAlbum(response.data);
-        console.log(album);
         //validate  API response
-        console.log(isUndefined);
         if(album == undefined)
         {
           setUndefined(true);
@@ -71,9 +67,7 @@ function AlbumPage(props) {
         <a href="#" id="backAlbum">{back } Back to albums list</a>
         </Link>
 
-      {/* { album.map(album=>  */}
-      {/* to validate API response */}
-       { !isUndefined && <AlbumCoverPhoto 
+       { album !=undefined && <AlbumCoverPhoto 
         coverPhoto = {album.coverPhoto.photoUrl}
         title = {album.title}
         description = {album.description}
@@ -87,7 +81,7 @@ function AlbumPage(props) {
         {/* )} */}
         
          {/* to validate API response */}
-       { !isUndefined &&<div className="grid" id="album">
+       { album!=undefined &&<div className="grid" id="album">
         {/* {album.map(album =>  */}
         { album.photos.map(photo => (
             <ImageGrid

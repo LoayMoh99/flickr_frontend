@@ -1,37 +1,11 @@
 import axios from "axios"
 import configData from "../config/development.json"
 const SERVER_URL = configData.SERVER_URL ;
-// axios.defaults.headers.common['Access-Control-Allow-Origin'] = "" // for all requests
-// axios.defaults.headers.post['Access-Control-Allow-Origin'] = '*'
 
-// let instance = axios.create({
-//   headers: {
-//     post: {        // can be common or any other method
-//       'Access-Control-Allow-Origin': '*'
-//     }
-//   }
-// })
-
-// const token = '..your token..'
-// let config = {
-//     headers: {
-//       token: 'value',
-//     }
-//   }
-
-// {headers:{'Access-Control-Allow-Origin':'*'}}
-
-// const header = new Headers ();
-// header = {'Token':localStorage.token}
-
-// var config = {
-//   headers: {'Access-Control-Allow-Origin': '*'}
-// };
 
 
 //User
 export default async function UserLogin(object){
-  console.log(object);
   try{
       const response = await axios.post( SERVER_URL+'user/login',object, {
         crossDomain: true
@@ -68,7 +42,7 @@ export default async function UserLogin(object){
 export async function PostUser (object){
   console.log(object);
   try{
-      const response = await axios.post( SERVER_URL+'user',object);
+      const response = await axios.post( SERVER_URL+'user',object,{headers:{token:localStorage.token}});
       //Success
       return(response)
   } catch (error){
@@ -89,7 +63,7 @@ export async function PostUser (object){
 //check
 export async function checkUserByIdentifier(id){
   try{
-      const response = await axios.get( SERVER_URL+'user/check/'+id);
+      const response = await axios.get( SERVER_URL+'user/check/'+id,{headers:{token:localStorage.token}});
       //Success
       return(response)
   } catch (error){
@@ -97,6 +71,7 @@ export async function checkUserByIdentifier(id){
         console.log(error.response.data);
         console.log(error.response.status);
         console.log(error.response.headers);
+        return(error.response);
       } else if (error.request){
         console.log(error.request);
       } else {
@@ -182,6 +157,7 @@ export async function PostUserFavs(object){
         console.log(error.response.data);
         console.log(error.response.status);
         console.log(error.response.headers);
+      return(error.response)
       } else if (error.request){
         console.log(error.request);
       } else {
@@ -194,7 +170,6 @@ export async function PostUserFavs(object){
 export async function DeleteUserFavs(id){
   try{
       const response = await axios.delete( SERVER_URL+'favs/'+id,{headers:{token:localStorage.token}});
-      // const response = await axios.delete( SERVER_URL+'userFav/'+id);
       //Success
       return(response)
   } catch (error){
@@ -202,6 +177,7 @@ export async function DeleteUserFavs(id){
         console.log(error.response.data);
         console.log(error.response.status);
         console.log(error.response.headers);
+        return(error.response)
       } else if (error.request){
         console.log(error.request);
       } else {
@@ -283,7 +259,7 @@ export async function GetUserCheck(id){
 //Update User
 export async function UpdateUser(data){
   try{
-      const response = await axios.put(SERVER_URL + "user" , data);
+      const response = await axios.put(SERVER_URL + 'user' , data,{headers:{token:localStorage.token}});
       // const response = await axios.put( SERVER_URL+'user',data);
       //Success
       return(response)

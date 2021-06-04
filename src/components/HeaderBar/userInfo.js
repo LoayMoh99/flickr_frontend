@@ -10,12 +10,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Link , Route, useParams } from 'react-router-dom'
 import {GetPeopleByIdentefier} from "../../services/peopleServices"
-//import UpdateUser from "../../services/userServices"
 import Faves from '../Faves/Faves';
 import AlbumPreview from '../Album/AlbumPreview'
 import {GetUser,GetUserPhotos,UpdateUser,checkUserByIdentifier} from "../../services/userServices"
 import GroupPhotos from "../GroupPhotos/GroupPhotos"
-localStorage.token="eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYwYjYwMDYwMzZiYzIzMDAxOWE3NGI4OCIsImlhdCI6MTYyMjU0MDQ0NCwiZXhwIjoxNzIyNTQ3NjQ0fQ.ng54v98xXSr-1BCpfZcThPAMOMwSl3H595xN36P6hbE"
 
 export default function Userinfo(props){
     
@@ -35,52 +33,39 @@ export default function Userinfo(props){
 
     //get request
     useEffect( () =>{
-        // check if i am in the user or in people profile//////FOR INTEGRATION/////////////////////////
-        // checkUserByIdentifier(id).then(response=>{
-        //     if(response.data===true){
+        checkUserByIdentifier().then(response=>{
+            if(response.data.boolean === 0){
         //         //get user
                 GetUser().then( response => {
                     setUserInfo(response.data);
                     setIsUserInfo(true);
-                console.log(response)
+                console.log(response.data)
                 })
-        //         //get user photos
-        //         GetUserPhotos().then( response => {
-        //             setUserPhotos(response.data);
-        //         })
-        //         setFollowing(false);
-        //         setIsUser(true);
-        //     }
-        //     else{
-        //         ////Not me!
-        //         setIsUser(false);
-        //         setUserId(id);
-        //         GetPeopleByIdentefier(userId).then(response=>{
-        //             setUserInfo(response.data);
-        //             setUserName(response.UserName)
-        //             if(response.Follow===true){
-        //                 setFollowing(true);
-        //             }
-        //             else{
-        //                 setFollowing(false);
-        //             }
-        //         })
-        //     }
-        // })
-        // //get user
-        // GetUser().then( response => {
-        //     setUserInfo(response.data);
-        // })
-        // //get user photos
-        // GetUserPhotos().then( response => {
-        //     setUserPhotos(response.data);
-        // })
-        // //get people photos by userId
-        // GetPeoplePhotos(userId).then( response => {
-        //     setPeoplePhotos(response.data);
-        // })
-    // },[])
-    },[])
+                //get user photos
+                GetUserPhotos().then( response => {
+                    setUserPhotos(response.data.photos);
+                    console.log(response)
+                })
+                setFollowing(false);
+                setIsUser(true);
+            }
+            else{
+                ////Not me!
+                setIsUser(false);
+                setUserId(id);
+                GetPeopleByIdentefier(userId).then(response=>{
+                    setUserInfo(response.data);
+                    setUserName(response.UserName)
+                    if(response.Follow===true){
+                        setFollowing(true);
+                    }
+                    else{
+                        setFollowing(false);
+                    }
+                })
+            }
+        })
+    },[id])
 
 
     const [isPhotoStream,setPhotoStream] = useState(true);
@@ -100,65 +85,24 @@ export default function Userinfo(props){
     const [isFollowing,setFollowing]=useState(false);
     const plusIcon = <FontAwesomeIcon icon={faPlus} color="DarkGrey" />;
 
-    //yetmese7 sa3et el integration
-    // useEffect(() => {
-    //     const fetchData = async () => {
-            //////////////////////////INTEGRATION///////////////////////////////////////
-            // if(props){
-            //     const response = await axios.get( endpoint+'user/check/peopleid?='+props);
-            //     if(response.status===200){
-            //         //////other user
-            //         if(response.data===false){
-            //             const response2 = await axios.get( endpoint+'photo/photos_id?='+props);
-            //             if(response2.status===200){
-            //                 setUserData(response2.data);
-            //                  if(response.data.Follow===true)
-            //                  {
-            //     setFollowing(true);
-            // }
-            // else{
-            //     setFollowing(false);
-            // }
-            //             }
-            //         }
-            //         else{
-            //             const response2 = await axios.get( endpoint+'user');
-            //             if (response2.status===200) {
-            //                 setUserData(response2.data);
-            //                 setFollowing(false);
-            //             }
-            //         }
-            //     }
-            // }
-            //////////////API////////////////////////////////////////
-            //const {data,status} = await axios.get( endpoint+'user/photos');
-    //         const {data,status} = await axios.get( endpoint+'photos');
-    //         console.log(status);
-    //         if (status === 200){
-    //             setPhotos(data);
-    //         }
-    // };
-    // fetchData();
-    // },[]);
+
 
     function changeSelection(newimageUrl) {
         setSelectedPhoto(newimageUrl);
         console.log("ana fe el changeSelection");
         if(avatarBackground===1){
             const newUserInfo={
-                Fname: userInfo.Fname,
-                Lname: userInfo.Lname,
-                Password: userInfo.Password,
-                Avatar: userInfo.Avatar,
-                BackGround: newimageUrl,
-                About: {
-                Description: userInfo.About.Description,
-                Hometown: userInfo.About.Hometown,
-                Occupation: userInfo.About.Occupation,
-                CurrentCity: userInfo.About.CurrentCity
-                },
-                Following:userInfo.Following.length,
-                Following:userInfo.Followers.length
+                "Fname": userInfo.Fname,
+                "Lname": userInfo.Lname,
+                "Password": userInfo.Password,
+                "Avatar": userInfo.Avatar,
+                "BackGround": newimageUrl,
+                "About": {
+                "Description": userInfo.About.Description,
+                "Hometown": userInfo.About.Hometown,
+                "Occupation": userInfo.About.Occupation,
+                "CurrentCity": userInfo.About.CurrentCity
+                }
             }
             UpdateUser(newUserInfo).then(response=>{
                 console.log("response.data",response.data);
@@ -167,19 +111,17 @@ export default function Userinfo(props){
         }
         else{
             const newUserInfo={
-                Fname: userInfo.Fname,
-                Lname: userInfo.Lname,
-                Password: userInfo.Password,
-                Avatar: newimageUrl,
-                BackGround: userInfo.BackGround,
-                About: {
-                Description: userInfo.About.Description,
-                Hometown: userInfo.About.Hometown,
-                Occupation: userInfo.About.Occupation,
-                CurrentCity: userInfo.About.CurrentCity
-                },
-                Following:userInfo.Following.length,
-                Following:userInfo.Followers.length
+                "Fname": userInfo.Fname,
+                "Lname": userInfo.Lname,
+                "Password": userInfo.Password,
+                "Avatar": newimageUrl,
+                "BackGround": userInfo.BackGround,
+                "About": {
+                "Description": userInfo.About.Description,
+                "Hometown": userInfo.About.Hometown,
+                "Occupation": userInfo.About.Occupation,
+                "CurrentCity": userInfo.About.CurrentCity
+                }
             }
             UpdateUser(newUserInfo).then(response=>{
                 console.log(response.data);
@@ -194,10 +136,7 @@ export default function Userinfo(props){
     }
     function showEdit(num){
         setModalOpen(true);
-        // console.log("isOpen",isModalOpen);
         setAvatarBackground(num);
-        // console.log("jj",num);
-        // console.log("jj",avatarBackground);
     }
 
     function postFollowRequest() {

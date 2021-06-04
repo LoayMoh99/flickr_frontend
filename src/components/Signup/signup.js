@@ -20,11 +20,6 @@ export default function Signup(props) {
         const fname = document.getElementById('firstname').value;
         const lname = document.getElementById('lastname').value;
         const age = document.getElementById('yourage').value;
-        console.log(email);
-        console.log(pass);
-        console.log(fname);
-        console.log(lname);
-        console.log(age);
     
         const object={
             "firstName": fname,
@@ -33,26 +28,6 @@ export default function Signup(props) {
             "password": pass,
             "age": age
         }
-
-        // const object={
-        //     "Fname": "Samar",
-        //     "Lname": "Nabil",
-        //     "Following": 20,
-        //     "Followers": 10,
-        //     "views": 0,
-        //     "Date_joined": "2021-05-31",
-        //     "Email": "farah@gmail.com",
-        //     "UserName": "farahmostafa",
-        //     "Photo": 60,
-        //     "Avatar": "https://picsum.photos/500/300?random=1",
-        //     "BackGround": "https://picsum.photos/500/300?random=1",
-        //     "About": {
-        //       "Description": "string",
-        //       "Hometown": "string",
-        //       "Occupation": "string",
-        //       "CurrentCity": "string"
-        //     }
-        // }
 
         //sign up
         PostUser(object).then( response => {

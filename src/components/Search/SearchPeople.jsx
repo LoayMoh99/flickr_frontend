@@ -20,16 +20,8 @@ function SearchPeople() {
   useEffect(() => {
       GetPeopleBySearch(text).then( response => {
         console.log(response.data);
-        setPeople([response.data]);
+        setPeople(response.data);
       })
-      // console.log(status);
-      // if (status === 200){
-      //   setPeople(data);
-      // }
-      // else{
-      //   setPeople(data);
-      //     error=true; //////////error fetching data
-      // }
   },[]);
 ////////////////////////////////////////////////////////////////////////////////////////////////////
     return (

@@ -25,11 +25,10 @@ function AlbumPreview(props){
         }else{
             //get people photos by userId
             GetPeopleAlbums(username).then( response => {
-            // GetPeopleAlbums().then( response => {
                 setPeopleAlbums(response.data);
             })
         }
-    },[])
+    },[userAlbums])
 
 
 

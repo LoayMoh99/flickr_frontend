@@ -3,7 +3,6 @@ import axios from "axios"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPen } from '@fortawesome/free-solid-svg-icons';
 import {UpdateAlbum} from '../../services/albumServices';
-const endpoint = 'http://localhost:3001/'
 
 function AlbumCoverPhoto(props) {
 
@@ -57,10 +56,6 @@ return (
    <div className="coverPhoto" style={{backgroundImage: `url(${coverPhoto})`}}>
        <div className="overlayAlbum">
                 <div className="spaceAlbumHeader">
-                   
-                       {/* {isUser&& <a href="#" className="editPen" >   
-                                {pen}
-                        </a>} */}
                     {isUser?<div className="inputBarAlbumCover">
                         <div id="inputFormatAlbum">
                             <div class="form-group" >

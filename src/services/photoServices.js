@@ -32,7 +32,7 @@ export default async function DeletePhoto (ids){
     }
   };
 
-export async function PutPhoto (id, object){
+export async function PutPhoto (object){
     try{
         const response = await axios.put(SERVER_URL+'photo', object,{headers:{token:localStorage.token}})
         // const response = await axios.put(SERVER_URL+'photos/'+id , object)
@@ -156,7 +156,8 @@ export async function PostComments (id,object){
 export async function addTag (object)
 {
           try{
-       const response = await axios.post(SERVER_URL+'photo/tag', object,{headers:{token:localStorage.token}});
+            console.log(object);
+            const response = await axios.post(SERVER_URL+'photo/tag', object,{headers:{token:localStorage.token}});
     
       return(response)
   } catch (error){
@@ -176,9 +177,7 @@ export async function addTag (object)
 export async function PostPhoto (object){
   console.log(object);
   try{
-    //const buffer=fs.createReadStream(object.file.name);
       const response = await axios.post(SERVER_URL+'photo',object,{headers:{token:localStorage.token}})
-      console.log("ana fe el photossss service",response);
       //Success
       return(response)
   } catch (error){

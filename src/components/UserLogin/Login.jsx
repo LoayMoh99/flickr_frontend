@@ -29,8 +29,7 @@ export default function Login(props) {
 
     // UserLogin(object).then( response => {
     UserLogin(object).then( response => {
-        console.log(response.data.token);
-        if (response.data.token){
+        if (response.status === 200){
             setIsSuccess(true);
             accessToken = response.data.token;
             localStorage.token = accessToken;

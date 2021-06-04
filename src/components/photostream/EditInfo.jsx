@@ -21,10 +21,10 @@ function EditInfo(){
     //get request
     useEffect( () =>{
         GetUserPhotos().then( response => {
-            setPhotos(response.data);
+            setPhotos(response.data.photos);
+            console.log(response,"edit info")
         })
-    // },[photos])
-},[])
+    },[photos])
 
     // Modal
     const [isModalOpen, setModalIsOpen] = useState(false);
@@ -42,7 +42,6 @@ function EditInfo(){
             "photos":[idToDelete]
         };
         DeletePhoto(ids).then( response => {
-        // DeletePhoto(idToDelete).then( response => {
             console.log(response);
         });
         //close delete modal
@@ -69,7 +68,7 @@ function EditInfo(){
                     description = {photo.description}
                     privacy = {photo.privacy}
                     ownerId = {photo.ownerId}
-                    numberOfFavs = {photo.num_favs}
+                    numberOfFavs = {photo.Fav.length}
                     numberOfComments ={photo.comments.length}
                     onDelete={toggleModal}
                 />

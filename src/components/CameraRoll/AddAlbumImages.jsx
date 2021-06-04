@@ -3,17 +3,16 @@ import axios from "axios"
 import {addPhotoToAlbum , deletePhotoFromAlbum} from '../../services/albumServices';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
-const endpoint = 'http://localhost:3001/'
 
 
 function AddAlbumImages(props) {
     const check = <FontAwesomeIcon icon={faCheckCircle} color="cornflowerblue" size="1x"/>;
     const  { albumCover , albumTitle , albumPhotos , imgAddIds , albumId }= props;
     const [photoCount,setPhotoCount]= useState(albumPhotos.length);
-    const [isChecked,setIsChecked]= useState(false);
+    const [isChecked,setIsChecked]= useState(true);
 
-    console.log(imgAddIds);
-    console.log(albumId);
+    // console.log(imgAddIds);
+    console.log(isChecked);
     
     const imgSelected={"photos":imgAddIds};
 
@@ -23,16 +22,19 @@ function AddAlbumImages(props) {
         {
            
             deletePhotoFromAlbum(albumId,imgSelected).then( response => {
+              console.log(response)
               setPhotoCount(response.data.length);
           })
+          setIsChecked(!isChecked);
         }
         else{ // was initially unchecked, hence the user want to add this/ these photos to the selected album 
             //addPhotoToAlbum(albumId,imgSelected);
             addPhotoToAlbum(albumId,imgSelected).then( response => {
               setPhotoCount(response.data.length);
           })
+          setIsChecked(!isChecked);
         }
-        setIsChecked(!isChecked);
+        // setIsChecked(!isChecked);
       };
   
       function containsPhotos(obj) {
@@ -89,12 +91,12 @@ function AddAlbumImages(props) {
                     </h5>
                   </div>
                   {/* <div> */}
-                  {isChecked&&
-                  (
+                  {isChecked &&
+                  
                   <div className="checkIcon">
                     {check}
                   </div>
-                  )}
+                  }
                   {/* </div> */}
                 {/* </div> */}
             </div>
