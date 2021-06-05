@@ -15,20 +15,20 @@ function AddPhotos(props){
     const path = props.location.pathname;
     var index = path.split('/');
     var id = index[2];
-    console.log(id);
+    //console.log(id);
 
     const [UrltoAdd ,setUrl] = useState([]);
     const [idToAdd ,setId] = useState([]);
 
     //Get photos
     const [userPhotos, setUserPhotos] = useState([]);
-    const [peoplePhotos, setPeoplePhotos] = useState([]);
+    console.log({idToAdd});
 
     //get request
     useEffect( () =>{
         //get user photos
         GetUserPhotos().then( response => {
-            setUserPhotos(response.data);
+            setUserPhotos(response.data.photos);
         })
     },[])
 
@@ -38,7 +38,7 @@ function AddPhotos(props){
     }  
 
     function removePhoto(id,url){
-        console.log('id=',id);
+        //console.log('id=',id);
         setId(prevItem => {
             return prevItem.filter(
                 (item,index) =>{
@@ -57,20 +57,14 @@ function AddPhotos(props){
     }
 
     function addToPool(){
-        console.log(idToAdd);
+        //onsole.log(idToAdd);
         //Api
         //post user photos
-        const object={
-            "url": "https://picsum.photos/200/200?random=1",
-            "description": "post desciption",
-            "title": "post Title",
-            "Fav":[]
-        }
         idToAdd.map(photo_id =>{
-            PostGroupPhotos(id,photo_id,object).then( response => {
+            PostGroupPhotos(id,photo_id).then( response => {
                 console.log(response);
                 //link to group pool
-                props.history.push('/user');
+                props.history.push('/group/'+id);
             })
         })
     }
@@ -98,7 +92,7 @@ function AddPhotos(props){
                         {userPhotos.map(photo => (
                             <PhotosToAdd 
                                 url = {photo.photoUrl}
-                                id = {photo.id}
+                                id = {photo._id}
                                 onAdd = {addPhoto}
                                 onRemove ={removePhoto}
                                 onError = {errorMessage}

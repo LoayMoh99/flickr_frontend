@@ -42,11 +42,6 @@ export default function Signup(props) {
   return (
     <div className="main">
 
-    {/* <div class="header">
-      <div class="signup-container">
-          <p>flickr</p>
-      </div>
-    </div> */}
     <Header isLogged={false}/>
     <div class="card-container">
       <div class="card">

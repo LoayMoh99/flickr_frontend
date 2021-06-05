@@ -43,6 +43,7 @@ function App() {
       <Route path="/About" component={About}/>
       <Route path="/Blog" component={Blog}/>
       <Route path="/Jobs" component={Jobs}/>
+      <Route path="/group/:id" component={GroupHeader}/>
       <Route path="/EditInfo" component={EditInfo}/>
       <Route path="/CameraRoll" component={CameraRoll}/>
       <Route path="/FollwingFollowers/:isUser/:id" component={FollwingFollowers}/>

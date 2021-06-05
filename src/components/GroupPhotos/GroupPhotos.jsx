@@ -11,10 +11,8 @@ function GroupPhotos(props){
         color:'white'
     };
 
-    // const [groupId , setgroupId] = useState(props.id);
-    const [groupId , setgroupId] = useState(1110);
-    // const [isMember , setIsMember] = useState(props.isMember);
-    const [isMember , setIsMember] = useState(true);
+    const [groupId , setgroupId] = useState(props.id);
+    const [isMember , setIsMember] = useState(props.isMember);
 
     //Get photos
     const [groupPhotos, setPhotos] = useState([]);
@@ -22,29 +20,31 @@ function GroupPhotos(props){
     //get request
     useEffect( () =>{
         // get user favs
-        GetGroupPhotos().then( response => {
+        GetGroupPhotos(groupId).then( response => {
+            console.log({response})
             setPhotos(response.data);
         })
 
-    },[])
+    },[isMember])
 
     return(
         <>
         <div className="group-photos-body">
             <ul className="groupNav">
                 <h2>Group Pool</h2>
-                {isMember && <Link  style={navStyle} to={`/Add/${groupId}`}><button>Add photo</button></Link>}
+                {isMember && <Link  style={navStyle} to={`/Add/${groupId}`}><button id="P_btn">Add photo</button></Link>}
             </ul>
             <div className="grid">
             {groupPhotos.map(photo => (
                 <ImageGrid
-                id = {photo.id}
-                url ={photo.url} 
+                id = {photo._id}
+                url ={photo.photoUrl} 
                 title ={photo.title} 
                 ownerName = 'unknown'
-                ownerId = '0'
+                ownerId = {photo.ownerId} 
                 numberOfFavs = {photo.Fav.length}
-                numberOfComments ='0'
+                privacy={photo.privacy} 
+                numberOfComments ={photo.comments.length}
                 viewMode = {false}
                 favMode = {true}
                 />

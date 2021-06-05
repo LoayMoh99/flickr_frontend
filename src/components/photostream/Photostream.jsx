@@ -46,16 +46,6 @@ function Photostream(props){
     // },[userPhotos,userId])
     // },[userId])
 },[])
-    
-    // let isPhotoSelected;
-    // function showPhoto(id){
-    //     console.log("PhotoStream",id);
-    //     isPhotoSelected=id;
-    //     console.log("after click",isPhotoSelected);
-    //     props.history.push('/imagedetails/id}');
-        
-    // }  
-    
     return (
         <>
         <div className="photostream-body">

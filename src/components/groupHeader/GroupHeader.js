@@ -5,72 +5,42 @@ import './extraGroupDesign.css'
 import defaultProfile from '../../img/deefault.jpg';
 import groupBG from '../../img/groupBG.jpg'
 import groupimg from '../../img/images.png'
+import {GetGroupById} from "../../services/groupServices"
+import GroupPhotos from '../GroupPhotos/GroupPhotos'
 import Header from '../navbar/mainNav'
+import Join from '../Search/Join'
 import axios from 'axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import {Link} from "react-router-dom";
-const endpoint = 'http://dropoids.me/api/v1/'
 
 
 export default function GroupHeader(props){
+    const path = props.location.pathname;
+    const index = path.split('/');
+    const id = index[2];
+    console.log({id});
     const [groupInfo, setgroupInfo] = useState([]);
-    const [isJoiningGroup,setJoiningGroup]=useState(false);
-    console.log("group id",props.groupId);
-    useEffect(() => {
-        const fetchData = async () => {
-        const {data,status} = await axios.get( endpoint+'group/'+props.groupId);
-        console.log("data",data);
-        if (status === 200){
-            setgroupInfo(data[0]);
-            console.log("el group Fataaa7");
-            if(groupInfo.role){
-                setJoiningGroup(false);
-            }
-            else{
-                setJoiningGroup(true);
-            }
-            //setJoiningGroup(groupInfo.join)//////API
-        }
-        console.log(groupInfo);
-};
-fetchData();
-},[]);
+    const [isJoiningGroup,setJoiningGroup]=useState(true);
+    const [isUndefined,setisUndefined]=useState(true);
     
-    const [isGroupPhotos,setGroupPhotos] = useState(false);
-    const [isGroupOverview,setGroupOverview] = useState(true);
-    const [isGroupMembers,setGroupMembers] = useState(false);
-    const plusIcon = <FontAwesomeIcon icon={faPlus} color="DarkGrey" />;
+    useEffect(() => {
+        GetGroupById(id).then( response => {
+            console.log(response);
+            if(response.data!=undefined){
+                setgroupInfo(response.data);
+                if(response.data.role){
+                    setJoiningGroup(true);
+                    console.log({isJoiningGroup})
+                }
+                else{
+                    setJoiningGroup(false);
+                }
+            }
+        })
 
-    const navStyle={
-        color:'white'
-    };
+},[]);
 
-    function joinGroup(){
-        /*const RequestToJoin={
-            id=props.groupId
-        }
-        const response=await axios.post( endpoint+'group/'+props.groupId+'join');???????????????lesa el backend mazabatoha4
-        */
-    }
-
-    function updateOverview(){
-        setGroupOverview(true);
-        setGroupPhotos(isGroupPhotos && !isGroupPhotos);
-        setGroupMembers(isGroupMembers && !isGroupMembers);
-    }
-
-    function updateGroupPhotos(){
-        setGroupOverview(isGroupOverview && !isGroupOverview);
-        setGroupPhotos(true);
-        setGroupMembers(isGroupMembers && !isGroupMembers);
-    }
-
-    function updateGroupMember(){
-        setGroupOverview(isGroupOverview && !isGroupOverview);
-        setGroupPhotos(isGroupPhotos && !isGroupPhotos);
-        setGroupMembers(true);
-    }
     
     return(
         
@@ -86,18 +56,24 @@ fetchData();
                             <div className="nameAndInfo">
                                 <div id="groupNameAndButtton">
                                     <h1>{groupInfo.name}</h1>
-                                    {!isJoiningGroup&&<button onClick={joinGroup()}>{plusIcon} Follow</button>}
+                                    <div id="joinBtnInGroup">
+                                    <Join
+                                    key={id} 
+                                    group_id={id}
+                                    role={isJoiningGroup}
+                                    />
+                                    </div>
                                 </div>
                                 <div className="numbers">
                                     <div className="follwingFollowers">
                                         <ul className="NavbarAndheaderul"  id="groupAdj">
-                                            <li>{groupInfo.Members.length} Members</li>
-                                            <li>{groupInfo.Photos.length} Photos</li>
+                                            <li>{groupInfo.count_members} Members</li>
+                                            <li>{groupInfo.count_photos} Photos</li>
                                         </ul>
                                     </div>
                                     <div className="joined">
-                                        <p>{props.num_public_photos} Photos</p>
-                                        <p>Joined {props.date_joined}</p>
+                                        {/* <p>{groupInfo.count_members} Photos</p> */}
+                                        <p>Joined {groupInfo.createdAt}</p>
                                     </div>
                                 </div>
                             </div>
@@ -106,15 +82,12 @@ fetchData();
                 </div>
                 <div className="navAndSearch extraPadding">
                     <ul className="editNav NavbarAndheaderul">
-                        <li className=" mainHeadeNavCoices" className={isGroupOverview && "defaultSelect"}  onClick={updateOverview}>Overvirw</li>
-                        <li className=" mainHeadeNavCoices" className={isGroupPhotos && "defaultSelect"}  onClick={updateGroupPhotos}>Photos</li>
-                        <li className=" mainHeadeNavCoices" className={isGroupMembers && "defaultSelect"}  onClick={updateGroupMember}>Members</li>
+                        <li className=" mainHeadeNavCoices" className="defaultSelect">Photos</li>
                     </ul>
                 </div>
             </div>
             <div>
-                {/* {isPhotoStream && <Photostream/>}
-                {isCameraRoll && <CameraRoll/>} */}
+                <GroupPhotos id={id} isMember={isJoiningGroup}/>
             </div>
         </div>
     );

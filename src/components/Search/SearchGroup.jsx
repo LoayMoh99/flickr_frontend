@@ -38,21 +38,6 @@ useEffect(() => {
       }
   })();
 }, []);
-////////////////////Fetching data using Search text//////////////////////////////////////////////
-    // useEffect( async() => {
-    //   const response = await GetGroupBySearch(text)
-    //     const map1 = response.map(x => await axios.get('http://dropoids.me/api/v1/group/'+x._id));
-    //     console.log(map1)
-    //     if (status === 200){
-    //         setGroup(data);
-    //     }else{
-    //         setGroup(data);
-    //           error=true; //////////error fetching data
-    //       }
-    // };
-  
-    // fetchData();
-  // },[]);
 /////////////////////////////////////////////////////////////////////////////////////////////////
     return (
         <div className="SearchPeople">
@@ -62,7 +47,7 @@ useEffect(() => {
         {!error && groups.map((group) => (
 ///////////////////////////////////////linking here to handle pressing on the card to go to user account/////////////////////
             <div className="FollowingButton">
-            <Link style={navStyle}  to={`/UserInfo/${group.id}`}>
+            <Link style={navStyle} to={`/group/${group.id}`}>
               <GroupCard
               key={group.id} 
               group_id={group.id}

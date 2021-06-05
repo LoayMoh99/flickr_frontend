@@ -61,7 +61,7 @@ export async function UnJoinGroup (group_id){
 };
 export default async function GetGroupPhotos (id){
     try{
-        const response = await axios.get( SERVER_URL+'group/photos/'+id);
+        const response = await axios.get( SERVER_URL+'group/photos/'+id,{headers:{token: localStorage.token}});
         // const response = await axios.get( SERVER_URL+'groupPhotos');
         //Success
         return(response)
@@ -89,7 +89,7 @@ export default async function GetGroupPhotos (id){
     }
 };
 
-export async function PostGroupPhotos (groupId,photoId,object){
+export async function PostGroupPhotos (groupId,photoId){
     try{
         const response = await axios.post( SERVER_URL+'group/photo',{
           group_id: groupId,
@@ -129,6 +129,27 @@ export async function GetGroupBySearch (text){
       } else if (error.request){
         console.log(error.request);
       } else {
+        console.log('Error', error.message);
+      }
+      console.log(error);
+  }
+};
+
+export async function GetGroupById (groupId){
+  try{
+      const response = await axios.get( SERVER_URL+'group/'+groupId,{headers:{token:localStorage.token}});
+      // const response = await axios.post( SERVER_URL+'groupPhotos',object);
+      //Success
+      return(response)
+  } catch (error){
+      if (error.response){
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request){
+        console.log(error.request);
+      } else {
+        // Something happened in setting up the request and triggered an Error
         console.log('Error', error.message);
       }
       console.log(error);

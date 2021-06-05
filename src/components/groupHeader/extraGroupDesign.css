@@ -12,3 +12,8 @@
 #groupAdj{
     padding: 0;
 }
+
+#groupNameAndButtton #joinBtnInGroup .HandleJoin{
+    top: 15px;
+    right: 850px;
+}

@@ -21,7 +21,8 @@ export default function Userinfo(props){
     const path = props.location.pathname;
     const index = path.split('/');
     const id = index[2];
-    console.log(id);
+    
+    console.log("User Id",id);
 
     const [userPhotos, setUserPhotos] = useState([]);
     const [peoplePhotos, setPeoplePhotos] = useState([]);

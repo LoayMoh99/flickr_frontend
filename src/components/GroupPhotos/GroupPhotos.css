@@ -7,7 +7,7 @@
     font-weight: 200;
 }
 
-.group-photos-body button{
+.group-photos-body #P_btn{
     height: 32px;
     line-height: 32px;
     min-width: 100px;
