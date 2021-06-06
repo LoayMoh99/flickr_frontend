@@ -42,7 +42,9 @@ export default async function UserLogin(object){
 export async function PostUser (object){
   console.log(object);
   try{
-      const response = await axios.post( SERVER_URL+'user',object,{headers:{token:localStorage.token}});
+      const response = await axios.post( SERVER_URL+'user',object, {
+        crossDomain: true
+      });
       //Success
       return(response)
   } catch (error){
