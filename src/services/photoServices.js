@@ -94,7 +94,7 @@ export async function GetComments (id){
 
 export async function GetPhotoById (id){
   try{
-      const response = await axios.get(SERVER_URL+'photo/'+id,{headers:{token:localStorage.token}})
+      var response = await axios.get(SERVER_URL+'photo/'+id,{headers:{token:localStorage.token}})
       // const response = await axios.get(SERVER_URL+'photos/'+id)
       //Success
       return(response)

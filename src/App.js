@@ -42,12 +42,12 @@ function App() {
       <Route path="/Group/:group_id/members" component={GroupCard}/>
       <Route path="/About" component={About}/>
       <Route path="/Blog" component={Blog}/>
-      <Route path="/Jobs" component={Jobs}/>
       <Route path="/group/:id" component={GroupHeader}/>
+      <Route path="/Jobs" component={Jobs}/>
       <Route path="/EditInfo" component={EditInfo}/>
       <Route path="/CameraRoll" component={CameraRoll}/>
       <Route path="/FollwingFollowers/:isUser/:id" component={FollwingFollowers}/>
-      <Route path="/FollwingFollowers" component={FollwingFollowers}/>
+      <Route path="/Followers" component={Followers}/>
       <Route path="/Followers" component={Followers}/>
       <Route path="/Explore" component={TotExplore}/>
       <Route path="/Add/:groupId" component={AddPhotos}/>

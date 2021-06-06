@@ -3,7 +3,7 @@ import './signup.css';
 import useForm from "./userForm";
 import validateSignup from "./validateSignUp";
 //import arrowlogo from '../../img/dBackground.jpg';
-import PostUser from "../../services/userServices"
+import {PostUser} from "../../services/userServices"
 import {Link} from "react-router-dom";
 import Header from "../navbar/mainNav"
 
@@ -42,6 +42,11 @@ export default function Signup(props) {
   return (
     <div className="main">
 
+    {/* <div class="header">
+      <div class="signup-container">
+          <p>flickr</p>
+      </div>
+    </div> */}
     <Header isLogged={false}/>
     <div class="card-container">
       <div class="card">

@@ -5,7 +5,6 @@ import Header from '../navbar/mainNav';
 import Footer from '../navbar/footer'
 import {GetUserFollowers} from '../../services/userServices'
 import axios from "axios"
-import {Link} from "react-router-dom";
 
 export default function Followers(props){
 
@@ -17,16 +16,13 @@ export default function Followers(props){
             GetUserFollowers().then( response => {
                 if(response!=undefined){
                     setisUndefinedfollowers(false);
-                    setFollowers(response.data);
+                    setFollowers(response.data.FollowersList);
                 }else{
                     setisUndefinedfollowers(true);
                 }
             
         })
     },[]);
-    const navStyle={
-        color:'black'
-        };
 
     return(
         <div>
@@ -70,8 +66,9 @@ export default function Followers(props){
             <tbody>
             {!isUndefinedfollowers && followers.map(user => (
                 <tr>
-                <Link  style={navStyle}  to={`/UserInfo/${user._id}`}><th scope="row"><img src={user.avatar}></img> {user.Fname} {user.Lname}</th></Link>
+                <th scope="row"><img src={user.Avatar}></img> {user.Fname} {user.Lname}</th>
                 <td>{user.Photos}</td>
+                {/* <td>200</td> */}
                 <td>{user.UserName}</td>
                 <td>user.Email</td>
                 </tr>

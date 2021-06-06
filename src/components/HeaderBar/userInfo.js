@@ -9,44 +9,50 @@ import axios from 'axios'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import { Link , Route, useParams } from 'react-router-dom'
-import {GetPeopleByIdentefier} from "../../services/peopleServices"
+import GetPeoplePhotos, {GetPeopleByIdentefier} from "../../services/peopleServices"
 import Faves from '../Faves/Faves';
 import AlbumPreview from '../Album/AlbumPreview'
-import {GetUser,GetUserPhotos,UpdateUser,checkUserByIdentifier} from "../../services/userServices"
+import {GetUser,GetUserPhotos,UpdateUser,checkUserByIdentifier,FollowPeople,UnFollowPeople} from "../../services/userServices"
 import GroupPhotos from "../GroupPhotos/GroupPhotos"
 
 export default function Userinfo(props){
     
-
+ 
     const path = props.location.pathname;
     const index = path.split('/');
-    const id = index[2];
-    
-    console.log("User Id",id);
+    var id = index[2];
+    if(id==undefined){ 
+    id='null';
+   // setIsUser(true);
+    }
+    console.log(id);
+
 
     const [userPhotos, setUserPhotos] = useState([]);
     const [peoplePhotos, setPeoplePhotos] = useState([]);
     const [userId , setUserId] = useState(0);
     const [userInfo, setUserInfo] = useState([]);
-    const [isUser , setIsUser] = useState(true);
+    const [isUser , setIsUser] = useState(id=='null'?true:false);
     const [IsUserinfo , setIsUserInfo] = useState(false);
     const [userName , setUserName] = useState('');
-
+    
+    
     //get request
     useEffect( () =>{
-        checkUserByIdentifier().then(response=>{
-            if(response.data.boolean === 0){
+        checkUserByIdentifier(id).then(response=>{
+            if(response.data.boolean === 1){
         //         //get user
                 GetUser().then( response => {
                     setUserInfo(response.data);
                     setIsUserInfo(true);
+                    setPhotoStream(true);
                 console.log(response.data)
                 })
                 //get user photos
-                GetUserPhotos().then( response => {
-                    setUserPhotos(response.data.photos);
-                    console.log(response)
-                })
+                // GetUserPhotos().then( response => {
+                //     setUserPhotos(response.data.photos);
+                //     console.log(response)
+                // })
                 setFollowing(false);
                 setIsUser(true);
             }
@@ -54,10 +60,16 @@ export default function Userinfo(props){
                 ////Not me!
                 setIsUser(false);
                 setUserId(id);
-                GetPeopleByIdentefier(userId).then(response=>{
+                GetPeopleByIdentefier(id).then(response=>{
+                    //setIsUserInfo(false);
+                   
+                    updateStatPhotStream();
                     setUserInfo(response.data);
-                    setUserName(response.UserName)
-                    if(response.Follow===true){
+                    setUserName(response.data.UserName)
+                    setIsUserInfo(true);
+                    setPhotoStream(true);
+                   // Photostream({isUser,id});
+                    if(response.data.Follow===true){
                         setFollowing(true);
                     }
                     else{
@@ -83,8 +95,9 @@ export default function Userinfo(props){
     const [isModalOpen, setModalOpen] = useState(false);
     const [userData, setUserData] = useState([]);
     //Initially not following the other user
-    const [isFollowing,setFollowing]=useState(false);
+    const [isFollowing,setFollowing]=useState(true);
     const plusIcon = <FontAwesomeIcon icon={faPlus} color="DarkGrey" />;
+
 
 
 
@@ -139,13 +152,26 @@ export default function Userinfo(props){
         setModalOpen(true);
         setAvatarBackground(num);
     }
+    const userFollow={
+        "peopleid": id
+      };
 
-    function postFollowRequest() {
-        // const response = await axios.post( endpoint+'user',props);
-        // if(response.status===200){
-        //     const response2 = await axios.get( endpoint+'photo/photos_id?='+props);
-        // }
+    async function toggleFollow(){
+        if(isFollowing===false){
+           FollowPeople(userFollow).then( response => {
+                setFollowing(!isFollowing);
+       
+       })
+   }
+        else{
+           UnFollowPeople(id).then( response => {
+                 setFollowing(!isFollowing);
+            })
     }
+
+       
+    }
+    
 
     function updateStatAbout(){
         setPhotoStream(isPhotoStream && !isPhotoStream);
@@ -231,15 +257,16 @@ export default function Userinfo(props){
                                 <h1>{userInfo.Fname} {userInfo.Lname}</h1>
                                 {!isUser &&
                                 <div>
-                                {isFollowing &&<button className="followButton" onClick={postFollowRequest()}>{plusIcon} Follow</button>}
+                                {!isUser && !isFollowing &&<button className="followButton" onClick={toggleFollow}>{plusIcon} Follow</button>}
+                                {!isUser && isFollowing &&<button className="followButton" onClick={toggleFollow}> UnFollow</button>}
                                 </div>}
                                 <div className="numbers">
                                     <div className="follwingFollowers">
                                         <p>{userInfo.UserName}</p>
                                         <ul className={IsUserinfo&&"NavbarAndheaderul"}>
-                                            <li><Link  style={navStyle} to='/FollwingFollowers/${isUser}/${id}'>{IsUserinfo&& userInfo.Followers.length} followers</Link></li>
+                                        {isUser? <li><Link  style={navStyle} to='/Followers'>{IsUserinfo&& userInfo.Followers.length} followers</Link></li>:<></>}
                                             {/* <li><Link  style={navStyle} to="/FollwingFollowers">{userInfo.Following} following</Link></li> */}
-                                            <li><Link  style={navStyle} to={`/FollwingFollowers/${isUser}/${id}`}>{IsUserinfo&& userInfo.Following.length} following</Link></li>
+                                            <li><Link  style={navStyle} to={`/FollwingFollowers/${isUser}/${id}`}>{IsUserinfo &&userInfo.Following.length} following</Link></li>
                                         </ul>
                                     </div>
                                     <div className="joined">

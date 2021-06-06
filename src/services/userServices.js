@@ -151,7 +151,7 @@ export async function PostUserFavs(object){
       return(response)
   } catch (error){
       if (error.response){
-        if(error.response.data.message=='Photo is already in favorites'){
+        if(error.response.data.message==='Photo is already in favorites'){
           DeleteUserFavs(object.photo_id);
         }
         console.log(error.response.data);

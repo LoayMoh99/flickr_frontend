@@ -60,7 +60,7 @@ export default function Upload(props){
         }
         console.log("status1");
         PostPhoto(newImage).then(response=>{
-            console.log(response.data);
+           
         })
     };
 

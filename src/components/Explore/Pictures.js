@@ -22,7 +22,7 @@ export default function Pictures() {
         
         getExplorePhotos().then( response => {
 
-          if(response.data!=undefined)
+          if(response!=undefined&&response.data!=undefined)
             setPhotos(response.data);
         })
       },[photos2])

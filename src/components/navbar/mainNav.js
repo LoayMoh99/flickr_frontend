@@ -43,10 +43,14 @@ export default function Header(props){
                 <span className="line2 hiddenIconbars"></span>
                 <span className="line3 hiddenIconbars"></span>
             </span>
-            <Link style={navStyle} to="/user"><div className="flickLogoName" href="#top">
+            {isLogged && <Link style={navStyle} to="/user"><div className="flickLogoName" href="#top">
             <img src={flickrLogo} alt="flickrLogo"></img>
             <h3>flickr</h3>
-            </div></Link>
+            </div></Link>}
+            {!isLogged && <div className="flickLogoName" href="#top">
+            <img src={flickrLogo} alt="flickrLogo"></img>
+            <h3>flickr</h3>
+            </div>}
             {isLogged && <>
             <ul className="headSubMenu NavbarAndheaderul">
                 <li  className="mainHeaderTags youTag" ><Link style={navStyle} to="/user">You</Link>

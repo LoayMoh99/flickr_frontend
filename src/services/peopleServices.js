@@ -4,7 +4,7 @@ const SERVER_URL = configData.SERVER_URL ;
 
 export default async function GetPeoplePhotos (id){
     try{
-        const response = await axios.get( SERVER_URL+'user/fav',{headers:{token:localStorage.token}});
+        const response = await axios.get( SERVER_URL+'people/photos/'+id,{headers:{token:localStorage.token}});
         // const response = await axios.get( SERVER_URL+'peoplePhotos');
         //Success
         return(response)
@@ -24,7 +24,7 @@ export default async function GetPeoplePhotos (id){
 
 export async function GetPeopleFavs (userName){
     try{
-        const response = await axios.get( SERVER_URL+'people/fav?username='+userName,{headers:{token:localStorage.token}});
+        const response = await axios.get( SERVER_URL+'people/fav/'+userName,{headers:{token:localStorage.token}});
         // const response = await axios.get( SERVER_URL+'peopleFav');
         //Success
         return(response)
@@ -44,7 +44,7 @@ export async function GetPeopleFavs (userName){
 
 export async function GetPeopleFollowing (id){
   try{
-      const response = await axios.get( SERVER_URL+'people/following?user_id='+id,{headers:{token:localStorage.token}});
+      var response = await axios.get( SERVER_URL+'people/following/'+id,{headers:{token:localStorage.token}});
       // const response = await axios.get( SERVER_URL+'peopleFollowing');
       //Success
       return(response)
@@ -66,7 +66,7 @@ export async function GetPeopleFollowing (id){
 
 export async function GetPeopleByIdentefier (id){
   try{
-      const response = await axios.get( SERVER_URL+'people/'+id);
+      const response = await axios.get( SERVER_URL+'people/'+id,{headers:{token:localStorage.token}});
       // const response = await axios.get( SERVER_URL+'user');
       //Success
       return(response)

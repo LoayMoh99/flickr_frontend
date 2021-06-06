@@ -8,11 +8,16 @@ import {GetPeopleFollowing} from "../../services/peopleServices"
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 import axios from "axios"
 import {Link} from "react-router-dom";
+import { GetPhotoById } from '../../services/photoServices';
 
 export default function FollwingFollowers(props){
         const [allfollowing, setFollowing] = useState([]);
-        const {id}=useParams();
-        const isUser=true;  //useParams();
+        var {isUser,id}=useParams();
+        //const isUser=true;  //useParams();
+        if(isUser=='true')
+        isUser=true;
+        else
+        isUser=false;
         const [isUndefinedfollowers, setisUndefinedfollowers] = useState(true);
         const [isUndefinedfollowing, setisUndefinedfollowing] = useState(true);
         useEffect(() => {
@@ -31,8 +36,12 @@ export default function FollwingFollowers(props){
             else if(isUser!=undefined&&isUser==false){
                 GetPeopleFollowing(id).then( response => {
                     if(response!=undefined){
+                        
                         setisUndefinedfollowing(false);
-                        setFollowing(response.data);
+                        let Data=response.data;
+                         get_avatar_url(Data);
+                        //setFollowing(d);
+                        
                     }
                     else{
                         setisUndefinedfollowing(true);
@@ -44,6 +53,23 @@ export default function FollwingFollowers(props){
         color:'black'
         };
 
+
+async function get_avatar_url(data){
+ //   Data=new Array(Object());
+    for(var i=0;i<data.length;i++){
+       await GetPhotoById(data[i].Avatar).then(avatar=>{
+
+            data[i].Avatar=avatar.data.photoUrl;
+            
+        })
+        .catch(err=>{console.log(err)});
+        
+
+    }
+    setFollowing(data);
+  //  return data;
+
+}
     return(
         <div>
             <Header isLogged={true}/>

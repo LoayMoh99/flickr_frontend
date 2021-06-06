@@ -18,20 +18,20 @@ function Faves(props){
 
     //get request
     useEffect( () =>{
-        if (isUser){
+        if (isUser[0]){
             // get user favs
             GetUserFavs().then( response => {
                 setUserFavs(response.data);
             })
         }else{
             //get people favs by userName
-            GetPeopleFavs(userName).then( response => {
+            GetPeopleFavs(props.userName).then( response => {
                 setPeopleFavs(response.data);
             })
         }
 
 
-    },[userFavs,userName])
+    },[])
     // },[])
 
     let isPhotoSelected;
@@ -51,7 +51,7 @@ return (
         viewMode = {false}
     />
     <div className="grid">
-    {isUser?
+    {isUser[0]?
         <>
         {userFavs.map(photo => (
             <ImageGrid
@@ -75,14 +75,14 @@ return (
         <>
         {peopleFavs.map(photo => (
             <ImageGrid
-            id = {photo.id}
+            id = {photo._id}
             url ={photo.photoUrl} 
             title ={photo.title} 
             description = ''
-            privacy = 'public'
-            ownerName = {photo.UserName}
-            numberOfFavs = '1'
-            numberOfComments ={photo.comment.length}
+            
+            ownerName = {photo.userName}
+           
+            numberOfComments ={photo.numberOfComments}
             viewMode ={isUser}
             favMode ={true}
             onOpenRequest={showPhoto}
