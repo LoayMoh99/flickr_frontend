@@ -4,7 +4,7 @@ services:
 - docker
 branches:
   only:
-  - main
+ # - main
 addons:
   ssh_known_hosts: 52.170.119.1
 #ssh travis with our server
@@ -40,5 +40,5 @@ script:
 after_success:
 #deploying the new containers
 - echo Deploy here..
-- "./deploy.sh"
+#- "./deploy.sh"
 
