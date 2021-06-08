@@ -1,19 +1,21 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable react/prop-types */
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable linebreak-style */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
 import React, { useState , useEffect } from 'react';
 import axios from "axios"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import GetUserAlbums,{GetPeopleAlbums} from "../../services/albumServices"
-
 import AddAlbumImages from './AddAlbumImages';
 import './AddModal.css';
 const endpoint = 'http://localhost:3001/'
+
+
+/** Renders Add Modal to show existant user modal to add/delete photos 
+ * @author Khadija Khaled
+ * @namespace AddModal
+ * @category Functional Component
+ * @extends Component
+ * @property {Array} props.imgAddIds -Array of photos ids to be added to album
+ */
 
 function AddModal(props) {
 
@@ -22,7 +24,6 @@ function AddModal(props) {
 
   //This function is called whenever this album page is opened
   //It gets the details of the selected album and set the const album with these details 
-
 
     //get request
     useEffect( () =>{

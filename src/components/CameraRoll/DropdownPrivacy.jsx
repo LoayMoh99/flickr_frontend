@@ -1,13 +1,20 @@
-/* eslint-disable linebreak-style */
 import React, {useState} from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faSortDown } from '@fortawesome/free-solid-svg-icons';
 import {UpdatePhotos} from '../../services/photoServices';
 import './DropdownPrivacy.css';
 
+
+/** Renders DropdownPrivacy component to edit photo privacy
+ * @author Khadija Khaled
+ * @namespace DropdownPrivacy
+ * @category Functional Component
+ * @extends Component
+ * @property {Array} props.imgEditIds -Array of photos ids to edit privacy
+ */
+
 function DropdownPrivacy(props) {
   const {imgEditIds} = props;
-  //console.log(imgEditIds);
   const arrow = <FontAwesomeIcon icon={faSortDown} color="DarkGrey" />;
   const [privacy,setPrivacy] = useState("private");
 
@@ -16,6 +23,12 @@ function DropdownPrivacy(props) {
     "privacy":privacy
   }
 
+  
+  /** Updates selected photos privacy based on option selected
+    * @memberof DropdownPrivacy
+    * @method changePrivacy
+    * @param {event} event -Tirggered event on change in input value
+    */
   function changePrivacy(event){
     const privacyState=event.target.value;
     setPrivacy(privacyState);

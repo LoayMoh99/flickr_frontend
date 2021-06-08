@@ -12,6 +12,12 @@ import Header from '../navbar/mainNav'
 import {GetAlbumById} from '../../services/albumServices'
 import { Link } from 'react-router-dom';
 
+/** Renders AlbumPage component to show a specific album photos
+ * @author Khadija Khaled
+ * @namespace AlbumPage
+ * @category Functional Component
+ * @extends Component
+ */
 function AlbumPage(props) {
 
     const path = props.location.pathname;

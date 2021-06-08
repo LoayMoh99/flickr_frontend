@@ -1,21 +1,3 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
-/* eslint-disable linebreak-style */
-/* eslint-disable import/no-duplicates */
-/* eslint-disable linebreak-style */
-/* eslint-disable no-unused-vars */
-/* eslint-disable linebreak-style */
-/* eslint-disable indent */
-/* eslint-disable linebreak-style */
-/* eslint-disable react/prop-types */
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable linebreak-style */
-/* eslint-disable max-len */
-/* eslint-disable linebreak-style */
-/* eslint-disable react/button-has-type */
-/* eslint-disable linebreak-style */
 import './Modal.css';
 import 'react-responsive-modal/styles.css';
 import React, { useState } from 'react';
@@ -26,6 +8,19 @@ import { faPlusSquare } from '@fortawesome/free-solid-svg-icons';
 import { faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 import ImagesMM from './ImagesMM';
+
+/** Renders Main modal component in CameraRoll 
+ * @author Khadija Khaled
+ * @namespace Modal
+ * @category Functional Component
+ * @extends Component
+ * @property {Function} props.onRequestClose -To be triggered to close the modal
+ * @property {Function} props.onEditRequest -To open the EditModal 
+ * @property {Function} props.onAddRequest -To open AddAlbumImages modal
+ * @property {Function} props.onDeleteRequest -To open Delete modal
+ * @property {Array} props.imgSelected - Array of selected photos
+ * @property {Integer} props.countSelected -Count of selected photos
+ */
 
 function Modal(props) {
     const lock = <FontAwesomeIcon icon={faLock} color="DarkGrey" />;

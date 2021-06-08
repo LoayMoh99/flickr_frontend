@@ -1,11 +1,3 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable react/prop-types */
-/* eslint-disable jsx-a11y/no-static-element-interactions */
-/* eslint-disable react/destructuring-assignment */
-/* eslint-disable jsx-a11y/click-events-have-key-events */
-/* eslint-disable linebreak-style */
-/* eslint-disable max-len */
-/* eslint-disable linebreak-style */
 import React, {useState} from 'react';
 import axios from "axios"
 import {addTag, addPeopleTag ,UpdatePhotos} from '../../services/photoServices';
@@ -15,6 +7,15 @@ import { faUserFriends } from '@fortawesome/free-solid-svg-icons';
 import './EditModal.css';
 import DropdownPrivacy from './DropdownPrivacy'; 
 const endpoint = 'http://localhost:3001/'
+
+
+/** Renders EditModal component to edit title, description, add tags or add people tags to selected photos 
+ * @author Khadija Khaled
+ * @namespace EditModal
+ * @category Functional Component
+ * @extends Component
+ * @property {Array} props.imgEditIds -Array of photos ids to edit
+ */
 function EditModal(props) {
 
   const {imgEditIds} =props; // array of selected photos to edit to pass them to the API
@@ -32,6 +33,12 @@ function EditModal(props) {
   const [inputTitle, setInputTitle] = useState("");
   const [inputDescription , setInputDescription] = useState("");
   
+  
+ /** Saves the current value of the photo tag in input tag
+    * @memberof EditModal
+    * @method handleTagChange
+    * @param {event} event -Tirggered event on change in input value
+    */
   function handleTagChange(event){ // on tag input change .. take this change to set the new tag and indicate that there was a change in this field
     setTagAdded(true);
     const newTag = event.target.value;
@@ -46,7 +53,11 @@ function EditModal(props) {
   }
 
 
-
+ /** Saves the current value of the people tag in input tag
+    * @memberof EditModal
+    * @method handlPeopleChange
+    * @param {event} event -Tirggered event on change in input value
+    */
   function handlePeopleChange(event){
     setPeopleAdded(true);
     const newPeople = event.target.value;
@@ -61,7 +72,11 @@ function EditModal(props) {
   }
 
 
-
+  /** Saves the current value of the photo title in input tag
+    * @memberof EditModal
+    * @method handleTitleChange
+    * @param {event} event -Tirggered event on change in input value
+    */
   function handleTitleChange(event) {
     setTitleAdded(true);
     const newTitle = event.target.value;
@@ -75,8 +90,11 @@ function EditModal(props) {
     console.log(titleAdded);
   }
 
-
-
+    /** Saves the current value of the photo description in textarea tag
+    * @memberof EditModal
+    * @method handleDescriptionChange
+    * @param {event} event -Tirggered event on change in input value
+    */
   function handleDescriptionChange(event) {
     setDescriptionAdded(true);
     const newDescription  = event.target.value;
@@ -122,6 +140,10 @@ const updatedTitleDescription ={
 };
 
 
+    /** Passes the correct parameters to the API update requests based on user changes
+    * @memberof EditModal
+    * @method confirmEdit
+    */
 function confirmEdit()
 {
   if(tagAdded) // call addTag handler
@@ -208,7 +230,7 @@ function confirmEdit()
             <button
               id="save_edit"
               type="button"
-              onClick={confirmEdit} // should be modified to actually upadate the database with the last edit
+              onClick={confirmEdit} 
             >
               Save
             </button>

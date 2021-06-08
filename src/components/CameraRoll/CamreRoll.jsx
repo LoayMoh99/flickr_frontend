@@ -1,21 +1,3 @@
-/* eslint-disable linebreak-style */
-/* eslint-disable no-undef */
-/* eslint-disable linebreak-style */
-/* eslint-disable max-len */
-/* eslint-disable react/jsx-indent */
-/* eslint-disable linebreak-style */
-/* eslint-disable no-use-before-define */
-/* eslint-disable linebreak-style */
-/* eslint-disable brace-style */
-/* eslint-disable linebreak-style */
-/* eslint-disable no-console */
-/* eslint-disable linebreak-style */
-/* eslint-disable react/no-this-in-sfc */
-/* eslint-disable linebreak-style */
-/* eslint-disable no-unused-vars */
-/* eslint-disable linebreak-style */
-/* eslint-disable react/style-prop-object */
-/* eslint-disable linebreak-style */
 import React, { useState , useEffect } from 'react';
 import _, { filter, map, set } from 'lodash';
 import moment from 'moment';
@@ -36,14 +18,37 @@ import CreateNewAlbumModal from './CreateNewAlbumModal';
 const endpoint = 'http://localhost:3001/'
 
 
+
+/** To increments count
+* @memberof CamreRoll
+* @method handleIncrement
+* @param {integer} c -count
+* @returns {integer} - count incremented
+*/
 export function handleIncrement(c) {
   return c + 1;
 }
 
+
+/** To check if it is present in the array of photos selected or not 
+* @memberof CamreRoll
+* @method containsObject
+* @param {object} obj - A photo object
+* @returns {boolean} - A boolean indicating the photo id is present within the array or not
+*/
 export function containsObject(obj, list) {
   return list.some((elem) => elem._id === obj._id);
   // return list.some((elem) => elem.id === obj.id);
 }
+
+
+/** To delete objectt from list
+* @memberof CamreRoll
+* @method handleDelete
+* @param {array} list - array of photos
+* @param {object} obj - A photo object
+* @returns {array} -array of photos after deletion
+*/
 // to delete the element if unselected
 export function handleDelete(obj, list) {
   const listClone = [...list];
@@ -52,11 +57,23 @@ export function handleDelete(obj, list) {
   return listClone.splice(index, 1);
 }
 
-
+/** To decrements count
+* @memberof CamreRoll
+* @method handleDecrement
+* @param {integer} c -count
+* @returns {integer} - count decremented
+*/
 export function handleDecrement(c) {
   return c - 1;
 }
 
+
+/** Renders CameraRoll photos
+ * @author Khadija Khaled
+ * @namespace CamreRoll
+ * @category Functional Component
+ * @extends Component
+ */
 function CamreRoll() {
   // const images = [{ photo_url: 'https://picsum.photos/id/237/200/300', createdAt: new Date('2019-05-28'), photo_id: '1' }, { photo_url: 'https://picsum.photos/200', createdAt: new Date('2019-06-10'), photo_id: '2' }, { photo_url: 'https://picsum.photos/seed/picsum/200/300', createdAt: new Date('2019-06-11'), photo_id: '3' }, { photo_url: 'https://picsum.photos/200/300?grayscale', createdAt: new Date('2019-06-10'), photo_id: '4' }, { photo_url: 'https://picsum.photos/seed/picsum/200/300', createdAt: new Date('2019-06-10'), photo_id: '5' }, { photo_url: 'https://picsum.photos/seed/picsum/200/300', createdAt: new Date('2019-06-10'), photo_id: '6' }];
   
@@ -86,22 +103,47 @@ function CamreRoll() {
   const [imgDated, setimgDated] = useState([]);
   const [toEditIds, setToEditIds] = useState([]);
 
-  
+  /** To open/close Add modal
+* @memberof CamreRoll
+* @method toggleAddModal
+*/
   const toggleAddModal = () => {
     setAddModalOpen(!isAddModalOpen);
   };
+
+  
+  /** To open/close Create Album modal
+* @memberof CamreRoll
+* @method toggleCreateAlbum
+*/
   const toggleCreateAlbum = () => {
     setCreateAlbumOpen(!isCreateAlbumOpen);
   };
 
+
+  /** To open/close Delete modal
+* @memberof CamreRoll
+* @method toggleDelete
+* @param {string} id -photo id to delete
+*/
   const toggleDelete = (id) => {
     setDeleteOpen(!isDeleteOpen);
     setID(id);
   };
 
+  /** To open/close Edit modal
+* @memberof CamreRoll
+* @method toggleAEditModal
+*/
+  
   const toggleEditModal = () => {
     setEditModalOpen(!isEditModalOpen);
   };
+
+    /** To close Main modal , clear count of selected photos and clear the Edit array
+* @memberof CamreRoll
+* @method closeMainModal
+*/
   const closeMainModal = () => {
     setModalIsOpen(!isModalOpen);
     setCount(0);
@@ -109,28 +151,19 @@ function CamreRoll() {
     // should alse clear the count and clear the to Edit array
   };
 
-
+  /** To change date format
+* @memberof CamreRoll
+* @method monthName
+* @param {object} item -photo object toe change its createdAt date format 
+*/
 
   const monthName = (item) => moment(item.createdAt, 'YYYY-MM-DD').format('DD MMMM YYYY');
-  // function to check if this image was already selected or a newly selected one
-  // function containsObject(obj, list) {
-  //   return list.some((elem) => elem._id === obj._id);
-  //   // return list.some((elem) => elem.id === obj.id);
-  // }
-  // // to delete the element if unselected
-  // function handleDelete(obj, list) {
-  //   const listClone = [...list];
-  //   const index = listClone.indexOf(obj);
-  //   // Edit
-  //   return listClone.splice(index, 1);
-  // }
 
 
-  // function handleDecrement(c) {
-  //   return c - 1;
-  // }
-
-  // to toggle the modal .. if open then close and vice versa
+/** To toggle the main modal open/close based on photo selection/unselection
+* @memberof CamreRoll
+* @method toggleModal
+*/
   const toggleModal = (e, imgObj) => {
     // if count was initially 0 .. this the first image to be selected .. open modal
     let countCopy = count;

@@ -4,6 +4,17 @@ import {addPhotoToAlbum , deletePhotoFromAlbum} from '../../services/albumServic
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 
+/** Renders AddAlbumImages component  with album cover photo, title and number of existant photos
+ * @author Khadija Khaled
+ * @namespace AddAlbumImages
+ * @category Functional Component
+ * @extends Component
+ * @property {String} props.albumCover -Album cover photo url
+ * @property {String} props.albumTitle -Album title 
+ * @property {Array} props.albumPhotos -Album photos
+ * @property {Array} props.imgAddIds -Array of photos to be added to Album
+ * @property {String} props.albumId -Album id
+ */
 
 function AddAlbumImages(props) {
     const check = <FontAwesomeIcon icon={faCheckCircle} color="cornflowerblue" size="1x"/>;
@@ -11,12 +22,15 @@ function AddAlbumImages(props) {
     const [photoCount,setPhotoCount]= useState(albumPhotos.length);
     const [isChecked,setIsChecked]= useState(true);
 
-    // console.log(imgAddIds);
     console.log(isChecked);
     
     const imgSelected={"photos":imgAddIds};
 
-    // to toggle isChecked boolean
+
+      /** Toggle isChecked boolean 
+    * @memberof AddAlbumImages
+    * @method toggleChecked
+    */
     const toggleChecked = () => {
         if(isChecked) // was initially checked, hence the user want to delete this/these photos from the selected album
         {
@@ -34,18 +48,23 @@ function AddAlbumImages(props) {
           })
           setIsChecked(!isChecked);
         }
-        // setIsChecked(!isChecked);
       };
-  /**
-   * To check if it is present in the array of photos selected or not 
-   * @param {object} obj - A photo object 
-   * @returns {boolean} - A boolean indicating the photo id is present within the array or not
-   */
+
+    /** To check if it is present in the array of photos selected or not 
+    * @memberof AddAlbumImages
+    * @method containsPhotos
+    * @param {object} obj - A photo object
+    * @returns {boolean} - A boolean indicating the photo id is present within the array or not
+    */
       function containsPhotos(obj) {
         return imgAddIds.some((elem) => elem._id === obj._id);
       }
 
-    // to check whether the selected photos ids are all present in a specific album or not
+        /** To check whether the selected photos ids are all present in a specific album or not
+    * @memberof AddAlbumImages
+    * @method isPhotoPresent
+    * @returns {boolean} - A boolean indicating whether teh array of selected photos is totally included inside the album phtos' array
+    */
     const isPhotoPresent =()=>{
         // for loop on elements of selected photos ids 
         // compare the id in each loop  with the ids present in the album

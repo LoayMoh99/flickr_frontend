@@ -5,6 +5,15 @@ import './CreateNewAlbumModal.css';
 import { createAlbum} from '../../services/albumServices'
 const endpoint = 'http://localhost:3001/'
 
+
+/** Renders CreateNewAlbumModal component to create new album
+ * @author Khadija Khaled
+ * @namespace CreateNewAlbumModal
+ * @category Functional Component
+ * @extends Component
+ * @property {Array} props.imgIdsCreateAlbum -Array of photos ids to create new album
+ */
+
 function CreateNewAlbumModal(props) {
 
   //new titles and description
@@ -14,6 +23,14 @@ function CreateNewAlbumModal(props) {
   const { imgIdsCreateAlbum } = props; 
   const coverPhotoId = imgIdsCreateAlbum[0];
   console.log(props.imgIdsCreateAlbum);
+
+
+
+  /** Saves the current value of the Album title in input tag
+    * @memberof CreateNewAlbumModal
+    * @method handleTitleChange
+    * @param {event} event -Tirggered event on change in input value
+    */
 
   function handleTitleChange(event) {
     const newTitle = event.target.value;
@@ -27,6 +44,14 @@ function CreateNewAlbumModal(props) {
     }
     console.log(inputTitle);
   }
+
+
+  
+    /** Saves the current value of the album description in textarea tag
+    * @memberof CreateNewAlbumModal
+    * @method handleDescriptionChange
+    * @param {event} event -Tirggered event on change in input value
+    */
 
   function handleDescriptionChange(event) {
     const newDescription  = event.target.value;

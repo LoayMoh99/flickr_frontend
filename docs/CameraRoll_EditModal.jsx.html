@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: CameraRoll/EditModal.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: CameraRoll/EditModal.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, {useState} from 'react';
+import axios from "axios"
+import {addTag, addPeopleTag ,UpdatePhotos} from '../../services/photoServices';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTag } from '@fortawesome/free-solid-svg-icons';
+import { faUserFriends } from '@fortawesome/free-solid-svg-icons';
+import './EditModal.css';
+import DropdownPrivacy from './DropdownPrivacy'; 
+const endpoint = 'http://localhost:3001/'
+
+
+/** Renders EditModal component to edit title, description, add tags or add people tags to selected photos 
+ * @author Khadija Khaled
+ * @namespace EditModal
+ * @category Functional Component
+ * @extends Component
+ * @property {Array} props.imgEditIds -Array of photos ids to edit
+ */
+function EditModal(props) {
+
+  const {imgEditIds} =props; // array of selected photos to edit to pass them to the API
+  //console.log(imgEditIds); 
+
+
+  const tag = &lt;FontAwesomeIcon icon={faTag} color="DarkGrey" />;
+  const people = &lt;FontAwesomeIcon icon={faUserFriends} color="DarkGrey" />;
+  const [tagAdded,setTagAdded] = useState(false);
+  const [peopleAdded, setPeopleAdded]= useState(false);
+  const [titleAdded,setTitleAdded] = useState(false);
+  const [descriptionAdded, setDescriptionAdded]= useState(false);
+  const [inputTag, setInputTag] = useState("");
+  const [inputPeople , setInputPeople] = useState("");
+  const [inputTitle, setInputTitle] = useState("");
+  const [inputDescription , setInputDescription] = useState("");
+  
+  
+ /** Saves the current value of the photo tag in input tag
+    * @memberof EditModal
+    * @method handleTagChange
+    * @param {event} event -Tirggered event on change in input value
+    */
+  function handleTagChange(event){ // on tag input change .. take this change to set the new tag and indicate that there was a change in this field
+    setTagAdded(true);
+    const newTag = event.target.value;
+    setInputTag(newTag);
+    console.log(inputTag);
+    if(newTag==="")
+    {
+      setTagAdded(false);
+    }
+    console.log('tagAdded');
+    console.log(tagAdded);
+  }
+
+
+ /** Saves the current value of the people tag in input tag
+    * @memberof EditModal
+    * @method handlPeopleChange
+    * @param {event} event -Tirggered event on change in input value
+    */
+  function handlePeopleChange(event){
+    setPeopleAdded(true);
+    const newPeople = event.target.value;
+    setInputPeople(newPeople);
+    console.log(inputPeople);
+    if(newPeople==="")
+    {
+      setPeopleAdded(false);
+    }
+    console.log('peopleAdded');
+    console.log(peopleAdded);
+  }
+
+
+  /** Saves the current value of the photo title in input tag
+    * @memberof EditModal
+    * @method handleTitleChange
+    * @param {event} event -Tirggered event on change in input value
+    */
+  function handleTitleChange(event) {
+    setTitleAdded(true);
+    const newTitle = event.target.value;
+    setInputTitle(newTitle);
+    console.log(inputTitle);
+    if(newTitle==="")
+    {
+      setTitleAdded(false);
+    }
+    console.log('titleAdded');
+    console.log(titleAdded);
+  }
+
+    /** Saves the current value of the photo description in textarea tag
+    * @memberof EditModal
+    * @method handleDescriptionChange
+    * @param {event} event -Tirggered event on change in input value
+    */
+  function handleDescriptionChange(event) {
+    setDescriptionAdded(true);
+    const newDescription  = event.target.value;
+    setInputDescription(newDescription);
+    console.log(inputDescription);
+    if(newDescription==="")
+    {
+      setDescriptionAdded(false);
+    }
+    console.log('descrpAdded');
+    console.log(descriptionAdded);
+  }
+
+
+// To addPeopleTag
+const updatedPhotoPeopleTag ={
+  "photos":imgEditIds,
+  "tagged":[inputPeople]
+};
+
+
+// To addPeopleTag
+const updatedPhotoTag ={
+  "photos":imgEditIds,
+  "tag":inputTag
+};
+
+//to add title
+const updatedTitle ={
+  "photos":imgEditIds,
+  "title":inputTitle
+};
+//to add description
+const updatedDescription ={
+  "photos":imgEditIds,
+  "description":inputDescription
+};
+//to add title &amp; description
+const updatedTitleDescription ={
+  "photos":imgEditIds,
+  "title":inputTitle,
+  "description":inputDescription
+};
+
+
+    /** Passes the correct parameters to the API update requests based on user changes
+    * @memberof EditModal
+    * @method confirmEdit
+    */
+function confirmEdit()
+{
+  if(tagAdded) // call addTag handler
+  {
+    console.log(updatedPhotoTag);
+    addTag(updatedPhotoTag).then( response => {
+      console.log(response.status);
+  }) 
+
+  }
+  if(peopleAdded) // call addPeople handler
+  {
+    console.log(updatedPhotoPeopleTag);
+    addPeopleTag(updatedPhotoPeopleTag).then( response => {
+      console.log(response.status);
+    }) 
+
+  }
+  if(titleAdded &amp;&amp; descriptionAdded) // call update title &amp; description handler with object title and description
+  {
+      //updatedTitleDescription
+      UpdatePhotos(updatedTitleDescription).then( response => {
+        console.log(response.status);
+      })
+      
+  }
+  else if(titleAdded &amp;&amp; !descriptionAdded) // call update title &amp; description handler with only title changed
+  {
+    //updatedTitle
+    UpdatePhotos(updatedTitle).then( response => {
+        console.log(response.status);
+      })
+
+
+  }else if(!titleAdded &amp;&amp; descriptionAdded) // call update title &amp; description handler with only description
+  {
+    //updatedDescription
+    UpdatePhotos(updatedDescription).then( response => {
+        console.log(response.status);
+      })
+  }
+}
+
+  return (
+    &lt;>
+
+      &lt;div className="modal__backdrop_edit">
+        &lt;div className="modal__container_edit">
+          &lt;span className="close_edit" onClick={props.onRequestEditClose}>&amp;times;&lt;/span>
+          &lt;h3 className="modal__title_edit">
+            Editing
+            {' '}
+            {props.countEdit}
+            {' '}
+            photos
+            {' '}
+          &lt;/h3>
+          &lt;div className="title-desc-container">
+            &lt;input className="edit-title" type="text" placeholder="Change title"  onChange={handleTitleChange}/>
+            &lt;hr />
+            &lt;textarea className="edit-description" placeholder="Change description"  onChange={handleDescriptionChange}/>
+
+          &lt;/div>
+          &lt;span className="privacy-label">Who can see this photo ?&lt;/span>
+
+          &lt;span className="space" />
+          &lt;DropdownPrivacy 
+          imgEditIds={imgEditIds}
+          />
+
+          &lt;div className="row">
+            &lt;div className="edit-tag">
+              {tag}
+              {'  '}
+              &lt;input type="text" className="no-outline" placeholder="Add new tags"  onChange={handleTagChange} />
+            &lt;/div>
+            &lt;div className="edit-tag">
+              {people}
+              {'  '}
+              &lt;input type="text" className="no-outline" placeholder="Add new people" onChange={handlePeopleChange} />
+            &lt;/div>
+          &lt;/div>
+          &lt;div className="edit-footer">
+            &lt;button
+              id="save_edit"
+              type="button"
+              onClick={confirmEdit} 
+            >
+              Save
+            &lt;/button>
+            &lt;button id="cancel_edit" type="button" onClick={props.onRequestEditClose}>
+              Cancel
+            &lt;/button>
+          &lt;/div>
+        &lt;/div>
+      &lt;/div>
+
+    &lt;/>
+  );
+}
+
+export default EditModal;
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AddAlbumImages.html">AddAlbumImages</a></li><li><a href="AddModal.html">AddModal</a></li><li><a href="AddPhotos.html">AddPhotos</a></li><li><a href="AlbumCard.html">AlbumCard</a></li><li><a href="AlbumCoverPhoto.html">AlbumCoverPhoto</a></li><li><a href="AlbumPage.html">AlbumPage</a></li><li><a href="AlbumPreview.html">AlbumPreview</a></li><li><a href="CamreRoll.html">CamreRoll</a></li><li><a href="Card.html">Card</a></li><li><a href="CommentBox.html">CommentBox</a></li><li><a href="CreateNewAlbumModal.html">CreateNewAlbumModal</a></li><li><a href="DropdownPrivacy.html">DropdownPrivacy</a></li><li><a href="EditInfo.html">EditInfo</a></li><li><a href="EditModal.html">EditModal</a></li><li><a href="Follow.html">Follow</a></li><li><a href="Followers.html">Followers</a></li><li><a href="FollwingFollowers.html">FollwingFollowers</a></li><li><a href="GroupCard.html">GroupCard</a></li><li><a href="GroupHeader.html">GroupHeader</a></li><li><a href="GroupPhotos.html">GroupPhotos</a></li><li><a href="ImageDetails.html">ImageDetails</a></li><li><a href="ImageGrid.html">ImageGrid</a></li><li><a href="ImagesCR.html">ImagesCR</a></li><li><a href="ImagesMM.html">ImagesMM</a></li><li><a href="Join.html">Join</a></li><li><a href="Modal.html">Modal</a></li><li><a href="NavBar.html">NavBar</a></li><li><a href="PeopleCard.html">PeopleCard</a></li><li><a href="PhotosToAdd.html">PhotosToAdd</a></li><li><a href="Photostream.html">Photostream</a></li><li><a href="SearchGroup.html">SearchGroup</a></li><li><a href="SearchPeople.html">SearchPeople</a></li><li><a href="SideNavBar.html">SideNavBar</a></li><li><a href="Upload.html">Upload</a></li><li><a href="UserInfo.html">UserInfo</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Tue Jun 08 2021 19:30:23 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

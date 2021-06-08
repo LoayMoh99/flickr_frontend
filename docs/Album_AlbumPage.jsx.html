@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Album/AlbumPage.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Album/AlbumPage.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useState , useEffect } from 'react';
+import axios from "axios"
+import ImageGrid from "../photostream/ImageGrid"
+import '../photostream/ImageGrid.css'
+import './AlbumPage.css'
+import './AlbumCoverPhoto'
+import './AlbumCoverPhoto.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
+import AlbumCoverPhoto from './AlbumCoverPhoto';
+import Header from '../navbar/mainNav'
+import {GetAlbumById} from '../../services/albumServices'
+import { Link } from 'react-router-dom';
+
+/** Renders AlbumPage component to show a specific album photos
+ * @author Khadija Khaled
+ * @namespace AlbumPage
+ * @category Functional Component
+ * @extends Component
+ */
+function AlbumPage(props) {
+
+    const path = props.location.pathname;
+    var index = path.split('/');
+    const album_id= index[2];
+    const isUser=index[3];    
+     const [album,setAlbum] =useState();
+     const [isUndefined, setUndefined] = useState(true);
+
+  //This function is called whenever this album page is opened
+  //It gets the details of the selected album and set the const album with these details 
+
+   //get request
+   useEffect( () =>{
+    //get user photos
+    GetAlbumById(album_id).then( response => {
+        setAlbum(response.data);
+        //validate  API response
+        if(album == undefined)
+        {
+          setUndefined(true);
+          
+        }
+        else{
+          setUndefined(false);
+        }
+    }) 
+ },[album])
+// },[])
+
+ let isPhotoSelected;
+ function showPhoto(id){
+     console.log("PhotoStream",id);
+     isPhotoSelected=id;
+    //  setPhoto(true);
+     console.log("after click",isPhotoSelected);
+     //props.history.push('/imagedetails/id}');
+     
+ }
+
+
+ const navStyle={
+  color:'black'
+};
+
+  const back = &lt;FontAwesomeIcon icon={faArrowLeft} color="black"/>
+  return (
+      &lt;>
+      &lt;Header isLogged={true}/>
+      &lt;div className="AlbumPage-body">
+
+      &lt;Link to='/user' style={navStyle} >
+        &lt;a href="#" id="backAlbum">{back } Back to albums list&lt;/a>
+        &lt;/Link>
+
+       { album !=undefined &amp;&amp; &lt;AlbumCoverPhoto 
+        coverPhoto = {album.coverPhoto.photoUrl}
+        title = {album.title}
+        description = {album.description}
+        photos = {album.photos}
+        ownerFname ={album.ownerId.Fname}
+        ownerLname ={album.ownerId.Lname}
+        album_id = {album_id}
+        isUser = {isUser}
+        />
+       }
+        {/* )} */}
+        
+         {/* to validate API response */}
+       { album!=undefined &amp;&amp;&lt;div className="grid" id="album">
+        {/* {album.map(album =>  */}
+        { album.photos.map(photo => (
+            &lt;ImageGrid
+            id = {photo._id}
+            // id = {photo.id}
+            url ={photo.photoUrl} 
+            title ={photo.title} 
+            description = {photo.description}
+            date = {photo.createdAt}
+            privacy = {photo.privacy}
+            ownerName = {album.ownerId.Fname}
+            ownerId = {photo.ownerId._id}
+            numberOfFavs = {photo.Fav.length}
+            numberOfComments ={photo.comments.length}
+            viewMode = {false}
+            favMode = {true}
+             onOpenRequest={showPhoto}
+            />
+
+        )
+        )}
+        &lt;div className="placeholder">&lt;/div>
+        &lt;/div>}
+        &lt;/div>
+
+      &lt;/>
+    );
+}
+
+export default AlbumPage;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AddAlbumImages.html">AddAlbumImages</a></li><li><a href="AddModal.html">AddModal</a></li><li><a href="AddPhotos.html">AddPhotos</a></li><li><a href="AlbumCard.html">AlbumCard</a></li><li><a href="AlbumCoverPhoto.html">AlbumCoverPhoto</a></li><li><a href="AlbumPage.html">AlbumPage</a></li><li><a href="AlbumPreview.html">AlbumPreview</a></li><li><a href="CamreRoll.html">CamreRoll</a></li><li><a href="Card.html">Card</a></li><li><a href="CommentBox.html">CommentBox</a></li><li><a href="CreateNewAlbumModal.html">CreateNewAlbumModal</a></li><li><a href="DropdownPrivacy.html">DropdownPrivacy</a></li><li><a href="EditInfo.html">EditInfo</a></li><li><a href="EditModal.html">EditModal</a></li><li><a href="Follow.html">Follow</a></li><li><a href="Followers.html">Followers</a></li><li><a href="FollwingFollowers.html">FollwingFollowers</a></li><li><a href="GroupCard.html">GroupCard</a></li><li><a href="GroupHeader.html">GroupHeader</a></li><li><a href="GroupPhotos.html">GroupPhotos</a></li><li><a href="ImageDetails.html">ImageDetails</a></li><li><a href="ImageGrid.html">ImageGrid</a></li><li><a href="ImagesCR.html">ImagesCR</a></li><li><a href="ImagesMM.html">ImagesMM</a></li><li><a href="Join.html">Join</a></li><li><a href="Modal.html">Modal</a></li><li><a href="NavBar.html">NavBar</a></li><li><a href="PeopleCard.html">PeopleCard</a></li><li><a href="PhotosToAdd.html">PhotosToAdd</a></li><li><a href="Photostream.html">Photostream</a></li><li><a href="SearchGroup.html">SearchGroup</a></li><li><a href="SearchPeople.html">SearchPeople</a></li><li><a href="SideNavBar.html">SideNavBar</a></li><li><a href="Upload.html">Upload</a></li><li><a href="UserInfo.html">UserInfo</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Tue Jun 08 2021 19:30:23 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
