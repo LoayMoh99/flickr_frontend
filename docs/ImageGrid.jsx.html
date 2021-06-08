@@ -1,4 +1,32 @@
-import React,{useState} from "react"
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: ImageGrid.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: ImageGrid.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React,{useState} from "react"
 import CommentBox from "../Comments/CommentBox"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faStar,faPlusSquare,faComment,faFolderOpen} from '@fortawesome/free-solid-svg-icons'
@@ -24,10 +52,10 @@ import {PostUserFavs,DeleteUserFavs} from '../../services/userServices'
  */
 function ImageGrid(props){
 
-    const fav = <FontAwesomeIcon icon={faStar} color="white"/>
-    const addTo = <FontAwesomeIcon icon={faPlusSquare} color="white"/>
-    const comment = <FontAwesomeIcon icon={faComment} color="white"/>
-    const open = <FontAwesomeIcon icon={faFolderOpen} color="white" />
+    const fav = &lt;FontAwesomeIcon icon={faStar} color="white"/>
+    const addTo = &lt;FontAwesomeIcon icon={faPlusSquare} color="white"/>
+    const comment = &lt;FontAwesomeIcon icon={faComment} color="white"/>
+    const open = &lt;FontAwesomeIcon icon={faFolderOpen} color="white" />
     const [isUser, setIsUser] = useState(props.viewMode);
     const [isFav , setIsFav] = useState(true);
     // overlay
@@ -35,7 +63,7 @@ function ImageGrid(props){
     //Comment Box
     const [isComment, setIsComment] = useState(false);
 
-    /** Sets photo size (css) to width & height of aspect ratio of loaded image
+    /** Sets photo size (css) to width &amp; height of aspect ratio of loaded image
     * @memberof ImageGrid
     * @method setItemRatio
     */
@@ -59,7 +87,7 @@ function ImageGrid(props){
         setMouseOver(true);
     }
 
-    /** Remove shadow overlay & hide information
+    /** Remove shadow overlay &amp; hide information
     * @memberof ImageGrid
     * @method handleMouseOut
     */
@@ -75,7 +103,7 @@ function ImageGrid(props){
         setIsComment(!isComment);
     }
 
-    /** Add or remove photo from favorites (like & unlike)
+    /** Add or remove photo from favorites (like &amp; unlike)
     * @memberof ImageGrid
     * @method addToFav
     */
@@ -104,10 +132,10 @@ function ImageGrid(props){
     }
 
     return(
-        <>
-            <div className="item">
-           <Link to={`/imagedetails/${props.id}`}> <button className="open-photo">{open}</button></Link>
-                <img 
+        &lt;>
+            &lt;div className="item">
+           &lt;Link to={`/imagedetails/${props.id}`}> &lt;button className="open-photo">{open}&lt;/button>&lt;/Link>
+                &lt;img 
                 src={props.url} 
                 onLoad={event => (
                     event.currentTarget.naturalHeight? setItemRatio.call(event.currentTarget) : waitForLoad.call(event.currentTarget) 
@@ -116,33 +144,55 @@ function ImageGrid(props){
                 onMouseOver={handleMouseOver}
                 onMouseOut={handleMouseOut}
                 />
-                <div className="shadow-overlay" style={{display: isMousedOver || isComment?"block":"none"}}
+                &lt;div className="shadow-overlay" style={{display: isMousedOver || isComment?"block":"none"}}
                     onMouseOver={handleMouseOver} 
                     onMouseOut={handleMouseOut}>
-                    <h1>{props.title}</h1>
-                    <ul  className="tools">
-                        <li><a href="#" id="para">by {props.ownerName}</a></li>
-                        <div id="info">
-                            <li>{addTo}</li>
-                            <li  onClick={openCommentBox}> {comment} {props.numberOfComments}</li>
+                    &lt;h1>{props.title}&lt;/h1>
+                    &lt;ul  className="tools">
+                        &lt;li>&lt;a href="#" id="para">by {props.ownerName}&lt;/a>&lt;/li>
+                        &lt;div id="info">
+                            &lt;li>{addTo}&lt;/li>
+                            &lt;li  onClick={openCommentBox}> {comment} {props.numberOfComments}&lt;/li>
                             
-                                <>
-                                {/*isFav? <li onClick={deleteFav}>{fav} {props.numberOfFavs}</li>:<li> {fav} {props.numberOfFavs}</li>*/}
-                                </>
+                                &lt;>
+                                {/*isFav? &lt;li onClick={deleteFav}>{fav} {props.numberOfFavs}&lt;/li>:&lt;li> {fav} {props.numberOfFavs}&lt;/li>*/}
+                                &lt;/>
                             :
-                                <> 
-                                {isFav?<li onClick={addToFav}>{fav} {props.numberOfFavs}</li>:<li> {fav} {props.numberOfFavs}</li>}
+                                &lt;> 
+                                {isFav?&lt;li onClick={addToFav}>{fav} {props.numberOfFavs}&lt;/li>:&lt;li> {fav} {props.numberOfFavs}&lt;/li>}
                                
-                                </>
+                                &lt;/>
                            
-                        </div>   
-                    </ul>
+                        &lt;/div>   
+                    &lt;/ul>
                     
-                    {isComment && <CommentBox numberOfComments= {props.id} photo_id={props.id} onClick={openCommentBox}/>}
-                </div>
-            </div> 
-        </>
+                    {isComment &amp;&amp; &lt;CommentBox numberOfComments= {props.id} photo_id={props.id} onClick={openCommentBox}/>}
+                &lt;/div>
+            &lt;/div> 
+        &lt;/>
     )
 }
 
-export default ImageGrid;
+export default ImageGrid;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="Card.html">Card</a></li><li><a href="EditInfo.html">EditInfo</a></li><li><a href="ImageGrid.html">ImageGrid</a></li><li><a href="NavBar.html">NavBar</a></li><li><a href="Photostream.html">Photostream</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Tue Jun 08 2021 00:48:45 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -5,6 +5,14 @@ import $ from 'jquery'
 import {Link} from "react-router-dom";
 import GetGroupPhotos from '../../services/groupServices'
 
+/** Renders GroupPhotos component
+ * @author Samar Nabil
+ * @namespace GroupPhotos
+ * @category Functional Component
+ * @extends Component
+ * @property {Boolean} props.isMember -Indicate user if a member of the group (true) or not 
+ * @property {String} props.id -Visitied group id 
+ */
 function GroupPhotos(props){
 
     const navStyle={

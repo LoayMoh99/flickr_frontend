@@ -4,7 +4,21 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import {faTrash,faLock,faEye,faStar,faComment,faUnlock} from '@fortawesome/free-solid-svg-icons'
 import {PutPhoto} from "../../services/photoServices"
 
-
+/** Renders Card component to show photo in edit mode
+ * @author Samar Nabil
+ * @namespace Card
+ * @category Functional Component
+ * @extends Component
+ * @property {String} props.id -Photo id
+ * @property {String} props.url -Photo url 
+ * @property {String} props.title -Photo title
+ * @property {String} props.description -Photo descirption
+ * @property {String} props.privacy -Photo privacy (public/private)
+ * @property {String} props.ownerId -Photo owner id
+ * @property {Number} props.numberOfFavs -Photo number of likes
+ * @property {Number} props.numberOfComments -Photo number of Comments
+ * @property {function} toggleModal -Toggle delete modal callback function
+ */
 function Card(props){
 
     const remove = <FontAwesomeIcon icon={faTrash} color="White" />
@@ -20,17 +34,30 @@ function Card(props){
     const [privacy , setPrivacy] = useState(props.privacy);
     const [isPublic , setIsPublic] = useState (false);
 
-
+    /** Saves the current value of the photo tile in the input tag
+    * @memberof Card
+    * @method handleTitleChange
+    * @param {event} event -Tirggered event on change in input value
+    */
     function handleTitleChange(event) {
         const newTitle = event.target.value;
         setInputTitle(newTitle);
     }
 
+    /** Saves the current value of the photo description in textarea tag
+    * @memberof Card
+    * @method handleDescriptionChange
+    * @param {event} event -Tirggered event on change in input value
+    */
     function handleDescriptionChange(event) {
         const newDescription  = event.target.value;
         setInputDescription(newDescription);
     }
 
+    /** Edit photo privacy to public
+    * @memberof Card
+    * @method changeToPublic
+    */
     function changeToPublic(){
         setPrivacy('public');
         const object = {"photos":[props.id] , "title":inputTitle , "description":inputDescription , "privacy":privacy}
@@ -40,9 +67,12 @@ function Card(props){
         });
     }
 
+    /** Edit photo privacy to private
+    * @memberof Card
+    * @method changeToPrivate
+    */
     function changeToPrivate(){
         setPrivacy('private');
-        console.log(privacy);
         const object = {"photos":[props.id] , "title":inputTitle , "description":inputDescription , "privacy":privacy}
       //API
       PutPhoto(object).then( response => {
@@ -50,24 +80,20 @@ function Card(props){
       });
     }
 
+    /** change layout to edit mode 
+    * @memberof Card
+    * @method changeLayout
+    */
     function changeLayout(){ 
         setEdit(!isEditable);
     }
 
-
+    /** Confirm Edit on photo title/description
+    * @memberof Card
+    * @method confirmEdit
+    */
     function confirmEdit(){
         const object = {photos:[props.id] , title:inputTitle , description:inputDescription , privacy:privacy}
-        // const object =       {
-        //     "photoUrl": props.url,
-        //     "ownerId": props.ownerId,
-        //     "num_favs": props.numberOfFavs,
-        //     "comments": [0,1,2,3],
-        //     "title": inputTitle,
-        //     "privacy": privacy,
-        //     "description": inputDescription,
-        //     "createdAt": "2021-05-29",
-        //     "UpdatedAt": "2021-05-29"
-        // }
         //API
         PutPhoto(object).then( response => {
         // PutPhoto(props.id,object).then( response => {

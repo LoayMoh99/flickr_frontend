@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: photostream/Card.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: photostream/Card.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React,{useEffect, useState} from "react"
+import './EditInfo.css'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import {faTrash,faLock,faEye,faStar,faComment,faUnlock} from '@fortawesome/free-solid-svg-icons'
+import {PutPhoto} from "../../services/photoServices"
+
+/** Renders Card component to show photo in edit mode
+ * @author Samar Nabil
+ * @namespace Card
+ * @category Functional Component
+ * @extends Component
+ * @property {String} props.id -Photo id
+ * @property {String} props.url -Photo url 
+ * @property {String} props.title -Photo title
+ * @property {String} props.description -Photo descirption
+ * @property {String} props.privacy -Photo privacy (public/private)
+ * @property {String} props.ownerId -Photo owner id
+ * @property {Number} props.numberOfFavs -Photo number of likes
+ * @property {Number} props.numberOfComments -Photo number of Comments
+ * @property {function} toggleModal -Toggle delete modal callback function
+ */
+function Card(props){
+
+    const remove = &lt;FontAwesomeIcon icon={faTrash} color="White" />
+    const lock = &lt;FontAwesomeIcon icon={faLock} color="DarkGrey"/>
+    const unlock = &lt;FontAwesomeIcon icon={faUnlock} color="DarkGrey"/>
+    // const views = &lt;FontAwesomeIcon icon={faEye} color="DarkGrey"/>
+    const fav = &lt;FontAwesomeIcon icon={faStar} color="DarkGrey"/>
+    const comment = &lt;FontAwesomeIcon icon={faComment} color="DarkGrey"/>
+
+    const [isEditable,setEdit] = useState(false);
+    const [inputTitle, setInputTitle] = useState(props.title);
+    const [inputDescription , setInputDescription] = useState(props.description);
+    const [privacy , setPrivacy] = useState(props.privacy);
+    const [isPublic , setIsPublic] = useState (false);
+
+    /** Saves the current value of the photo tile in the input tag
+    * @memberof Card
+    * @method handleTitleChange
+    * @param {event} event -Tirggered event on change in input value
+    */
+    function handleTitleChange(event) {
+        const newTitle = event.target.value;
+        setInputTitle(newTitle);
+    }
+
+    /** Saves the current value of the photo description in textarea tag
+    * @memberof Card
+    * @method handleDescriptionChange
+    * @param {event} event -Tirggered event on change in input value
+    */
+    function handleDescriptionChange(event) {
+        const newDescription  = event.target.value;
+        setInputDescription(newDescription);
+    }
+
+    /** Edit photo privacy to public
+    * @memberof Card
+    * @method changeToPublic
+    */
+    function changeToPublic(){
+        setPrivacy('public');
+        const object = {"photos":[props.id] , "title":inputTitle , "description":inputDescription , "privacy":privacy}
+        //API
+        PutPhoto(object).then( response => {
+            console.log(response);
+        });
+    }
+
+    /** Edit photo privacy to private
+    * @memberof Card
+    * @method changeToPrivate
+    */
+    function changeToPrivate(){
+        setPrivacy('private');
+        const object = {"photos":[props.id] , "title":inputTitle , "description":inputDescription , "privacy":privacy}
+      //API
+      PutPhoto(object).then( response => {
+          console.log(response);
+      });
+    }
+
+    /** change layout to edit mode 
+    * @memberof Card
+    * @method changeLayout
+    */
+    function changeLayout(){ 
+        setEdit(!isEditable);
+    }
+
+    /** Confirm Edit on photo title/description
+    * @memberof Card
+    * @method confirmEdit
+    */
+    function confirmEdit(){
+        const object = {photos:[props.id] , title:inputTitle , description:inputDescription , privacy:privacy}
+        //API
+        PutPhoto(object).then( response => {
+        // PutPhoto(props.id,object).then( response => {
+            console.log(response);
+        });
+        changeLayout();
+    }
+
+
+    return(
+        &lt;>
+        
+        &lt;div className="card">
+            &lt;img src={props.url} alt=""  />
+            &lt;button className="button"
+                onClick={ () =>{
+                    props.onDelete(props.id);}}
+            >{remove}&lt;/button>
+            {!isEditable? 
+            &lt;>
+                &lt;div className="interaction-bar" onClick={changeLayout}>
+                    &lt;div className="title-bar">
+                    &lt;h1>{props.title}&lt;/h1> 
+                    &lt;p>{props.description}&lt;/p>
+                    &lt;/div>
+                &lt;/div> 
+                
+                &lt;ul  className="tools">
+                    &lt;li className="dropdown">
+                            &lt;button className="bttn bttn-secondary dropdown-toggle" type="button" id="dropdownMenuButton privacy" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {isPublic? unlock :lock}
+                            &lt;/button>
+                            &lt;ul className="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                &lt;li onClick={changeToPublic}>&lt;a className="dropdown-item" href="#">Public&lt;/a>&lt;/li>
+                                &lt;li onClick={changeToPrivate}>&lt;a className="dropdown-item" href="#">Private&lt;/a>&lt;/li>
+                            &lt;/ul>
+                    &lt;/li>
+                    &lt;div id="info">
+                        &lt;li > {comment} {props.numberOfComments}&lt;/li>
+                        &lt;li > {fav} {props.numberOfFavs}&lt;/li>
+                        {/* &lt;li > &lt;div>{views} {props.numberOfViews}&lt;/div>&lt;/li> */}
+                    &lt;/div>
+                &lt;/ul>
+            &lt;/>
+                
+            :
+            &lt;>
+            &lt;div className="new-interaction-bar">
+                    &lt;div id="input-format">
+                        &lt;div className="form-group" >
+                            &lt;input type="text" className="form-control"  onChange={handleTitleChange} value={inputTitle}>&lt;/input> 
+                        &lt;/div>
+                        &lt;div class="form-group">
+                            &lt;textarea className="form-control" rows="3"  onChange={handleDescriptionChange} value={inputDescription}>&lt;/textarea> 
+                        &lt;/div>
+                    &lt;/div>
+                    &lt;button onClick={confirmEdit}>Done&lt;/button>
+            &lt;/div>
+
+            &lt;/>
+            }
+
+
+        &lt;/div>
+
+    &lt;/>
+    )
+}
+
+export default Card;</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AddPhotos.html">AddPhotos</a></li><li><a href="AlbumCard.html">AlbumCard</a></li><li><a href="AlbumPreview.html">AlbumPreview</a></li><li><a href="Card.html">Card</a></li><li><a href="CommentBox.html">CommentBox</a></li><li><a href="EditInfo.html">EditInfo</a></li><li><a href="GroupPhotos.html">GroupPhotos</a></li><li><a href="ImageGrid.html">ImageGrid</a></li><li><a href="NavBar.html">NavBar</a></li><li><a href="PhotosToAdd.html">PhotosToAdd</a></li><li><a href="Photostream.html">Photostream</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Tue Jun 08 2021 02:10:17 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

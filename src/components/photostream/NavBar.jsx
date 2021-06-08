@@ -3,6 +3,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPen,faSearch,faTv,faShare} from '@fortawesome/free-solid-svg-icons'
 import {Link} from "react-router-dom";
 
+/** Renders Photostream Navbar Component
+ * @author Samar Nabil
+ * @namespace NavBar
+ * @category Functional Component
+ * @extends Component
+ * @property {Boolean} props.viewMode -Indication if it's my account or others
+ */
 
 function NavBar(props){
 

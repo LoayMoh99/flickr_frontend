@@ -6,6 +6,21 @@ import {DeleteAlbum} from '../../services/albumServices'
 import $ from 'jquery'
 import {Link} from "react-router-dom";
 
+/** Renders Card component to show photo in edit mode
+ * @author Samar Nabil
+ * @namespace AlbumCard
+ * @category Functional Component
+ * @extends Component
+ * @property {String} props.id -Album id
+ * @property {String} props.coverUrl -Album cover photo url 
+ * @property {String} props.titile -Album title
+ * @property {String} props.ownerId -Album owner id
+ * @property {Number} props.numberOfPhotos -Album number of photos
+ * @property {Boolean} props.isUser -Indicate if it is my profile (true) or not 
+ * @property {String} props.userId -Visitied account user id 
+ * @property {Boolean} props.viewMode -Indication if it's my account or others
+ * @property {Boolean} props.favMode -Indication to allow likes or not (cannot like my photos)
+ */
 function AlbumCard(props){
     const navStyle={ color:'white'};
     const remove = <FontAwesomeIcon icon={faTrash} color="White" />
@@ -17,12 +32,20 @@ function AlbumCard(props){
     const [isModalOpen, setModalIsOpen] = useState(false);
     const [idToDelete,setID]=useState(0)
 
-
+    /** Open/Close delete photo modal 
+    * @memberof AlbumCard
+    * @method toggleModal
+    * @param {String} id -Album id to delete
+    */
     function toggleModal(id){
         setModalIsOpen(!isModalOpen);
         setID(id);
     }
 
+    /** Confirm Album deletion by id 
+    * @memberof AlbumCard
+    * @method ConfirmDelete
+    */
     function confirmDelete(){
         console.log("id to delete album: ",idToDelete);
         //get user photos

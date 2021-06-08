@@ -1,4 +1,17 @@
 import React,{useState} from 'react'
+
+/** Renders PhotosToAdd component
+ * @author Samar Nabil
+ * @namespace PhotosToAdd
+ * @category Functional Component
+ * @extends Component 
+ * @property {String} props.id -Photo id
+ * @property {String} props.url -Photo url 
+ * @property {Number} props.size -Array size of photo to add
+ * @property {function} addPhoto -Append photo to array of selection
+ * @property {function} removePhoto -De-Append photo to array of selection
+ * @property {function} errorMessage -Alert when reaching max number of selections (6)
+ */
 function PhotosToAdd(props){
 
     // const [count,setCount] = useState(0);
@@ -9,6 +22,10 @@ function PhotosToAdd(props){
         setHover(!isHovered);
     }
 
+    /** Highlight/unhighlight selected photos and delete/append based on state
+    * @memberof PhotosToAdd
+    * @method toggleClick
+    */
     function toggleClick(){
         console.log('count=',props.size);
         if (isClicked === false){
