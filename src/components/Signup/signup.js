@@ -7,6 +7,10 @@ import {PostUser} from "../../services/userServices"
 import {Link} from "react-router-dom";
 import Header from "../navbar/mainNav"
 
+/**
+ * @author Mohamed Wael
+ * @namespace Signup
+ */
 
 export default function Signup(props) {
 

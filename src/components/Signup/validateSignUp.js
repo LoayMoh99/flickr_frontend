@@ -1,3 +1,10 @@
+/**validates the signup input fields
+ * @author Mohamed Wael
+ * @namespace validateSignup
+ * @param {string} values 
+ * @returns {string} - the return error messsage
+ */
+
 export default function validateSignup(values) {
     let errors = {};
 //email 

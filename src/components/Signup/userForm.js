@@ -1,6 +1,13 @@
 import { useState,useEffect } from "react";
 // import { object } from "yup";
 
+/**
+ * @author Mohamed Wael
+ * @namespace useForm
+ * @param {*} callback 
+ * @param {*} validateSignup 
+ * @returns {object} 
+ */
 const useForm = (callback, validateSignup) => {
     const [values, setValues] = useState({email: "", password: ""})
     const [errors, setErrors] = useState({})
@@ -8,6 +15,13 @@ const useForm = (callback, validateSignup) => {
     //new state for errors
     //function that validates these errors
     //pass these errors back to the form
+
+   /**
+    * @memberof validateSignup
+    * @param {event} event 
+    * @method handleChange
+    */
+
     const handleChange = event => {
         const{name,value}=event.target;
 
@@ -17,6 +31,13 @@ const useForm = (callback, validateSignup) => {
             [name]:value
         });
     };
+
+
+    /**handles the on submit action
+     * @memberof validateSignup
+     * @param {event} event - whether clicking Mouse or Pressing a button
+     * @method handleSubmit
+     */
 
     const handleSubmit = event  => {
         event.preventDefault();

@@ -7,6 +7,13 @@ import UserLogin from "../../services/userServices"
 import {Link} from "react-router-dom";
 import { set } from "lodash";
 
+/**renders the login page
+ * @author Mohamed Wael 
+ * @namespace Login
+ * @category Functional Component
+ * @extends Component
+ */
+
 export default function Login(props) {
   
   const {handleChange, handleSubmit, values , errors} = useForm(submit, validateLogin);
@@ -20,6 +27,8 @@ export default function Login(props) {
     const email = document.getElementById('email').value;
     const pass = document.getElementById('password').value;
 
+
+    
     const object={
         'email':email,
         'password':pass

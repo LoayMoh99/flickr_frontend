@@ -1,3 +1,10 @@
+/**validates the login input fields
+ * @author Mohamed Wael
+ * @namespace validateLogin
+ * @param {string} values 
+ * @returns {string} - the return error message
+ */
+
 export default function validateLogin(values) {
     let errors = {};
 //email 
