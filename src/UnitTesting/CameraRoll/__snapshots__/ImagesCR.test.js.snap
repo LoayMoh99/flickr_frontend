@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ImagesCR renders correctly enzyme 1`] = `
+<Fragment>
+  <div
+    className="column_adj"
+  >
+    <img
+      alt="image_flickr"
+      className="img-responsive"
+      id="content"
+      onClick={[Function]}
+      src="https://picsum.photos/600/200?random=2"
+    />
+  </div>
+</Fragment>
+`;

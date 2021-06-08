@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CameraRoll renders correctly enzyme 1`] = `
+<Fragment>
+  <ul
+    className="nav nav-tabs"
+    id="topNavbar"
+  >
+    <span
+      className="col"
+    />
+    <div
+      className="col-11"
+    >
+      <li
+        className="nav-item dropdown"
+      >
+        <a
+          aria-expanded="false"
+          className="nav-link dropdown-toggle text-secondary"
+          data-bs-toggle="dropdown"
+          href="/#"
+          role="button"
+        >
+          Date uploaded
+        </a>
+        <div
+          className="dropdown-menu"
+        />
+      </li>
+    </div>
+  </ul>
+  <div
+    className="sidephoto"
+  >
+    <SideNavBar />
+    <div
+      className="row"
+    >
+      <div
+        className=" container_body"
+      />
+    </div>
+  </div>
+  <main
+    className="main_Modal"
+  />
+  <main
+    className="main_edit"
+  />
+  <main
+    className="main_edit"
+  />
+  <main />
+  <main />
+</Fragment>
+`;

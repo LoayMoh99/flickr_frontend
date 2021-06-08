@@ -16,7 +16,7 @@ const endPointt = '/people/search/'
  * @property {String} text -Word used in search bar (used in get requests to retrieve people accounts)
  */
 function SearchPeople() {
-    const {text}= useParams();
+   const {text}= useParams();
     const textt='people';
     let error=false;
     const navStyle={

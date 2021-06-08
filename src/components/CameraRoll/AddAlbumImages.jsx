@@ -36,11 +36,15 @@ function AddAlbumImages(props) {
         }
         // setIsChecked(!isChecked);
       };
-  
+  /**
+   * To check if it is present in the array of photos selected or not 
+   * @param {object} obj - A photo object 
+   * @returns {boolean} - A boolean indicating the photo id is present within the array or not
+   */
       function containsPhotos(obj) {
         return imgAddIds.some((elem) => elem._id === obj._id);
       }
-  
+
     // to check whether the selected photos ids are all present in a specific album or not
     const isPhotoPresent =()=>{
         // for loop on elements of selected photos ids 
