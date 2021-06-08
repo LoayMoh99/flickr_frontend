@@ -15,6 +15,15 @@ import axios from "axios";
 import { Link,useLocation } from 'react-router-dom'
 import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
 
+/** Renders ImageDetails component to get the image info (URL,#of favs,#of comments,etc..) and rest user photos for the slide Show
+ * @author Farah Mostafa
+ * @namespace ImageDetails
+ * @category Functional Component
+ * @extends Component
+ * @property {String} props.id -User id
+ * @property {String} props.userId -Image id
+ */
+
 export default function ImageDetails(props){
     const {id}=useParams();
     const {userId} = useParams();
@@ -41,6 +50,11 @@ export default function ImageDetails(props){
 
 
     //get photo by id
+    /** Gets the information of the Photo (URL,#of favs,#of comments,etc..)
+    * @memberof ImageDetails
+    * @method GetPhotoById
+    * @param {String} id-the id of the photo clicked on
+    */
     GetPhotoById(id).then( response => {
         setImage(response.data.photoUrl);
         setDiscription(response.data.description);
@@ -50,6 +64,11 @@ export default function ImageDetails(props){
     })
 
     //get comments
+    /** Gets the comments on the Photo
+    * @memberof ImageDetails
+    * @method GetComments
+    * @param {String} id-the id of the photo clicked on
+    */
     GetComments(id).then( response => {
         if(response!=undefined){
             setisUndefinedcomments(false);
@@ -60,10 +79,17 @@ export default function ImageDetails(props){
     })
 
 },[comments])
+
     function postTnewMessage(){
         const sentComment={ 
             "comment": newComment
         }
+        /** Gets the comments on the Photo
+        * @memberof ImageDetails
+        * @method PostComments
+        * @param {String} id-the id of the photo clicked on
+        * @param {object} senrComment-the comment entered bt the user
+        */
         PostComments(id,sentComment).then( response => {
             console.log(response);
         });

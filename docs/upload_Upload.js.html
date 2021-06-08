@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: upload/Upload.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: upload/Upload.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React, { useState, useEffect } from 'react'
+import '../../fonts/font/flaticon.css'
+import './Upload.css'
+import flickrPhoto from '../../img/flickr.jpg'
+import {PostPhoto} from '../../services/photoServices'
+import { Link } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons';
+import axios from "axios"
+const formdata=require('form-data');
+const fileToArrayBuffer = require('file-to-array-buffer')
+var arrayBufferToBuffer = require('arraybuffer-to-buffer');
+//import fs  from  'fs';
+/** Renders Upload component to make the user upload new photos
+ * @author Farah Mostafa
+ * @namespace Upload
+ * @category Functional Component
+ * @extends Component
+ */
+export default function Upload(){
+
+    const navStyle={
+        color:'black'
+    };
+
+    const [image, setImage] = useState("");
+    const onchange = e =>{  
+        console.log(e);
+        //e.target.value
+       setImage(e.target.files[0])
+    };
+   
+
+    const [tag, setTag] = useState([]);
+    const addtag = e => setTag(e.target.value);
+    console.log(tag);
+
+    const plus = &lt;FontAwesomeIcon icon={faPlusCircle} color="DarkGrey" />;
+
+    /** called once the user clicks add to add the selected photo to their account
+    * @memberof Upload
+    * @method addImageToCameraroll
+    */
+
+    const addImageToCameraroll = async () => {
+       
+        var d;var buffer;
+       
+       await fileToArrayBuffer(image).then(data=>{
+        d=data;  
+
+        console.log(data)})
+
+        .catch(err=>console.log(err));
+        
+        const bufferarray =new arrayBufferToBuffer(d);
+        var mybuffer=[]
+
+        for(var i=0;i&lt;bufferarray.length;i++)
+
+        mybuffer.push(bufferarray[i]);
+        
+     
+        const newImage = {
+            title: "yoyo",
+            description: "",
+            file: mybuffer,
+            privacy: "public",
+            tags: tag
+        }
+        console.log("status1");
+        /** sends the required photo information to the server (Post Request)
+        * @memberof Upload
+        * @method PostPhoto
+        * @param {Array of buffers} newImage-the id of the user i am curruntly in his/her profile
+        */
+        PostPhoto(newImage).then(response=>{
+        
+        })
+    };
+
+    return(
+        &lt;div className="uploadNavbar">
+            &lt;nav className="navbar fix_nav">
+            &lt;div className="container-fluid">
+            &lt;div className="logoPlusNav">
+            &lt;Link className="uploadLink" style={navStyle} to="/user">
+                &lt;a className="flickLogoName" href="#top">
+                    &lt;img src={flickrPhoto} alt="flickrLogo">&lt;/img>
+                &lt;/a>
+            &lt;/Link>
+            &lt;Link  style={navStyle} to="/user">
+                &lt;span>Your Photostream&lt;/span>
+            &lt;/Link>
+            {image &amp;&amp; &lt;Link style={navStyle} to="/user">&lt;button className="postPhoto" onClick={addImageToCameraroll} type='submit'>{plus}Add&lt;/button>&lt;/Link>}
+            &lt;/div>
+            &lt;/div>
+            &lt;/nav>
+            &lt;div className="uploadText">
+                {!image &amp;&amp; &lt;div>&lt;h3>You can upload 1000 more photos and videos&lt;/h3>
+                &lt;p>Drag &amp; drop photos here&lt;/p>
+                &lt;p>or&lt;/p>&lt;/div>}
+                &lt;div>
+                &lt;p>&lt;form enctype="multipart/form-data">&lt;input type="file"  accept="image/*" name="image" id="file"  onChange={onchange} />&lt;/form>&lt;/p>
+                &lt;p>&lt;label for="file" >Upload Image&lt;/label>&lt;/p>
+                &lt;p>&lt;img id="output" width="200" />&lt;/p>
+                {image &amp;&amp; &lt;img src={image} alt="The current file" id="selectedImg" />}
+                {image &amp;&amp; &lt;form>
+                    &lt;label for="tag">Add tag:&lt;/label>&lt;br/>
+                    &lt;input type="text" id="tag" name="text" onChange={addtag}/>&lt;br/>
+                &lt;/form>}
+                &lt;/div>
+            &lt;/div>
+        &lt;/div>
+    );
+    
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AddPhotos.html">AddPhotos</a></li><li><a href="AlbumCard.html">AlbumCard</a></li><li><a href="AlbumPreview.html">AlbumPreview</a></li><li><a href="Card.html">Card</a></li><li><a href="CommentBox.html">CommentBox</a></li><li><a href="EditInfo.html">EditInfo</a></li><li><a href="Follow.html">Follow</a></li><li><a href="Followers.html">Followers</a></li><li><a href="FollwingFollowers.html">FollwingFollowers</a></li><li><a href="GroupCard.html">GroupCard</a></li><li><a href="GroupHeader.html">GroupHeader</a></li><li><a href="GroupPhotos.html">GroupPhotos</a></li><li><a href="ImageDetails.html">ImageDetails</a></li><li><a href="ImageGrid.html">ImageGrid</a></li><li><a href="Join.html">Join</a></li><li><a href="NavBar.html">NavBar</a></li><li><a href="PeopleCard.html">PeopleCard</a></li><li><a href="PhotosToAdd.html">PhotosToAdd</a></li><li><a href="Photostream.html">Photostream</a></li><li><a href="SearchGroup.html">SearchGroup</a></li><li><a href="SearchPeople.html">SearchPeople</a></li><li><a href="Upload.html">Upload</a></li><li><a href="UserInfo.html">UserInfo</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Tue Jun 08 2021 05:49:13 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

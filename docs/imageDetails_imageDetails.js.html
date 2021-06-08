@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: imageDetails/imageDetails.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: imageDetails/imageDetails.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React,{useState,useEffect}  from 'react'
+import '../../fonts/font/flaticon.css'
+import './imageDetails.css'
+import defaultProfile from '../../img/deefault.jpg';
+import Footer from '../navbar/footer'
+import t1 from '../../img/img/dBackground.jpg';
+import t2 from '../../img/img/ddBackground.jpg'
+import ViewedImage from './ViewedImage'
+import ShownImageComments from './ShownImageComments'
+import {GetUserPhotos} from "../../services/userServices"
+import GetPeoplePhotos from "../../services/peopleServices"
+import {GetPhotoById,GetComments,PostComments} from "../../services/photoServices"
+import Header from '../navbar/mainNav';
+import axios from "axios";
+import { Link,useLocation } from 'react-router-dom'
+import { useParams } from 'react-router-dom/cjs/react-router-dom.min';
+
+/** Renders ImageDetails component to get the image info (URL,#of favs,#of comments,etc..) and rest user photos for the slide Show
+ * @author Farah Mostafa
+ * @namespace ImageDetails
+ * @category Functional Component
+ * @extends Component
+ * @property {String} props.id -User id
+ * @property {String} props.userId -Image id
+ */
+
+export default function ImageDetails(props){
+    const {id}=useParams();
+    const {userId} = useParams();
+    const path = props.location.pathname;
+    console.log(id,"user",userId);
+    const [images, setPhotos] = useState([]);
+    const [image, setImage] = useState("");
+    const [discription, setDiscription] = useState("");
+    const [titile, setTitle] = useState("");
+    const [comments, setComments] = useState([]);
+    const [numOfFavs, setNumOfFavs] = useState([]);
+    const [datOfUpdate, setDatOfUpdate] = useState([]);
+    const [newComment, setNewComment] = useState('');
+    const addComment = e => setNewComment(e.target.value);
+    const [userPhotos, setUserPhotos] = useState([]);
+    const [peoplePhotos, setPeoplePhotos] = useState([]);
+    const [isUndefinedpeoplePhotos, setisUndefinedPeoplePhotos] = useState(true);
+    const [isUndefineduserPhotos, setisUndefineduserPhotos] = useState(true);
+    const [isUndefinedcomments, setisUndefinedcomments] = useState(true);
+
+    const [userInfo, setUserInfo] = useState([]);
+    //get request
+    useEffect( () =>{
+
+
+    //get photo by id
+    /** Gets the information of the Photo (URL,#of favs,#of comments,etc..)
+    * @memberof ImageDetails
+    * @method GetPhotoById
+    * @param {String} id-the id of the photo clicked on
+    */
+    GetPhotoById(id).then( response => {
+        setImage(response.data.photoUrl);
+        setDiscription(response.data.description);
+        setTitle(response.data.title);
+        setNumOfFavs(response.data.Fav.length);
+        setDatOfUpdate(response.data.updatedAt);
+    })
+
+    //get comments
+    /** Gets the comments on the Photo
+    * @memberof ImageDetails
+    * @method GetComments
+    * @param {String} id-the id of the photo clicked on
+    */
+    GetComments(id).then( response => {
+        if(response!=undefined){
+            setisUndefinedcomments(false);
+            setComments(response.data);
+        }else{
+            setisUndefinedcomments(true);
+        }
+    })
+
+},[comments])
+
+    function postTnewMessage(){
+        const sentComment={ 
+            "comment": newComment
+        }
+        /** Gets the comments on the Photo
+        * @memberof ImageDetails
+        * @method PostComments
+        * @param {String} id-the id of the photo clicked on
+        * @param {object} senrComment-the comment entered bt the user
+        */
+        PostComments(id,sentComment).then( response => {
+            console.log(response);
+        });
+    }
+
+    console.log(image);
+    return(
+        &lt;div className="imagePreview">
+            &lt;Header isLogged={true}/>
+            &lt;div className="showedImage">
+            &lt;div id="carouselExampleControls" className="carousel slide"  data-bs-interval="false">
+            &lt;div className="carousel-inner">
+            &lt;div className="carousel-item active adjustCarousel-item">
+                &lt;div className="imageSlide">
+                    &lt;img src={image} alt="">&lt;/img>
+                &lt;/div>
+            &lt;/div>
+            {!isUndefineduserPhotos &amp;&amp; userPhotos.map(photo=>(&lt;ViewedImage url={photo.photoUrl}/>))} 
+                &lt;/div>
+                &lt;button  className="carousel-control-prev adjustbutton" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+                    &lt;span className="carousel-control-prev-icon" aria-hidden="true">&lt;/span>
+                &lt;/button>
+                &lt;button className="carousel-control-next adjustbutton" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+                    &lt;span className="carousel-control-next-icon" aria-hidden="true">&lt;/span>
+                &lt;/button>
+                &lt;/div>
+        &lt;/div>
+        &lt;div className="restPhotoDetails container">
+            &lt;div className="discriptionAndComments">
+                &lt;h3>{titile}&lt;/h3>
+                &lt;p>{discription}&lt;/p>
+                {!isUndefinedcomments &amp;&amp; comments.map(comnt=>(&lt;ShownImageComments cmntText={comnt.comment} commentOwnerFname={comnt.user.Fname} commentOwnerLname={comnt.user.Lname}/>))} 
+                &lt;div className="commentBoxImageDetails">
+                    &lt;input type="text" id="tag" name="text" onChange={addComment}/>
+                    {newComment &amp;&amp; &lt;button onClick={postTnewMessage}>comment&lt;/button>}
+                &lt;/div>
+            &lt;/div>
+            &lt;div className="photoInteractions">
+                &lt;div>
+                    &lt;h4>{numOfFavs}&lt;/h4>
+                    &lt;span>Favs&lt;/span>
+                &lt;/div>
+                &lt;div>
+                    &lt;h4>{comments.length}&lt;/h4>
+                    &lt;span>comments&lt;/span>
+                &lt;/div>
+                &lt;span>Updated on {datOfUpdate}&lt;/span>
+            &lt;/div>
+        &lt;/div>
+        &lt;Footer/>
+        &lt;/div>
+    );
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AddPhotos.html">AddPhotos</a></li><li><a href="AlbumCard.html">AlbumCard</a></li><li><a href="AlbumPreview.html">AlbumPreview</a></li><li><a href="Card.html">Card</a></li><li><a href="CommentBox.html">CommentBox</a></li><li><a href="EditInfo.html">EditInfo</a></li><li><a href="Follow.html">Follow</a></li><li><a href="Followers.html">Followers</a></li><li><a href="FollwingFollowers.html">FollwingFollowers</a></li><li><a href="GroupCard.html">GroupCard</a></li><li><a href="GroupHeader.html">GroupHeader</a></li><li><a href="GroupPhotos.html">GroupPhotos</a></li><li><a href="ImageDetails.html">ImageDetails</a></li><li><a href="ImageGrid.html">ImageGrid</a></li><li><a href="Join.html">Join</a></li><li><a href="NavBar.html">NavBar</a></li><li><a href="PeopleCard.html">PeopleCard</a></li><li><a href="PhotosToAdd.html">PhotosToAdd</a></li><li><a href="Photostream.html">Photostream</a></li><li><a href="SearchGroup.html">SearchGroup</a></li><li><a href="SearchPeople.html">SearchPeople</a></li><li><a href="Upload.html">Upload</a></li><li><a href="UserInfo.html">UserInfo</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Tue Jun 08 2021 05:49:13 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

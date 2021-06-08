@@ -6,6 +6,14 @@ import Footer from '../navbar/footer'
 import {GetUserFollowers} from '../../services/userServices'
 import axios from "axios"
 
+/** Renders Followers component to get user following
+ * @author Farah Mostafa
+ * @namespace Followers
+ * @category Functional Component
+ * @extends Component
+ * @property {String} props -User id
+ */
+
 export default function Followers(props){
 
      //Get photos
@@ -13,6 +21,23 @@ export default function Followers(props){
         const [isUndefinedfollowers, setisUndefinedfollowers] = useState(true);
 
         useEffect(() => {
+             /** Gets array of the information of the people in the following
+            * @memberof Followers
+            * @method GetUserFollowers
+            * @returns respone of Get user followers
+            * @example
+            * [
+                {
+                    "Fname": "string",
+                    "UserName": "string",
+                    "Lname": "string",
+                    "Email": "user@example.com",
+                    "_id": 0,
+                    "Photo": 0,
+                    "avatar": "https://upload.wikimedia.org/wikipedia/en/c/c4/Mickey_Mouse_%28fair_use%29.png"
+                }
+                ]
+            */
             GetUserFollowers().then( response => {
                 if(response!=undefined){
                     setisUndefinedfollowers(false);

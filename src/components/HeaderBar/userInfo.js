@@ -15,6 +15,14 @@ import AlbumPreview from '../Album/AlbumPreview'
 import {GetUser,GetUserPhotos,UpdateUser,checkUserByIdentifier,FollowPeople,UnFollowPeople} from "../../services/userServices"
 import GroupPhotos from "../GroupPhotos/GroupPhotos"
 
+/** Renders UserInfo component 
+ * @author Farah Mostafa
+ * @namespace UserInfo
+ * @category Functional Component
+ * @extends Component
+ * @property {String} props -User id
+ */
+
 export default function Userinfo(props){
     
  
@@ -23,7 +31,6 @@ export default function Userinfo(props){
     var id = index[2];
     if(id==undefined){ 
     id='null';
-   // setIsUser(true);
     }
     console.log(id);
 
@@ -39,20 +46,50 @@ export default function Userinfo(props){
     
     //get request
     useEffect( () =>{
+        /** Check if i am in my profile of others profile 0=>my account 1=>others account
+        * @memberof UserInfo
+        * @method checkUserByIdentifier
+        * @param {String} id-the id of the user i am curruntly in his/her profile
+        * @returns respone of user check by id
+        * @example
+        * {
+        "message": "boolean=1"
+        }
+        */
         checkUserByIdentifier(id).then(response=>{
             if(response.data.boolean === 1){
         //         //get user
+        /** Gets the information of the user (Background,Avatar,#of following,#of followers etc..)
+        * @memberof UserInfo
+        * @method GetUser
+        * @returns respone of Get user
+        * @example
+        * {
+        "Fname": "string",
+        "Lname": "string",
+        "Following": 0,
+        "Followers": 0,
+        "views": 0,
+        "Date_joined": "2021-06-08",
+        "Email": "string",
+        "UserName": "string",
+        "Photo": 0,
+        "Avatar": "https://upload.wikimedia.org/wikipedia/en/c/c4/Mickey_Mouse_%28fair_use%29.png",
+        "BackGround": "https://upload.wikimedia.org/wikipedia/en/c/c4/Mickey_Mouse_%28fair_use%29.png",
+        "About": {
+            "Description": "string",
+            "Hometown": "string",
+            "Occupation": "string",
+            "CurrentCity": "string"
+        }
+        }
+        */
                 GetUser().then( response => {
                     setUserInfo(response.data);
                     setIsUserInfo(true);
                     setPhotoStream(true);
                 console.log(response.data)
                 })
-                //get user photos
-                // GetUserPhotos().then( response => {
-                //     setUserPhotos(response.data.photos);
-                //     console.log(response)
-                // })
                 setFollowing(false);
                 setIsUser(true);
             }
@@ -60,15 +97,38 @@ export default function Userinfo(props){
                 ////Not me!
                 setIsUser(false);
                 setUserId(id);
+                /** Gets the information of the others by their id (Background,Avatar,#of following,#of followers etc..)
+                * @memberof UserInfo
+                * @method GetPeopleByIdentefier
+                * @param {String} id-the id of the user i am curruntly in his/her profile
+                * @returns respone of Get user
+                * @example
+                * {
+                "Fname": "string",
+                "Lname": "string",
+                "Following": 0,
+                "Followers": 0,
+                "views": 0,
+                "Date_joined": "2021-06-08",
+                "Email": "string",
+                "UserName": "string",
+                "Photo": 0,
+                "Avatar": "https://upload.wikimedia.org/wikipedia/en/c/c4/Mickey_Mouse_%28fair_use%29.png",
+                "BackGround": "https://upload.wikimedia.org/wikipedia/en/c/c4/Mickey_Mouse_%28fair_use%29.png",
+                "About": {
+                    "Description": "string",
+                    "Hometown": "string",
+                    "Occupation": "string",
+                    "CurrentCity": "string"
+                }
+                }
+                */
                 GetPeopleByIdentefier(id).then(response=>{
-                    //setIsUserInfo(false);
-                   
                     updateStatPhotStream();
                     setUserInfo(response.data);
                     setUserName(response.data.UserName)
                     setIsUserInfo(true);
                     setPhotoStream(true);
-                   // Photostream({isUser,id});
                     if(response.data.Follow===true){
                         setFollowing(true);
                     }
@@ -144,34 +204,51 @@ export default function Userinfo(props){
         }
     }
 
+    /** close Edit Modal to update user information
+    * @memberof UserInfo
+    * @method closeEdit
+    */
+
     function closeEdit(){
         setModalOpen(false);
-
     }
+
+    /** Show Edit Modal to update user information
+    * @memberof UserInfo
+    * @method showEdit
+    */
+
     function showEdit(num){
         setModalOpen(true);
         setAvatarBackground(num);
     }
     const userFollow={
         "peopleid": id
-      };
+    };
+
+    /** Toggle the follow button in case of clicking follow or unfollow
+    * @memberof UserInfo
+    * @method toggleFollow
+    */
 
     async function toggleFollow(){
         if(isFollowing===false){
-           FollowPeople(userFollow).then( response => {
-                setFollowing(!isFollowing);
-       
-       })
-   }
+            FollowPeople(userFollow).then( response => {
+            setFollowing(!isFollowing);
+        })
+    }
         else{
-           UnFollowPeople(id).then( response => {
-                 setFollowing(!isFollowing);
+            UnFollowPeople(id).then( response => {
+            setFollowing(!isFollowing);
             })
     }
-
-       
     }
     
+
+    /** set the about with true to open it and close the components
+    * @memberof UserInfo
+    * @method updateStatAbout
+    */
 
     function updateStatAbout(){
         setPhotoStream(isPhotoStream && !isPhotoStream);
@@ -184,6 +261,11 @@ export default function Userinfo(props){
         setStats(isStats && !isStats);
     }
 
+    /** set the Photostream with true to open it and close the components
+    * @memberof UserInfo
+    * @method updateStatPhotStream
+    */
+
     function updateStatPhotStream(){
         setPhotoStream(true);
         setCameraRoll(isCameraRoll && !isCameraRoll);
@@ -194,6 +276,11 @@ export default function Userinfo(props){
         setGroup(isGroup && !isGroup);
         setStats(isStats && !isStats);
     }
+
+    /** set the CameraRoll with true to open it and close the components
+    * @memberof UserInfo
+    * @method updateStatCameraRoll
+    */
 
     function updateStatCameraRoll(){
         setPhotoStream(isPhotoStream && !isPhotoStream);
@@ -206,6 +293,11 @@ export default function Userinfo(props){
         setStats(isStats && !isStats);
     }
 
+    /** set the Album with true to open it and close the components
+    * @memberof UserInfo
+    * @method updateStatAlbum
+    */
+
     function updateStatAlbum(){
         setPhotoStream(isPhotoStream && !isPhotoStream);
         setCameraRoll(isCameraRoll && !isCameraRoll);
@@ -217,6 +309,11 @@ export default function Userinfo(props){
         setStats(isStats && !isStats);
     }
 
+    /** set the Favs with true to open it and close the components
+    * @memberof UserInfo
+    * @method updateStatFaves
+    */
+
     function updateStatFaves(){
         setPhotoStream(isPhotoStream && !isPhotoStream);
         setCameraRoll(isCameraRoll && !isCameraRoll);
@@ -227,6 +324,11 @@ export default function Userinfo(props){
         setGroup(isGroup && !isGroup);
         setStats(isStats && !isStats);
     }
+
+    /** set the Group with true to open it and close the components
+    * @memberof UserInfo
+    * @method updateStatGroup
+    */
 
     function updateStatGroup(){
         setPhotoStream(isPhotoStream && !isPhotoStream);

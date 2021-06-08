@@ -10,10 +10,18 @@ import axios from "axios"
 import {Link} from "react-router-dom";
 import { GetPhotoById } from '../../services/photoServices';
 
+/** Renders Following component to get user following
+ * @author Farah Mostafa
+ * @namespace FollwingFollowers
+ * @category Functional Component
+ * @extends Component
+ * @property {String} props -User id
+ * @property {String} props -isUser
+ */
+
 export default function FollwingFollowers(props){
         const [allfollowing, setFollowing] = useState([]);
         var {isUser,id}=useParams();
-        //const isUser=true;  //useParams();
         if(isUser=='true')
         isUser=true;
         else
@@ -23,6 +31,23 @@ export default function FollwingFollowers(props){
         useEffect(() => {
             if(isUser!=undefined&& isUser===true){
                 var r;
+                /** Gets array of the information of the people in the following
+                * @memberof FollwingFollowers
+                * @method GetUserFollowing
+                * @returns respone of Get user following
+                * @example
+                * [
+                    {
+                        "Fname": "string",
+                        "UserName": "string",
+                        "Lname": "string",
+                        "Email": "user@example.com",
+                        "_id": 0,
+                        "Photo": 0,
+                        "avatar": "https://upload.wikimedia.org/wikipedia/en/c/c4/Mickey_Mouse_%28fair_use%29.png"
+                    }
+                    ]
+                */
                 GetUserFollowing().then( response => {
                     if(response!=undefined){
                         setisUndefinedfollowers(false);
@@ -34,13 +59,29 @@ export default function FollwingFollowers(props){
                 })
             }
             else if(isUser!=undefined&&isUser==false){
+                /** Gets array of the information of the people in the following
+                * @memberof FollwingFollowers
+                * @method GetPeopleFollowing
+                * @returns respone of Get people following
+                * @example
+                * [
+                    {
+                        "Fname": "string",
+                        "UserName": "string",
+                        "Lname": "string",
+                        "Email": "user@example.com",
+                        "_id": 0,
+                        "Photo": 0,
+                        "avatar": "https://upload.wikimedia.org/wikipedia/en/c/c4/Mickey_Mouse_%28fair_use%29.png"
+                    }
+                    ]
+                */
                 GetPeopleFollowing(id).then( response => {
                     if(response!=undefined){
                         
                         setisUndefinedfollowing(false);
                         let Data=response.data;
-                         get_avatar_url(Data);
-                        //setFollowing(d);
+                        get_avatar_url(Data);
                         
                     }
                     else{
@@ -53,6 +94,11 @@ export default function FollwingFollowers(props){
         color:'black'
         };
 
+    /** get the the people Following Avatars
+    * @memberof FollwingFollowers
+    * @method get_avatar_url
+    * @param {array} data -array of following people
+    */
 
 async function get_avatar_url(data){
  //   Data=new Array(Object());

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Namespace: CommentBox</title>
+    <title>JSDoc: Namespace: Upload</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Namespace: CommentBox</h1>
+    <h1 class="page-title">Namespace: Upload</h1>
 
     
 
@@ -28,7 +28,7 @@
 
 <header>
     
-        <h2>CommentBox</h2>
+        <h2>Upload</h2>
         
     
 </header>
@@ -37,108 +37,10 @@
     <div class="container-overview">
     
         
-            <div class="description"><p>Renders CommentBox component</p></div>
+            <div class="description"><p>Renders Upload component to make the user upload new photos</p></div>
         
 
         
-
-
-    <h5 class="subsection-title">Properties:</h5>
-
-    
-
-<table class="props">
-    <thead>
-    <tr>
-        
-        <th>Name</th>
-        
-
-        <th>Type</th>
-
-        
-
-        
-
-        <th class="last">Description</th>
-    </tr>
-    </thead>
-
-    <tbody>
-    
-
-        <tr>
-            
-                <td class="name"><code>props.photo_id</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">String</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Photo id</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>props.numberOfComments</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">Number</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>Number of comments on the photo</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>openCommentBox</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>open comment box callback function</p></td>
-        </tr>
-
-    
-    </tbody>
-</table>
-
-
 
 
 <dl class="details">
@@ -163,7 +65,7 @@
     <dt class="tag-author">Author:</dt>
     <dd class="tag-author">
         <ul>
-            <li>Samar Nabil</li>
+            <li>Farah Mostafa</li>
         </ul>
     </dd>
     
@@ -177,7 +79,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Comments_CommentBox.jsx.html">Comments/CommentBox.jsx</a>, <a href="Comments_CommentBox.jsx.html#line6">line 6</a>
+        <a href="upload_Upload.js.html">upload/Upload.js</a>, <a href="upload_Upload.js.html#line14">line 14</a>
     </li></ul></dd>
     
 
@@ -227,7 +129,7 @@
     
 
     
-    <h4 class="name" id=".handleComment"><span class="type-signature">(static) </span>handleComment<span class="signature">(event)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".addImageToCameraroll"><span class="type-signature">(static) </span>addImageToCameraroll<span class="signature">()</span><span class="type-signature"></span></h4>
     
 
     
@@ -235,7 +137,95 @@
 
 
 <div class="description">
-    <p>Saves the current value of the comment in textarea tag</p>
+    <p>called once the user clicks add to add the selected photo to their account</p>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="upload_Upload.js.html">upload/Upload.js</a>, <a href="upload_Upload.js.html#line40">line 40</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".PostPhoto"><span class="type-signature">(static) </span>PostPhoto<span class="signature">()</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>sends the required photo information to the server (Post Request)</p>
 </div>
 
 
@@ -253,8 +243,6 @@
     <thead>
     <tr>
         
-        <th>Name</th>
-        
 
         <th>Type</th>
 
@@ -271,15 +259,8 @@
 
         <tr>
             
-                <td class="name"><code>event</code></td>
-            
 
             <td class="type">
-            
-                
-<span class="param-type">event</span>
-
-
             
             </td>
 
@@ -287,7 +268,7 @@
 
             
 
-            <td class="description last"><p>Tirggered event on change in input value</p></td>
+            <td class="description last"></td>
         </tr>
 
     
@@ -328,95 +309,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Comments_CommentBox.jsx.html">Comments/CommentBox.jsx</a>, <a href="Comments_CommentBox.jsx.html#line27">line 27</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id=".postComment"><span class="type-signature">(static) </span>postComment<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    <p>Post comment request</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Comments_CommentBox.jsx.html">Comments/CommentBox.jsx</a>, <a href="Comments_CommentBox.jsx.html#line37">line 37</a>
+        <a href="upload_Upload.js.html">upload/Upload.js</a>, <a href="upload_Upload.js.html#line72">line 72</a>
     </li></ul></dd>
     
 

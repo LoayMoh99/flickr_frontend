@@ -11,7 +11,13 @@ const formdata=require('form-data');
 const fileToArrayBuffer = require('file-to-array-buffer')
 var arrayBufferToBuffer = require('arraybuffer-to-buffer');
 //import fs  from  'fs';
-export default function Upload(props){
+/** Renders Upload component to make the user upload new photos
+ * @author Farah Mostafa
+ * @namespace Upload
+ * @category Functional Component
+ * @extends Component
+ */
+export default function Upload(){
 
     const navStyle={
         color:'black'
@@ -31,8 +37,12 @@ export default function Upload(props){
 
     const plus = <FontAwesomeIcon icon={faPlusCircle} color="DarkGrey" />;
 
+    /** called once the user clicks add to add the selected photo to their account
+    * @memberof Upload
+    * @method addImageToCameraroll
+    */
+
     const addImageToCameraroll = async () => {
-        console.log("yalahwaaaiii");
        
         var d;var buffer;
        
@@ -59,8 +69,13 @@ export default function Upload(props){
             tags: tag
         }
         console.log("status1");
+        /** sends the required photo information to the server (Post Request)
+        * @memberof Upload
+        * @method PostPhoto
+        * @param {Array of buffers} newImage-the id of the user i am curruntly in his/her profile
+        */
         PostPhoto(newImage).then(response=>{
-           
+        
         })
     };
 

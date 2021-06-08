@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: groupHeader/GroupHeader.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: groupHeader/GroupHeader.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React,{useState,useEffect} from 'react';
+import '../HeaderBar/userInfo.css';
+import '../../fonts/font/flaticon.css';
+import './extraGroupDesign.css'
+import defaultProfile from '../../img/deefault.jpg';
+import groupBG from '../../img/groupBG.jpg'
+import groupimg from '../../img/images.png'
+import {GetGroupById} from "../../services/groupServices"
+import GroupPhotos from '../GroupPhotos/GroupPhotos'
+import Header from '../navbar/mainNav'
+import Join from '../Search/Join'
+import axios from 'axios'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import {Link} from "react-router-dom";
+
+/** Renders GroupHeader component to show the group name number of members and number of photos
+ * @author Farah Mostafa
+ * @namespace GroupHeader
+ * @category Functional Component
+ * @extends Component
+ * @property {String} props -Group id
+ */
+
+export default function GroupHeader(props){
+    const path = props.location.pathname;
+    const index = path.split('/');
+    const id = index[2];
+    console.log({id});
+    const [groupInfo, setgroupInfo] = useState([]);
+    const [isJoiningGroup,setJoiningGroup]=useState(true);
+    const [isUndefined,setisUndefined]=useState(true);
+    
+    useEffect(() => {
+        GetGroupById(id).then( response => {
+            console.log(response);
+            if(response.data!=undefined){
+                setgroupInfo(response.data);
+                if(response.data.role){
+                    setJoiningGroup(true);
+                    console.log({isJoiningGroup})
+                }
+                else{
+                    setJoiningGroup(false);
+                }
+            }
+        })
+
+},[]);
+
+    
+    return(
+        
+        &lt;div>
+            &lt;div>
+            &lt;Header isLogged={true}/>
+            &lt;/div>
+            &lt;div>
+                &lt;div className="uName" style={{backgroundImage: `url(${groupBG})`}}>
+                    &lt;div className="overlay1">
+                        &lt;div className="userInfo">
+                            &lt;div className="profImg" style={{backgroundImage: `url(${groupimg})`}}>&lt;/div>
+                            &lt;div className="nameAndInfo">
+                                &lt;div id="groupNameAndButtton">
+                                    &lt;h1>{groupInfo.name}&lt;/h1>
+                                    &lt;div id="joinBtnInGroup">
+                                    &lt;Join
+                                    key={id} 
+                                    group_id={id}
+                                    role={isJoiningGroup}
+                                    />
+                                    &lt;/div>
+                                &lt;/div>
+                                &lt;div className="numbers">
+                                    &lt;div className="follwingFollowers">
+                                        &lt;ul className="NavbarAndheaderul"  id="groupAdj">
+                                            &lt;li>{groupInfo.count_members} Members&lt;/li>
+                                            &lt;li>{groupInfo.count_photos} Photos&lt;/li>
+                                        &lt;/ul>
+                                    &lt;/div>
+                                    &lt;div className="joined">
+                                        {/* &lt;p>{groupInfo.count_members} Photos&lt;/p> */}
+                                        &lt;p>Joined {groupInfo.createdAt}&lt;/p>
+                                    &lt;/div>
+                                &lt;/div>
+                            &lt;/div>
+                        &lt;/div>
+                    &lt;/div>
+                &lt;/div>
+                &lt;div className="navAndSearch extraPadding">
+                    &lt;ul className="editNav NavbarAndheaderul">
+                        &lt;li className=" mainHeadeNavCoices" className="defaultSelect">Photos&lt;/li>
+                    &lt;/ul>
+                &lt;/div>
+            &lt;/div>
+            &lt;div>
+                &lt;GroupPhotos id={id} isMember={isJoiningGroup}/>
+            &lt;/div>
+        &lt;/div>
+    );
+}
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AddPhotos.html">AddPhotos</a></li><li><a href="AlbumCard.html">AlbumCard</a></li><li><a href="AlbumPreview.html">AlbumPreview</a></li><li><a href="Card.html">Card</a></li><li><a href="CommentBox.html">CommentBox</a></li><li><a href="EditInfo.html">EditInfo</a></li><li><a href="Follow.html">Follow</a></li><li><a href="Followers.html">Followers</a></li><li><a href="FollwingFollowers.html">FollwingFollowers</a></li><li><a href="GroupCard.html">GroupCard</a></li><li><a href="GroupHeader.html">GroupHeader</a></li><li><a href="GroupPhotos.html">GroupPhotos</a></li><li><a href="ImageDetails.html">ImageDetails</a></li><li><a href="ImageGrid.html">ImageGrid</a></li><li><a href="Join.html">Join</a></li><li><a href="NavBar.html">NavBar</a></li><li><a href="PeopleCard.html">PeopleCard</a></li><li><a href="PhotosToAdd.html">PhotosToAdd</a></li><li><a href="Photostream.html">Photostream</a></li><li><a href="SearchGroup.html">SearchGroup</a></li><li><a href="SearchPeople.html">SearchPeople</a></li><li><a href="Upload.html">Upload</a></li><li><a href="UserInfo.html">UserInfo</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Tue Jun 08 2021 05:49:13 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

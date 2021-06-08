@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: followingFollowers/Followers.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: followingFollowers/Followers.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React,{useState,useEffect} from 'react';
+import './followingFollowers.css';
+import defaultProfile from '../../img/deefault.jpg';
+import Header from '../navbar/mainNav';
+import Footer from '../navbar/footer'
+import {GetUserFollowers} from '../../services/userServices'
+import axios from "axios"
+
+/** Renders Followers component to get user following
+ * @author Farah Mostafa
+ * @namespace Followers
+ * @category Functional Component
+ * @extends Component
+ * @property {String} props -User id
+ */
+
+export default function Followers(props){
+
+     //Get photos
+        const [followers, setFollowers] = useState([]);
+        const [isUndefinedfollowers, setisUndefinedfollowers] = useState(true);
+
+        useEffect(() => {
+             /** Gets array of the information of the people in the following
+            * @memberof Followers
+            * @method GetUserFollowers
+            * @returns respone of Get user followers
+            * @example
+            * [
+                {
+                    "Fname": "string",
+                    "UserName": "string",
+                    "Lname": "string",
+                    "Email": "user@example.com",
+                    "_id": 0,
+                    "Photo": 0,
+                    "avatar": "https://upload.wikimedia.org/wikipedia/en/c/c4/Mickey_Mouse_%28fair_use%29.png"
+                }
+                ]
+            */
+            GetUserFollowers().then( response => {
+                if(response!=undefined){
+                    setisUndefinedfollowers(false);
+                    setFollowers(response.data.FollowersList);
+                }else{
+                    setisUndefinedfollowers(true);
+                }
+            
+        })
+    },[]);
+
+    return(
+        &lt;div>
+            &lt;Header isLogged={true}/>
+            &lt;div className="flwAndFlowing">
+            &lt;div className="picAndSelect">
+                &lt;div className="imgg">&lt;/div>
+                &lt;div className="listAndTitle">
+                    &lt;h3>People following you&lt;/h3>
+                    &lt;ul className="NavbarAndheaderul">
+                        &lt;li>&lt;a>photos from&lt;/a>&lt;/li>
+                        &lt;li>&lt;a>photos of&lt;/a>&lt;/li>
+                        &lt;li>&lt;a>list&lt;/a>&lt;/li>
+                    &lt;/ul>
+                &lt;/div>
+            &lt;/div>
+            &lt;div className="searchFeatures">
+                &lt;span>show :&lt;/span>
+                &lt;select id="sortForm" className="form-select" aria-label="Default select example">
+                &lt;option defaultValue>everyone&lt;/option>
+                &lt;option value="1">Following&lt;/option>
+                &lt;option value="2">Freinds&lt;/option>
+                &lt;option value="3">Family&lt;/option>
+                &lt;option value="4">Freinds and Family&lt;/option>
+                &lt;/select>
+                &lt;p>or&lt;/p>
+                &lt;span>Search :&lt;/span>
+                &lt;input id="searchForm" className="form-control form-control-sml" type="text" placeholder="screen name,real name or email" aria-label=".form-control-sm example">&lt;/input>
+                &lt;p>or&lt;/p>
+                &lt;a>who is following you?&lt;/a>
+            &lt;/div>
+            &lt;table className="table">
+            &lt;thead>
+                &lt;tr>
+                &lt;th scope="col">Name&lt;/th>
+                &lt;th scope="col">public Photos&lt;/th>
+                &lt;th scope="col">Last Upload&lt;/th>
+                &lt;th scope="col">You list them as&lt;/th>
+                &lt;/tr>
+            &lt;/thead>
+            &lt;tbody>
+            {!isUndefinedfollowers &amp;&amp; followers.map(user => (
+                &lt;tr>
+                &lt;th scope="row">&lt;img src={user.Avatar}>&lt;/img> {user.Fname} {user.Lname}&lt;/th>
+                &lt;td>{user.Photos}&lt;/td>
+                {/* &lt;td>200&lt;/td> */}
+                &lt;td>{user.UserName}&lt;/td>
+                &lt;td>user.Email&lt;/td>
+                &lt;/tr>
+            ))}
+            &lt;/tbody>
+        &lt;/table>
+        &lt;/div>
+        &lt;Footer/>
+        &lt;/div>
+    )
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AddPhotos.html">AddPhotos</a></li><li><a href="AlbumCard.html">AlbumCard</a></li><li><a href="AlbumPreview.html">AlbumPreview</a></li><li><a href="Card.html">Card</a></li><li><a href="CommentBox.html">CommentBox</a></li><li><a href="EditInfo.html">EditInfo</a></li><li><a href="Follow.html">Follow</a></li><li><a href="Followers.html">Followers</a></li><li><a href="FollwingFollowers.html">FollwingFollowers</a></li><li><a href="GroupCard.html">GroupCard</a></li><li><a href="GroupHeader.html">GroupHeader</a></li><li><a href="GroupPhotos.html">GroupPhotos</a></li><li><a href="ImageDetails.html">ImageDetails</a></li><li><a href="ImageGrid.html">ImageGrid</a></li><li><a href="Join.html">Join</a></li><li><a href="NavBar.html">NavBar</a></li><li><a href="PeopleCard.html">PeopleCard</a></li><li><a href="PhotosToAdd.html">PhotosToAdd</a></li><li><a href="Photostream.html">Photostream</a></li><li><a href="SearchGroup.html">SearchGroup</a></li><li><a href="SearchPeople.html">SearchPeople</a></li><li><a href="Upload.html">Upload</a></li><li><a href="UserInfo.html">UserInfo</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Tue Jun 08 2021 05:49:13 GMT+0200 (Eastern European Standard Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Namespace: CommentBox</title>
+    <title>JSDoc: Namespace: ImageDetails</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Namespace: CommentBox</h1>
+    <h1 class="page-title">Namespace: ImageDetails</h1>
 
     
 
@@ -28,7 +28,7 @@
 
 <header>
     
-        <h2>CommentBox</h2>
+        <h2>ImageDetails</h2>
         
     
 </header>
@@ -37,7 +37,7 @@
     <div class="container-overview">
     
         
-            <div class="description"><p>Renders CommentBox component</p></div>
+            <div class="description"><p>Renders ImageDetails component to get the image info (URL,#of favs,#of comments,etc..) and rest user photos for the slide Show</p></div>
         
 
         
@@ -69,7 +69,7 @@
 
         <tr>
             
-                <td class="name"><code>props.photo_id</code></td>
+                <td class="name"><code>props.id</code></td>
             
 
             <td class="type">
@@ -85,20 +85,20 @@
 
             
 
-            <td class="description last"><p>Photo id</p></td>
+            <td class="description last"><p>User id</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>props.numberOfComments</code></td>
+                <td class="name"><code>props.userId</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">Number</span>
+<span class="param-type">String</span>
 
 
             
@@ -108,30 +108,7 @@
 
             
 
-            <td class="description last"><p>Number of comments on the photo</p></td>
-        </tr>
-
-    
-
-        <tr>
-            
-                <td class="name"><code>openCommentBox</code></td>
-            
-
-            <td class="type">
-            
-                
-<span class="param-type">function</span>
-
-
-            
-            </td>
-
-            
-
-            
-
-            <td class="description last"><p>open comment box callback function</p></td>
+            <td class="description last"><p>Image id</p></td>
         </tr>
 
     
@@ -163,7 +140,7 @@
     <dt class="tag-author">Author:</dt>
     <dd class="tag-author">
         <ul>
-            <li>Samar Nabil</li>
+            <li>Farah Mostafa</li>
         </ul>
     </dd>
     
@@ -177,7 +154,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Comments_CommentBox.jsx.html">Comments/CommentBox.jsx</a>, <a href="Comments_CommentBox.jsx.html#line6">line 6</a>
+        <a href="imageDetails_imageDetails.js.html">imageDetails/imageDetails.js</a>, <a href="imageDetails_imageDetails.js.html#line18">line 18</a>
     </li></ul></dd>
     
 
@@ -227,7 +204,7 @@
     
 
     
-    <h4 class="name" id=".handleComment"><span class="type-signature">(static) </span>handleComment<span class="signature">(event)</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".GetComments"><span class="type-signature">(static) </span>GetComments<span class="signature">(id-the)</span><span class="type-signature"></span></h4>
     
 
     
@@ -235,7 +212,7 @@
 
 
 <div class="description">
-    <p>Saves the current value of the comment in textarea tag</p>
+    <p>Gets the comments on the Photo</p>
 </div>
 
 
@@ -271,13 +248,13 @@
 
         <tr>
             
-                <td class="name"><code>event</code></td>
+                <td class="name"><code>id-the</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">event</span>
+<span class="param-type">String</span>
 
 
             
@@ -287,7 +264,7 @@
 
             
 
-            <td class="description last"><p>Tirggered event on change in input value</p></td>
+            <td class="description last"><p>id of the photo clicked on</p></td>
         </tr>
 
     
@@ -328,7 +305,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Comments_CommentBox.jsx.html">Comments/CommentBox.jsx</a>, <a href="Comments_CommentBox.jsx.html#line27">line 27</a>
+        <a href="imageDetails_imageDetails.js.html">imageDetails/imageDetails.js</a>, <a href="imageDetails_imageDetails.js.html#line67">line 67</a>
     </li></ul></dd>
     
 
@@ -364,7 +341,7 @@
     
 
     
-    <h4 class="name" id=".postComment"><span class="type-signature">(static) </span>postComment<span class="signature">()</span><span class="type-signature"></span></h4>
+    <h4 class="name" id=".GetPhotoById"><span class="type-signature">(static) </span>GetPhotoById<span class="signature">(id-the)</span><span class="type-signature"></span></h4>
     
 
     
@@ -372,7 +349,7 @@
 
 
 <div class="description">
-    <p>Post comment request</p>
+    <p>Gets the information of the Photo (URL,#of favs,#of comments,etc..)</p>
 </div>
 
 
@@ -381,6 +358,55 @@
 
 
 
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id-the</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>id of the photo clicked on</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
 
 
 
@@ -416,7 +442,167 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="Comments_CommentBox.jsx.html">Comments/CommentBox.jsx</a>, <a href="Comments_CommentBox.jsx.html#line37">line 37</a>
+        <a href="imageDetails_imageDetails.js.html">imageDetails/imageDetails.js</a>, <a href="imageDetails_imageDetails.js.html#line53">line 53</a>
+    </li></ul></dd>
+    
+
+    
+
+    
+
+    
+</dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        
+            
+
+    
+
+    
+    <h4 class="name" id=".PostComments"><span class="type-signature">(static) </span>PostComments<span class="signature">(id-the, senrComment-the)</span><span class="type-signature"></span></h4>
+    
+
+    
+
+
+
+<div class="description">
+    <p>Gets the comments on the Photo</p>
+</div>
+
+
+
+
+
+
+
+
+
+    <h5>Parameters:</h5>
+    
+
+<table class="params">
+    <thead>
+    <tr>
+        
+        <th>Name</th>
+        
+
+        <th>Type</th>
+
+        
+
+        
+
+        <th class="last">Description</th>
+    </tr>
+    </thead>
+
+    <tbody>
+    
+
+        <tr>
+            
+                <td class="name"><code>id-the</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>id of the photo clicked on</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>senrComment-the</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">object</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>comment entered bt the user</p></td>
+        </tr>
+
+    
+    </tbody>
+</table>
+
+
+
+
+
+
+<dl class="details">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="imageDetails_imageDetails.js.html">imageDetails/imageDetails.js</a>, <a href="imageDetails_imageDetails.js.html#line87">line 87</a>
     </li></ul></dd>
     
 

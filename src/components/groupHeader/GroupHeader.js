@@ -14,6 +14,13 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
 import {Link} from "react-router-dom";
 
+/** Renders GroupHeader component to show the group name number of members and number of photos
+ * @author Farah Mostafa
+ * @namespace GroupHeader
+ * @category Functional Component
+ * @extends Component
+ * @property {String} props -Group id
+ */
 
 export default function GroupHeader(props){
     const path = props.location.pathname;
