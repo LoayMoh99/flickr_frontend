@@ -1,0 +1,73 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`AlbumCoverPhoto renders correctly enzyme 1`] = `
+<Fragment>
+  <div
+    className="coverPhoto"
+    style={
+      Object {
+        "backgroundImage": "url(https://picsum.photos/600/200?random=2)",
+      }
+    }
+  >
+    <div
+      className="overlayAlbum"
+    >
+      <div
+        className="spaceAlbumHeader"
+      >
+        <div
+          className="inputBarAlbumCover"
+        >
+          <div
+            id="inputFormatAlbum"
+          >
+            <div
+              class="form-group"
+            >
+              <input
+                className="form-control"
+                onChange={[Function]}
+                type="text"
+                value="Title"
+              />
+            </div>
+            <div
+              class="form-group"
+            >
+              <textarea
+                className="formControlTextarea"
+                onChange={[Function]}
+                rows="3"
+              >
+                Description
+              </textarea>
+            </div>
+          </div>
+        </div>
+      </div>
+      <h5
+        className="countPhotos"
+      >
+        17
+         
+        photos
+      </h5>
+      <h5
+        className="userName"
+      >
+        <a
+          class="userName"
+          href="/#"
+        >
+          By:
+           
+          Khadija
+           
+          Khaled
+        </a>
+      </h5>
+    </div>
+  </div>
+</Fragment>
+`;

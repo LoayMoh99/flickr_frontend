@@ -1,0 +1,55 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`CreateNewAlbumModal renders correctly enzyme 1`] = `
+<Fragment>
+  <div
+    className="modal__backdrop_edit"
+  >
+    <div
+      className="modal__container_create"
+    >
+      <span
+        className="close_edit"
+        onClick={[Function]}
+      >
+        ×
+      </span>
+      <h3
+        className="modal__title_edit"
+      >
+        Create a new album
+      </h3>
+      <input
+        className="createTitle"
+        onChange={[Function]}
+        placeholder="Album name"
+        required={true}
+        type="text"
+      />
+      <textarea
+        className="createDescription"
+        onChange={[Function]}
+        placeholder="Description (optional)"
+      />
+      <div
+        className="createFooter"
+      >
+        <button
+          id="save_edit"
+          onClick={[Function]}
+          type="button"
+        >
+          Create
+        </button>
+        <button
+          id="cancel_edit"
+          onClick={[Function]}
+          type="button"
+        >
+          Cancel
+        </button>
+      </div>
+    </div>
+  </div>
+</Fragment>
+`;

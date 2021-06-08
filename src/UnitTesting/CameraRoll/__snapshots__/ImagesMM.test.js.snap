@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`ImagesMM renders correctly enzyme 1`] = `
+<Fragment>
+  <div
+    className="column_adj_modal"
+  >
+    <img
+      alt="image_flickr"
+      className="img-responsive"
+      id="content_modal"
+      src="https://picsum.photos/600/200?random=2"
+    />
+  </div>
+</Fragment>
+`;

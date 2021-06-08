@@ -35,22 +35,33 @@ import axios from "axios"
 import CreateNewAlbumModal from './CreateNewAlbumModal';
 const endpoint = 'http://localhost:3001/'
 
+
+export function handleIncrement(c) {
+  return c + 1;
+}
+
+export function containsObject(obj, list) {
+  return list.some((elem) => elem._id === obj._id);
+  // return list.some((elem) => elem.id === obj.id);
+}
+// to delete the element if unselected
+export function handleDelete(obj, list) {
+  const listClone = [...list];
+  const index = listClone.indexOf(obj);
+  // Edit
+  return listClone.splice(index, 1);
+}
+
+
+export function handleDecrement(c) {
+  return c - 1;
+}
+
 function CamreRoll() {
   // const images = [{ photo_url: 'https://picsum.photos/id/237/200/300', createdAt: new Date('2019-05-28'), photo_id: '1' }, { photo_url: 'https://picsum.photos/200', createdAt: new Date('2019-06-10'), photo_id: '2' }, { photo_url: 'https://picsum.photos/seed/picsum/200/300', createdAt: new Date('2019-06-11'), photo_id: '3' }, { photo_url: 'https://picsum.photos/200/300?grayscale', createdAt: new Date('2019-06-10'), photo_id: '4' }, { photo_url: 'https://picsum.photos/seed/picsum/200/300', createdAt: new Date('2019-06-10'), photo_id: '5' }, { photo_url: 'https://picsum.photos/seed/picsum/200/300', createdAt: new Date('2019-06-10'), photo_id: '6' }];
   
   //Get photos
   const [images, setImages] = useState([]);
-  // useEffect(() => {
-  //     const fetchData = async () => {
-  //     const {data,status} = await axios.get( endpoint+'photos',);
-  //     console.log(status);
-  //     if (status === 200){
-  //         setImages(data);  
-  //     }
-  // };
-  
-  //   fetchData();
-  // },[]);
   useEffect( () =>{
     //get user photos
     GetUserPhotos().then( response => {
@@ -58,10 +69,10 @@ function CamreRoll() {
     })
 
   },[])
-  //  },[images])
 
-  //images=images.toObject();
-  var sortedImagesUploaded = images.photos//  .slice().sort((a, b) => b.createdAt - a.createdAt);
+
+  
+  var sortedImagesUploaded = images.photos
   if(sortedImagesUploaded!=undefined)
   sortedImagesUploaded= sortedImagesUploaded.slice().sort((a, b) => b.createdAt - a.createdAt);
   const [isModalOpen, setModalIsOpen] = useState(false);
@@ -102,24 +113,22 @@ function CamreRoll() {
 
   const monthName = (item) => moment(item.createdAt, 'YYYY-MM-DD').format('DD MMMM YYYY');
   // function to check if this image was already selected or a newly selected one
-  function containsObject(obj, list) {
-    return list.some((elem) => elem._id === obj._id);
-    // return list.some((elem) => elem.id === obj.id);
-  }
-  // to delete the element if unselected
-  function handleDelete(obj, list) {
-    const listClone = [...list];
-    const index = listClone.indexOf(obj);
-    // Edit
-    return listClone.splice(index, 1);
-  }
+  // function containsObject(obj, list) {
+  //   return list.some((elem) => elem._id === obj._id);
+  //   // return list.some((elem) => elem.id === obj.id);
+  // }
+  // // to delete the element if unselected
+  // function handleDelete(obj, list) {
+  //   const listClone = [...list];
+  //   const index = listClone.indexOf(obj);
+  //   // Edit
+  //   return listClone.splice(index, 1);
+  // }
 
-  function handleIncrement(c) {
-    return c + 1;
-  }
-  function handleDecrement(c) {
-    return c - 1;
-  }
+
+  // function handleDecrement(c) {
+  //   return c - 1;
+  // }
 
   // to toggle the modal .. if open then close and vice versa
   const toggleModal = (e, imgObj) => {
@@ -196,8 +205,6 @@ function CamreRoll() {
         useState(() => { for (let i = 0; i < keys.length; i += 1)
     {
       const imgCorresponding = values[i];
-      // dateFormat("2019-04-30T08:59:00.000Z", "mmmm dS, yyyy")
-      // tempImgDated.push(<div><h6>{monthName(keys[i])}</h6></div>);
       tempImgDated.push(<div><h6>{keys[i]}</h6></div>);
       tempImgDated.push(
         imgCorresponding.map((image) => (
@@ -213,7 +220,7 @@ function CamreRoll() {
       tempImgDated.push(<br />);
       setimgDated([...imgDated, ...tempImgDated]);
     } });
-  // setModalIsOpen(true);
+
 
   
 const photoIdsDelete = {
@@ -243,17 +250,14 @@ const photoIdsDelete = {
 
         </div>
       </ul>
-      {/* <SideNavBar /> */}
+
     <div className="sidephoto">
         <SideNavBar />
         <div className="row">
           <div className=" container_body">
 
-            {/* {grouped.map((arr) => <h5>{arr[0]}</h5>)} */}
-            {/* {map((arr) => ({ dateuploaded: arr[0], image: arr.slice(1) }))} */}
             { sortedImagesUploaded!=undefined&&sortedImagesUploaded.map((image) => (
               <ImagesCR
-               // key={image._id}
                 key={image.id}
                 url={image.photoUrl}
                 image={image}
@@ -282,11 +286,6 @@ const photoIdsDelete = {
             />
             )}
           </main>
-      {/* </div> */}
-      {/* <div className="container_body"> */}
-
-      {/* </div> */}
-      {/* <Modal /> */}
 
       <main className="main_edit">
         {isEditModalOpen && (

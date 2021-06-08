@@ -38,7 +38,7 @@ function Modal(props) {
     return (
       <>
 
-        {/* <div className="modal__backdrop_main" onClick={props.onRequestClose}> */}
+
         <div className="modal__container_main">
           <div className="row">
             <h3 className="modal__title_main">
@@ -58,12 +58,6 @@ function Modal(props) {
               ))}
           </div>
           <div className="row bottom_options_modal">
-            {/* <h3 className="modal__title_main">
-              {lock}
-              {' '}
-              Privacy
-            </h3> */}
-            {/* <span className="space__modal_main" /> */}
             <a href="#" onClick={props.onEditRequest}>
               {' '}
               <h3 className="modal__title_main">
@@ -81,11 +75,6 @@ function Modal(props) {
               </h3>
             </a>
             <span className="space__modal_main" />
-            {/* <h3 className="modal__title_main">
-              {download}
-              {' '}
-              Download
-            </h3> */}
             <a href="#" onClick={ () =>{
                     props.onDeleteRequest(props.imgSelected);}}>
               <h3 className="modal__title_main" id="delete_option">
