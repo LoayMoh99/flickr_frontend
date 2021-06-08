@@ -11,7 +11,21 @@ import './PeopleCard.css'
 import { render } from '@testing-library/react';
 const endpoint = 'http://localhost:3001/'
 const staticAvatar= 'https://combo.staticflickr.com/pw/images/buddyicon00_m.png#22501572@N05'
-
+/** Renders Group Card component to show group in search
+ * @author Roaa Magdy
+ * @namespace PeopleCard
+ * @category Functional Component
+ * @extends Component
+ * @property {String} props.id -People id
+ * @property {String} props.url -Photo url
+ * @property {String} props.Fname -User first name
+ * @property {String} props.Lname -User Last name
+ * @property {String} props.subtitle -User account name
+ * @property {Number} props.followers -Number of followers
+ * @property {Number} props.noofimages -Number of images
+ * @property {String} props.date -Date account started
+ * @property {Boolean} props.followed -boolean indicates if followed or not
+ */
 function PeopleCard(props) {
     const {id, url, Lname,Fname,subtitle,followers, noofimages,date,followed } = props;
     const [isFollowing, setToggleFollow] = useState(followed);

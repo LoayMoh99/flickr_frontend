@@ -13,6 +13,19 @@ import {Link} from "react-router-dom";
 const SERVER_URL = configData.SERVER_URL ;
 const endpoint = 'http://dropoids.me/api/v1/'
 const staticAvatar= 'https://combo.staticflickr.com/pw/images/buddyicon00_m.png#22501572@N05'
+
+/** Renders Group Card component to show group in search
+ * @author Roaa Magdy
+ * @namespace GroupCard
+ * @category Functional Component
+ * @extends Component
+ * @property {String} props.group_id -Group id
+ * @property {String} props.groupname -Group name
+ * @property {Number} props.followers -Number of followers
+ * @property {Number} props.noofimages -Number of images
+ * @property {String} props.role -indicates role of user in group
+ * @property {String} props.date -Date group started
+ */
 function GroupCard(props) {
     console.log(props)
     const { group_id, groupname,followers, noofimages,role,date } = props;

@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: Search/GroupCard.jsx</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: Search/GroupCard.jsx</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>import React,{useEffect,useState} from 'react'
+import axios from 'axios'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUsers } from '@fortawesome/free-solid-svg-icons';
+import { faImage } from '@fortawesome/free-solid-svg-icons';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { faComment} from '@fortawesome/free-solid-svg-icons';
+import { faCheck } from '@fortawesome/free-solid-svg-icons';
+import configData from "../../config/development.json"
+
+import './GroupCard.css'
+import {Link} from "react-router-dom";
+const SERVER_URL = configData.SERVER_URL ;
+const endpoint = 'http://dropoids.me/api/v1/'
+const staticAvatar= 'https://combo.staticflickr.com/pw/images/buddyicon00_m.png#22501572@N05'
+
+/** Renders Group Card component to show group in search
+ * @author Roaa Magdy
+ * @namespace GroupCard
+ * @category Functional Component
+ * @extends Component
+ * @property {String} props.group_id -Group id
+ * @property {String} props.groupname -Group name
+ * @property {Number} props.followers -Number of followers
+ * @property {Number} props.noofimages -Number of images
+ * @property {String} props.role -indicates role of user in group
+ * @property {String} props.date -Date group started
+ */
+function GroupCard(props) {
+    console.log(props)
+    const { group_id, groupname,followers, noofimages,role,date } = props;
+     const [data, setData] = useState({});
+     const [isJoined, setToggleJoin] = useState(false);
+     const navStyle={
+        color:'white'
+    };
+     useEffect(() => {if(role === "member"){
+        setToggleJoin(true);
+        console.log(group_id);
+        console.log(data)
+    }},[]);
+//////////////////////////////toggle function to handle pressing on join or leave action/////////////////////////
+        async function toggleJoin(){
+            if(isJoined===false){
+            const { status } = await axios.post(endpoint+'/group/'+group_id+'/join',);
+            if(status=== 200){
+                
+                setToggleJoin(!isJoined);
+            }
+            else{
+                alert("UnAuthorized request or User not found");
+            }
+            }
+            else{
+            const { status } = await axios.delete(endpoint+'/group/'+group_id+'/leave',);
+                if(status=== 200){
+                
+                setToggleJoin(!isJoined);
+                   }
+                    else{
+                        alert("UnAuthorized request or User not found");
+                    }
+            }
+
+            
+        }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    return (
+        &lt;div className="cardGroup" >
+            &lt;div className="groupAvatar">
+                &lt;img src={staticAvatar} alt={groupname}>&lt;/img>
+            &lt;/div>
+            &lt;div className="groupInfo">
+                &lt;div className="titleAndjoin">
+                    &lt;div>
+                        &lt;h6>{groupname}&lt;/h6>
+                        &lt;span >Since {date}&lt;/span>
+                    &lt;/div>
+                    {/* &lt;div>   
+                    {!isJoined &amp;&amp; &lt;button className="buttonJoined" onClick={toggleJoin}>&lt;FontAwesomeIcon className="hover" icon={faPlus} color="DarkGrey" /> Join&lt;/button>}
+                    {isJoined &amp;&amp;  &lt;button className="buttonJoining" onClick={toggleJoin}>&lt;FontAwesomeIcon icon={faCheck} color="DarkGrey" /> &lt;/button>}
+                    &lt;/div> */}
+                &lt;/div>
+                &lt;div className="gcardLinks">
+                    &lt;Link style={navStyle}  to={`/Group/${group_id}/members`}>
+                    &lt;span>
+                    &lt;a href="#">
+                    &lt;FontAwesomeIcon icon={faUsers} color="DarkGrey" />
+                    {followers}
+                    &lt;/a>
+                    &lt;/span>
+                    &lt;/Link>
+                    &lt;Link style={navStyle}  to={`/Group/${group_id}/photos`}>
+                    &lt;span>
+                    &lt;a href="#">
+                    &lt;FontAwesomeIcon icon={faImage} color="DarkGrey" />
+                    {noofimages}
+                    &lt;/a>
+                    &lt;/span>
+                    &lt;/Link>
+                    &lt;span>
+                    &lt;a href="#">
+                    &lt;FontAwesomeIcon icon={faComment} color="DarkGrey" />
+                    0
+                    &lt;/a>
+                    &lt;/span>
+                    
+                &lt;/div>
+            &lt;/div>
+        &lt;/div>
+    )
+}
+
+export default GroupCard
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Namespaces</h3><ul><li><a href="AddPhotos.html">AddPhotos</a></li><li><a href="AlbumCard.html">AlbumCard</a></li><li><a href="AlbumPreview.html">AlbumPreview</a></li><li><a href="Card.html">Card</a></li><li><a href="CommentBox.html">CommentBox</a></li><li><a href="EditInfo.html">EditInfo</a></li><li><a href="Follow.html">Follow</a></li><li><a href="GroupCard.html">GroupCard</a></li><li><a href="GroupPhotos.html">GroupPhotos</a></li><li><a href="ImageGrid.html">ImageGrid</a></li><li><a href="Join.html">Join</a></li><li><a href="NavBar.html">NavBar</a></li><li><a href="PeopleCard.html">PeopleCard</a></li><li><a href="PhotosToAdd.html">PhotosToAdd</a></li><li><a href="Photostream.html">Photostream</a></li><li><a href="SearchGroup.html">SearchGroup</a></li><li><a href="SearchPeople.html">SearchPeople</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.7</a> on Tue Jun 08 2021 03:41:47 GMT-0700 (Pacific Daylight Time)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

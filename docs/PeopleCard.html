@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Namespace: PhotosToAdd</title>
+    <title>JSDoc: Namespace: PeopleCard</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Namespace: PhotosToAdd</h1>
+    <h1 class="page-title">Namespace: PeopleCard</h1>
 
     
 
@@ -28,7 +28,7 @@
 
 <header>
     
-        <h2>PhotosToAdd</h2>
+        <h2>PeopleCard</h2>
         
     
 </header>
@@ -37,7 +37,7 @@
     <div class="container-overview">
     
         
-            <div class="description"><p>Renders PhotosToAdd component</p></div>
+            <div class="description"><p>Renders Group Card component to show group in search</p></div>
         
 
         
@@ -85,7 +85,7 @@
 
             
 
-            <td class="description last"><p>Photo id</p></td>
+            <td class="description last"><p>People id</p></td>
         </tr>
 
     
@@ -115,7 +115,76 @@
 
         <tr>
             
-                <td class="name"><code>props.size</code></td>
+                <td class="name"><code>props.Fname</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>User first name</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>props.Lname</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>User Last name</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>props.subtitle</code></td>
+            
+
+            <td class="type">
+            
+                
+<span class="param-type">String</span>
+
+
+            
+            </td>
+
+            
+
+            
+
+            <td class="description last"><p>User account name</p></td>
+        </tr>
+
+    
+
+        <tr>
+            
+                <td class="name"><code>props.followers</code></td>
             
 
             <td class="type">
@@ -131,20 +200,20 @@
 
             
 
-            <td class="description last"><p>Array size of photo to add</p></td>
+            <td class="description last"><p>Number of followers</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>addPhoto</code></td>
+                <td class="name"><code>props.noofimages</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">function</span>
+<span class="param-type">Number</span>
 
 
             
@@ -154,20 +223,20 @@
 
             
 
-            <td class="description last"><p>Append photo to array of selection</p></td>
+            <td class="description last"><p>Number of images</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>removePhoto</code></td>
+                <td class="name"><code>props.date</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">function</span>
+<span class="param-type">String</span>
 
 
             
@@ -177,20 +246,20 @@
 
             
 
-            <td class="description last"><p>De-Append photo to array of selection</p></td>
+            <td class="description last"><p>Date account started</p></td>
         </tr>
 
     
 
         <tr>
             
-                <td class="name"><code>errorMessage</code></td>
+                <td class="name"><code>props.followed</code></td>
             
 
             <td class="type">
             
                 
-<span class="param-type">function</span>
+<span class="param-type">Boolean</span>
 
 
             
@@ -200,7 +269,7 @@
 
             
 
-            <td class="description last"><p>Alert when reaching max number of selections (6)</p></td>
+            <td class="description last"><p>boolean indicates if followed or not</p></td>
         </tr>
 
     
@@ -232,7 +301,7 @@
     <dt class="tag-author">Author:</dt>
     <dd class="tag-author">
         <ul>
-            <li>Samar Nabil</li>
+            <li>Roaa Magdy</li>
         </ul>
     </dd>
     
@@ -246,7 +315,7 @@
     
     <dt class="tag-source">Source:</dt>
     <dd class="tag-source"><ul class="dummy"><li>
-        <a href="GroupPhotos_PhotosToAdd.jsx.html">GroupPhotos/PhotosToAdd.jsx</a>, <a href="GroupPhotos_PhotosToAdd.jsx.html#line3">line 3</a>
+        <a href="Search_PeopleCard.jsx.html">Search/PeopleCard.jsx</a>, <a href="Search_PeopleCard.jsx.html#line14">line 14</a>
     </li></ul></dd>
     
 
@@ -287,98 +356,6 @@
 
     
 
-    
-        <h3 class="subsection-title">Methods</h3>
-
-        
-            
-
-    
-
-    
-    <h4 class="name" id=".toggleClick"><span class="type-signature">(static) </span>toggleClick<span class="signature">()</span><span class="type-signature"></span></h4>
-    
-
-    
-
-
-
-<div class="description">
-    <p>Highlight/unhighlight selected photos and delete/append based on state</p>
-</div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<dl class="details">
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-
-    
-    <dt class="tag-source">Source:</dt>
-    <dd class="tag-source"><ul class="dummy"><li>
-        <a href="GroupPhotos_PhotosToAdd.jsx.html">GroupPhotos/PhotosToAdd.jsx</a>, <a href="GroupPhotos_PhotosToAdd.jsx.html#line25">line 25</a>
-    </li></ul></dd>
-    
-
-    
-
-    
-
-    
-</dl>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-        
     
 
     

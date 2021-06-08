@@ -6,6 +6,14 @@ import { faCheck } from '@fortawesome/free-solid-svg-icons';
 import './Follow.css'
 import {FollowPeople,UnFollowPeople} from '../../services/userServices'
 const endpoint = 'http://localhost:3001/'
+/** Renders Follow or UnFollow button
+ * @author Roaa Magdy
+ * @namespace Follow
+ * @category Functional Component
+ * @extends Component
+ * @property {String} props.id -People id
+ * @property {Boolean} props.followed -Boolean indicates if follow or not
+ */
 function Follow(props) {
     const {id,followed}=props
     const [isFollowing, setToggleFollow] = useState(followed);
@@ -13,6 +21,10 @@ function Follow(props) {
         "peopleid": id
       };
       //////////////////////////////toggle function to handle pressing on follow or unfollow action/////////////////////////
+    /** toggle function to handle pressing on follow or unfollow action and Toggle follow and unfollow button
+    * @memberof Follow
+    * @method toggleFollow
+    */
             async function toggleFollow(){
          if(isFollowing===false){
             FollowPeople(userFollow).then( response => {
